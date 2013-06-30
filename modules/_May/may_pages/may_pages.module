@@ -1,0 +1,484 @@
+<?php
+
+/**
+ * @file
+ * Module for building and managing site's pages.
+ */
+
+/**
+ * Constants for ratins titles, etc.
+ */
+module_load_include('inc', 'may_misc', 'inc/constants');
+
+
+/**
+ * Implements hook_menu().
+ */
+function may_pages_menu() {
+
+//  $items['home'] = array(
+//    'title' => 'Home page',
+//    'page callback' => 'may_pages_buildHome',
+//    'access arguments' => array('access content'),  
+//    'type' => MENU_CALLBACK,
+//  );
+  
+  
+  return $items;
+}
+
+
+
+/**
+ * Returns a block with a cloud of all tags of s specific content type.
+ */
+function may_pages_buildTopicsPage($content_type_label) {
+  
+  global $language;
+  global $user;
+  
+  //$content_types = array('blog_post' => 'blog', 'news_post' => 'news', 'article' => 'articles');
+  // Inverted...
+  $content_types = array('blog' => 'blog_post', 'news' => 'news_post', 'articles' => 'article');
+  $content_type = $content_types[$content_type_label];
+  
+  // Uncomment to use a cache.
+  //$tags = cache_get($content_type . '_tags_page' . $language->language);
+  
+  // Comment to use a cache.
+  if (1) { 
+    
+  // Uncomment to use a cache.
+  //if (!$tags || empty($tags->data) || $tags->expire < time()) {
+    
+    $tags_array = may_misc_getTopics($content_type, $content_type_label);
+
+    if (!$tags_array) {
+      return NULL;
+    }
+    
+    // Simple List.
+    // $tags = theme('may_misc_submenuSimple', array('submenu' => array('below' => $tags_array), 'class' => 'tags'));
+    // Tag cloud.
+    $tags_array = tagadelic_sort_tags(tagadelic_build_weighted_tags($tags_array, 12));
+    $tags = theme('may_misc_tagadelicWeighted_acceptPredefinedTermsPaths', array('terms' => $tags_array));
+  
+
+    //$page_title = '<h1 id="page-title" class="title">' . drupal_ucfirst($content_type_label) . ' tags</h1>';
+    $show_all_url = '<div class="more-link">' . l('Show all posts', $content_type_label) . '</div>';
+    $tags = /*$page_title .*/ $tags . $show_all_url;
+    // Expire = current time + 4 hours.
+   
+    // Uncomment to use a cache.
+    // cache_set($content_type . '_tags_page' . $language->language, $tags, 'cache', time() + 14400);
+    
+  }
+  else {
+    $tags = $tags->data;
+  }
+  
+  /*
+  if ($preface = may_misc_getPrefaceByKey($content_type_label . '_tags') ) {
+    //dpm($preface);
+    //drupal_set_title($preface->title);
+    if (isset($preface->metatags['title']['value']) && $preface->metatags['title']['value']) {
+      drupal_set_title($preface->metatags['title']['value']);
+    }
+    else {
+      drupal_set_title($preface->title);
+    }
+    
+    $preface->title_no_link = TRUE;
+    $preface = render(node_view($preface, 'full'));
+  }
+  return '<div class="tags">' . $preface . $topics . '</div>'; 
+  */
+  
+  return ($user->uid ? '<div class="tags-admin-link">' . l(ucfirst($content_type_label) . ' tags Admin page', $content_type_label . '/tags-admin') . '</div>' : '') . '<div class="tags">' . $tags . '</div>'; 
+}
+
+
+/**
+ * Implements hook_access().
+ */
+function may_pages_access($type = null) {
+  switch ($type) {
+    default:
+      if (arg(1) == 'edit') {
+        if(!user_access('administer site configuration')) {
+          return false;
+        }
+      }
+    break;
+  }
+  return true;
+}
+
+
+/**
+ * Prepare data for output it via theme function
+ */
+function may_pages_buildHome($name, $data) {
+  $out = '';
+  
+  $seo_welcome_node = may_misc_getPrefaceByKey('front');
+  $seo_welcome_node->title_no_link = TRUE;
+  $seo_welcome_node_view = node_view($seo_welcome_node, 'full');
+
+  $out .= render($seo_welcome_node_view);
+
+
+    $block_data = array('module' => 'views', 'delta' => 'providers-block_top_business_cmp', 'shadow' => FALSE);
+    $out .= may_blocks_getBlockThemed($block_data);
+  
+  // Get block for Top pick residential providers.
+  $block_data = array('module' => 'views', 'delta' => 'providers-block_1', 'shadow' => FALSE); 
+  $out .= may_blocks_getBlockThemed($block_data);
+
+    $out .= render($seo_welcome_node_view['field_preface_bottom']);
+
+  return $out;
+}
+
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param array &$form
+ *   Array with declared form.
+ *
+ * @param array &$form_state
+ *   Array with current form state.
+ *
+ * @param string $form_id
+ *   Form ID.
+ *
+ * @return void
+ *   Return nothing.
+ */
+function may_pages_form_alter(&$form, &$form_state, $form_id) {
+  
+   //dpm($form_id);  dpm($form);
+  // $conf['locale_custom_strings_en']['old string'] = 'new string'
+  
+  switch ($form_id) {
+    
+    case 'user_login_block':
+    case 'user_login':
+      
+      // Disable login for disabled users
+      $form['#validate'][] = 'may_pages_validateForm_disableUserLoginForDisabled';
+                
+      break;
+    
+
+    
+    case 'article_node_form':
+      
+        $extra_data = unserialize($form['field_extra_data']['und'][0]['value']['#default_value']);
+        
+        $form['author']['guest_author'] = array(
+          '#type' => 'textfield',
+          '#title' => 'Guest Post author',
+          '#default_value' => !empty($extra_data['guest_author']) ? $extra_data['guest_author'] : '',
+        );
+        
+        
+        // Restore aliased pdfs links, from /pdfs/ to /sites/default/files/pdfs/
+        $form['body'] = may_misc_rewriteLinks('pdfs', $form, 'back');
+        
+      
+        //$form['field_a_teaser']['und'][0]['#format'] = 'full_html';
+        $form['field_a_teaser']['#access'] = FALSE;
+        $form['field_main_image']['#access'] = FALSE;
+        $form['field_extra_data']['#access'] = FALSE;
+        
+        $form['#validate'][] = 'may_pages_validateForm_article';
+                
+      break;
+    
+    
+    
+    
+    
+    case 'user_profile_form':
+      
+      // Disallow edit own profile for a Guest user.
+      global $user;
+      if($user->name == 'guest') {
+        drupal_goto('');
+      }
+      
+      $form['field_u_bio']['und'][0]['#format'] = 'full_html';
+      
+      break;
+    
+    
+    
+  
+       
+    case 'preface_node_form':
+/* 
+      // Deny editing titles for everyone except the root.
+      if(arg(1) != 'add') {
+        global $user;
+        if($user->uid == 1) {
+          $form['title'] = array(
+            '#type' => 'item',
+            '#title' => t('Title'),
+            '#markup' => '<div class="title">' . $form['title']['#default_value'] . '</div>',
+            '#description' => t('This field can be edited only by the Root administrator. Used only as id for loading to the listing page and will be hidden on the page.'),
+          );
+        }
+      } // End of if(arg(1) != 'add') {
+*/    
+      
+      
+      // Hide some options for all.
+      $form['comment_settings']['#access'] = FALSE;
+      $form['revision_information']['#access'] = FALSE;
+      
+      // And leave some options for the root.
+      global $user;
+      if ($user->uid != 1) {
+        $form['field_preface_key']['#access'] = FALSE;
+      }
+      if (!in_array('administrator', $user->roles)) {
+        // Deny to change the status of the node (it should always be unpublished).
+        $form['options']['#access'] = FALSE;
+        // Hide url aliasing options.
+        $form['path']['#access'] = FALSE;
+      }
+      
+      
+      // Connect Ckeditor for additional fields.
+      
+      //$form['body']['und'][0]['#format'] = 'may_full_html'; // link
+      //$form['body']['und'][0]['#format'] = 'filtered_html'; // unlink
+      $keys = element_children($form['field_preface_bottom']['und']);
+      foreach ($keys as $key) {
+        $form['field_preface_bottom']['und'][$key]['field_preface_b_body']['und'][0]['#format'] = 'full_html'; // link Ckeditor
+      }
+      
+    break; // End of case 'preface_node_form':
+
+    
+  } // End of switch ($form_id) {
+  
+  
+  // Add a Save Draft button.
+  switch ($form_id) {
+    
+    case 'blog_post_node_form':
+    case 'article_node_form':
+      
+        $form['actions']['save_draft'] = array(
+          '#type' => 'submit',
+          '#value' => 'Save Draft',
+          '#submit' => array('node_form_submit'),
+          '#weight' => 6,
+        );
+      
+        $form['#submit'][] = 'may_pages_submitForm_saveDraft';
+        
+        break;
+      
+  } // End of switch ($form_id) { // Save Draft button
+  
+}
+
+
+/**
+ * Disable user login for disabled users.
+ *
+ * @param array &$form
+ *   Array with declared form.
+ *
+ * @param array &$form_state
+ *   Array with current form state.
+
+ * @return void
+ *   Return nothing.
+ */
+function may_pages_validateForm_disableUserLoginForDisabled(&$form, &$form_state) {
+  
+  //dpm($form_state); dpm($form);
+  
+  if (!empty($form_state['uid']) && $u = user_load($form_state['uid'])) {
+    if (in_array('disabled', $u->roles)) {
+      form_set_error('name',t('Sorry, but Your account is blocked. Please contact administrator to unblock it.'));
+    }
+  }
+}
+
+
+/**
+ * Custom validate of article type form.
+ *
+ * @param array &$form
+ *   Array with declared form.
+ *
+ * @param array &$form_state
+ *   Array with current form state.
+
+ * @return void
+ *   Return nothing.
+ */
+function may_pages_validateForm_article(&$form, &$form_state) {
+
+  // Define a main image and build a custom teaser.
+  $teaser_data = may_misc_getArticleTeaserData('all', $form_state['values']['body']['und'][0]['value'], $form_state['values']['nid']);
+
+  
+  form_set_value($form['field_a_teaser'], array('und' => array(0 => array('value' => $teaser_data['teaser'], 'format' => 'full_html') )), $form_state);
+  form_set_value($form['field_main_image'], array('und' => array(0 => array('value' => serialize($teaser_data['main_image']), 'format' => 'full_html') )), $form_state);
+  
+  
+  $extra_data = array(
+    'title' => $form_state['values']['title'], 
+    'teaser_block' => $teaser_data['teaser_block'], 
+    'teaser_home' => $teaser_data['teaser_home'],
+    'teaser_side_block' => $teaser_data['teaser_side_block'],
+    'side_block_main_image' => $teaser_data['side_block_main_image'],
+  );
+  
+  if (!empty($form_state['values']['guest_author'])) {
+    $extra_data['guest_author'] = $form_state['values']['guest_author'];
+  }
+  
+  form_set_value($form['field_extra_data'], array('und' => array(0 => array('value' => serialize($extra_data), 'format' => 'full_html') )), $form_state);
+  
+}
+
+
+/**
+ * Custom validate of article type form.
+ *
+ * @param array &$form
+ *   Array with declared form.
+ *
+ * @param array &$form_state
+ *   Array with current form state.
+
+ * @return void
+ *   Return nothing.
+ */
+function may_pages_submitForm_saveDraft(&$form, &$form_state) {
+
+  if ($form_state['values']['op'] == 'Save' && @$form_state['build_info']['args'][0]->status == 0) {
+    // NOT publish ---> Publish
+    drupal_set_message('NOT publish ---> Publish', 'warning');
+
+    $form_state['values']['status'] = 1;
+    drupal_set_message(t('This article is now published!'), 'warning');
+    $status_changed = TRUE;
+  }
+  elseif (($form_state['values']['op'] == 'Save Draft' ||  $form_state['values']['status'] == 0) && @$form_state['build_info']['args'][0]->status == 1) {
+    // Publish ---> NOT publish
+    drupal_set_message('Publish ---> NOT publish', 'warning');
+
+    $form_state['values']['status'] = 0;
+    drupal_set_message(t('Attention! This article is saved as draft and is not published now!'), 'warning');
+    $status_changed = TRUE;
+  }
+  elseif (!$form_state['values']['nid'] || @$form_state['build_info']['args'][0]->field_show_in_block['und'][0]['value'] != @$form_state['values']['field_show_in_block']['und'][0]['value'] || $form_state['values']['op'] == 'Delete') {
+    $status_changed = TRUE;
+  }
+  else {
+    $status_changed = FALSE;
+  }
+  
+  //if ($status_changed) 
+  {
+    // Clear the views cache.
+    ///////drupal_flush_all_caches(); // This would clear a Boost cache as well.
+    ///////drupal_set_message('All caches has been flushed!', 'warning');
+    //
+    //
+    //
+    // So we clear here only a views caches.
+//    cache_clear_all('*', 'cache_views', TRUE);
+//    cache_clear_all('*', 'cache_views_data', TRUE);
+//    drupal_set_message('A cache has been flushed.', 'warning');
+  }
+
+//  if ($form_state['values']['op'] == 'Save Draft') {
+//    $form_state['values']['status'] = 0;
+//    drupal_set_message(t('Attention! This article is saved as draft and is not published now!'), 'warning');
+//      // Doesn't work
+//      //form_set_value($form['options'], array('status' => array('#default_value' => 0)), $form_state);
+//      //form_set_value($form['options']['status'], array('#default_value' => 0), $form_state);
+//  }
+//  else {
+//    $form_state['values']['status'] = 1;
+//  }
+  
+  
+}
+
+
+/**
+ * Implements hook_node_view().
+ *
+ * @return void
+ *   Return nothing.
+ */
+function may_pages_node_view($node, $view_mode) {
+
+  switch ($node->type) {
+    
+    case 'preface':
+      
+      $preface_key = @$node->field_preface_key['und'][0]['value'];
+      
+      // Disable ?page* links for /sitemap.
+      if (@$_SERVER['REDIRECT_URL'] == '/sitemap' && $_SERVER['REQUEST_URI'] != '/sitemap') {
+        //drupal_not_found();
+        may_misc_drupal_not_found();
+        drupal_exit();
+      }
+      
+      if ($preface_key) {
+        // Load Colorbox plugin to show YouTube videos in a popup windows
+        // But just for some pages, where links to those videos are presented.
+        $pages_with_video_to_popup = array('front', 'page-compare-business-voip-providers', 'page-compare-residential-voip-providers', 'page-compare-sip-voip-providers', 'page-compare-ifa-voip-providers');
+        if (in_array($preface_key, $pages_with_video_to_popup)) {
+          may_misc_loadColorboxForVideoLinks();
+        }
+        
+      }
+      
+      
+      // Set metatags from the preface to a page where the preface is placed
+      // Except of the front page, where it can be set via admin interface of the Metatags.
+      // AND except of published prefaces, because thier metatags will be pulled automatically!
+
+      if (isset($node->metatags) && count($node->metatags) && !$node->status) {
+        
+        foreach($node->metatags as $metatag_title => $metatag_data) {
+          may_misc_addMetatag($metatag_title, $metatag_data['value']);
+
+        }
+      }
+      
+    break;
+  
+  } // End of switch ($node->type) {
+  
+  if ($view_mode == 'full') {
+    may_misc_addSocialShareData_toPage($node);
+    
+    $types_with_floating_share = array ('article', 'blog_post', 'news_post', 'preface', 'provider', 'phone');
+    if (in_array($node->type, $types_with_floating_share)) {
+      
+        // Floating share buttons box.
+        drupal_add_js('sites/all/libraries/jquery.plugins/stickyfloat/stickyfloat2.js');
+        $module_path = drupal_get_path('module', 'may_misc');
+        drupal_add_js( $module_path . '/js/may_floatingSocials.js'); 
+      
+      
+    }
+  }
+}
+
+

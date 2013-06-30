@@ -1,0 +1,6 @@
+name = May Pages
+package = May
+description = "Various functions and forms for pages"
+core = 7.x
+tags[] = May
+files[] = may_pages.module
