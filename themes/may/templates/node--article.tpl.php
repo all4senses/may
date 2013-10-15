@@ -117,7 +117,7 @@
               $extra_data['guest_author'] = NULL;
               if (!empty($node->field_extra_data['und'][0]['value'])) {
                 $extra_data = unserialize($node->field_extra_data['und'][0]['value']);
-                //dpm($extra_data);
+                dpm($extra_data);
                 $extra_data['guest_author'] = $author_name = !empty($extra_data['guest_author']) ? $extra_data['guest_author'] : NULL;
               }
               
