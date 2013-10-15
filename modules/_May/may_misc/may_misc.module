@@ -1003,7 +1003,7 @@ function may_misc_getImagesFromBody($body_full_markup, $nid = NULL) {
       }
 
       $image['src'] = urldecode($image['src']); //str_replace('%20', ' ', $main_image['src']);
-      $stream_path = gv_misc_getStreamUriFromRelativePath($image['src']);
+      $stream_path = may_misc_getStreamUriFromRelativePath($image['src']);
       //$main_image['uri'] = $stream_path;
 
       $image_html = theme('image_style', array( 'path' => $stream_path, 'style_name' => $images_style));
@@ -1042,7 +1042,7 @@ function may_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charac
       }
 
       $image['src'] = urldecode($image['src']); //str_replace('%20', ' ', $main_image['src']);
-      $stream_path = gv_misc_getStreamUriFromRelativePath($image['src']);
+      $stream_path = may_misc_getStreamUriFromRelativePath($image['src']);
       //$main_image['uri'] = $stream_path;
 
       $image_html = theme('image_style', array( 'path' => $stream_path, 'style_name' => $images_style));
