@@ -56,8 +56,8 @@
           }
           else {
             echo 'xxx';
-            $extra_data = unserialize($node->field_extra_data['und'][0]['value']);
-            dpm($extra_data);
+            $extra_data = unserialize(@$node->field_extra_data['und'][0]['value']);
+            //dpm($extra_data);
             echo $extra_data['images'][0]['image_html'];
           }
           
