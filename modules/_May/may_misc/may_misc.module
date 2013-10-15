@@ -72,14 +72,14 @@ function may_misc_flush_caches() {
   // Remove all minified files from jsmin-may folder.
   // Uncomment in case of changing any js on the site.
   
-//  $dir = 'f/jsmin-may';
-//  $objects = scandir($dir);
-//  foreach ($objects as $object) {
-//    if ($object != "." && $object != "..") {
-//      unlink($dir . "/" . $object);
-//    }
-//  }
-//  variable_del('may_minified_js');
+  $dir = 'f/jsmin-may';
+  $objects = scandir($dir);
+  foreach ($objects as $object) {
+    if ($object != "." && $object != "..") {
+      unlink($dir . "/" . $object);
+    }
+  }
+  variable_del('may_minified_js');
   
 }
 
