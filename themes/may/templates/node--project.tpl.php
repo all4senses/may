@@ -51,10 +51,17 @@
           hide($content['comments']);
           hide($content['links']);
           hide($content['field_topics']);
-          print render($content);
+          if ($page) {
+            print render($content);
+          }
+          else {
+            echo 'xxx';
+            $extra_data = unserialize($node->field_extra_data['und'][0]['value']);
+            dpm($extra_data);
+            echo $extra_data['images'][0]['image_html'];
+          }
           
-//          $extra_data = unserialize($node->field_extra_data['und'][0]['value']);
-//          dpm($extra_data);
+          
         ?>
       </div>
    
