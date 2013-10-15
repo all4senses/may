@@ -53,7 +53,8 @@
           hide($content['field_topics']);
           print render($content);
           
-          $extra_data = unserialize($node->field_extra_data['und'][0]['value']);
+          dpm($node);
+          $extra_data = unserialize($node->field_extra_data[0]['value']);
           dpm($extra_data);
         ?>
       </div>
