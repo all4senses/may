@@ -200,6 +200,23 @@ function may_pages_form_alter(&$form, &$form_state, $form_id) {
     
     
     
+    case 'project_node_form':
+        
+        // Restore aliased pdfs links, from /pdfs/ to /sites/default/files/pdfs/
+        //$form['body'] = may_misc_rewriteLinks('pdfs', $form, 'back');
+        
+      
+        //$form['field_a_teaser']['und'][0]['#format'] = 'full_html';
+        //$form['field_a_teaser']['#access'] = FALSE;
+        //$form['field_main_image']['#access'] = FALSE;
+        $form['field_extra_data']['#access'] = FALSE;
+        
+        $form['#validate'][] = 'may_pages_validateForm_project';
+                
+      break;
+    
+    
+    
     
     case 'user_profile_form':
       
@@ -313,6 +330,33 @@ function may_pages_validateForm_disableUserLoginForDisabled(&$form, &$form_state
 
 
 /**
+ * Custom validate of project type form.
+ *
+ * @param array &$form
+ *   Array with declared form.
+ *
+ * @param array &$form_state
+ *   Array with current form state.
+
+ * @return void
+ *   Return nothing.
+ */
+function may_pages_validateForm_project(&$form, &$form_state) {
+
+  // Find all images in the body.
+  $teaser_data = may_misc_getImagesFromBody($form_state['values']['body']['und'][0]['value'], $form_state['values']['nid']);
+
+  
+  $extra_data = array(
+    'title' => $form_state['values']['title'], 
+    'images' => $teaser_data['images'], 
+  );
+  
+  form_set_value($form['field_extra_data'], array('und' => array(0 => array('value' => serialize($extra_data), 'format' => 'full_html') )), $form_state);
+}
+
+
+/**
  * Custom validate of article type form.
  *
  * @param array &$form
@@ -343,7 +387,6 @@ function may_pages_validateForm_article(&$form, &$form_state) {
     'images' => $teaser_data['images'], 
   );
   
-  dpm($extra_data);
   
   if (!empty($form_state['values']['guest_author'])) {
     $extra_data['guest_author'] = $form_state['values']['guest_author'];
