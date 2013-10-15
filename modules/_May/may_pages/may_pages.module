@@ -343,6 +343,8 @@ function may_pages_validateForm_article(&$form, &$form_state) {
     'images' => $teaser_data['images'], 
   );
   
+  dpm($extra_data);
+  
   if (!empty($form_state['values']['guest_author'])) {
     $extra_data['guest_author'] = $form_state['values']['guest_author'];
   }
