@@ -1003,12 +1003,12 @@ function may_misc_getImagesFromBody($body_full_markup, $nid = NULL) {
       }
 
       $image['src'] = urldecode($image['src']); //str_replace('%20', ' ', $main_image['src']);
-      $stream_path = may_misc_getStreamUriFromRelativePath($image['src']);
+      $image['uri'] = may_misc_getStreamUriFromRelativePath($image['src']);
       //$main_image['uri'] = $stream_path;
 
-      $image_html = theme('image_style', array( 'path' => $stream_path, 'style_name' => $images_style));
+      $image['image_html'] = theme('image_style', array( 'path' => $image['uri'], 'style_name' => $images_style));
       //$main_image_html = '<div>' . $main_image_html;
-      $images[] = array('image_html' => $image_html, 'src' => $image['src'], 'stream_path' => $stream_path);
+      $images[] = $image;
     }
   }
 
