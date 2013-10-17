@@ -61,7 +61,7 @@ function tb_palicico_preprocess_user_picture(&$picture) {
     $realname = $picture['account']->realname;
   }
   else {
-    $userExtendedData = tb_palicico_misc_loadUserExtendedData($picture['account']->uid);
+    $userExtendedData = may_misc_loadUserExtendedData($picture['account']->uid);
     $realname = $userExtendedData->realname;
   }
   $picture['user_picture'] = theme('image_style', array( 'path' =>  $picture['account']->picture->uri, 'style_name' => 'avatar_profile_page', 'alt' => $realname, 'title' => $realname, 'attributes' => array('rel' => 'v:photo')));
@@ -93,7 +93,7 @@ function tb_palicico_pager_next($variables) {
       //dpm($matches);
 
       if ($matches[2] == 'Go to next page') {
-        tb_palicico_misc_addMetatag('next', NULL, $href = 'http://may.all4senses.com' . $matches[1]);
+        may_misc_addMetatag('next', NULL, $href = 'http://may.all4senses.com' . $matches[1]);
       }
     }
   }
@@ -126,7 +126,7 @@ function tb_palicico_pager_previous($variables) {
       //dpm($matches);
       
       if ($matches[2] == 'Go to previous page') {
-        tb_palicico_misc_addMetatag('prev', NULL, $href = 'http://may.all4senses.com' . $matches[1]);
+        may_misc_addMetatag('prev', NULL, $href = 'http://may.all4senses.com' . $matches[1]);
       }
       
     }
@@ -448,7 +448,7 @@ function tb_palicico_html_head_alter(&$head_elements) {
       //dpm('$altered_head_title = ' . $altered_head_title);
 //      global $user;
 //      if ($user->uid == 1) {
-//        tb_palicico_misc_addMetatag('title', $altered_head_title);
+//        may_misc_addMetatag('title', $altered_head_title);
 //      }
     }
   }
@@ -610,7 +610,7 @@ function tb_palicico_process_page(&$variables) {
     }
     /**/
   }
-  elseif ($breadcrumb = tb_palicico_misc_getMenuTrail()) {
+  elseif ($breadcrumb = may_misc_getMenuTrail()) {
     //dpm('Page VIA MENU------------');
     $variables['breadcrumb'] = $breadcrumb;
   }
@@ -620,7 +620,7 @@ function tb_palicico_process_page(&$variables) {
   }
   elseif (arg(0) == 'user' && is_int($arg_uid = arg(1))) {
     //dpm('User profile page------------');
-    $userExtendedData = tb_palicico_misc_loadUserExtendedData($arg_uid);
+    $userExtendedData = may_misc_loadUserExtendedData($arg_uid);
     $variables['breadcrumb'] = theme('breadcrumb', array('breadcrumb' => array(l('Home', NULL), l('About Us', 'about-us'), l('Our Team', 'our-team'), $userExtendedData->realname )));
   }
   else {
@@ -782,7 +782,7 @@ function tb_palicico_preprocess_views_view_row_rss(&$vars) {
   $node = $vars['view']->style_plugin->row_plugin->nodes[$vars['row']->nid];
   //$vars['description'] = check_plain(htmlspecialchars_decode($node->field_a_teaser['und'][0]['value']));
   if (isset($node->body['und'][0]['value'])) {
-    $rss_teaser = tb_palicico_misc_getArticleTeaserData('all', $node->body['und'][0]['value'], $vars['row']->nid, 400, TRUE);
+    $rss_teaser = may_misc_getArticleTeaserData('all', $node->body['und'][0]['value'], $vars['row']->nid, 400, TRUE);
     // Clear attribute typeof="foaf:Image" from the img tag (which iss added by the core rdf module via hook_preprocess_image).
     $rss_teaser = preg_replace('|typeof="foaf:Image" |', '', $rss_teaser);
     // Convert relative links to absolute.
@@ -794,7 +794,7 @@ function tb_palicico_preprocess_views_view_row_rss(&$vars) {
   }
   
   // Replace username with real user name for <dc:creator>
-  $vars['item_elements'] = preg_replace('|<dc:creator>.*</dc:creator>|', '<dc:creator>' . tb_palicico_misc_getUserRealName($node->uid) . '</dc:creator>', $vars['item_elements']);
+  $vars['item_elements'] = preg_replace('|<dc:creator>.*</dc:creator>|', '<dc:creator>' . may_misc_getUserRealName($node->uid) . '</dc:creator>', $vars['item_elements']);
 }
 
 
