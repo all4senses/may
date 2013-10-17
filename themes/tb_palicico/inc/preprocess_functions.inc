@@ -636,9 +636,9 @@ function tb_palicico_process_page(&$variables) {
  */
 function tb_palicico_preprocess_node(&$variables) {
   
-  if ($vars['type'] == 'blog') {
-    $vars['blog_created_day'] = date('d', $vars['created']);
-    $vars['blog_created_month'] = date('M', $vars['created']);
+  if ($variables['type'] == 'blog') {
+    $variables['blog_created_day'] = date('d', $variables['created']);
+    $variables['blog_created_month'] = date('M', $variables['created']);
   }
   
   $variables['submitted'] = t('Published by !username on !datetime', array('!username' => $variables['name'], '!datetime' => $variables['date']));
