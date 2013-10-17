@@ -52,7 +52,7 @@
  */
 
 #header-wrapper {
-  background: #111;
+  background: /*#111*/#6B3D6D;
   min-height: 100px;
 }
 
