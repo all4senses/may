@@ -649,7 +649,7 @@ function tb_palicico_preprocess_node(&$variables) {
   if(isset($variables['node'])) {
     
    
-    $variables['theme_hook_suggestions'][] = 'node__' . $variables['node']->type;
+    //$variables['theme_hook_suggestions'][] = 'node__' . $variables['node']->type;
   
     
     if($variables['node']->type == 'blog_post' || $variables['node']->type == 'news_post') {

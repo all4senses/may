@@ -76,7 +76,6 @@
  * @see template_preprocess_node()
  * @see template_process()
  */
-echo 'xxxxxxxxxxxxxxxx ----->';
 ?>
 <div id="article-<?php print $node->nid; ?>" class="article <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php if ($title && !$page): ?>
@@ -108,7 +107,7 @@ echo 'xxxxxxxxxxxxxxxx ----->';
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
-      print render($content);
+
       if ($page) {
         print render($content);
       }
