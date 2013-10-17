@@ -17,7 +17,7 @@ function may_preprocess_user_profile(&$profile) {
  * Add rel=nofollow to external links.
  */
 function may_link($variables) {
-  if (strpos($variables['path'], '://') && !strpos($variables['path'], 'ttp://dommoejmechty.com')) {
+  if (strpos($variables['path'], '://') && !strpos($variables['path'], 'ttp://may.all4senses.com')) {
     if (empty($variables['options']['attributes']['rel'])) {
       $variables['options']['attributes']['rel'] = 'nofollow';
     }
@@ -85,7 +85,7 @@ function may_pager_next($variables) {
       //dpm($matches);
 
       if ($matches[2] == 'Go to next page') {
-        may_misc_addMetatag('next', NULL, $href = 'http://dommoejmechty.com' . $matches[1]);
+        may_misc_addMetatag('next', NULL, $href = 'http://may.all4senses.com' . $matches[1]);
       }
     }
   }
@@ -118,7 +118,7 @@ function may_pager_previous($variables) {
       //dpm($matches);
       
       if ($matches[2] == 'Go to previous page') {
-        may_misc_addMetatag('prev', NULL, $href = 'http://dommoejmechty.com' . $matches[1]);
+        may_misc_addMetatag('prev', NULL, $href = 'http://may.all4senses.com' . $matches[1]);
       }
       
     }
@@ -314,7 +314,7 @@ function may_preprocess_search_results(&$variables) {
 //  // a4s - fix - show lost pager from the results page on some pages.
 //  // need prior actions (hack) in function node_search_execute() at node.module
 //  // v1
-//  //doesn't work correctly - it create bad links like http://dommoejmechty.com/search/node/sip%20trunking?page=0%2C0%2C0%2C0%2C0%2C0%2C0%2C1
+//  //doesn't work correctly - it create bad links like http://may.all4senses.com/search/node/sip%20trunking?page=0%2C0%2C0%2C0%2C0%2C0%2C0%2C1
 //  $variables['pager'] = theme('pager', array('tags' => NULL, 'element' => 7));
 
   
@@ -771,7 +771,7 @@ function may_preprocess_views_view_row_rss(&$vars) {
     // Clear attribute typeof="foaf:Image" from the img tag (which iss added by the core rdf module via hook_preprocess_image).
     $rss_teaser = preg_replace('|typeof="foaf:Image" |', '', $rss_teaser);
     // Convert relative links to absolute.
-    $rss_teaser = preg_replace('|href="/|', 'href="http://dommoejmechty.com/', $rss_teaser);
+    $rss_teaser = preg_replace('|href="/|', 'href="http://may.all4senses.com/', $rss_teaser);
     // Restore a normal state of a YouTube url from a token.
     // [video: http://www.youtube.com/watch?v=SoMS77zE7iE]
     $rss_teaser =   preg_replace('|\[video:.*(http.*)\]|', '<a href="$1"> [Watch a video] </a>', $rss_teaser);
