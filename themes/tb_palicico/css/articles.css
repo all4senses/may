@@ -1,6 +1,7 @@
 /* --- Articles (nodes) --- */
 .article {
   margin-bottom: 3.333em; /* Articles spacing */
+  position: relative /* a4s */;
 }
 
 .view-articles .article {
