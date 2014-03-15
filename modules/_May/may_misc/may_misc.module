@@ -84,7 +84,18 @@ function may_misc_testPage() {
       //$out .= 'xxx ' . $result;
       $result = str_replace(array('"', "'"), array("'", '"'), $result);
       
-      $result = json_decode($result,true);
+      $data = json_decode($result,true);
+      if (is_array($data)) {
+        $out .= '<style>
+                  .button {width: 100px; height: 100px;}
+                  .on {background: green;}
+                  .off {background: red;}
+                </style>';
+        $led1 = $data['led1'];
+        $led1_state = $led1 ? 'on' : 'off';
+        $led1_action = $led1 ? 'off' : 'on';
+        $out .= '<a href="?led1=' . $led1_action . '"><div class="button ' . $led1_state . '"></div></a>';
+      }
     }
     
   dpm($result);
