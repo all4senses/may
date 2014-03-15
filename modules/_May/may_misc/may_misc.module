@@ -70,7 +70,9 @@ function may_misc_testPage() {
             . '&format=json'
             . '&access_token=' . $access_token;
 
-    if($result = file_get_contents($url)) {
+    //if($result = file_get_contents($url)) {
+    if($result = may_misc_curlGET($url)) {
+      
       dpm($result);
       $out .= 'xxx ' . $result;
       $result = json_decode($result,true);
@@ -82,6 +84,29 @@ function may_misc_testPage() {
   
   return $out . '<br>End of Test';
 }
+
+
+/**
+ * Curl - GET.
+ */
+function may_misc_curlGET($url) {
+  
+  // GET.
+  $curl = curl_init();
+  curl_setopt($curl, CURLOPT_URL, $url);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_TIMEOUT, 300);
+  
+  // If POST.
+  //  curl_setopt($curl, CURLOPT_POST, TRUE);
+  //  curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+  
+  $data_from = curl_exec($curl);
+  curl_close($curl);
+  
+  return $data_from;
+}
+ 
 
 
 /**
