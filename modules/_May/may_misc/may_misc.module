@@ -70,7 +70,11 @@ function may_misc_testPage() {
             . '&format=json'
             . '&access_token=' . $access_token;
 
-    //if($result = file_get_contents($url)) {
+    
+    $result = json_decode("{'status':true,'cap':null}",true);
+    dpm($result);
+    
+    
     if($result = may_misc_curlGET($url)) {
       
       dpm($result);
