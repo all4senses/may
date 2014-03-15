@@ -65,7 +65,8 @@ function may_misc_testPage() {
     $access_token = 'xxx';
     if (!empty($_GET['led1'])) {
       $led1 = $_GET['led1'];
-      $query = urlencode('led1=' . $led1);
+      //$query = urlencode('led1=' . $led1);
+      $query = 'led1=' . $led1;
     }
     
     
