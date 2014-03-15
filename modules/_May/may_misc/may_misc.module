@@ -59,8 +59,27 @@ function may_misc_menu() {
  */
 function may_misc_testPage() {
   $out = '<div>Start test...</div>';
- 
-  $out .= 'yyy';
+
+  
+    $access_token = 'xxx';
+    $cmd = 'on';
+    $query = urlencode('cmd=' . $cmd);
+    
+    $url = 'http://94.180.80.84?'
+            . $query
+            . '&format=json'
+            . '&access_token=' . $access_token;
+
+    if($result = file_get_contents($url)) {
+      dpm($result);
+      $out .= 'xxx ' . $result;
+      $result = json_decode($result,true);
+    }
+    
+  dpm($result);
+  
+  $out .= 'yyy' . $result;
+  
   return $out . '<br>End of Test';
 }
 
