@@ -72,16 +72,18 @@ function may_misc_testPage() {
 
     
     //$result = json_decode("{'status':true,'cap':null}");
-    $result = json_decode('{"status":true,"cap":null}',true);
+    //$result = json_decode('{"status":true,"cap":null}',true);
 //    $result = json_decode('{"status":true,"cap":null}');
     
-    dpm($result);
+    //dpm($result);
     
     
     if($result = may_misc_curlGET($url)) {
       
-      dpm($result);
-      $out .= 'xxx ' . $result;
+      //dpm($result);
+      //$out .= 'xxx ' . $result;
+      str_replace(array('"', "'"), array("'", '"'), $result);
+      
       $result = json_decode($result,true);
     }
     
