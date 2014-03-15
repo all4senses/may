@@ -71,7 +71,10 @@ function may_misc_testPage() {
             . '&access_token=' . $access_token;
 
     
-    $result = json_decode("{'status':true,'cap':null}",true);
+//    $result = json_decode("{'status':true,'cap':null}",true);
+    $result = json_decode('{"status":true,"cap":null}',true);
+    $result = json_decode('{"status":true,"cap":null}');
+    
     dpm($result);
     
     
