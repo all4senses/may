@@ -62,8 +62,8 @@ function may_misc_testPage() {
 
   
     $access_token = 'xxx';
-    $cmd = 'on';
-    $query = urlencode('cmd=' . $cmd);
+    $cmd = $_GET['led1'];
+    $query = urlencode('led1=' . $cmd);
     
     $url = 'http://94.180.80.84?'
             . $query
@@ -100,7 +100,7 @@ function may_misc_testPage() {
     
   dpm($result);
   
-  $out .= 'yyy' . $result;
+  //$out .= 'yyy' . $result;
   
   return $out . '<br>End of Test';
 }
