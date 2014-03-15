@@ -102,7 +102,7 @@ function may_misc_testPage() {
         $led1_action = $led1 ? 'off' : 'on';
         $out .= '<div>Переключатель Ардуино</div><a href="?led1=' . $led1_action . '"><div class="button ' . $led1_state . '"></div></a>';
         
-        $out .= '<div>На самом деле лампочка ' . ($data['led1_on'] ? 'включена' : 'выключена') . '</div><div class="lamp ' . ($data['led1_on'] ? 'on' : 'off') . '"></div>';
+        $out .= '<div>На самом деле лампочка ' . ($data['led1_on'] > 500 ? 'включена' : 'выключена') . '</div><div class="lamp ' . ($data['led1_on'] > 500 ? 'on' : 'off') . '"></div>';
       }
     }
     
