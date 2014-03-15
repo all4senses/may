@@ -72,8 +72,7 @@ function may_misc_testPage() {
     
     $url = 'http://94.180.80.84/?'
             . $query
-            . ($query ? '&' : '') . 'format=json'
-            . '&access_token=' . $access_token;
+            . ($query ? '&' : '') . 'access=' . $access_token;
 
     dpm($url);
     //$result = json_decode("{'status':true,'cap':null}");
