@@ -81,7 +81,7 @@ function may_misc_testPage() {
     
     //dpm($result);
     
-    
+    $connected = FALSE;
     if($result = may_misc_curlGET($url)) {
       
       //dpm($result);
@@ -90,6 +90,7 @@ function may_misc_testPage() {
       
       $data = json_decode($result,true);
       if (is_array($data)) {
+        $connected = TRUE;
         $out .= '<style>
                   .button {width: 100px; height: 100px;}
                   .on {background: green;}
@@ -102,6 +103,13 @@ function may_misc_testPage() {
       }
     }
     
+  if (!$connected) {
+    $out .= 'No connection with the Smart Server';
+  }
+  elseif (@$data['access'] == 'denied') {
+    $out .= 'Access denied!';
+  }
+  
   dpm($result);
   
   //$out .= 'yyy' . $result;
