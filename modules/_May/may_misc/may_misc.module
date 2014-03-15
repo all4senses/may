@@ -82,7 +82,7 @@ function may_misc_testPage() {
       
       //dpm($result);
       //$out .= 'xxx ' . $result;
-      str_replace(array('"', "'"), array("'", '"'), $result);
+      $result = str_replace(array('"', "'"), array("'", '"'), $result);
       
       $result = json_decode($result,true);
     }
