@@ -60,7 +60,7 @@ function may_misc_menu() {
 function may_misc_testPage() {
   $out = '<div>Start test...</div>';
  
-  $out .= 'xxx';
+  $out .= 'yyy';
   return $out . '<br>End of Test';
 }
 
