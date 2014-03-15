@@ -61,13 +61,17 @@ function may_misc_testPage() {
   $out = '<div>Start test...</div>';
 
   
+    $query = NULL;
     $access_token = 'xxx';
-    $cmd = $_GET['led1'];
-    $query = urlencode('led1=' . $cmd);
+    if (!empty($_GET['led1'])) {
+      $led1 = $_GET['led1'];
+      $query = urlencode('led1=' . $led1);
+    }
+    
     
     $url = 'http://94.180.80.84?'
             . $query
-            . '&format=json'
+            . ($query ? '&' : '') . 'format=json'
             . '&access_token=' . $access_token;
 
     
