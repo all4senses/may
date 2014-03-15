@@ -93,13 +93,16 @@ function may_misc_testPage() {
         $connected = TRUE;
         $out .= '<style>
                   .button {width: 100px; height: 100px;}
+                  .lamp {width: 100px; height: 20px;}
                   .on {background: green;}
                   .off {background: red;}
                 </style>';
         $led1 = $data['led1'];
         $led1_state = $led1 ? 'on' : 'off';
         $led1_action = $led1 ? 'off' : 'on';
-        $out .= '<a href="?led1=' . $led1_action . '"><div class="button ' . $led1_state . '"></div></a>';
+        $out .= '<div>Переключатель Ардуино</div><a href="?led1=' . $led1_action . '"><div class="button ' . $led1_state . '"></div></a>';
+        
+        $out .= '<div>На самом деле лампочка ' . ($data['led1_on'] ? 'включена' : 'выключена') . '</div><div class="lamp ' . ($data['led1_on'] ? 'on' : 'off') . '"></div>';
       }
     }
     
