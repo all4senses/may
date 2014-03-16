@@ -70,7 +70,7 @@ function may_misc_testPage() {
     }
     
     
-    $url = 'http://94.180.76.29/?'
+    $url = 'http://94.180.46.64/?'
             . $query
             . ($query ? '&' : '') . 'access=' . $access_token;
 
