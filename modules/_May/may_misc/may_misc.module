@@ -69,8 +69,9 @@ function may_misc_testPage() {
       $query = 'led1=' . $led1;
     }
     
-    
-    $url = 'http://94.180.46.64/?'
+    //$server = 'http://94.180.46.64/'; dynamic outer ip (of router)
+    $server = 'http://all4senses.mooo.com/'; // afraid.org free dns with local installed afraid.org dns swithcer agent
+    $url = $server . '?'
             . $query
             . ($query ? '&' : '') . 'access=' . $access_token;
 
