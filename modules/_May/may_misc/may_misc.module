@@ -76,18 +76,12 @@ function may_misc_testPage() {
             . ($query ? '&' : '') . 'access=' . $access_token;
 
     dpm($url);
-    //$result = json_decode("{'status':true,'cap':null}");
-    //$result = json_decode('{"status":true,"cap":null}',true);
-//    $result = json_decode('{"status":true,"cap":null}');
-    
-    //dpm($result);
     
     $connected = FALSE;
     if($result = may_misc_curlGET($url)) {
       
       //dpm($result);
-      //$out .= 'xxx ' . $result;
-      $result = str_replace(array('"', "'"), array("'", '"'), $result);
+      //$result = str_replace(array('"', "'"), array("'", '"'), $result);
       
       $data = json_decode($result,true);
       if (is_array($data)) {
