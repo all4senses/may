@@ -30,7 +30,13 @@ function may_pages_menu() {
     'type' => MENU_CALLBACK,
   );
   
-  
+  $items['sh-get'] = array(
+    'title' => 'Sh Get',
+    'page callback' => 'may_pages_sh_get',
+    'access callback' => 'may_misc_userIsAdmin',
+    'type' => MENU_CALLBACK,
+  );
+   
   return $items;
 }
 
@@ -529,6 +535,29 @@ function may_pages_node_view($node, $view_mode) {
 function may_pages_sh1() {
   
   $out = '<a class="light" id="l-00" href=#>Kitchen wall</a>';
+ 
   
+  $path_to_custom_js = drupal_get_path('module', 'may_pages') . '/js/';
+  drupal_add_js($path_to_custom_js . 'may_sh.js');
+    
   return $out;
+}
+
+
+/**
+ * Returns SH Get.
+ */
+function may_pages_sh_get() {
+  
+  //$output = '';
+  
+  $post = array();
+  foreach ($_POST as $key => $value) {
+    $post[$key] = check_plain(strip_tags($value));
+  }
+  
+  
+  
+  
+  drupal_json_output(array('status' => TRUE, 'post' => $post));
 }
