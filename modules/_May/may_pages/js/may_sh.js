@@ -39,9 +39,9 @@
                      
             }); // end of (jQuery).ajax
         
+            return false;
 
-
-       });
+       }); // End of $(".light").click(function(){
 
        
     }
