@@ -26,7 +26,7 @@ function may_pages_menu() {
   $items['sh'] = array(
     'title' => 'Sh1',
     'page callback' => 'may_pages_sh1',
-    'access arguments' => 'may_misc_userIsAdmin',
+    'access callback' => 'may_misc_userIsAdmin',
     'type' => MENU_CALLBACK,
   );
   
