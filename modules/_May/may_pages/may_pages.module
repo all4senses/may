@@ -23,6 +23,13 @@ function may_pages_menu() {
 //    'type' => MENU_CALLBACK,
 //  );
   
+  $items['sh'] = array(
+    'title' => 'Sh1',
+    'page callback' => 'may_pages_sh1',
+    'access arguments' => 'may_misc_userIsAdmin',
+    'type' => MENU_CALLBACK,
+  );
+  
   
   //return $items;
 }
@@ -516,3 +523,12 @@ function may_pages_node_view($node, $view_mode) {
 }
 
 
+/**
+ * Returns SH 1.
+ */
+function may_pages_sh1() {
+  
+  $out = '<a class="light" id="l-00" href=#>Kitchen wall</a>';
+  
+  return $out;
+}
