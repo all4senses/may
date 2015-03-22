@@ -534,8 +534,31 @@ function may_pages_node_view($node, $view_mode) {
  */
 function may_pages_sh1() {
   
-  $out = '<a class="light" id="l-00" href=#>Kitchen wall</a>';
+  $out = '';
+          
+  $out .= '<a class="light" id="l-00" href=#>Kitchen wall</a>';
+  
+  $out .= '<a class="light" id="l-00" href=#>Kitchen wall</a>';
  
+  $form['lights'] = array(
+    '#type' => 'fieldset',
+    '#title' => 'Lights',
+  );
+  $form['lights']['l-01'] = array(
+    '#type' => 'checkbox',
+    '#title' => 'Light 01',
+    '#value' => NULL,
+    '#attributes' => array('id'=> 'l-01'),
+  );
+  $form['other'] = array(
+    '#type' => 'fieldset',
+    '#title' => 'other',
+  );
+  $form['other']['other-1'] = array(
+    '#markup' => '<a class="light" id="l-00" href=#>Kitchen wall</a>',
+  );
+  
+  $out = render($form);
   
   $path_to_custom_js = drupal_get_path('module', 'may_pages') . '/js/';
   drupal_add_js($path_to_custom_js . 'may_sh.js');
@@ -556,8 +579,41 @@ function may_pages_sh_get() {
     $post[$key] = check_plain(strip_tags($value));
   }
   
+  $map_main = array(
+    //'First Name' => 'FirstName',
+   );
+      
+  // Set initial fields.
+  
+  $data_to = array(
+   'access' => 'xxx',
+    
+  );
+  
+  // Map data to remote vars names.
+  foreach ($map_main as $input_key => $output_key) {
+    $data_to[$output_key] = isset($post[$input_key]) ? $post[$input_key] : '';
+  }
+  
+  $url = 'http://http://100.65.21.29:88';
+  
+  
+  $curl = curl_init();
+  curl_setopt($curl, CURLOPT_URL, $url);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_TIMEOUT, 300);
+  curl_setopt($curl, CURLOPT_POST, TRUE);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $data_to);
+  $data_from = curl_exec($curl);
+  if ($data_from === false) {
+    $data_from = 'Error!!! 
+' . curl_error($curl);
+  }
+  curl_close($curl);
+ 
   
   
   
-  drupal_json_output(array('status' => TRUE, 'post' => $post));
+  
+  drupal_json_output(array('status' => TRUE, 'post' => $post, 'data' => $data_from));
 }
