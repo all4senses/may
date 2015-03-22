@@ -40,6 +40,13 @@
                                 console.log(data.status);
                                 console.log(data['params']);
                                 
+                                for (var key in data) {
+                                  if (data.hasOwnProperty(key)) {
+                                    console.log(data[key]);
+                                    //alert(data[key].msg);
+                                  }
+                                }
+                                
                                 if(!data.error) {
                                     console.log('NEW The data is arrived!');
                                 }
