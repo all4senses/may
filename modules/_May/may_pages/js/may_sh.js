@@ -35,6 +35,8 @@
                     success: function(data) 
                             { 
                                 console.log(data);
+                                data = JSON.parse(jsonData);
+                                console.log(data);
                                 if(!data.error) {
                                     console.log('NEW The data is arrived!');
                                 }
@@ -42,7 +44,9 @@
                             } 
                      
             }); // end of (jQuery).ajax
-
+            
+            
+          /*
          (jQuery).ajax({
             
                 url: '/sh-get', 
@@ -70,7 +74,7 @@
                             } 
                      
             }); // end of (jQuery).ajax
-        
+        */
             return false;
 
        }); // End of $(".light").click(function(){
