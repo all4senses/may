@@ -543,6 +543,8 @@ function may_pages_sh1() {
   $form['lights'] = array(
     '#type' => 'fieldset',
     '#title' => 'Lights',
+    '#attributes' => array('class'=> array('lights')),
+      
   );
   $form['lights']['l-01'] = array(
     '#type' => 'checkbox',
