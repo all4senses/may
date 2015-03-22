@@ -17,6 +17,8 @@
                 url: 'http://smart1977.ddns.net', 
                 data: {
                         access: 'xxx',
+                        op: 4,
+                        lamp: 0
                         //id: $(this).attr('id'),
                         //class: $(this).attr('class'),
                         //click_page: window.location.href,
