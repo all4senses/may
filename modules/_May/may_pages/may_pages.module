@@ -621,7 +621,8 @@ function may_pages_sh_get() {
   $url = 'http://100.65.21.29:88/?access=xxx&op=4&lamp=0'
     ;
   
-  $data_from = gv_misc_curlGET($url);
+  //$data_from = gv_misc_curlGET($url);
+  $data_from = file_get_contents($url);
   
   if ($data_from) {
     $data_from = json_decode($data_from);
