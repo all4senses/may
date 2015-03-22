@@ -587,13 +587,17 @@ function may_pages_sh_get() {
   
   $data_to = array(
    'access' => 'xxx',
-    
+   'op' => 4,
+   'lamp' => 0,
   );
   
   // Map data to remote vars names.
-  foreach ($map_main as $input_key => $output_key) {
-    $data_to[$output_key] = isset($post[$input_key]) ? $post[$input_key] : '';
+  foreach ($post as $input_key => $input_data) {
+    $output_key = isset($map_main[$input_key]) ? $post[$input_key] : $input_key;
+    $data_to[$output_key] = $input_data;
   }
+  
+  // http://100.65.21.29:88/?access=xxx&op=4&lamp=0
   
   $url = 'http://http://100.65.21.29:88';
   
