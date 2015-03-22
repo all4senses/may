@@ -601,24 +601,31 @@ function may_pages_sh_get() {
   
   // http://100.65.21.29:88/?access=xxx&op=4&lamp=0
   
-  $url = 'http://100.65.21.29:88';
+//  $url = 'http://100.65.21.29:88';
+  
+//  $curl = curl_init();
+//  curl_setopt($curl, CURLOPT_URL, $url);
+//  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+//  curl_setopt($curl, CURLOPT_TIMEOUT, 300);
+//  curl_setopt($curl, CURLOPT_POST, FALSE);
+//  curl_setopt($curl, CURLOPT_POSTFIELDS, $data_to);
+//  $data_from = curl_exec($curl);
+//  if ($data_from === false) {
+//    $data_from = 'Error!!! 
+//' . curl_error($curl);
+//  }
+//  curl_close($curl);
+// 
   
   
-  $curl = curl_init();
-  curl_setopt($curl, CURLOPT_URL, $url);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_TIMEOUT, 300);
-  curl_setopt($curl, CURLOPT_POST, FALSE);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $data_to);
-  $data_from = curl_exec($curl);
-  if ($data_from === false) {
-    $data_from = 'Error!!! 
-' . curl_error($curl);
+  $url = 'http://100.65.21.29:88/?access=xxx&op=4&lamp=0'
+    ;
+  
+  $data_from = gv_misc_curlGET($url);
+  
+  if ($data_from) {
+    $data_from = json_decode($data_from);
   }
-  curl_close($curl);
- 
-  
-  
   
   
   drupal_json_output(array('status' => TRUE, 'post' => $post, 'data' => $data_from));
