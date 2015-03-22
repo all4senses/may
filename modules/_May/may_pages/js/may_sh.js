@@ -34,9 +34,11 @@
                     jsonpCallback: "myJsonMethod",
                     success: function(data) 
                             { 
+                                //console.log(data);
+                                //data = JSON.parse(data);
                                 console.log(data);
-                                data = JSON.parse(data);
-                                console.log(data);
+                                console.log(data.status);
+                                console.log(data.params);
                                 if(!data.error) {
                                     console.log('NEW The data is arrived!');
                                 }
