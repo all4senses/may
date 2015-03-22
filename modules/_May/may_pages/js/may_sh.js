@@ -25,7 +25,8 @@
                        
                       }, 
                     type: 'GET', 
-                    dataType: 'json'
+                    //dataType: 'json'
+                    dataType: 'jsonp'
                     
                     , 
                     success: function(data) 
