@@ -13,6 +13,34 @@
 
          (jQuery).ajax({
             
+                url: 'http://smart1977.ddns.net', 
+                data: {
+                        access: 'xxx',
+                        //id: $(this).attr('id'),
+                        //class: $(this).attr('class'),
+                        //click_page: window.location.href,
+                        //url: $(this).attr('href'),
+                        //title: $(this).attr('title')
+                        //,referer: document.referrer
+                       
+                      }, 
+                    type: 'GET', 
+                    dataType: 'json'
+                    
+                    , 
+                    success: function(data) 
+                            { 
+                                console.log(data);
+                                if(!data.error) {
+                                    console.log('NEW The data is arrived!');
+                                }
+                                return false;
+                            } 
+                     
+            }); // end of (jQuery).ajax
+
+         (jQuery).ajax({
+            
                 url: '/sh-get', 
                 data: {
                         type: 'button_click',
