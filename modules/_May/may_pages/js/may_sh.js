@@ -38,7 +38,8 @@
                                 //data = JSON.parse(data);
                                 console.log(data);
                                 console.log(data.status);
-                                console.log(data.params);
+                                console.log(data['params']);
+                                console.log(data[taskRequested]);
                                 if(!data.error) {
                                     console.log('NEW The data is arrived!');
                                 }
