@@ -3,6 +3,7 @@
   Drupal.behaviors.may_sh = {
     attach: function (context, settings) {
        
+       function myJsonMethod(data){console.log(data);}
        
        $(".light").click(function(){
          
@@ -29,6 +30,8 @@
                     dataType: 'jsonp'
                     
                     , 
+                    jsonp: false,
+                    jsonpCallback: "myJsonMethod",
                     success: function(data) 
                             { 
                                 console.log(data);
