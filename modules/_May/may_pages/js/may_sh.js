@@ -42,7 +42,7 @@
                                 
                                 for (var key in data) {
                                   if (data.hasOwnProperty(key)) {
-                                    console.log(data[key]);
+                                    console.log(key + ': ' + data[key]);
                                     //alert(data[key].msg);
                                   }
                                 }
