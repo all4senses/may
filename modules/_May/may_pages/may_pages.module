@@ -590,8 +590,8 @@ function may_pages_sh1() {
 //  curl_close($curl);
  
   
-  
-  may_misc_curl_file_from_remote_site_likeBrowser($url);
+  $data_from = NULL;
+  may_misc_curl_file_from_remote_site_likeBrowser($url, NULL, NULL, &$data_from);
   
   dpm($data_from);   
      

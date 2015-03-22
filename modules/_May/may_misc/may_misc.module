@@ -979,7 +979,7 @@ function may_misc_AddContentSection_form() {
 /**
  * Get a picture from a remote server.
  */
-function may_misc_curl_file_from_remote_site_likeBrowser($url, $file_local_abs = NULL, $create_subdirs = FALSE)
+function may_misc_curl_file_from_remote_site_likeBrowser($url, $file_local_abs = NULL, $create_subdirs = FALSE, $data = NULL)
 {
 	
     $curl = curl_init();
