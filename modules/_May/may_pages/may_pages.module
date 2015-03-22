@@ -578,8 +578,8 @@ function may_pages_sh1() {
   $curl = curl_init();
   curl_setopt($curl, CURLOPT_URL, $url);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_TIMEOUT, 300);
-  curl_setopt($curl, CURLOPT_POST, FALSE);
+  curl_setopt($curl, CURLOPT_TIMEOUT, 3000);
+  //curl_setopt($curl, CURLOPT_POST, FALSE);
   //curl_setopt($curl, CURLOPT_POSTFIELDS, $data_to);
   $data_from = curl_exec($curl);
   if ($data_from === false) {
