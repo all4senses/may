@@ -35,7 +35,7 @@
                     success: function(data) 
                             { 
                                 console.log(data);
-                                data = JSON.parse(jsonData);
+                                data = JSON.parse(data);
                                 console.log(data);
                                 if(!data.error) {
                                     console.log('NEW The data is arrived!');
