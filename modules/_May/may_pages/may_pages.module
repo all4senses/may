@@ -593,8 +593,10 @@ function may_pages_sh1() {
                     $form['lights'][$id]['state'] = array(
                       '#type' => 'checkbox',
                       '#title' => 'Last/current state',
-                      '#value' => NULL,
+                      '#default_value' => 1,
+                      //'#value' => 1,  
                       '#description' => 'Last refresh: <span>Never</span>',
+                      '#disabled' => TRUE,
                       '#attributes' => array('class'=> array('state')),
                     );
                     $form['lights'][$id]['refresh'] = array(
