@@ -540,13 +540,13 @@ function may_pages_sh1() {
   
   $out .= '<a class="light" id="l-00" href=#>Kitchen wall</a>';
  
-  $form['pass'] = array(
+  $form['access'] = array(
     '#type' => 'fieldset',
-    '#title' => 'Password',
-    '#attributes' => array('class'=> array('pass')),
+    '#title' => 'Access',
+    '#attributes' => array('class'=> array('access')),
       
   );
-  $form['pass']['text'] = array(
+  $form['access']['pass'] = array(
     '#type' => 'password',
     '#title' => 'Password',
     '#value' => NULL,
