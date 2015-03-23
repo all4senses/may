@@ -570,7 +570,7 @@ function may_pages_sh1() {
             $form['lights'][$id] = array(
               '#type' => 'fieldset',
               '#title' => $light['title'],
-              '#attributes' => array('class'=> array('lights')),
+              '#attributes' => array('class'=> array('light'), 'id' => $id),
             );
 
                     $form['lights'][$id]['on'] = array(
@@ -586,7 +586,7 @@ function may_pages_sh1() {
                       '#type' => 'checkbox',
                       '#title' => 'Last/current state',
                       '#value' => NULL,
-                      '#attributes' => array('class'=> 'state'),
+                      '#attributes' => array('class'=> array('state')),
                     );
                     
         } // End of foreach ($lights as $id => $light) {
