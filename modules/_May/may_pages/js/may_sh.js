@@ -5,17 +5,29 @@
        
        function myJsonMethod(data){console.log(data);}
        
-       $(".light").click(function(){
+       $(".light a").click(function(){
          
          console.log('click');
          console.log(this);
          //console.log('href = ' + $(this).attr('href'));
          //console.log('title = ' + $(this).attr('title'));
 
+         console.log($(this));
+         if ($(this).hasClass('on')) {
+           console.log('on');
+         }
+         else if ($(this).hasClass('off')) {
+           console.log('off');
+         }
+         else if ($(this).hasClass('switch')) {
+           console.log('switch');
+         }
+         else if ($(this).hasClass('refresh')) {
+           console.log('refresh');
+         }
          
-            
-            
-          
+         return;
+         
          (jQuery).ajax({
             
                 url: '/sh-get', 
