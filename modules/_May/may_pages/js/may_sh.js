@@ -3,7 +3,9 @@
   Drupal.behaviors.may_sh = {
     attach: function (context, settings) {
        
-       function myJsonMethod(data){console.log(data);}
+       function myJsonMethod(data){
+         //console.log(data);
+       }
        
        $(".light a").click(function(){
          
@@ -29,8 +31,7 @@
                     type: 'POST', 
                     dataType: 'json'
                     
-                    , 
-                    success: function(data) 
+                    ,success: function(data) 
                             { 
                                 console.log('The data is arrived from the middle Server!');
                                 console.log(data);
@@ -40,22 +41,7 @@
                                                         
                                                         (jQuery).ajax({
 
-                                                                  url: data.url, //'http://smart1977.ddns.net', 
-                                                                  /*
-                                                                  data: {
-                                                                        access: 'xxx',
-                                                                        op: 4,
-                                                                        lamp: 0
-                                                                        //id: $(this).attr('id'),
-                                                                        //class: $(this).attr('class'),
-                                                                        //click_page: window.location.href,
-                                                                        //url: $(this).attr('href'),
-                                                                        //title: $(this).attr('title')
-                                                                        //,referer: document.referrer
-
-                                                                  }, 
-                                                                  */    
-                                                                      
+                                                                  url: data.url,
                                                                   data: data.data,
                                                                  
                                                                   type: 'GET', 
@@ -97,10 +83,10 @@
                                 return false;
                             } // End of Success (request to the Middle Server).
                             
-                        ,error: function(e) { 
-                            console.log('Error from SH...');
-                            console.log(e.message); 
-                         }
+                    ,error: function(e) { 
+                        console.log('Error from SH...');
+                        console.log(e.message); 
+                     }
                      
             }); // end of (jQuery).ajax
         
@@ -108,7 +94,7 @@
         
         
         
-        
+            // Prevent of clicking the link event.
             return false;
 
        }); // End of $(".light").click(function(){
