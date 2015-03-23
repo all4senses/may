@@ -550,6 +550,7 @@ function may_pages_sh1() {
     '#type' => 'password',
     '#title' => 'Password',
     '#value' => NULL,
+    '#attributes' => array('id'=> 'pass'),
   );
   
   $form['lights'] = array(

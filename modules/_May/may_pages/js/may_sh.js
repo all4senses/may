@@ -23,7 +23,7 @@
                         type: 'button_click',
                         id: $(this).attr('id'),
                         class: $(this).attr('class'),
-                        access: 'xxx'
+                        access: $("#pass").val(),
                         //click_page: window.location.href,
                         //url: $(this).attr('href'),
                         //title: $(this).attr('title')
