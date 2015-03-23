@@ -638,8 +638,8 @@ function may_pages_sh_get() {
   );
   // Set initial fields.
   $data_to = array(
-    'op' => 4,
-    'lamp' => 0,
+    //'op' => 4,
+    //'lamp' => 0,
   );
   
   // Map data to remote vars names.
@@ -653,7 +653,7 @@ function may_pages_sh_get() {
       $url = 'http://smart1977.ddns.net';
       $data_to['access'] = $post['access'];
       
-      if ($post['type' == 'button_light']) {
+      if ($post['type'] == 'button_light') {
         
           $data_to['lamp'] = str_replace('l-', '', $post['id']);
           switch ($post['class']) {
