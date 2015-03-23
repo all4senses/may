@@ -48,18 +48,12 @@
                     , 
                     success: function(data) 
                             { 
+                                console.log('The data is arrived from the middle Server!');
                                 console.log(data);
                                 //console.dir(data);
                                 
                                 if(!data.error) { 
-                                                  
-                                                        console.log('The data is arrived from the middle Server!');
                                                         
-                                                        console.log(data.data);
-                                                        //return;
-                                                        
-                                                        
-                                    
                                                         (jQuery).ajax({
 
                                                                   url: 'http://smart1977.ddns.net', 
@@ -87,22 +81,18 @@
                                                                   , 
                                                                   jsonp: false,
                                                                   jsonpCallback: "myJsonMethod",
-                                                                  success: function(data) 
+                                                                  success: function(data_2) 
                                                                           { 
-                                                                              console.dir(data);
-                                                                              //data = JSON.parse(data);
-                                                                              console.log(data);
-                                                                              console.log(data.status);
-
-                                                                              for (var key in data) {
-                                                                                if (data.hasOwnProperty(key)) {
-                                                                                  console.log(key + ': ' + data[key]);
-                                                                                  //alert(data[key].msg);
+                                                                              console.log('NEW The data is arrived from Arduino!');
+                                                                              console.log(data_2);
+                                                                              
+                                                                              if(!data_2.error) {
+                                                                                for (var key in data_2) {
+                                                                                  if (data_2.hasOwnProperty(key)) {
+                                                                                    console.log(key + ': ' + data_2[key]);
+                                                                                    //alert(data[key].msg);
+                                                                                  }
                                                                                 }
-                                                                              }
-
-                                                                              if(!data.error) {
-                                                                                  console.log('NEW The data is arrived from Arduino!');
                                                                               }
                                                                               return false;
                                                                           }
