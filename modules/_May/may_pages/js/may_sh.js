@@ -12,28 +12,28 @@
          //console.log('href = ' + $(this).attr('href'));
          //console.log('title = ' + $(this).attr('title'));
 
-         console.log($(this));
-         if ($(this).hasClass('on')) {
-           console.log('on');
-         }
-         else if ($(this).hasClass('off')) {
-           console.log('off');
-         }
-         else if ($(this).hasClass('switch')) {
-           console.log('switch');
-         }
-         else if ($(this).hasClass('refresh')) {
-           console.log('refresh');
-         }
-         
-         return;
+//         console.log($(this));
+//         if ($(this).hasClass('on')) {
+//           console.log('on');
+//         }
+//         else if ($(this).hasClass('off')) {
+//           console.log('off');
+//         }
+//         else if ($(this).hasClass('switch')) {
+//           console.log('switch');
+//         }
+//         else if ($(this).hasClass('refresh')) {
+//           console.log('refresh');
+//         }
+//         
+//         return false;
          
          (jQuery).ajax({
             
                 url: '/sh-get', 
                 data: {
-                        type: 'button_click',
-                        id: $(this).attr('id'),
+                        type: 'button_light',
+                        id: $(this).parent().attr('id'),
                         class: $(this).attr('class'),
                         access: $("#pass").val(),
                         //click_page: window.location.href,

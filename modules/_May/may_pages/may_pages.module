@@ -652,9 +652,25 @@ function may_pages_sh_get() {
       $status = TRUE;
       $url = 'http://smart1977.ddns.net';
       
-      foreach ($post as $key => $value) {
-        $data_to[$key] = $value;
-      }
+      if ($post['type' == 'button_light']) {
+        
+          $data_to['lamp'] = str_replace('l-', '', $post['id']);
+          switch ($post['class']) {
+            case 'on':
+              $data_to['op'] = 2;
+              break;
+            case 'off':
+              $data_to['op'] = 3;
+              break;
+            case 'switch':
+              $data_to['op'] = 4;
+              break;
+            case 'refresh':
+              $data_to['op'] = 1;
+              break;
+          } // End of switch ($post['class']) {
+       
+      } // End of if ($post['type' == 'button_light']) {
   }
   
   
