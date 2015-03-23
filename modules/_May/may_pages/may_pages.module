@@ -536,6 +536,13 @@ function may_pages_sh1() {
   
   $out = '';
           
+  $lights = array(
+    'l-0' => array('title' => 'Kitchen shelfs'),
+    'l-1' => array('title' => 'Kitchen main'),
+    'l-2' => array('title' => 'Hall main'),
+    'l-3' => array('title' => 'Hall side'),
+  );
+  
   $out .= '<a class="light" id="l-00" href=#>Kitchen wall</a>';
   
   $out .= '<a class="light" id="l-00" href=#>Kitchen wall</a>';
@@ -546,25 +553,44 @@ function may_pages_sh1() {
     '#attributes' => array('class'=> array('access')),
       
   );
-  $form['access']['pass'] = array(
-    '#type' => 'password',
-    '#title' => 'Password',
-    '#value' => NULL,
-    '#attributes' => array('id'=> 'pass'),
-  );
+        $form['access']['pass'] = array(
+          '#type' => 'password',
+          '#title' => 'Password',
+          '#value' => NULL,
+          '#attributes' => array('id'=> 'pass'),
+        );
   
   $form['lights'] = array(
     '#type' => 'fieldset',
     '#title' => 'Lights',
     '#attributes' => array('class'=> array('lights')),
-      
-  );
-  $form['lights']['l-01'] = array(
-    '#type' => 'checkbox',
-    '#title' => 'Light 01',
-    '#value' => NULL,
-    '#attributes' => array('id'=> 'l-01'),
-  );
+  );    
+        foreach ($lights as $id => $light) {
+          
+            $form['lights'][$id] = array(
+              '#type' => 'fieldset',
+              '#title' => $light['title'],
+              '#attributes' => array('class'=> array('lights')),
+            );
+
+                    $form['lights'][$id]['on'] = array(
+                      '#markup' => '<a class="on" href=#>On</a>',
+                    );
+                    $form['lights'][$id]['off'] = array(
+                      '#markup' => '<a class="off" href=#>Off</a>',
+                    );
+                    $form['lights'][$id]['switch'] = array(
+                      '#markup' => '<a class="switch" href=#>Switch</a>',
+                    );
+                    $form['lights'][$id]['state'] = array(
+                      '#type' => 'checkbox',
+                      '#title' => 'Last/current state',
+                      '#value' => NULL,
+                      '#attributes' => array('class'=> 'state'),
+                    );
+                    
+        } // End of foreach ($lights as $id => $light) {
+  
   $form['other'] = array(
     '#type' => 'fieldset',
     '#title' => 'other',
