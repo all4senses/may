@@ -560,11 +560,19 @@ function may_pages_sh1() {
           '#attributes' => array('id'=> 'pass'),
         );
   
+  $form['refresh-all'] = array(
+    '#markup' => '<a class="refresh-all" href=#>Refresh everything</a>',
+  );
+  
   $form['lights'] = array(
     '#type' => 'fieldset',
     '#title' => 'Lights',
     '#attributes' => array('class'=> array('lights')),
   );    
+        $form['lights']['refresh-lights'] = array(
+          '#markup' => '<a class="refresh-lights" href=#>Refresh all lights</a>',
+        );
+        
         foreach ($lights as $id => $light) {
           
             $form['lights'][$id] = array(
@@ -587,6 +595,9 @@ function may_pages_sh1() {
                       '#title' => 'Last/current state',
                       '#value' => NULL,
                       '#attributes' => array('class'=> array('state')),
+                    );
+                    $form['lights'][$id]['refresh'] = array(
+                      '#markup' => '<a class="refresh" href=#>Refresh light</a>',
                     );
                     
         } // End of foreach ($lights as $id => $light) {
