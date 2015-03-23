@@ -658,10 +658,10 @@ function may_pages_sh_get() {
           $data_to['lamp'] = str_replace('l-', '', $post['id']);
           switch ($post['class']) {
             case 'on':
-              $data_to['op'] = 2;
+              $data_to['op'] = 3;
               break;
             case 'off':
-              $data_to['op'] = 3;
+              $data_to['op'] = 2;
               break;
             case 'switch':
               $data_to['op'] = 4;
