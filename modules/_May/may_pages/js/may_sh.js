@@ -37,20 +37,22 @@
                     success: function(data) 
                             { 
                                 console.log(data);
-                                console.dir(data);
+                                //console.dir(data);
                                 
                                 if(!data.error) { 
                                                   
                                                         console.log('The data is arrived from the middle Server!');
-                                  
-                                                        return;
+                                                        
+                                                        console.log(data.data);
+                                                        //return;
                                                         
                                                         
                                     
                                                         (jQuery).ajax({
 
-                                                                url: 'http://smart1977.ddns.net', 
-                                                                data: {
+                                                                  url: 'http://smart1977.ddns.net', 
+                                                                  /*
+                                                                  data: {
                                                                         access: 'xxx',
                                                                         op: 4,
                                                                         lamp: 0
@@ -61,34 +63,38 @@
                                                                         //title: $(this).attr('title')
                                                                         //,referer: document.referrer
 
-                                                                      }, 
-                                                                    type: 'GET', 
-                                                                    //dataType: 'json'
-                                                                    dataType: 'jsonp'
+                                                                  }, 
+                                                                  */    
+                                                                      
+                                                                  data: data.data,
+                                                                 
+                                                                  type: 'GET', 
+                                                                  //dataType: 'json'
+                                                                  dataType: 'jsonp'
 
-                                                                    , 
-                                                                    jsonp: false,
-                                                                    jsonpCallback: "myJsonMethod",
-                                                                    success: function(data) 
-                                                                            { 
-                                                                                console.dir(data);
-                                                                                //data = JSON.parse(data);
-                                                                                console.log(data);
-                                                                                console.log(data.status);
-                                                                                
-                                                                                for (var key in data) {
-                                                                                  if (data.hasOwnProperty(key)) {
-                                                                                    console.log(key + ': ' + data[key]);
-                                                                                    //alert(data[key].msg);
-                                                                                  }
-                                                                                }
+                                                                  , 
+                                                                  jsonp: false,
+                                                                  jsonpCallback: "myJsonMethod",
+                                                                  success: function(data) 
+                                                                          { 
+                                                                              console.dir(data);
+                                                                              //data = JSON.parse(data);
+                                                                              console.log(data);
+                                                                              console.log(data.status);
 
-                                                                                if(!data.error) {
-                                                                                    console.log('NEW The data is arrived from Arduino!');
+                                                                              for (var key in data) {
+                                                                                if (data.hasOwnProperty(key)) {
+                                                                                  console.log(key + ': ' + data[key]);
+                                                                                  //alert(data[key].msg);
                                                                                 }
-                                                                                return false;
-                                                                            }
-                                                                     ,error: function(e) { console.log(e.message); }
+                                                                              }
+
+                                                                              if(!data.error) {
+                                                                                  console.log('NEW The data is arrived from Arduino!');
+                                                                              }
+                                                                              return false;
+                                                                          }
+                                                                   ,error: function(e) { console.log(e.message); }
 
                                                             }); // end of (jQuery).ajax
                                     
