@@ -651,7 +651,7 @@ function may_pages_sh_get() {
   if ($post['access'] == $p) {
       $status = TRUE;
       $url = 'http://smart1977.ddns.net';
-      $data_to['lamp'] = $post['access'];
+      $data_to['access'] = $post['access'];
       
       if ($post['type' == 'button_light']) {
         
