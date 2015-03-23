@@ -56,7 +56,7 @@
                                                         
                                                         (jQuery).ajax({
 
-                                                                  url: 'http://smart1977.ddns.net', 
+                                                                  url: data.url, //'http://smart1977.ddns.net', 
                                                                   /*
                                                                   data: {
                                                                         access: 'xxx',
