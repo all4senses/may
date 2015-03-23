@@ -12,22 +12,6 @@
          //console.log('href = ' + $(this).attr('href'));
          //console.log('title = ' + $(this).attr('title'));
 
-//         console.log($(this));
-//         if ($(this).hasClass('on')) {
-//           console.log('on');
-//         }
-//         else if ($(this).hasClass('off')) {
-//           console.log('off');
-//         }
-//         else if ($(this).hasClass('switch')) {
-//           console.log('switch');
-//         }
-//         else if ($(this).hasClass('refresh')) {
-//           console.log('refresh');
-//         }
-//         
-//         return false;
-         
          (jQuery).ajax({
             
                 url: '/sh-get', 
@@ -52,7 +36,7 @@
                                 console.log(data);
                                 //console.dir(data);
                                 
-                                if(!data.error) { 
+                                if(!data.error && data.status) { 
                                                         
                                                         (jQuery).ajax({
 
@@ -86,7 +70,7 @@
                                                                               console.log('NEW The data is arrived from Arduino!');
                                                                               console.log(data_2);
                                                                               
-                                                                              if(!data_2.error) {
+                                                                              if(!data_2.error && data_2.status) {
                                                                                 for (var key in data_2) {
                                                                                   if (data_2.hasOwnProperty(key)) {
                                                                                     console.log(key + ': ' + data_2[key]);
@@ -94,15 +78,29 @@
                                                                                   }
                                                                                 }
                                                                               }
+                                                                              else {
+                                                                                console.log('Error status False from SH...');
+                                                                              }
                                                                               return false;
                                                                           }
-                                                                   ,error: function(e) { console.log(e.message); }
+                                                                   ,error: function(e) { 
+                                                                              console.log('Error from SH...');
+                                                                              console.log(e.message); 
+                                                                           }
 
                                                             }); // end of (jQuery).ajax
                                     
                                 }
+                                else {
+                                  console.log('Error status False from Middle server...');
+                                }
                                 return false;
-                            } 
+                            } // End of Success (request to the Middle Server).
+                            
+                        ,error: function(e) { 
+                            console.log('Error from SH...');
+                            console.log(e.message); 
+                         }
                      
             }); // end of (jQuery).ajax
         
