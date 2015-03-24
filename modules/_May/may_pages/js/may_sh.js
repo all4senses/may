@@ -65,6 +65,9 @@
                                                                                     //alert(data[key].msg);
                                                                                   }
                                                                                 }
+                                                                                
+                                                                                // Set the current lamp state.
+                                                                                $('#l-' + data.data.lamp + ' input').attr('checked', data_2.state);
                                                                               }
                                                                               else {
                                                                                 console.log('Error status False from SH...');
