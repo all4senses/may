@@ -67,7 +67,8 @@
                                                                                 }
                                                                                 
                                                                                 // Set the current lamp state.
-                                                                                $('#l-' + data.data.lamp + ' input').attr('checked', data_2.state);
+                                                                                console.log('data_2.state = ' + data_2.state);
+                                                                                $('#l-' + data.data.lamp + ' input').attr('checked', data_2.state == '1' ? true : false);
                                                                               }
                                                                               else {
                                                                                 console.log('Error status False from SH...');
