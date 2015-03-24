@@ -35,7 +35,7 @@
                             { 
                                 console.log('The data is arrived from the middle Server!');
                                 console.log(data);
-                                //console.dir(data);
+                                console.dir(data);
                                 
                                 if(!data.error && data.status) { 
                                   
