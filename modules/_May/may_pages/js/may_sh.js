@@ -38,6 +38,8 @@
                                 //console.dir(data);
                                 
                                 if(!data.error && data.status) { 
+                                  
+                                                        console.log('Sending to arduino...');
                                                         
                                                         (jQuery).ajax({
 
