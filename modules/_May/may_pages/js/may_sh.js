@@ -59,15 +59,16 @@
                                                                               console.log(data_2);
                                                                               
                                                                               if(!data_2.error && data_2.status) {
-                                                                                for (var key in data_2) {
-                                                                                  if (data_2.hasOwnProperty(key)) {
-                                                                                    console.log(key + ': ' + data_2[key]);
-                                                                                    //alert(data[key].msg);
-                                                                                  }
-                                                                                }
+                                                                                
+//                                                                                for (var key in data_2) {
+//                                                                                  if (data_2.hasOwnProperty(key)) {
+//                                                                                    console.log(key + ': ' + data_2[key]);
+//                                                                                    //alert(data[key].msg);
+//                                                                                  }
+//                                                                                }
                                                                                 
                                                                                 // Set the current lamp state.
-                                                                                console.log('data_2.state = ' + data_2.state);
+                                                                                //console.log('data_2.state = ' + data_2.state);
                                                                                 $('#l-' + data.data.lamp + ' input').attr('checked', data_2.state == '1' ? true : false);
                                                                               }
                                                                               else {
