@@ -72,7 +72,7 @@
                                                                                 $('#l-' + data.data.lamp + ' input').attr('checked', data_2.state == '1' ? true : false);
                                                                                 
                                                                                 var dNow = new Date(); 
-                                                                                var localdate = (dNow.getMonth()+1) + '/' + dNow.getDate() + '/' + dNow.getFullYear() + ' ' + dNow.getHours() + ':' + dNow.getMinutes(); 
+                                                                                var localdate = dNow.getDate() + '/' + (dNow.getMonth()+1) + '/' + dNow.getFullYear() + ', ' + dNow.getHours() + ':' + dNow.getMinutes(); 
                                                                                 $('#l-' + data.data.lamp + ' .description span').text(localdate);                                                                              
                                                                               }
                                                                               else {
