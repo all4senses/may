@@ -70,8 +70,10 @@
                                                                                 // Set the current lamp state.
                                                                                 //console.log('data_2.state = ' + data_2.state);
                                                                                 $('#l-' + data.data.lamp + ' input').attr('checked', data_2.state == '1' ? true : false);
-                                                                                var now = new Date(); console.log(now);
-                                                                                $('#l-' + data.data.lamp + ' .description span').html(now);
+                                                                                
+                                                                                var dNow = new Date(); 
+                                                                                var localdate = (dNow.getMonth()+1) + '/' + dNow.getDate() + '/' + dNow.getFullYear() + ' ' + dNow.getHours() + ':' + dNow.getMinutes(); 
+                                                                                $('#l-' + data.data.lamp + ' .description span').text(localdate);                                                                              
                                                                               }
                                                                               else {
                                                                                 console.log('Error status False from SH...');
