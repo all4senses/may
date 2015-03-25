@@ -597,7 +597,7 @@ function may_pages_sh1() {
                       //'#value' => 1,  
                       '#description' => 'Last refresh: <span>Never</span>',
                       '#disabled' => TRUE,
-                      '#attributes' => array('class'=> array('state')),
+                      '#attributes' => array('class'=> array('state'), 'disabled' => 'disabled'),
                     );
                     $form['lights'][$id]['refresh'] = array(
                       '#markup' => '<a class="refresh" href=#>Refresh light</a>',
