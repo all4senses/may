@@ -600,8 +600,9 @@ function may_pages_sh1() {
                       '#attributes' => array('class'=> array('state'), 'disabled' => 'disabled'),
                     );
                     $form['lights'][$id]['refresh'] = array(
-                      '#markup' => '<a class="refresh" href=#>Refresh light</a>',
+                      '#markup' => '<a class="refresh" href=#>Refresh light</a><div class="wait">Please, wait...</div>',
                     );
+                    
                     
         } // End of foreach ($lights as $id => $light) {
   

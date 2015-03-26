@@ -14,6 +14,8 @@
          //console.log('href = ' + $(this).attr('href'));
          //console.log('title = ' + $(this).attr('title'));
 
+         $(this).parent().find('.wait').show();
+         
          (jQuery).ajax({
             
                 url: '/sh-get', 
@@ -84,6 +86,9 @@
                                                                               else {
                                                                                 console.log('Error status False from SH...');
                                                                               }
+                                                                              
+                                                                              $(this).parent().find('.wait').hide();
+                                                                              
                                                                               return false;
                                                                           }
                                                                    ,error: function(e) { 
