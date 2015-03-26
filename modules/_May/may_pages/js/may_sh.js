@@ -87,7 +87,7 @@
                                                                                 console.log('Error status False from SH...');
                                                                               }
                                                                               
-                                                                              $(this).parent().find('.wait').hide();
+                                                                              //$(this).parent().find('.wait').hide();
                                                                               
                                                                               return false;
                                                                           }
