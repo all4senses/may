@@ -14,7 +14,8 @@
          //console.log('href = ' + $(this).attr('href'));
          //console.log('title = ' + $(this).attr('title'));
 
-         $(this).parent().find('.wait').show();
+         var wait = $(this).parent().find('.wait');
+         $(wait).show();
          
          (jQuery).ajax({
             
@@ -87,7 +88,7 @@
                                                                                 console.log('Error status False from SH...');
                                                                               }
                                                                               
-                                                                              //$(this).parent().find('.wait').hide();
+                                                                              $(wait).hide();
                                                                               
                                                                               return false;
                                                                           }
