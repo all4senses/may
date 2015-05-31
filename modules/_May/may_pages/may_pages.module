@@ -537,7 +537,7 @@ function may_pages_sh1() {
   $out = '';
           
   $lights = array(
-    'l-0' => array('title' => 'Кухня, подсветка'),
+    'l-0' => array('title' => 'l-0'),
     'l-1' => array('title' => 'Спальня, неон'),
     'l-2' => array('title' => 'Коридор возле ванной'),
     'l-3' => array('title' => 'Кабинет'),
@@ -550,7 +550,7 @@ function may_pages_sh1() {
     'l-10' => array('title' => 'Ванная, свет'),
     'l-11' => array('title' => 'Свет из вытяжки'),
     'l-12' => array('title' => 'Зал, люстра'),
-    'l-13' => array('title' => 'l-13'),
+    'l-13' => array('title' => 'Кухня, подсветка'), // on the board L16: S-22 (3 с конца Реле 2), A8 (белый на ток сенс. 2)
     'l-14' => array('title' => 'Зал, неон на 3д-панелях'),
     'l-15' => array('title' => 'Кухня, точки'),  
     'l-16' => array('title' => 'l-16'),
