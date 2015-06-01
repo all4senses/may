@@ -731,17 +731,17 @@ function may_pages_sh_renderLight($lights, $id) {
             '#markup' => '<a class="switch" href=#>Switch</a>',
           );
           $form['lights'][$id]['state_div'] = array(
-            '#markup' => '<div class="state"></div>',
+            '#markup' => '<div class="state"></div><div class="description">Refreshed: <span>Never</span></div>',
           );
-          $form['lights'][$id]['state'] = array(
-            '#type' => 'checkbox',
-            '#title' => 'Last/current state',
-            '#default_value' => FALSE,
-            //'#value' => 1,  
-            '#description' => 'Last refresh: <span>Never</span>',
-            '#disabled' => TRUE,
-            '#attributes' => array('class'=> array('state'), 'disabled' => 'disabled'),
-          );
+//          $form['lights'][$id]['state'] = array(
+//            '#type' => 'checkbox',
+//            '#title' => 'Last/current state',
+//            '#default_value' => FALSE,
+//            //'#value' => 1,  
+//            '#description' => 'Last refresh: <span>Never</span>',
+//            '#disabled' => TRUE,
+//            '#attributes' => array('class'=> array('state'), 'disabled' => 'disabled'),
+//          );
           $form['lights'][$id]['refresh'] = array(
             '#markup' => '<a class="refresh" href=#>Refresh light</a><div class="wait" style="display: none;">Please, wait...</div>',
           );

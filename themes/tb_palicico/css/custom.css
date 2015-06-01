@@ -121,3 +121,12 @@ fieldset {
   max-width: 60%;
 }
 
+div.state {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+}
+
+div.state.on {
+  background-color: green;
+}
