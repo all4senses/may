@@ -580,7 +580,9 @@ function may_pages_sh1() {
     
       <div class="flat">
         <div class="part-1">
-          <div class="child">Детская</div>
+          <div class="child">Детская
+            ' . may_pages_sh_renderLight($lights, 'l-9') . '
+          </div>
           <div class="hall"><div class="living">Living</div><div class="kitchen">Кухня</div></div>  
         </div>
         <div class="part-2">
