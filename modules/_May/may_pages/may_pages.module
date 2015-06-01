@@ -736,7 +736,7 @@ function may_pages_sh_renderLight($lights, $id) {
           $form['lights'][$id]['update'] = array(
             '#markup' => '<a class="refresh" href=#>Upd</a>',
           );
-          $form['lights'][$id]['state_div'] = array(
+          $form['lights'][$id]['refresh'] = array(
             '#markup' => '<div class="description">Refreshed: <span>Never</span></div>'
               . '<div class="wait" style="display: none;">Please, wait...</div>',
           );
