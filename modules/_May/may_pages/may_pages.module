@@ -659,14 +659,12 @@ function may_pages_sh1() {
         $form['lights']['refresh-lights'] = array(
           '#markup' => '<a class="refresh-lights" href=#>Refresh all lights</a>',
         );
-        
+       /* 
         foreach ($lights as $id => $light) {
           
-            list( ,$title) = explode(', ', $light['title']);
-            
             $form['lights'][$id] = array(
               '#type' => 'fieldset',
-              '#title' => $title . ', ' . $id,
+              '#title' => $light['title'] . ', ' . $id,
               '#attributes' => array('class'=> array('light'), 'id' => $id),
             );
 
@@ -695,7 +693,7 @@ function may_pages_sh1() {
                     
                     
         } // End of foreach ($lights as $id => $light) {
-  
+      */
   $form['other'] = array(
     '#type' => 'fieldset',
     '#title' => 'other',
@@ -722,9 +720,12 @@ function may_pages_sh_renderLight($lights, $id) {
     //'#title' => $lights[$id]['title'] . ', ' . $id,
     '#attributes' => array('class'=> array('light'), 'id' => $id),
   );
+  
+          list( , $title) = explode(', ', $lights[$id]['title']);
+          
           $form['lights'][$id]['state_div'] = array(
             '#markup' => '<div class="state"></div>'
-              . '<div class="title">' . $lights[$id]['title'] . ', ' . $id . '</div>',
+              . '<div class="title">' . $title . ', ' . $id . '</div>',
           );
           $form['lights'][$id]['on'] = array(
             '#markup' => '<a class="on" href=#>On-</a>',
