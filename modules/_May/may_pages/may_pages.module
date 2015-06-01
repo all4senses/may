@@ -720,7 +720,10 @@ function may_pages_sh_renderLight($lights, $id) {
     //'#title' => $lights[$id]['title'] . ', ' . $id,
     '#attributes' => array('class'=> array('light'), 'id' => $id),
   );
-          
+          $form['lights'][$id]['state_div'] = array(
+            '#markup' => '<div class="state"></div>'
+              . '<div class="title">' . $lights[$id]['title'] . ', ' . $id . '</div>',
+          );
           $form['lights'][$id]['on'] = array(
             '#markup' => '<a class="on" href=#>On-</a>',
           );
@@ -734,9 +737,7 @@ function may_pages_sh_renderLight($lights, $id) {
             '#markup' => '<a class="refresh" href=#>Upd</a>',
           );
           $form['lights'][$id]['state_div'] = array(
-            '#markup' => '<div class="state"></div>'
-              . '<div class="title">' . $lights[$id]['title'] . ', ' . $id . '</div>'
-              . '<div class="description">Refreshed: <span>Never</span></div>'
+            '#markup' => '<div class="description">Refreshed: <span>Never</span></div>'
               . '<div class="wait" style="display: none;">Please, wait...</div>',
           );
 //          $form['lights'][$id]['state'] = array(
