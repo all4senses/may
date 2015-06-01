@@ -1,0 +1,98 @@
+
+
+/* SH */
+
+.flat {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+}
+
+.flat, .flat div {
+  border: 1px solid gray;
+}
+
+.part-1 {
+  width: 40%;
+  float: left;
+  height: 100%;
+}
+
+      .hall {
+        width: 100%;
+        height: 59%;
+        clear: both;
+      }
+
+            .living {
+              width: 100%;
+              height: 70%;
+            }
+
+            .kitchen {
+              width: 100%;
+              height: 30%;
+            }
+
+.part-2 {
+  width: 20%;
+  float: left;
+  height: 69%;
+}
+
+      .koridor {
+        width: 100%;
+        height: 75%;
+      }
+
+      .kabinet {
+        height: 25%;
+        width: 100%;
+      }
+
+
+.part-3 {
+  float: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 59%;
+  overflow: hidden;
+  height: 30%;
+}
+
+    .part-3-1 {
+      width: 50%;
+      float: left;
+      height: 100%;
+    }
+    
+        .koridor-do-spalni {
+          width: 100%;
+          height: 30%;
+        }
+        
+        .part-3-2 {
+          width: 100%;
+          height: 70%;
+          overflow: hidden;
+        }
+        
+            .vannaya {
+              width: 60%;
+              height: 100%;
+              float: left;
+            }
+            
+            .postirochnaya {
+              width: 36%;
+              height: 100%;
+              float: left;
+            }
+            
+        .spalnia {
+          width: 48%;
+          float: right;
+          height: 100%;
+        }
