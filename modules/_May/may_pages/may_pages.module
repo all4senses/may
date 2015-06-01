@@ -728,10 +728,14 @@ function may_pages_sh_renderLight($lights, $id) {
             '#markup' => '<a class="off" href=#>Off-</a>',
           );
           $form['lights'][$id]['switch'] = array(
-            '#markup' => '<a class="switch" href=#>Switch</a>',
+            '#markup' => '<a class="switch" href=#>Switch-</a>',
+          );
+          $form['lights'][$id]['update'] = array(
+            '#markup' => '<a class="refresh" href=#>Upd</a>',
           );
           $form['lights'][$id]['state_div'] = array(
-            '#markup' => '<div class="state"></div><div class="description">Refreshed: <span>Never</span></div>',
+            '#markup' => '<div class="state"></div><div class="description">Refreshed: <span>Never</span></div>'
+              . '<div class="wait" style="display: none;">Please, wait...</div>',
           );
 //          $form['lights'][$id]['state'] = array(
 //            '#type' => 'checkbox',
@@ -742,9 +746,9 @@ function may_pages_sh_renderLight($lights, $id) {
 //            '#disabled' => TRUE,
 //            '#attributes' => array('class'=> array('state'), 'disabled' => 'disabled'),
 //          );
-          $form['lights'][$id]['refresh'] = array(
-            '#markup' => '<a class="refresh" href=#>Refresh</a><div class="wait" style="display: none;">Please, wait...</div>',
-          );
+//          $form['lights'][$id]['refresh'] = array(
+//            '#markup' => '<a class="refresh" href=#>Refresh</a><div class="wait" style="display: none;">Please, wait...</div>',
+//          );
           
    return render($form);       
 }
