@@ -574,10 +574,39 @@ function may_pages_sh1() {
           '#attributes' => array('id'=> 'pass'),
         );
   
+        
+        
+  $flat_markup = '
+    
+      <div class="flat">
+        <div class="part-1">
+          <div class="child">Детская</div>
+          <div class="hall"><div class="living">Living</div><div class="kitchen">Кухня</div></div>  
+        </div>
+        <div class="part-2">
+          <div class="koridor">Коридор</div>  
+          <div class="kabinet">Кабинет</div>  
+        </div>
+        <div class="part-3">
+          <div class="part-3-1">
+            <div class="koridor-do-spalni">Коридор до спальни</div>  
+            <div class="part-3-2"><div class="vannaya">Ванная</div><div class="postirochnaya">Постирочная</div></div>  
+          </div>
+          <div class="spalnia">Спальня</div>
+        </div>
+      </div>
+
+  ';
+  
   $form['refresh-all'] = array(
-    '#markup' => '<a class="refresh-all" href=#>Refresh everything</a>',
+    '#markup' => '<a class="refresh-all" href=#>Refresh everything</a>' . $flat_markup,
   );
   
+  /*
+  
+  
+   
+  */
   $form['lights'] = array(
     '#type' => 'fieldset',
     '#title' => 'Lights',
