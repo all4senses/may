@@ -690,7 +690,7 @@ function may_pages_sh_renderLight($lights, $id) {
   
   $form['lights'][$id] = array(
     '#type' => 'fieldset',
-    '#title' => $light['title'] . ', ' . $id,
+    '#title' => $lights[$id]['title'] . ', ' . $id,
     '#attributes' => array('class'=> array('light'), 'id' => $id),
   );
 
