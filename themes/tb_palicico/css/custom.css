@@ -6,7 +6,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  height: 800px;
+  height: 1500px;
 }
 
 .flat, .flat div {
@@ -26,6 +26,7 @@ fieldset div {
       .child {
         height: 41%;
         width: 100%;
+        overflow-y: auto;
       }
 
       .hall {
@@ -37,11 +38,13 @@ fieldset div {
             .living {
               width: 100%;
               height: 70%;
+              overflow-y: auto;
             }
 
             .kitchen {
               width: 100%;
               height: 30%;
+              overflow-y: auto;
             }
 
 .part-2 {
@@ -53,11 +56,13 @@ fieldset div {
       .koridor {
         width: 100%;
         height: 75%;
+        overflow-y: auto;
       }
 
       .kabinet {
         height: 25%;
         width: 100%;
+        overflow-y: auto;
       }
 
 
@@ -80,6 +85,7 @@ fieldset div {
         .koridor-do-spalni {
           width: 100%;
           height: 42%;
+          overflow-y: auto;
         }
         
         .part-3-2 {
@@ -92,18 +98,21 @@ fieldset div {
               width: 60%;
               height: 100%;
               float: left;
+              overflow-y: auto;
             }
             
             .postirochnaya {
               width: 36%;
               height: 100%;
               float: left;
+              overflow-y: auto;
             }
             
         .spalnia {
           width: 48%;
           float: right;
           height: 100%;
+          overflow-y: auto;
         }
         
         
