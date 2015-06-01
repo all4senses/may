@@ -631,11 +631,7 @@ function may_pages_sh1() {
   ';
   
   $form['refresh-all'] = array(
-    '#markup' => '<a class="refresh-all" href=#>Refresh everything</a>' . $flat_markup,
-  );
-  
-  $form['refresh-lights'] = array(
-    '#markup' => '<a class="refresh-lights" href=#>Refresh all lights</a>',
+    '#markup' => '<a class="refresh-all" href=#>Refresh everything</a><div><a class="refresh-lights" href=#>Refresh all lights</a></div>' . $flat_markup,
   );
   
   /*
