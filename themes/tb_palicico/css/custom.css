@@ -13,8 +13,12 @@
   border: 1px solid gray;
 }
 
-fieldset div {
-  border: none !important;
+div.light {
+  margin: 10px 0 15px 5px;
+}
+
+div.light, .light div {
+  border: none;
 }
 
 .part-1 {
@@ -125,8 +129,20 @@ div.state {
   width: 10px;
   height: 10px;
   background-color: red;
+  float: left;
+  margin: 3px 3px 0 0;
 }
 
 div.state.on {
   background-color: green;
+}
+
+.light .description {
+  color: lightgray;
+  font-size: 12px;
+}
+
+.light a:hover {
+  font-weight: bold;
+  text-decoration: underline;
 }
