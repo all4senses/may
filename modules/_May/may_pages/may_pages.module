@@ -678,9 +678,6 @@ function may_pages_sh1() {
                       '#markup' => '<a class="switch" href=#>Switch</a>',
                     );
                     
-                    $form['lights'][$id]['state_div'] = array(
-                      '#markup' => '<div class="state"></div>',
-                    );
                     $form['lights'][$id]['state'] = array(
                       '#type' => 'checkbox',
                       '#title' => 'Last/current state',
@@ -732,6 +729,9 @@ function may_pages_sh_renderLight($lights, $id) {
           );
           $form['lights'][$id]['switch'] = array(
             '#markup' => '<a class="switch" href=#>Switch</a>',
+          );
+          $form['lights'][$id]['state_div'] = array(
+            '#markup' => '<div class="state"></div>',
           );
           $form['lights'][$id]['state'] = array(
             '#type' => 'checkbox',
