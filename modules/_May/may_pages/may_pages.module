@@ -538,20 +538,20 @@ function may_pages_sh1() {
           
   $lights = array(
     'l-0' => array('title' => '----> Постирочная --> БЕЗ СЕНСОРА (BL1)'),
-    'l-1' => array('title' => 'Спальня, неон (BL11)'),
-    'l-2' => array('title' => 'Коридор возле ванной (BL8)'),
-    'l-3' => array('title' => 'Кабинет (BL7)'),
-    'l-4' => array('title' => 'Спальня, подвесы (BL6)'),
-    'l-5' => array('title' => 'Коридор, точки (BL5)'),
-    'l-6' => array('title' => 'Коридор, подвесы (BL4)'),
+    'l-1' => array('title' => 'Спальня, неон (BL11)'), // --------------------------------
+    'l-2' => array('title' => 'Коридор до спальни (BL8)'), // -----------------------
+    'l-3' => array('title' => 'Кабинет (BL7)'), // ------------------------------
+    'l-4' => array('title' => 'Спальня, подвесы (BL6)'), // ------------------------------
+    'l-5' => array('title' => 'Коридор, точки (BL5)'), // --------------------------------
+    'l-6' => array('title' => 'Коридор, подвесы (BL4)'), // ---------------------------------
     'l-7' => array('title' => 'Детская, над столом (BL3)'),
     'l-8' => array('title' => 'Детская, над кроватями (BL2)'),
-    'l-9' => array('title' => 'Детская, точки (BL12)'),
+    'l-9' => array('title' => 'Детская, точки (BL12)'), // ---------------------------
     'l-10' => array('title' => 'Ванная, свет (BL13)'),
     'l-11' => array('title' => 'Свет из вытяжки (BL14)'),
-    'l-12' => array('title' => 'Зал, люстра (BL15)'),
+    'l-12' => array('title' => 'Зал, люстра (BL15)'), // ------------------------------------
     'l-13' => array('title' => 'Кухня, подсветка (BL16)'), // on the board L16: S-22 (3 с конца Реле 2), A8 (белый на ток сенс. 2)
-    'l-14' => array('title' => 'Зал, неон на 3д-панелях (BL18)'),
+    'l-14' => array('title' => 'Зал, неон на 3д-панелях (BL18)'), // -------------------------
     'l-15' => array('title' => 'Кухня, точки (BL17)'),  
     'l-16' => array('title' => '----> НЕ ПОДКЛЮЧЕНО (BL9)'), // сломана кнопка откл. реле.
     'l-17' => array('title' => 'Ванная, вентилятор (BL10)'),   
@@ -583,23 +583,35 @@ function may_pages_sh1() {
           <div class="child">Детская
             ' . may_pages_sh_renderLight($lights, 'l-9') . '
           </div>
-          <div class="hall"><div class="living">Living</div><div class="kitchen">Кухня</div></div>  
+          <div class="hall">
+            <div class="living">Living
+              ' . may_pages_sh_renderLight($lights, 'l-12') . '
+              ' . may_pages_sh_renderLight($lights, 'l-14') . '  
+            </div>
+            <div class="kitchen">Кухня
+            
+            </div>
+          </div>  
         </div>
         <div class="part-2">
-          <div class="koridor">Коридор</div>  
-          <div class="kabinet">Кабинет</div>  
+          <div class="koridor">Коридор
+            ' . may_pages_sh_renderLight($lights, 'l-5') . '
+            ' . may_pages_sh_renderLight($lights, 'l-6') . '
+          </div>  
+          <div class="kabinet">Кабинет
+            ' . may_pages_sh_renderLight($lights, 'l-3') . '
+          </div>  
         </div>
         <div class="part-3">
           <div class="part-3-1">
-            <div class="koridor-do-spalni">Коридор до спальни</div>  
+            <div class="koridor-do-spalni">Коридор до спальни
+              ' . may_pages_sh_renderLight($lights, 'l-2') . '
+            </div>  
             <div class="part-3-2"><div class="vannaya">Ванная</div><div class="postirochnaya">Постирочная</div></div>  
           </div>
-          <div class="spalnia">
-            Спальня ' . may_pages_sh_renderLight($lights, 'l-1') . '
-            
-            
-
-
+          <div class="spalnia">Спальня 
+            ' . may_pages_sh_renderLight($lights, 'l-1') . '
+            ' . may_pages_sh_renderLight($lights, 'l-4') . '  
           </div>
         </div>
       </div>
