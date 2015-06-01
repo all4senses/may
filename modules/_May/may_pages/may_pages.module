@@ -592,7 +592,13 @@ function may_pages_sh1() {
             <div class="koridor-do-spalni">Коридор до спальни</div>  
             <div class="part-3-2"><div class="vannaya">Ванная</div><div class="postirochnaya">Постирочная</div></div>  
           </div>
-          <div class="spalnia">Спальня</div>
+          <div class="spalnia">
+            Спальня ' . may_pages_sh_renderLight($lights, 'l-1') . '
+            
+            
+
+
+          </div>
         </div>
       </div>
 
@@ -604,7 +610,19 @@ function may_pages_sh1() {
   
   /*
   
-  
+  <fieldset class="light fieldset form-wrapper titled" id="l-1">
+                <legend>
+                  <span class="fieldset-title fieldset-legend">Спальня, неон (BL11), l-1</span>
+                </legend>
+
+                <div class="fieldset-content fieldset-wrapper clearfix" id="l-1">
+                  <a class="on" href="#">On-</a><a class="off" href="#">Off-</a><a class="switch" href="#">Switch</a><div class="form-item form-type-checkbox form-disabled">
+                  <input class="state form-checkbox" disabled="disabled" type="checkbox" value="1">  <label class="option">Last/current state </label>
+
+                 <div class="description">Last refresh: <span>Never</span></div>
+                </div>
+                <a class="refresh" href="#">Refresh light</a><div class="wait" style="display: none;">Please, wait...</div>    </div>
+            </fieldset>
    
   */
   $form['lights'] = array(
@@ -663,6 +681,42 @@ function may_pages_sh1() {
   drupal_add_js($path_to_custom_js . 'may_sh.js');
      
   return $out;
+}
+
+
+function may_pages_sh_renderLight($lights, $id) {
+  
+  $form = array();
+  
+  $form['lights'][$id] = array(
+    '#type' => 'fieldset',
+    '#title' => $light['title'] . ', ' . $id,
+    '#attributes' => array('class'=> array('light'), 'id' => $id),
+  );
+
+          $form['lights'][$id]['on'] = array(
+            '#markup' => '<a class="on" href=#>On-</a>',
+          );
+          $form['lights'][$id]['off'] = array(
+            '#markup' => '<a class="off" href=#>Off-</a>',
+          );
+          $form['lights'][$id]['switch'] = array(
+            '#markup' => '<a class="switch" href=#>Switch</a>',
+          );
+          $form['lights'][$id]['state'] = array(
+            '#type' => 'checkbox',
+            '#title' => 'Last/current state',
+            '#default_value' => FALSE,
+            //'#value' => 1,  
+            '#description' => 'Last refresh: <span>Never</span>',
+            '#disabled' => TRUE,
+            '#attributes' => array('class'=> array('state'), 'disabled' => 'disabled'),
+          );
+          $form['lights'][$id]['refresh'] = array(
+            '#markup' => '<a class="refresh" href=#>Refresh light</a><div class="wait" style="display: none;">Please, wait...</div>',
+          );
+          
+   return render($form);       
 }
 
 
