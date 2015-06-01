@@ -19,6 +19,11 @@
   height: 100%;
 }
 
+      .child {
+        height: 41%;
+        width: 100%;
+      }
+
       .hall {
         width: 100%;
         height: 59%;
