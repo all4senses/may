@@ -743,7 +743,7 @@ function may_pages_sh_renderLight($lights, $id) {
 //            '#attributes' => array('class'=> array('state'), 'disabled' => 'disabled'),
 //          );
           $form['lights'][$id]['refresh'] = array(
-            '#markup' => '<a class="refresh" href=#>Refresh light</a><div class="wait" style="display: none;">Please, wait...</div>',
+            '#markup' => '<a class="refresh" href=#>Refresh</a><div class="wait" style="display: none;">Please, wait...</div>',
           );
           
    return render($form);       
