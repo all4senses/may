@@ -73,6 +73,13 @@
                                                                                 // Set the current lamp state.
                                                                                 //console.log('data_2.state = ' + data_2.state);
                                                                                 $('#l-' + data.data.lamp + ' input').attr('checked', data_2.state == '1' ? true : false);
+                                                                                if (data_2.state == '1') {
+                                                                                  $('#l-' + data.data.lamp + ' .state').addClass('on');
+                                                                                }
+                                                                                else {
+                                                                                  $('#l-' + data.data.lamp + ' .state').removeClass('on');
+                                                                                }
+                                                                                
                                                                                  
                                                                                  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Getter
                                                                                  // http://stackoverflow.com/questions/20456712/how-to-get-current-time-with-jquery
