@@ -80,18 +80,20 @@
                                                                                       console.log('Object!');
                                                                                       $.each(data_2.state, function(index, value) {
                                                                                           console.log(index + ":" + value);
+                                                                                          update_light_state_on_page (index, value);
                                                                                       }); 
                                                                                 }
                                                                                 else {
                                                                                       // One lamp set/read results
                                                                                       console.log('String!');
+                                                                                      
+                                                                                      /*
                                                                                       if (data_2.state == '1') {
                                                                                         $('#l-' + data.data.lamp + ' .state').addClass('on');
                                                                                       }
                                                                                       else {
                                                                                         $('#l-' + data.data.lamp + ' .state').removeClass('on');
                                                                                       }
-
 
                                                                                        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Getter
                                                                                        // http://stackoverflow.com/questions/20456712/how-to-get-current-time-with-jquery
@@ -102,6 +104,9 @@
                                                                                       //var localdate = dNow.getDate() + '/' + (dNow.getMonth()+1) + '/' + dNow.getFullYear() + ', ' + dNow.getHours() + ':' + dNow.getMinutes() + ':' + dNow.getSeconds(); 
                                                                                       var localdate = dNow.getDate() + '/' + ('0' + (dNow.getMonth()+1)).slice(-2) + '/' + dNow.getFullYear() + ', ' + dNow.getHours() + ':' + ('0' + (dNow.getMinutes())).slice(-2) + ':' + ('0' + (dNow.getSeconds())).slice(-2); 
                                                                                       $('#l-' + data.data.lamp + ' .description span').text(localdate);                                                                              
+                                                                                      */
+                                                                                      
+                                                                                      update_light_state_on_page(data.data.lamp, data_2.state);
                                                                                 }
                                                                                 
                                                                                 
@@ -145,6 +150,30 @@
 
        }); // End of $(".light").click(function(){
 
+       
+       
+       
+       function update_light_state_on_page (lamp_num, state) {
+          if (state == '1') {
+            $('#l-' + lamp_num + ' .state').addClass('on');
+          }
+          else {
+            $('#l-' + lamp_num + ' .state').removeClass('on');
+          }
+
+
+           // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Getter
+           // http://stackoverflow.com/questions/20456712/how-to-get-current-time-with-jquery
+           // http://stackoverflow.com/questions/14529381/leading-zeros-in-minutes
+           // http://stackoverflow.com/questions/17996874/leading-0-missing-from-data-and-time
+           // http://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
+          var dNow = new Date(); 
+          //var localdate = dNow.getDate() + '/' + (dNow.getMonth()+1) + '/' + dNow.getFullYear() + ', ' + dNow.getHours() + ':' + dNow.getMinutes() + ':' + dNow.getSeconds(); 
+          var localdate = dNow.getDate() + '/' + ('0' + (dNow.getMonth()+1)).slice(-2) + '/' + dNow.getFullYear() + ', ' + dNow.getHours() + ':' + ('0' + (dNow.getMinutes())).slice(-2) + ':' + ('0' + (dNow.getSeconds())).slice(-2); 
+          $('#l-' + lamp_num + ' .description span').text(localdate);                                                                              
+       }
+       
+       
        
     }
   };
