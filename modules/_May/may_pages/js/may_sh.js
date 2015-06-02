@@ -72,24 +72,37 @@
                                                                                 
                                                                                 // Set the current lamp state.
                                                                                 //console.log('data_2.state = ' + data_2.state);
-                                                                                $('#l-' + data.data.lamp + ' input').attr('checked', data_2.state == '1' ? true : false);
-                                                                                if (data_2.state == '1') {
-                                                                                  $('#l-' + data.data.lamp + ' .state').addClass('on');
+                                                                                //$('#l-' + data.data.lamp + ' input').attr('checked', data_2.state == '1' ? true : false);
+                                                                                
+                                                                                
+                                                                                if (data_2.state !== null && typeof data_2.state === 'object') {
+                                                                                      // All lamp set/read results
+                                                                                      console.log('Object!');
                                                                                 }
                                                                                 else {
-                                                                                  $('#l-' + data.data.lamp + ' .state').removeClass('on');
+                                                                                      // One lamp set/read results
+                                                                                      console.log('String!');
+                                                                                      if (data_2.state == '1') {
+                                                                                        $('#l-' + data.data.lamp + ' .state').addClass('on');
+                                                                                      }
+                                                                                      else {
+                                                                                        $('#l-' + data.data.lamp + ' .state').removeClass('on');
+                                                                                      }
+
+
+                                                                                       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Getter
+                                                                                       // http://stackoverflow.com/questions/20456712/how-to-get-current-time-with-jquery
+                                                                                       // http://stackoverflow.com/questions/14529381/leading-zeros-in-minutes
+                                                                                       // http://stackoverflow.com/questions/17996874/leading-0-missing-from-data-and-time
+                                                                                       // http://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
+                                                                                      var dNow = new Date(); 
+                                                                                      //var localdate = dNow.getDate() + '/' + (dNow.getMonth()+1) + '/' + dNow.getFullYear() + ', ' + dNow.getHours() + ':' + dNow.getMinutes() + ':' + dNow.getSeconds(); 
+                                                                                      var localdate = dNow.getDate() + '/' + ('0' + (dNow.getMonth()+1)).slice(-2) + '/' + dNow.getFullYear() + ', ' + dNow.getHours() + ':' + ('0' + (dNow.getMinutes())).slice(-2) + ':' + ('0' + (dNow.getSeconds())).slice(-2); 
+                                                                                      $('#l-' + data.data.lamp + ' .description span').text(localdate);                                                                              
                                                                                 }
                                                                                 
-                                                                                 
-                                                                                 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Getter
-                                                                                 // http://stackoverflow.com/questions/20456712/how-to-get-current-time-with-jquery
-                                                                                 // http://stackoverflow.com/questions/14529381/leading-zeros-in-minutes
-                                                                                 // http://stackoverflow.com/questions/17996874/leading-0-missing-from-data-and-time
-                                                                                 // http://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
-                                                                                var dNow = new Date(); 
-                                                                                //var localdate = dNow.getDate() + '/' + (dNow.getMonth()+1) + '/' + dNow.getFullYear() + ', ' + dNow.getHours() + ':' + dNow.getMinutes() + ':' + dNow.getSeconds(); 
-                                                                                var localdate = dNow.getDate() + '/' + ('0' + (dNow.getMonth()+1)).slice(-2) + '/' + dNow.getFullYear() + ', ' + dNow.getHours() + ':' + ('0' + (dNow.getMinutes())).slice(-2) + ':' + ('0' + (dNow.getSeconds())).slice(-2); 
-                                                                                $('#l-' + data.data.lamp + ' .description span').text(localdate);                                                                              
+                                                                                
+                                                                                
                                                                               }
                                                                               else {
                                                                                 console.log('Error status False from SH...');

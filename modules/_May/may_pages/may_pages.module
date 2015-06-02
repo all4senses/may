@@ -557,9 +557,8 @@ function may_pages_sh1() {
     'l-17' => array('title' => 'Ванная, Вентилятор (BL10)'), // ------------------------------------  
   );
   
-  $out .= '<a class="light" id="l-00" href=#>Kitchen wall</a>';
   
-  $out .= '<a class="light" id="l-00" href=#>Kitchen wall</a>';
+  //$out .= '<a class="light" id="l-00" href=#>Kitchen wall</a>';
  
   $form['access'] = array(
     '#type' => 'fieldset',
@@ -631,7 +630,8 @@ function may_pages_sh1() {
   ';
   
   $form['lights-bulk-ops'] = array(
-    '#markup' => '<div class="light" id="l-99"><a class="refresh" href=#>Refresh everything</a></div><div><a class="refresh-lights" href=#>Refresh all lights</a></div>' . $flat_markup,
+    '#markup' => '<div class="light" id="l-99">All lights <a class="refresh" href=#>-upd-</a><a class="off" href=#>off-</a></div>' 
+                 . $flat_markup,
   );
   
   /*
