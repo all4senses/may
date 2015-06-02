@@ -630,7 +630,7 @@ function may_pages_sh1() {
   ';
   
   $form['lights-bulk-ops'] = array(
-    '#markup' => '<div class="light" id="l-99">All lights <a class="refresh" href=#>-upd-</a><a class="off" href=#>off-</a></div>' 
+    '#markup' => '<div class="light" id="l-99">All lights <a class="refresh" href=#>-upd-</a><a class="off" href=#>off-</a><div class="wait" style="display: none;">Please, wait...</div></div>' 
                  . $flat_markup,
   );
   

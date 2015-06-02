@@ -78,6 +78,9 @@
                                                                                 if (data_2.state !== null && typeof data_2.state === 'object') {
                                                                                       // All lamp set/read results
                                                                                       console.log('Object!');
+                                                                                      $.each(object, function(index, value) {
+                                                                                          console.log(index + ":" + value);
+                                                                                      }); 
                                                                                 }
                                                                                 else {
                                                                                       // One lamp set/read results
