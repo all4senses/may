@@ -630,8 +630,8 @@ function may_pages_sh1() {
 
   ';
   
-  $form['refresh-all'] = array(
-    '#markup' => '<a class="refresh-all" href=#>Refresh everything</a><div><a class="refresh-lights" href=#>Refresh all lights</a></div>' . $flat_markup,
+  $form['lights-bulk-ops'] = array(
+    '#markup' => '<div class="light" id="l-99"><a class="refresh" href=#>Refresh everything</a></div><div><a class="refresh-lights" href=#>Refresh all lights</a></div>' . $flat_markup,
   );
   
   /*
