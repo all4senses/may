@@ -38,7 +38,7 @@
                             { 
                                 console.log('The data is arrived from the middle Server!');
                                 console.log(data);
-                                console.dir(data);
+                                //console.dir(data);
                                 
                                 if(!data.error && data.status) { 
                                   
@@ -77,15 +77,15 @@
                                                                                 
                                                                                 if (data_2.state !== null && typeof data_2.state === 'object') {
                                                                                       // All lamp set/read results
-                                                                                      console.log('Object!');
+                                                                                      //console.log('Object!');
                                                                                       $.each(data_2.state, function(index, value) {
-                                                                                          console.log(index + ":" + value);
+                                                                                          //console.log(index + ":" + value);
                                                                                           update_light_state_on_page (index, value);
                                                                                       }); 
                                                                                 }
                                                                                 else {
                                                                                       // One lamp set/read results
-                                                                                      console.log('String!');
+                                                                                      //console.log('String!');
                                                                                       
                                                                                       /*
                                                                                       if (data_2.state == '1') {
@@ -130,6 +130,7 @@
                                 }
                                 else {
                                   console.log('Error status False from Middle server...');
+                                  alert('Password?');
                                 }
                                 return false;
                             } // End of Success (request to the Middle Server).
@@ -154,13 +155,22 @@
        
        
        function update_light_state_on_page (lamp_num, state) {
-          if (state == '1') {
-            $('#l-' + lamp_num + ' .state').addClass('on');
+         
+          if (lamp_num != 0 ) {
+            // Skip setting a state for l-0 as it's not connected to electricity.sensor.
+            
+            if (lamp_num == 16 ) {
+              // Skip l-16 at all as it's not connetcet to anything at all.
+              return;
+            }
+            
+            if (state == '1') {
+              $('#l-' + lamp_num + ' .state').addClass('on');
+            }
+            else {
+              $('#l-' + lamp_num + ' .state').removeClass('on');
+            }
           }
-          else {
-            $('#l-' + lamp_num + ' .state').removeClass('on');
-          }
-
 
            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Getter
            // http://stackoverflow.com/questions/20456712/how-to-get-current-time-with-jquery
