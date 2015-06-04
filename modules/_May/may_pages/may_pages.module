@@ -26,14 +26,16 @@ function may_pages_menu() {
   $items['sh'] = array(
     'title' => 'Sh1',
     'page callback' => 'may_pages_sh1',
-    'access callback' => 'may_misc_userIsAdmin',
+    //'access callback' => 'may_misc_userIsAdmin',
+    'access arguments' => array('access content'),  
     'type' => MENU_CALLBACK,
   );
   
   $items['sh-get'] = array(
     'title' => 'Sh Get',
     'page callback' => 'may_pages_sh_get',
-    'access callback' => 'may_misc_userIsAdmin',
+    //'access callback' => 'may_misc_userIsAdmin',
+    'access arguments' => array('access content'),  
     'type' => MENU_CALLBACK,
   );
    
