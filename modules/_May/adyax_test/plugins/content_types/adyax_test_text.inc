@@ -61,11 +61,11 @@ function adyax_test_text_content_type_render($subtype, $conf, $args, $context) {
   // Если в настройках плагина не ввели текст, то ничего не выводим.
   if (empty($conf['text'])) {
     $block = new stdClass();
-    $block->content = '----xxxx' . var_export($args, TRUE) . render($context['context_taxonomy_term_add_form_1']['form']);
+    $block->content = '----xxxx' . var_export($args, TRUE) . render($context['context_taxonomy_term_add_form_1']->form);
     return $block;
   }
  
   $block = new stdClass();
-  $block->content = $conf['text'] . var_export($args, TRUE) . render($context['context_taxonomy_term_add_form_1']['form']);
+  $block->content = $conf['text'] . var_export($args, TRUE) . render($context['context_taxonomy_term_add_form_1']->form);
   return $block;
 }
