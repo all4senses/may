@@ -57,7 +57,9 @@ function adyax_test_text_content_type_render($subtype, $conf, $args, $context) {
  
   // Если в настройках плагина не ввели текст, то ничего не выводим.
   if (empty($conf['text'])) {
-    return '----xxxx';
+    $block = new stdClass();
+    $block->content = '----xxxx';
+    return $block;
   }
  
   $block = new stdClass();
