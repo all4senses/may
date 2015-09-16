@@ -1,0 +1,4 @@
+name        = Context example
+description = "Implements ctools context type plugin"
+package     = Custom
+core        = 7.x
