@@ -18,6 +18,7 @@ $plugin = array(
   'edit form' => 'adyax_test_text_edit_form', // Форма с настройками плагина.
   'category' => t('-----Content type plugin category'), // Категория, в которой будет находиться плагин.
   //'required context' => new ctools_context_required(t('Node'), 'node'), // Обязательный контекст, без которого плагин не будет работать.
+  'required context' => new ctools_context_required(t('Simplecontext'), 'simplecontext'),
   //'all contexts' => TRUE, // Флаг, указывающий, что плагину будут доступны все контексты.
   'single' => TRUE, // Флаг, указывающий является ли плагин подтипом другого.
 ); 
