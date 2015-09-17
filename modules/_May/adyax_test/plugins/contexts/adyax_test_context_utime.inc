@@ -46,12 +46,15 @@ function adyax_test_context_utime_form($empty, $data = NULL, $conf = FALSE) {
     return $context;
   }
   
+  $time = time();
+  
   $context->title = $data;
   $context->argument = $data;
   // Make up a bogus context
   $context->data = new stdClass();
-  $context->data->odd = time();//t("Item1");
-  $context->data->even = time() . '_xxx';//t("Item1");
+  $context->data->time = time();//t("Item1");
+  $context->data->even = ($time % 2 == 0) ? TRUE : FALSE;
+  $context->data->description = $context->data->even ? 'Time is even' : 'Time is odd';
   //$context->data->item2 = t("Item2");
 
   // For this simple item we'll just create our data by stripping non-alpha and
@@ -68,12 +71,14 @@ function adyax_test_context_utime_form($empty, $data = NULL, $conf = FALSE) {
  */
 function adyax_test_context_utime_convert($context, $type) {
   switch ($type) {
-    // Convert a vocabulary keyword into the data.
-    case 'utime_odd':
-      return $context->data->odd;
+    case 'utime_time':
+      return $context->data->time;
     
     case 'utime_even':
-      return $context->data->even . '_xxx';  
+      return $context->data->even;
+      
+    case 'utime_descr':
+      return $context->data->description;  
   }
 }
 
@@ -88,7 +93,8 @@ function adyax_test_context_utime_convert($context, $type) {
  */
 function adyax_test_context_utime_convert_list() {
   return array(
-    'utime_odd' => t('Unix time is odd, not even'),
+    'utime_time' => t('Unix time'),
     'utime_even' => t('Unix time is even, not odd'),
+    'utime_descr' => t('Unix time context result description'),  
   );
 }
