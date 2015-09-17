@@ -57,8 +57,8 @@ function adyax_test_check_utime_ctools_access_check($conf, $context) {
 //    return FALSE;
 //  }
 
-  dpm($conf);
-  dpm($context);
+  //dpm($conf);
+  //dpm($context);
   //$roles = array_keys($context->data->roles);
   //$roles[] = $context->data->uid ? DRUPAL_AUTHENTICATED_RID : DRUPAL_ANONYMOUS_RID;
   //return (bool) array_intersect($conf['rids'], $roles);

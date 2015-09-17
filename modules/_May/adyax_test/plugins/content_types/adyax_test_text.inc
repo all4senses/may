@@ -58,8 +58,8 @@ function adyax_test_text_edit_form_submit($form, &$form_state) {
  */
 function adyax_test_text_content_type_render($subtype, $conf, $args, $context) {
  
-  dpm($conf);
-  dpm($context);
+  //dpm($conf);
+  //dpm($context);
   // Если в настройках плагина не ввели текст, то ничего не выводим.
   if (empty($conf['text'])) {
     $block = new stdClass();
