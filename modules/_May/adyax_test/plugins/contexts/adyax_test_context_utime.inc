@@ -1,8 +1,10 @@
 <?php
 
+
 /**
  * @file
- * Plugin to provide a taxonomy_term_add_form context
+ * Sample ctools context type plugin that shows how to create a context from an arg.
+ *
  */
 
 /**
@@ -10,73 +12,95 @@
  * by the system that includes this file.
  */
 $plugin = array(
-  // Visible title.
-  'title'             => t('Unix time property'),
-  // Description of context.
-  'description'       => t('Unix time add or even'),
-  // Function to create context.
-  'context'           => 'adyax_test_context_utime_form',
-  // Plugin settings form.
-  //'edit form'         => 'adyax_test_context_utime_form_settings_form',
-  // Keyword to use for %substitution.
-  'keyword'           => 'utime',
-  // The unique identifier for this context for use by required context checks.
-  'context name'      => 'utime_odd_or_even',
+  'title' => t("Simplecontext 2"),
+  'description' => t('A single "simplecontext" context, or data element 2.'),
+  'context' => 'adyax_test_context_utime_create_simplecontext_2',  // func to create context
+  'context name' => 'simplecontext_2',
+  'settings form' => 'simplecontext_2_settings_form',
+  'keyword' => 'simplecontext_2',
+
   // Provides a list of items which are exposed as keywords.
-  'convert list'      => 'adyax_test_context_utime_convert_list', //array('utime_odd' => t('Unix time is odd, not even'), 'utime_even' => t('Unix time is even, not odd'),), //
+  'convert list' => 'simplecontext_2_convert_list',
   // Convert keywords into data.
-  'convert'           => 'adyax_test_context_utime_convert',
-  // Placeholder form is used in panels preview, for example.
-//  'placeholder form'  => array(
-//    '#type'         => 'textfield',
-//    '#description'  => t('Enter the taxonomy vocabulary.'),
-//  ),
+  'convert' => 'simplecontext_2_convert',
+
+  'placeholder form' => array(
+    '#type' => 'textfield',
+    '#description' => t('Enter some data to represent this "simplecontext" 2.'),
+  ),
 );
 
 /**
- * It's important to remember that $conf is optional here, because contexts
- * are not always created from the UI.
+ * Create a context, either from manual configuration or from an argument on the URL.
+ *
+ * @param $empty
+ *   If true, just return an empty context.
+ * @param $data
+ *   If from settings form, an array as from a form. If from argument, a string.
+ * @param $conf
+ *   TRUE if the $data is coming from admin configuration, FALSE if it's from a URL arg.
+ *
+ * @return
+ *   a Context object/
  */
-function adyax_test_context_utime_form($empty, $data = NULL, $conf = FALSE) {
-  $context = new ctools_context('utime_odd_or_even');
-  $context->plugin = 'utime_odd_or_even';
+function adyax_test_context_utime_create_simplecontext_2($empty, $data = NULL, $conf = FALSE) {
+  $context = new ctools_context('simplecontext_2');
+  $context->plugin = 'simplecontext_2';
 
-  
   if ($empty) {
     return $context;
   }
-  
-  $context->title = $data;
-  $context->argument = $data;
-  // Make up a bogus context
-  $context->data = new stdClass();
-  $context->data->odd = time();//t("Item1");
-  $context->data->even = time() . '_xxx';//t("Item1");
-  //$context->data->item2 = t("Item2");
 
-  // For this simple item we'll just create our data by stripping non-alpha and
-  // adding '_from_simplecontext_argument' to it.
-  //$context->data->description = preg_replace('/[^a-z]/i', '', $data);
-  //$context->data->description .= '_from_simplecontext_argument';
-  //$context->arg_length = strlen($context->argument);
-  return $context;
-}
+  if ($conf) {
+    if (!empty($data)) {
+      $context->data = new stdClass();
+      // For this simple item we'll just create our data by stripping non-alpha and
+      // adding '_from_configuration_item_1' to it.
+      $context->data->item1_2 = t("Item1_2");
+      $context->data->item2_2 = t("Item2_2");
+      $context->data->description = preg_replace('/[^a-z]/i', '', $data['sample_simplecontext_setting_2']);
+      $context->data->description .= '_from_configuration_sample_simplecontext_setting';
+      $context->title = t("Simplecontext context from config 2");
+      return $context;
+    }
+  }
+  else {
+    // $data is coming from an arg - it's just a string.
+    // This is used for keyword.
+    $context->title = $data;
+    $context->argument = $data;
+    // Make up a bogus context
+    $context->data = new stdClass();
+    $context->data->item1 = t("Item1_1_2"); // time();
+    $context->data->item2 = t("Item2_2_2");
 
-
-/**
- * Convert a context into a string.
- */
-function adyax_test_context_utime_convert($context, $type) {
-  switch ($type) {
-    // Convert a vocabulary keyword into the data.
-    case 'utime_odd':
-      return $context->data->odd;
-    
-    case 'utime_even':
-      return $context->data->even . '_xxx';  
+    // For this simple item we'll just create our data by stripping non-alpha and
+    // adding '_from_simplecontext_argument' to it.
+    $context->data->description = preg_replace('/[^a-z]/i', '', $data);
+    $context->data->description .= '_from_simplecontext_argument';
+    $context->arg_length = strlen($context->argument);
+    return $context;
   }
 }
 
+function simplecontext_2_settings_form($conf, $external = FALSE) {
+  if (empty($conf)) {
+    $conf = array(
+      'sample_simplecontext_setting_2' => 'default simplecontext setting',
+    );
+  }
+  $form = array();
+  $form['sample_simplecontext_setting_2'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Setting for simplecontext 2'),
+    '#size' => 50,
+    '#description' => t('An example setting that could be used to configure a context 2'),
+    '#default_value' => $conf['sample_simplecontext_setting_2'],
+    '#prefix' => '<div class="clear-block no-float">',
+    '#suffix' => '</div>',
+  );
+  return $form;
+}
 
 
 
@@ -86,9 +110,25 @@ function adyax_test_context_utime_convert($context, $type) {
  * This is used to provide keywords from the context for use in a content type,
  * pane, etc.
  */
-function adyax_test_context_utime_convert_list() {
+function simplecontext_2_convert_list() {
   return array(
-    'utime_odd' => t('Unix time is odd, not even'),
-    'utime_even' => t('Unix time is even, not odd'),
+    'item1_2' => t('Item1_2'),
+    'item2_2' => t('Item2_2'),
+    'description' => t('Description'),
   );
 }
+
+/**
+ * Convert a context into a string to be used as a keyword by content types, etc.
+ */
+function simplecontext_2_convert($context, $type) {
+  switch ($type) {
+    case 'item1_2':
+      return $context->data->item1_2;
+    case 'item2_2':
+      return $context->data->item2_2;
+    case 'description':
+      return $context->data->description;
+  }
+}
+
