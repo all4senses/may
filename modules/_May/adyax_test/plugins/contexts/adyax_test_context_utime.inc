@@ -50,7 +50,7 @@ function adyax_test_context_utime_form($empty, $data = NULL, $conf = FALSE) {
   $context->argument = $data;
   // Make up a bogus context
   $context->data = new stdClass();
-  $context->data->utime = time();//t("Item1");
+  $context->data->odd = time();//t("Item1");
   //$context->data->item2 = t("Item2");
 
   // For this simple item we'll just create our data by stripping non-alpha and
@@ -69,7 +69,7 @@ function adyax_test_context_utime_convert($context, $type) {
   switch ($type) {
     // Convert a vocabulary keyword into the data.
     case 'odd':
-      return $context->data->item1 . time();
+      return $context->data->odd . '_xxx';
   }
 }
 
