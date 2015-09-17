@@ -19,7 +19,7 @@ $plugin = array(
   'default' => array(),
   //'settings form' => 'adyax_test_check_utime_ctools_access_settings',
   'summary' => 'adyax_test_check_utime_ctools_access_summary',
-  //'required context' => new ctools_context_required(t('User'), 'user'),
+  'required context' => new ctools_context_required(t('User'), 'user'),
   //'required context' => new ctools_context_required(t('adyax_test_context_utime'), 'adyax_test_context_utime'),  
 );
 
@@ -57,6 +57,7 @@ function adyax_test_check_utime_ctools_access_check($conf, $context) {
 //    return FALSE;
 //  }
 
+  dpm($conf);
   dpm($context);
   //$roles = array_keys($context->data->roles);
   //$roles[] = $context->data->uid ? DRUPAL_AUTHENTICATED_RID : DRUPAL_ANONYMOUS_RID;
