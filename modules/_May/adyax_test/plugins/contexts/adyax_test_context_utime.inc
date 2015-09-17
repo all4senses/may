@@ -21,7 +21,7 @@ $plugin = array(
   // Keyword to use for %substitution.
   'keyword'           => 'taxonomy_add',
   // The unique identifier for this context for use by required context checks.
-  'context name'      => 'taxonomy_term_add_form',
+  'context name'      => 'adyax_test_context_utime',// 'taxonomy_term_add_form',
   // Provides a list of items which are exposed as keywords.
   'convert list'      => array('vocabulary' => t('Taxonomy vocabulary 2')),
   // Convert keywords into data.
@@ -39,9 +39,9 @@ $plugin = array(
  */
 function context_example_create_taxonomy_term_add_form($empty, $data = NULL, $conf = FALSE) {
   // We want to create the taxonomy add form, so we need to add the form contexts too.
-  $context = new ctools_context(array('form', 'taxonomy_term_add_form'));
+  $context = new ctools_context(array('form', 'adyax_test_context_utime' /*'taxonomy_term_add_form'*/));
   // This is the plugin file name.
-  $context->plugin = 'taxonomy_term_add_form';
+  $context->plugin = 'adyax_test_context_utime';//'taxonomy_term_add_form';
 
   // Checking data from settings form.
   if (!empty($data['vocabulary'])) {
