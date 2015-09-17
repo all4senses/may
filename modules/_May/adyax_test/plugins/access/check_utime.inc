@@ -16,6 +16,7 @@ $plugin = array(
   'description' => t('Control access by unix time value.'),
   'callback' => 'adyax_test_check_utime_ctools_access_check',
   //'default' => array('rids' => array()),
+  'default' => array(),
   //'settings form' => 'adyax_test_check_utime_ctools_access_settings',
   'summary' => 'adyax_test_check_utime_ctools_access_summary',
   //'required context' => new ctools_context_required(t('User'), 'user'),
