@@ -53,9 +53,9 @@ function adyax_test_check_utime_ctools_access_settings_submit(&$form, &$form_sta
 function adyax_test_check_utime_ctools_access_check($conf, $context) {
   // As far as I know there should always be a context at this point, but this
   // is safe.
-  if (empty($context) || empty($context->data) || !isset($context->data->even)) {
-    return FALSE;
-  }
+//  if (empty($context) || empty($context->data) || !isset($context->data->even)) {
+//    return FALSE;
+//  }
 
   dpm($context);
   //$roles = array_keys($context->data->roles);
