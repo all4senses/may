@@ -20,7 +20,7 @@ $plugin = array(
   //'settings form' => 'adyax_test_check_utime_ctools_access_settings',
   'summary' => 'adyax_test_check_utime_ctools_access_summary',
   //'required context' => new ctools_context_required(t('User'), 'user'),
-  'required context' => new ctools_context_required(t('adyax_test_context_utime'), 'adyax_test_context_utime'),  
+  //'required context' => new ctools_context_required(t('adyax_test_context_utime'), 'adyax_test_context_utime'),  
 );
 
 /**
