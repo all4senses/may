@@ -23,7 +23,7 @@ $plugin = array(
   // The unique identifier for this context for use by required context checks.
   'context name'      => 'utime_odd_or_even',
   // Provides a list of items which are exposed as keywords.
-  'convert list'      => 'adyax_test_context_utime_convert_list', // array('odd' => t('Unix time is odd, not even')), //
+  'convert list'      => array('odd' => t('Unix time is odd, not even'), 'even' => t('Unix time is even, not odd'),), //'adyax_test_context_utime_convert_list', //
   // Convert keywords into data.
   'convert'           => 'adyax_test_context_utime_convert',
   // Placeholder form is used in panels preview, for example.
