@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Plugin to provide a taxonomy_term_add_form context
+ * Plugin to provide the unix time property contex.
  */
 
 /**
@@ -16,8 +16,6 @@ $plugin = array(
   'description'       => t('Unix time add or even'),
   // Function to create context.
   'context'           => 'adyax_test_context_utime_form',
-  // Plugin settings form.
-  //'edit form'         => 'adyax_test_context_utime_form_settings_form',
   // Keyword to use for %substitution.
   'keyword'           => 'utime',
   // The unique identifier for this context for use by required context checks.
@@ -26,42 +24,26 @@ $plugin = array(
   'convert list'      => 'adyax_test_context_utime_convert_list', //array('utime_odd' => t('Unix time is odd, not even'), 'utime_even' => t('Unix time is even, not odd'),), //
   // Convert keywords into data.
   'convert'           => 'adyax_test_context_utime_convert',
-  // Placeholder form is used in panels preview, for example.
-//  'placeholder form'  => array(
-//    '#type'         => 'textfield',
-//    '#description'  => t('Enter the taxonomy vocabulary.'),
-//  ),
 );
 
 /**
- * It's important to remember that $conf is optional here, because contexts
- * are not always created from the UI.
+ * Function to create context.
  */
 function adyax_test_context_utime_form($empty, $data = NULL, $conf = FALSE) {
   $context = new ctools_context('adyax_test_context_utime');
   $context->plugin = 'adyax_test_context_utime';
-
   
   if ($empty) {
     return $context;
   }
   
   $time = time();
-  
   $context->title = $data;
   $context->argument = $data;
-  // Make up a bogus context
   $context->data = new stdClass();
-  $context->data->time = time();//t("Item1");
+  $context->data->time = $time;
   $context->data->even = ($time % 2 == 0) ? TRUE : FALSE;
-  $context->data->description = $context->data->even ? 'Time is even' : 'Time is odd';
-  //$context->data->item2 = t("Item2");
-
-  // For this simple item we'll just create our data by stripping non-alpha and
-  // adding '_from_simplecontext_argument' to it.
-  //$context->data->description = preg_replace('/[^a-z]/i', '', $data);
-  //$context->data->description .= '_from_simplecontext_argument';
-  //$context->arg_length = strlen($context->argument);
+  $context->data->description = ($context->data->even ? 'Time is even' : 'Time is odd') . ' (' . $time . ')';
   return $context;
 }
 
@@ -81,8 +63,6 @@ function adyax_test_context_utime_convert($context, $type) {
       return $context->data->description;  
   }
 }
-
-
 
 
 /**
