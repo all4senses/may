@@ -795,7 +795,7 @@ function may_pages_sh_get() {
       
       if ($post['type'] == 'button_light') {
         
-          $data_to['lamp'] = str_replace('l-', '', $post['id']);
+          $data_to['target_1'] = str_replace('l-', '', $post['id']);
           switch ($post['class']) {
             case 'on':
               $data_to['op'] = 3;

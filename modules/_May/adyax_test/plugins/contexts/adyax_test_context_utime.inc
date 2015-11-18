@@ -13,7 +13,7 @@ $plugin = array(
   // Visible title.
   'title'             => t('Unix time property'),
   // Description of context.
-  'description'       => t('Unix time add or even'),
+  'description'       => t('Unix time odd or even'),
   // Function to create context.
   'context'           => 'adyax_test_context_utime_form',
   // Keyword to use for %substitution.

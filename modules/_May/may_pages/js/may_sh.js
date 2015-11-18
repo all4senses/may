@@ -106,7 +106,7 @@
                                                                                       $('#l-' + data.data.lamp + ' .description span').text(localdate);                                                                              
                                                                                       */
                                                                                       
-                                                                                      update_light_state_on_page(data.data.lamp, data_2.state);
+                                                                                      update_light_state_on_page(data.data.target_1, data_2.state);
                                                                                 }
                                                                                 
                                                                                 
