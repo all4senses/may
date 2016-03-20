@@ -1,5 +1,4 @@
 <?php
-// $Id: ckeditor_swf.install,v 1.2.2.1 2011/02/13 22:59:17 anrikun Exp $
 
 /**
  * Implementation of hook_install().

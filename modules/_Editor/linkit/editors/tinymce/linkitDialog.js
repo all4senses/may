@@ -2,25 +2,27 @@
  * @file
  * Linkit tinymce dialog helper.
  */
-
-Drupal.linkit.editorDialog.tinymce = {};
-
 (function ($) {
 
-Drupal.linkit.editorDialog.tinymce = {
+// Abort if Drupal.linkit is not defined.
+if (typeof Drupal.linkit === 'undefined') {
+  return ;
+}
+
+Drupal.linkit.registerDialogHelper('tinymce', {
   init : function() {},
 
   /**
    * Prepare the dialog after init.
    */
   afterInit : function () {
-    var linkitCache = Drupal.linkit.getLinkitCache(),
-        editor = linkitCache.editor, element, link;
+    var editor = Drupal.settings.linkit.currentInstance.editor;
+    var element, link;
 
-      // Restore the selection if the browser is IE.
-      if (tinymce.isIE) {
-        editor.selection.moveToBookmark(editor.windowManager.bookmark);
-      }
+    // Restore the selection if the browser is IE.
+    if (tinymce.isIE) {
+      editor.selection.moveToBookmark(editor.windowManager.bookmark);
+    }
 
     // If we have selected a link element, lets populate the fields in the
     // dialog with the values from that link element.
@@ -29,15 +31,21 @@ Drupal.linkit.editorDialog.tinymce = {
         path: editor.dom.getAttrib(element, 'href'),
         attributes: {}
       };
+
+      // Get all attributes that have fields in the modal.
+      var additionalAttributes = Drupal.linkit.additionalAttributes();
+
       // Add attributes to the link object, but only those that are enabled in Linkit.
-      tinymce.each(Drupal.linkit.dialog.additionalAttributes(), function(attribute) {
+      tinymce.each(additionalAttributes, function(attribute) {
         var value = editor.dom.getAttrib(element, attribute);
         if (value) {
           link.attributes[attribute] = value;
         }
       });
     }
-    Drupal.linkit.dialog.populateFields(link);
+
+    // Populate the fields.
+    Drupal.linkit.populateFields(link);
   },
 
   /**
@@ -47,9 +55,8 @@ Drupal.linkit.editorDialog.tinymce = {
    *   The link object.
    */
   insertLink : function(data) {
-    var linkitCache = Drupal.linkit.getLinkitCache(),
-        editor = linkitCache.editor, 
-        element = editor.dom.getParent(editor.selection.getNode(), 'A');
+    var editor = Drupal.settings.linkit.currentInstance.editor,
+    element = editor.dom.getParent(editor.selection.getNode(), 'A');
 
     // Restore the selection if the browser is IE.
     if (tinymce.isIE) {
@@ -59,10 +66,16 @@ Drupal.linkit.editorDialog.tinymce = {
     // Set undo begin point.
     editor.execCommand("mceBeginUndoLevel");
     data.attributes.href = data.path;
-
     // No link element selected, create a new anchor element.
     if (element == null) {
-      editor.execCommand("mceInsertLink", false, data.attributes);
+      // If there is no selection, lets inser a new element.
+      if (editor.selection.isCollapsed()) {
+        var content = (Drupal.settings.linkit.currentInstance.linkContent) ? Drupal.settings.linkit.currentInstance.linkContent : data.path;
+        editor.execCommand('mceInsertContent', false,
+          editor.dom.createHTML('a', data.attributes, content));
+      } else {
+        editor.execCommand("mceInsertLink", false, data.attributes);
+      }
     }
     // We are editing an existing link, so just overwrite the attributes.
     else {
@@ -84,6 +97,6 @@ Drupal.linkit.editorDialog.tinymce = {
     // Set undo end point.
     editor.execCommand("mceEndUndoLevel");
   }
-};
+});
 
 })(jQuery);

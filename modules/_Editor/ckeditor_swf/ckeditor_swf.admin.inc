@@ -1,5 +1,4 @@
 <?php
-// $Id: ckeditor_swf.admin.inc,v 1.3.4.1 2011/02/13 22:59:17 anrikun Exp $
 
 /**
  * @file

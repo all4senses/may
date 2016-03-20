@@ -1,5 +1,4 @@
 <?php
-// $Id: ckeditor_swf.module,v 1.12.2.1 2011/02/13 22:59:17 anrikun Exp $
 
 /**
  * @file
@@ -60,21 +59,17 @@ function ckeditor_swf_getinfo() {
     }
   }
   else {
-    // Attempt to retrieve info using getID3
-    $filename = ckeditor_swf_filename($url);
-    if ($filename && ckeditor_swf_getid3_load()) {
-      $getid3 = new getID3();
-      $info = $getid3->analyze($filename);
-      if (isset($info['mime_type'], $info['fileformat'])) {
-        $mime = $info['mime_type'];
-        $format = $info['fileformat'];
-        $prefix = substr($mime, 0, 6);
-        if (isset($info['video']['resolution_x'], $info['video']['resolution_y']) && (($prefix == 'video/') || ($mime = 'video/'. $format))) {
-          $output = '{"mime":"'. $mime .'", "width":'. $info['video']['resolution_x'] .', "height":'. $info['video']['resolution_y'] .'}';
-        }
-        elseif (isset($info['audio']) && (($prefix == 'audio/') || ($mime = 'audio/'. $format))) {
-          $output = '{"mime":"'. $mime .'"}';
-        }
+    // Attempt to retrieve info using getID3.
+    $info = ckeditor_swf_getid3_analyze($url);
+    if (isset($info['mime_type'], $info['fileformat'])) {
+      $mime = $info['mime_type'];
+      $format = $info['fileformat'];
+      $prefix = substr($mime, 0, 6);
+      if (isset($info['video']['resolution_x'], $info['video']['resolution_y']) && (($prefix == 'video/') || ($mime = 'video/'. $format))) {
+        $output = '{"mime":"'. $mime .'", "width":'. $info['video']['resolution_x'] .', "height":'. $info['video']['resolution_y'] .'}';
+      }
+      elseif (isset($info['audio']) && (($prefix == 'audio/') || ($mime = 'audio/'. $format))) {
+        $output = '{"mime":"'. $mime .'"}';
       }
     }
   }
@@ -84,26 +79,48 @@ function ckeditor_swf_getinfo() {
 }
 
 /**
- * Implementation of hook_form_alter().
+ * Implementation of hook_element_info_alter().
  */
-function ckeditor_swf_form_alter(&$form, &$form_state) {
-  $form['#after_build'][] = 'ckeditor_swf_process_form';
+function ckeditor_swf_element_info_alter(&$type) {
+  $type['text_format']['#pre_render'][] = 'ckeditor_swf_text_format_pre_render';
+  $type['form']['#post_render'][] = 'ckeditor_swf_form_post_render';
 }
 
-function ckeditor_swf_process_form(&$form, &$form_state) {
-  static $added = FALSE;
-  if (!$added && ($js = drupal_add_js()) && isset($js['settings']['data'])) {
+function ckeditor_swf_text_format_pre_render($element) {
+  _ckeditor_swf_has_text_format(TRUE);
+  return $element;
+}
+
+function _ckeditor_swf_has_text_format($set = FALSE) {
+  static $has = FALSE;
+  if (!$set) {
+    return $has;
+  }
+  $has = TRUE;
+}
+
+function ckeditor_swf_form_post_render($content, $element) {
+  static $added;
+  if (!isset($added) && _ckeditor_swf_has_text_format() && ($js = drupal_add_js()) && isset($js['settings']['data'])) {
     $settings = call_user_func_array('array_merge_recursive', $js['settings']['data']);
     if (isset($settings['ckeditor']) || isset($settings['wysiwyg']['configs']['ckeditor'])) {
+      $added = TRUE;
       drupal_add_js(array('ckeditor_swf' => array(
         'module_path' => base_path() . drupal_get_path('module', 'ckeditor_swf'),
         'getinfo_path' => url('ckeditor_swf/getinfo'),
         'players' => ckeditor_swf_players(),
+        'lang' => array(
+          'name' => t('Name'),
+          'value' => t('Value'),
+          'remove' => t('Remove'),
+          'invalid_width' => t('The specified width is invalid.'),
+          'invalid_height' => t('The specified height is invalid.'),
+          'preview' => t('Preview'),
+        ),
       )), 'setting');
-      $added = TRUE;
     }
   }
-  return $form;
+  return $content;
 }
 
 /**
@@ -212,7 +229,7 @@ function _ckeditor_swf_filter_process($text, $filter, $format, $langcode, $cache
       $params = $element['params'];
       $swf_url = $params['movie'];
       unset($params['movie']);
-      $js .= sprintf('swfobject.embedSWF("%s", "%s", "%s", "%s", "%s", null, null, %s, %s);', $swf_url, $id, $element_attributes['width'], $element_attributes['height'], $version, drupal_to_js($params), drupal_to_js($attributes)) ."\n";
+      $js .= sprintf('swfobject.embedSWF("%s", "%s", "%s", "%s", "%s", null, null, %s, %s);', $swf_url, $id, $element_attributes['width'], $element_attributes['height'], $version, drupal_json_encode($params), drupal_json_encode($attributes)) ."\n";
     }
   }
   else {
@@ -262,7 +279,7 @@ function ckeditor_swf_parse_attributes($tag) {
   unset($matches);
   if (preg_match_all('`\b([a-z]+)="(.*?)"`is', $tag, $matches, PREG_SET_ORDER)) {
     foreach ($matches as $match) {
-      $attributes[strtolower($match[1])] = $match[2];
+      $attributes[strtolower($match[1])] = decode_entities($match[2]);
     }
   }
   return $attributes;
@@ -271,7 +288,7 @@ function ckeditor_swf_parse_attributes($tag) {
 function ckeditor_swf_attributes($attributes) {
   $output = '';
   foreach ($attributes as $name => $value) {
-    $output .= ' '.$name.'="'.$value.'"';
+    $output .= ' '. $name .'="'. check_plain($value) .'"';
   }
   return $output;
 }
@@ -279,7 +296,7 @@ function ckeditor_swf_attributes($attributes) {
 function ckeditor_swf_params($params) {
   $output = '';
   foreach ($params as $name => $value) {
-    $output .= '<param name="'.$name.'" value="'.$value.'" />'."\n";
+    $output .= '<param name="'. $name .'" value="'. check_plain($value) .'" />'."\n";
   }
   return $output;
 }
@@ -289,10 +306,11 @@ function ckeditor_swf_trim($str) {
 }
 
 function ckeditor_swf_filename($absolute_url) {
-  global $base_url;
-  $prefix = $base_url .'/';
+  $prefix = $GLOBALS['base_url'] .'/';
   $len = strlen($prefix);
-  if (substr($absolute_url, 0, $len) != $prefix) return FALSE;
+  if (substr($absolute_url, 0, $len) != $prefix) {
+    return FALSE;
+  }
   $uri = substr($absolute_url, $len);
 
   $args = explode('/', $uri);
@@ -364,6 +382,17 @@ function ckeditor_swf_init() {
 }
 
 /**
+ * Implementation of hook_ckeditor_plugin().
+ */
+function ckeditor_swf_ckeditor_plugin() {
+  return array('ckeditor_swf' => array(
+    'name' => 'swf',
+    'desc' => t('CKEditor SWF - Enhanced Flash embedding plugin'),
+    'path' => drupal_get_path('module', 'ckeditor_swf') .'/plugins/swf/',
+  ));
+}
+
+/**
  * Implementation of hook_wysiwyg_plugin().
  */
 function ckeditor_swf_wysiwyg_plugin($editor, $version) {
@@ -390,4 +419,28 @@ function ckeditor_swf_players() {
   }
 
   return $players;
+}
+
+function ckeditor_swf_getid3_analyze($url) {
+  $filename = ckeditor_swf_filename($url);
+
+  if (!$filename) {
+    $scheme = file_uri_scheme($url);
+    if ($scheme == 'http' || $scheme == 'https') {
+      $temp_name = drupal_tempnam('temporary://', 'file');
+      $contents = file_get_contents($url, FALSE, NULL, -1, 32768);
+      if ($contents && file_put_contents($temp_name, $contents)) {
+        $filename = drupal_realpath($temp_name);
+      }
+    }
+  }
+
+  if ($filename && ckeditor_swf_getid3_load()) {
+    $getid3 = new getID3();
+    $info = $getid3->analyze($filename);
+  }
+  if (isset($temp_name)) {
+    file_unmanaged_delete($temp_name);
+  }
+  return isset($info) ? $info : NULL;
 }

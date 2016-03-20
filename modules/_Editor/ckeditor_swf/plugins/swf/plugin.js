@@ -1,4 +1,3 @@
-// $Id: plugin.js,v 1.7.2.1 2011/02/13 22:59:17 anrikun Exp $
 
 /**
  * @file
@@ -139,6 +138,22 @@
     }
   };
 
+  var convertSrc = function(src) {
+    var match;
+    match = /^http:\/\/([\w\.\/]*?)\?([^#]+)/.exec(src);
+    if (match && (match[1] == 'www.youtube.com/watch')) {
+      match = /\bv=([-\w]+)/i.exec(match[2]);
+      if (match) {
+        return 'http://www.youtube.com/v/' + match[1];
+      }
+    }
+    match = /^http:\/\/youtu.be\/([-\w]+)/i.exec(src);
+    if (match) {
+      return 'http://www.youtube.com/v/' + match[1];
+    }
+    return src;
+  };
+
 
 
   // load info about the source file and update dialog accordingly.
@@ -147,6 +162,8 @@
 
     var src = dialog.srcObj.getValue();
     if (dialog.srcInfo && (dialog.srcInfo.src == src)) return;
+
+    src = convertSrc(src);
 
     dialog.srcInfo = {src: src, isValid: false};
     if (src) {
@@ -167,6 +184,10 @@
 
           if (data.mime == 'application/x-shockwave-flash') {
             dialog.srcInfo.isValid = true;
+            if (dialog.srcObj.getValue() != src) {
+              dialog.srcObj.setValue(src);
+              dialog.srcObj.setInitValue();
+            }
           }
           else if (Drupal.settings.ckeditor_swf.players[data.mime]) {
             dialog.srcInfo.isValid = true;
@@ -262,7 +283,7 @@
     var row = $('tr:last', tbody);
     var inputs = $('input', row);
     var a = $('a.remove', row);
-    a.attr('title', element.getDialog().getParentEditor().lang.select.btnDelete);
+    a.attr('title', Drupal.settings.ckeditor_swf.lang.remove);
 
     if (name) {
       inputs.eq(0).val(name);
@@ -373,7 +394,7 @@
 
     init: function(editor, pluginPath) {
       CKEDITOR.on('dialogDefinition', function(e) {
-        if ((e.editor != editor) || (e.data.name != 'flash')) return;
+        if ((e.editor != editor) || (e.data.name != 'flash') || !Drupal.settings.ckeditor_swf) return;
 
         // Overrides definition.
         var definition = e.data.definition;
@@ -540,7 +561,7 @@
         content = getById(infoTab.elements, 'width', 'children');
         var intRegex = /^\d+$/;
         var dimRegex = /^[1-9]\d*%?$/;
-        content.validate = CKEDITOR.dialog.validate.regex(dimRegex, editor.lang.flash.validateWidth),
+        content.validate = CKEDITOR.dialog.validate.regex(dimRegex, Drupal.settings.ckeditor_swf.lang.invalid_width),
         content.onLoad = function() {
           var dialog = this.getDialog();
           dialog.widthObj = this;
@@ -581,7 +602,7 @@
 
         // Overrides height definition.
         content = getById(infoTab.elements, 'height', 'children');
-        content.validate = CKEDITOR.dialog.validate.regex(dimRegex, editor.lang.flash.validateHeight),
+        content.validate = CKEDITOR.dialog.validate.regex(dimRegex, Drupal.settings.ckeditor_swf.lang.invalid_height),
         content.onLoad = function() {
           var dialog = this.getDialog();
           dialog.heightObj = this;
@@ -693,7 +714,7 @@
 
         // Overrides preview definition.
         content = getById(infoTab.elements, 'preview', 'children');
-        content.html = '<div>' + CKEDITOR.tools.htmlEncode(editor.lang.preview) + '<br />'
+        content.html = '<div>' + Drupal.checkPlain(Drupal.settings.ckeditor_swf.lang.preview) + '<br />'
           + '<div id="FlashPreviewBox" style="padding:0;"><div></div></div></div>';
 
         // Add base param textfield
@@ -732,8 +753,8 @@
             id: 'flashvarsHtml',
             type: 'html',
             html: '<table style="width:100%;"><thead><tr>'
-              + '<th style="width:20%;">' + editor.lang.textfield.name + '</th>'
-              + '<th style="width:75%;">' + editor.lang.textfield.value + '</th>'
+              + '<th style="width:20%;">' + Drupal.checkPlain(Drupal.settings.ckeditor_swf.lang.name) + '</th>'
+              + '<th style="width:75%;">' + Drupal.checkPlain(Drupal.settings.ckeditor_swf.lang.value) + '</th>'
               + '<th style="width: 5%;">&nbsp;</th></tr></thead>'
               + '<tbody></tbody></table>',
             setup: function(objectNode, embedNode, paramMap, fakeImage) {
