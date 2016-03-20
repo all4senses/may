@@ -40,9 +40,14 @@ function _lazyloader_filter_filter_process($text) {
   // current lazyloader settings
   $settings = variable_get('lazyloader');
 
+  
+  
   // if lazyloading is enabled, use lazy loading
-  if ($settings['enabled']) return preg_replace_callback('/<img\b[^>]*>/', '_lazyloader_filter_process_matches', $text);
-
+  // a4s fix
+  // https://www.drupal.org/node/2104247
+  ////if ($settings['enabled']) return preg_replace_callback('/<img\b[^>]*>/', '_lazyloader_filter_process_matches', $text);
+  if (_lazy_loader_enabled()) return preg_replace_callback('/<img\b[^>]*>/', '_lazyloader_filter_process_matches', $text);
+  
   // not using lazy loading
   return $text;
 }
@@ -75,7 +80,10 @@ function _lazyloader_filter_process_matches($matches) {
  */
 function _lazyloader_filter_admin_submit($form, $form_state) {
   // we need to flush the field cache if things change
-  if ($form['lazyloader']['enabled']['#default_value'] != $form['lazyloader']['enabled']['#value']) {
+  // a4s fix
+  // https://www.drupal.org/node/2104247
+  //if ($form['lazyloader']['enabled']['#default_value'] != $form['lazyloader']['enabled']['#value']) {
+  if ($form['lazyloader_enabled']['#default_value'] != $form['lazyloader_enabled']['#value']) {
     cache_clear_all('*', 'cache_field', TRUE);
   }
 }
