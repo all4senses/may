@@ -57,7 +57,7 @@ function ctools_plugin_example_context_create_simplecontext($empty, $data = NULL
       // For this simple item we'll just create our data by stripping non-alpha and
       // adding '_from_configuration_item_1' to it.
       $context->data->item1 = t("Item1");
-      $context->data->item2 = time(); //t("Item2");
+      $context->data->item2 = t("Item2");
       $context->data->description = preg_replace('/[^a-z]/i', '', $data['sample_simplecontext_setting']);
       $context->data->description .= '_from_configuration_sample_simplecontext_setting';
       $context->title = t("Simplecontext context from config");
@@ -71,7 +71,7 @@ function ctools_plugin_example_context_create_simplecontext($empty, $data = NULL
     $context->argument = $data;
     // Make up a bogus context
     $context->data = new stdClass();
-    $context->data->item1 = time();//t("Item1");
+    $context->data->item1 = t("Item1");
     $context->data->item2 = t("Item2");
 
     // For this simple item we'll just create our data by stripping non-alpha and
