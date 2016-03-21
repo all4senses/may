@@ -45,8 +45,8 @@ if(typeof(CKEDITOR) !== 'undefined') {
 
             //{ name : 'Table padding'	, element : 'table', styles : { 'border-collapse' : 'separate', 'border-spacing' : '35px' } },
             
-            { name : 'Marker: Yellow'	, element : 'span', styles : { 'background-color' : 'Red' } },
-            { name : 'Marker: Green'	, element : 'span', styles : { 'background-color' : 'Lime' } },
+            { name : 'Marker: Yellow---'	, element : 'span', styles : { 'background-color' : 'Red' } },
+            { name : 'Marker: Green---'	, element : 'span', styles : { 'background-color' : 'Lime' } },
 
             { name : 'Big'				, element : 'big' },
             { name : 'Small'			, element : 'small' },
