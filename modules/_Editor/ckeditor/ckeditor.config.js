@@ -36,7 +36,7 @@ CKEDITOR.editorConfig = function(config) {
   
   //config.extraAllowedContent = '*[*];*{*}';
   
-  config.extraAllowedContent = 'a[*];div[*]';
+  config.extraAllowedContent = 'a[*];div[*];img[*]';
   
   
   //config.allowedContent = 'a[*]{*}(*);img[*]';
