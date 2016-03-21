@@ -29,7 +29,7 @@ CKEDITOR.editorConfig = function(config) {
   ////config.extraPlugins = 'oembed,widget,dragresize';
   config.extraPlugins = 'tableresize,tabletools,colordialog,dialog,dialogadvtab,div,dialogui,textselection,codemirror,sourcedialog,imagepaste'; //,showborders
   
-  
+  config.extraAllowedContent = 'div(*)';
   
   config.codemirror = {
 
