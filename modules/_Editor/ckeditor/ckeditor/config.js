@@ -11,5 +11,5 @@ CKEDITOR.editorConfig = function( config ) {
   //config.allowedContent = 'a[*]{*}(*)';
   config.allowedContent = 'a[*]';
   //config.extraAllowedContent = 'a[*]{*}(*)';
-  //config.extraAllowedContent = 'a[*]';
+  config.extraAllowedContent = 'a[*]';
 };
