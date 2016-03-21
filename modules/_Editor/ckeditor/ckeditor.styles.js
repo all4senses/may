@@ -47,6 +47,9 @@ if(typeof(CKEDITOR) !== 'undefined') {
             
             { name : 'Marker: Yellow---'	, element : 'span', styles : { 'background-color' : 'Red' } },
             { name : 'Marker: Green---'	, element : 'span', styles : { 'background-color' : 'Lime' } },
+            
+            { name : 'Div: Yellow---'	, element : 'div', styles : { 'background-color' : 'Red' } },
+            { name : 'Div: Green---'	, element : 'div', styles : { 'background-color' : 'Lime' } },
 
             { name : 'Big'				, element : 'big' },
             { name : 'Small'			, element : 'small' },
