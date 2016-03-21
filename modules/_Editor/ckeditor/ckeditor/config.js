@@ -8,6 +8,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
   
-  config.allowedContent = 'a[*]{*}(*)';
-  config.extraAllowedContent = 'a[*]{*}(*)';
+  //config.allowedContent = 'a[*]{*}(*)';
+  //config.extraAllowedContent = 'a[*]{*}(*)';
+  config.extraAllowedContent = 'a[*]';
 };
