@@ -9,5 +9,5 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.uiColor = '#AADC6E';
   
   //config.allowedContent = 'a[*]{*}(*)';
-  //config.extraAllowedContent = 'a[*]{*}(*)';
+  config.extraAllowedContent = 'a[*]{*}(*)';
 };
