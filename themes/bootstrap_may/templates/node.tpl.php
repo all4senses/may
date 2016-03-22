@@ -78,6 +78,7 @@
  *
  * @ingroup templates
  */
+dpm($node);
 ?>
 yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy yyyyyyyyyyyyyyyyyyyyy
 <div class="node-wrapper-outer">
