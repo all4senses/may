@@ -78,7 +78,6 @@
  *
  * @ingroup templates
  */
-dpm($node);
 ?>
 yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy yyyyyyyyyyyyyyyyyyyyy
 <div class="node-wrapper-outer" <?php echo (empty($node->field_background_color['und'][0]['jquery_colorpicker']) ? '' : ' style="background-color: #' . $node->field_background_color['und'][0]['jquery_colorpicker'] . '";');?>>
