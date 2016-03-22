@@ -1,0 +1,15 @@
+/* line 1, ../assets/sass/custom.scss */
+.test {
+  color: blue;
+}
+/* line 3, ../assets/sass/custom.scss */
+.test .test_sub {
+  color: red;
+}
+/* line 7, ../assets/sass/custom.scss */
+.test.test_sub2 {
+  float: right;
+  color: green;
+  display: flex;
+  flex: 0;
+}

@@ -1,4 +1,4 @@
-http_path = "/sites/all/themes/zp_bootstrap"
+http_path = "/sites/all/themes/bootstrap_may"
 css_dir = "css"
 sass_dir = "assets/sass"
 images_dir = "assets/images"
