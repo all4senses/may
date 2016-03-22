@@ -1,0 +1,18 @@
+/* line 1, ../assets/sass/custom.scss */
+.test {
+  color: blue;
+}
+/* line 3, ../assets/sass/custom.scss */
+.test .test_sub {
+  color: red;
+}
+/* line 7, ../assets/sass/custom.scss */
+.test.test_sub2 {
+  float: left;
+  color: green;
+  display: flex;
+  flex: 1;
+}
+:fullscreen a {
+    display: flex
+}
