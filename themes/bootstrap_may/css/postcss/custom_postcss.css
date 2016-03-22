@@ -10,8 +10,12 @@
 .test.test_sub2 {
   float: right;
   color: green;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex: 0;
+  -webkit-flex: 0;
+      -ms-flex: 0;
+          flex: 0;
 }
 
 /* line 22, ../assets/sass/custom.scss */
@@ -48,3 +52,5 @@
     width: 100%;
   }
 }
+
+/*# sourceMappingURL=custom_postcss.css.map */

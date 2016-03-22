@@ -118,7 +118,7 @@ module.exports = function (grunt) {
                     // dest: 'css/custom_postcss.css'
                     // Works.
                     files: {
-                        /////'css/postcss/custom_postcss.css': 'css/custom.css', // This will not be actually used, cause it's added to style.css (below)
+                        'css/postcss/custom_postcss.css': 'css/custom.css', // This will not be actually used, cause it's added to style.css (below)
                         'css/postcss/style_postcss.css': 'css/style.css'
                     }
                   },

@@ -1,12 +1,6 @@
 @import "variables";
 @import "../../bootstrap/stylesheets/bootstrap/mixins";
 
-// Reset and dependencies
-@import "../../bootstrap/stylesheets/bootstrap/normalize";
-@import "../../bootstrap/stylesheets/bootstrap/print";
-@import "../../bootstrap/stylesheets/bootstrap/glyphicons";
-
-
 .test {
   color: blue;
  .test_sub {
@@ -21,7 +15,7 @@
 	}
 }
 
-// Container widths 
+// Container widths
 //
 // Set the container width, and override it for fixed navbars in media queries.
 
