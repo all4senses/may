@@ -987,3 +987,22 @@ div.add-or-remove-shortcuts {
   -webkit-border-radius: 8px;
   border-radius: 8px;
 }
+
+
+
+
+/* a4s */
+/* line 56, ../assets/sass/custom.scss */
+.jquery_colorpicker .inner_wrapper {
+  width: 100% !important;
+  overflow: hidden;
+  height: 200px !important;
+  background: none !important;
+}
+/* line 62, ../assets/sass/custom.scss */
+.jquery_colorpicker .color_picker {
+  height: 300px !important;
+  background-image: none !important;
+  position: static !important;
+  width: 100% !important;
+}
