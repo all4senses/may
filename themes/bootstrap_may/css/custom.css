@@ -48,3 +48,25 @@
     width: 100%;
   }
 }
+
+/* line 37, ../assets/sass/custom.scss */
+.main-container {
+  padding: 0;
+}
+
+/* line 41, ../assets/sass/custom.scss */
+.row {
+  margin: 0;
+}
+
+/* line 49, ../assets/sass/custom.scss */
+.node-wrapper-outer {
+  margin: 0 -15px 0 -15px;
+  background-color: bisque;
+}
+
+/* line 54, ../assets/sass/custom.scss */
+article {
+  width: 768px;
+  margin: auto;
+}
