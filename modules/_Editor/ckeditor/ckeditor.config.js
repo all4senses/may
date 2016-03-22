@@ -31,7 +31,7 @@ CKEDITOR.editorConfig = function(config) {
   /////config.extraPlugins = 'tableresize,tabletools,colordialog,dialog,dialogadvtab,div,dialogui,textselection,codemirror,sourcedialog,imagepaste'; //,showborders, ,widget,image2
  
   // Works!
-  config.extraAllowedContent = 'a[*];div[*];img[*];p[*]';
+  config.extraAllowedContent = 'a[*];div[*];img[*];p[*]{*}(*)';
   
   config.codemirror = {
 
