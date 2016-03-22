@@ -36,22 +36,35 @@
 
 .main-container {
   padding: 0;
+  .row {
+    margin: 0;
+    .row-section {
+      //padding: 0; 
+      .node-wrapper-outer {
+        margin: 0 -15px 0 -15px;
+        background-color: bisque;
+        article {
+          width: 768px;
+          margin: auto;
+        }
+      }
+    }
+  }
 }
 
-.row {
-  margin: 0;
+.jquery_colorpicker {
+  .inner_wrapper {
+    width: 100% !important;
+    overflow: hidden;
+    height: 200px !important;
+    background: none !important;
+  }
+  .color_picker{
+    height: 300px !important;
+    background-image: none !important;
+    position: static !important;
+    width: 100% !important;
+  }
 }
 
-.row-section {
-  //padding: 0; 
-}
 
-.node-wrapper-outer {
-  margin: 0 -15px 0 -15px;
-  background-color: bisque;
-}
-
-article {
-  width: 768px;
-  margin: auto;
-}

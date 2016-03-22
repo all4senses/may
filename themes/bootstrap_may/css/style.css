@@ -8846,20 +8846,32 @@ button.close {
 .main-container {
   padding: 0;
 }
-
-/* line 41, ../assets/sass/custom.scss */
-.row {
+/* line 39, ../assets/sass/custom.scss */
+.main-container .row {
   margin: 0;
 }
-
-/* line 49, ../assets/sass/custom.scss */
-.node-wrapper-outer {
+/* line 43, ../assets/sass/custom.scss */
+.main-container .row .row-section .node-wrapper-outer {
   margin: 0 -15px 0 -15px;
   background-color: bisque;
 }
-
-/* line 54, ../assets/sass/custom.scss */
-article {
+/* line 46, ../assets/sass/custom.scss */
+.main-container .row .row-section .node-wrapper-outer article {
   width: 768px;
   margin: auto;
+}
+
+/* line 56, ../assets/sass/custom.scss */
+.jquery_colorpicker .inner_wrapper {
+  width: 100% !important;
+  overflow: hidden;
+  height: 200px !important;
+  background: none !important;
+}
+/* line 62, ../assets/sass/custom.scss */
+.jquery_colorpicker .color_picker {
+  height: 300px !important;
+  background-image: none !important;
+  position: static !important;
+  width: 100% !important;
 }

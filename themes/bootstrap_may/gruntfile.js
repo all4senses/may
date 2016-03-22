@@ -68,6 +68,8 @@ module.exports = function (grunt) {
                   } // options
               } // dev
           }, // compass
+          
+          // No need to launch autoprefixer this, as it will be called from postcss below
           /*
           autoprefixer: {
               prod: {
