@@ -998,6 +998,7 @@ div.add-or-remove-shortcuts {
   overflow: hidden;
   height: 200px !important;
   background: none !important;
+  border: 1px solid gray;
 }
 /* line 62, ../assets/sass/custom.scss */
 .jquery_colorpicker .color_picker {

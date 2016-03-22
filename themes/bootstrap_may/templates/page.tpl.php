@@ -133,7 +133,7 @@
       </aside>  <!-- /#sidebar-first -->
     <?php endif; ?>
 
-    <section<?php dpm($content_column_class); print $content_column_class . ' row-section'; ?>>
+    <section<?php print $content_column_class . ' id="row-main-column"'; ?>>
       <?php if (!empty($page['highlighted'])): ?>
         <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
       <?php endif; ?>

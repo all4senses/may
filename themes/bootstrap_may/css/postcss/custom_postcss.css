@@ -62,29 +62,33 @@
   margin: 0;
 }
 /* line 43, ../assets/sass/custom.scss */
-.main-container .row .row-section .node-wrapper-outer {
+.main-container .row #row-main-column .node-wrapper-outer {
   margin: 0 -15px 0 -15px;
   background-color: bisque;
 }
 /* line 46, ../assets/sass/custom.scss */
-.main-container .row .row-section .node-wrapper-outer article {
+.main-container .row #row-main-column .node-wrapper-outer article {
   width: 768px;
   margin: auto;
 }
 
-/* line 56, ../assets/sass/custom.scss */
-.jquery_colorpicker .inner_wrapper {
-  width: 100% !important;
-  overflow: hidden;
-  height: 200px !important;
-  background: none !important;
+/*
+ // Moved to the Seven (admin theme) style.css 
+.jquery_colorpicker {
+  .inner_wrapper {
+    width: 100% !important;
+    overflow: hidden;
+    height: 200px !important;
+    background: none !important;
+    border: 1px solid gray;
+  }
+  .color_picker{
+    height: 300px !important;
+    background-image: none !important;
+    position: static !important;
+    width: 100% !important;
+  }
 }
-/* line 62, ../assets/sass/custom.scss */
-.jquery_colorpicker .color_picker {
-  height: 300px !important;
-  background-image: none !important;
-  position: static !important;
-  width: 100% !important;
-}
+*/
 
 /*# sourceMappingURL=custom_postcss.css.map */
