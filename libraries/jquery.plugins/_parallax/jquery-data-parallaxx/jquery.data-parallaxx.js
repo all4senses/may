@@ -57,6 +57,14 @@
         var optionsArr = [],
             dataOptions = this.data("parallaxx"),
             jsOptions = this.data("parallax-js");
+
+// a4s, replace ' with " if it's wrongly used in data-* attribute... 
+// We need to have '{ "name": "John" }' and NOT  "{ 'name': 'John' }"
+if (typeof dataOptions != "object") {
+	dataOptions = dataOptions.replace(/'/g, '"');
+	dataOptions = jQuery.parseJSON(dataOptions);
+}
+
         typeof dataOptions != "undefined" || (dataOptions = {});
         typeof dataOptions == "object" || console.error("Unable to parse data-parallax attribute "+getSelector(this));
         typeof jsOptions != "undefined" || (jsOptions = {});
