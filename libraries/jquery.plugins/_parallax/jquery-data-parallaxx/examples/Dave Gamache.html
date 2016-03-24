@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://davegamache.com/parallax/ -->
+<html class="wf-brandongrotesque-n3-inactive wf-brandongrotesque-n9-inactive wf-inactive">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Dave Gamache Parallax Demo recreated</title>
+    <meta name="description" content="Personal site of designer Dave Gamache.">
+    <meta name="author" content="Dave Gamache | @dhg">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Dave%20Gamache_files/base.css">
+    <link rel="stylesheet" href="Dave%20Gamache_files/main.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="container-inner">
+      <div class="background"></div>
+      <div id="intro-scene" class="scene" style="height:100vh" data-parallax='{"pin":"#intro"}'>
+          <section id="intro">
+              <h1 class="name" data-parallax='{"y":-140,"opacity":0,"duration":"100vh","start":"#intro-scene"}'>Parallax Demo</h1>
+              <h2 class="byline" data-parallax='{"y":-110,"opacity":0,"duration":"100vh","start":"#intro-scene"}'>An experiment by Dave Gamache</h2>
+          </section>
+      </div>
+      <div id="explosion-scene" class="scene" style="height: 400vh" data-parallax='{"pin":"#explosion"}'>
+          <section id="explosion">
+              <p class="explosion-byline" data-parallax='[{"y":"-25vh","opacity":{"to":1,"duration":"85vh"},"duration":"150vh","start":"#explosion-scene","trigger":0},{"y":"-40vh","opacity":0,"start":"#explosion-scene","trigger":"-300%","duration":"100vh"}]'>Here's an example of 16 elements scaling, fading and moving at once.</p>
+              <ul id="domExplosionList" data-parallax='{"y":"-70vh","opacity":1,"duration":"150vh","start":"#explosion-scene","trigger":0}'>
+                  <li class="dom-explosion-item dei-1" data-parallax='{"y":"-15vh","x":"-10vw","opacity":0,"scale":2,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-2" data-parallax='{"y":"-5vh","x":"-4vw","opacity":0,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-3" data-parallax='{"y":"-9vh","x":"2vw","opacity":0,"scale":1.2,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-4" data-parallax='{"y":"-17vh","x":"8vw","opacity":0,"scale":1.5,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-5" data-parallax='{"y":"-2vh","x":"-15vw","opacity":0,"scale":2,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-6" data-parallax='{"y":"-1vh","x":"-7vw","opacity":0,"scale":1.2,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-7" data-parallax='{"y":"-4vh","x":"2vw","opacity":0,"scale":1.1,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-8" data-parallax='{"y":"-3vh","x":"12vw","opacity":0,"scale":1.8,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-9" data-parallax='{"y":"3vh","x":"-12vw","opacity":0,"scale":1.5,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-10" data-parallax='{"y":"5vh","x":"-4vw","opacity":0,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-11" data-parallax='{"y":"8vh","x":"6vw","opacity":0,"scale":1.4,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-12" data-parallax='{"y":"1vh","x":"20vw","opacity":0,"scale":1.9,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-13" data-parallax='{"y":"8vh","x":"-12vw","opacity":0,"scale":1.8,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-14" data-parallax='{"y":"4vh","x":"-3vw","opacity":0,"scale":1.3,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-15" data-parallax='{"y":"14vh","x":"5vw","opacity":0,"scale":1.7,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+                  <li class="dom-explosion-item dei-16" data-parallax='{"y":"6vh","x":"9vw","opacity":0,"scale":2,"duration":"150vh","start":"#explosion-scene","trigger":"-150%"}'></li>
+              </ul>
+          </section>
+      </div>
+      <div id="images-scene" class="scene" style="height:565vh" data-parallax='{"pin":"#images"}'>
+          <section id="images">
+              <p class="images-byline" data-parallax='[{"y":"-25vh","opacity":{"to":1,"duration":"85vh"},"duration":"150vh","start":"#images-scene","trigger":0},{"scale":0.7,"opacity":{"to":0,"duration":"85vh"},"duration":"150vh","trigger":"-225%","start":"#images-scene"}]'>Or better yet, a realistic example of showcasing some design work.</p>
+              <p class="images-byline-2" data-parallax='[{"opacity":1,"y":"-15vh","trigger":"-225%","duration":"150vh","start":"#images-scene"},{"opacity":{"to":0,"duration":"85vh"},"y":"50vh","duration":"150vh","trigger":"-415%","start":"#images-scene"}]'>Really, anything is possible …</p>
+              <img id="mediumHomepage" class="raw-page" src="Dave%20Gamache_files/oversized-raw-homepage.jpg" data-parallax='[{"y":"-90vh","duration":"150vh","start":"#images-scene","trigger":0},{"scale":0.8,"opacity":{"to":0,"duration":"85vh"},"duration":"150vh","trigger":"-225%","start":"#images-scene"}]'>
+              <div class="iphone" data-parallax='[{"y":"-66vh","duration":"150vh","start":"#images-scene","trigger":0},{"x":"-2vw","y":"-90vh","rotate":-90,"scale":1.3,"duration":"150vh","trigger":"-225%","start":"#images-scene"},{"y":"5vh","x":"-2vw","duration":"150vh","trigger":"-415%","start":"#images-scene"}]'>
+                  <img class="iphone-frame" src="Dave%20Gamache_files/iphoneframe.png">
+                  <div class="iphone-viewport">
+                      <img id="medium-profile-iphone" class="iphone-content" src="Dave%20Gamache_files/medium-profile-iphone-fullsize.jpg" data-parallax='[{"scale":0.9,"x":"27vw","duration":"150vh","trigger":"-225%","start":"#images-scene"}]'>
+                      <img id="davegamache-dot-com" class="iphone-content" src="Dave%20Gamache_files/davegamache-rotated.jpg" data-parallax='{"scale":1,"duration":"150vh","trigger":"-225%","start":"#images-scene"}'>
+                  </div>
+              </div>
+          </section>
+      </div>
+      <div id="links-scene" class="scene" style="height:100vh" data-parallax='{"pin":"#links"}'>
+          <section id="links" data-parallax='{"opacity":{"to":1,"duration":"50vh"},"scale":{"from":0.8,"to":1},"duration":"100vh","start":"#links-scene","trigger":0}'>
+              <p class="links-byline">Learn how to make your parallax site smooth like this one.</p>
+              <a class="btn" href="https://medium.com/@dhg/82ced812e61c">Read about it on Medium</a>
+          </section>
+      </div>
+      <div style="height:100vh"></div>
+  </div>
+  <div class="twitter" data-parallax='[{"opacity":0,"duration":"100vh","start":"#intro-scene","trigger":0},{"opacity":1,"duration":"100vh","start":"#links-scene","trigger":0}]'>
+      <button id="twitter-widget-0">buttton 1</button>
+      <button id="twitter-widget-1">buttton 2</button>
+  </div>
+</div>
+<h3 class="error">Whoops! Right now this demo doesn't handle resizing or browsers less than 1000px wide. Reload this page or get on a laptop!</h3>
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+
+<script src="https://cdn.rawgit.com/kasparsj/jquery.requestAnimationFrame/master/jquery.requestAnimationFrame.min.js"></script>
+<script src="../jquery.data-parallax.js"></script>
+
+
+</body></html>
