@@ -1,3 +1,6 @@
+(function ($) {
+
+
 $(function() {
     ParallaxScroll.init();
 });
@@ -183,3 +186,7 @@ var ParallaxScroll = {
         }
     }
 };
+
+
+}(jQuery));
+
