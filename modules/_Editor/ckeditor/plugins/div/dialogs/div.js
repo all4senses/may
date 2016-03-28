@@ -285,7 +285,7 @@
 							type: 'text',
 							id: 'id',
 							requiredContent: 'div[id]',
-							label: editor.lang.common.id,
+							label: 'xxxxxxxx xxxxxxxxxxxxxx', //editor.lang.common.id,
 							'default': ''
 						},
 						{
