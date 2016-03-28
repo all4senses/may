@@ -5,6 +5,9 @@
 
 ( function() {
 
+
+console.log('xx xx 1');
+
 	// Add to collection with DUP examination.
 	// @param {Object} collection
 	// @param {Object} element
@@ -285,7 +288,7 @@
 							type: 'text',
 							id: 'id',
 							requiredContent: 'div[id]',
-							label: 'xxxxxxxx xxxxxxxxxxxxxx', //editor.lang.common.id,
+							label: editor.lang.common.id,
 							'default': ''
 						},
 						{

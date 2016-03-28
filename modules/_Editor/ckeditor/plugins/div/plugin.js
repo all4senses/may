@@ -9,6 +9,8 @@
  */
 
 ( function() {
+  console.log('xx xx 3');
+  
 	CKEDITOR.plugins.add( 'div', {
 		requires: 'dialog',
 		// jscs:disable maximumLineLength

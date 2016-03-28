@@ -4,6 +4,8 @@
  */
 
 ( function() {
+  
+  console.log('xx xx 2');
 
 	// Add to collection with DUP examination.
 	// @param {Object} collection
