@@ -33,6 +33,8 @@ CKEDITOR.editorConfig = function(config) {
   // Works!
   config.extraAllowedContent = 'a[*];div[*];img[*];p[*]{*}(*)';
   
+  config.entities_latin = false; 
+  config.entities_greek = false;
   config.entities = false; 
   config.basicEntities = false;
   config.htmlEncodeOutput = false;
