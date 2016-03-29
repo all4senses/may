@@ -33,6 +33,10 @@ CKEDITOR.editorConfig = function(config) {
   // Works!
   config.extraAllowedContent = 'a[*];div[*];img[*];p[*]{*}(*)';
   
+  config.entities = false; 
+  config.basicEntities = false;
+  config.htmlEncodeOutput = false;
+  
   config.codemirror = {
 
         // Set this to the theme you wish to use (codemirror themes)
