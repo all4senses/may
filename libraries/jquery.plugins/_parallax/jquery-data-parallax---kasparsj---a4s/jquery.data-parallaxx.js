@@ -1,4 +1,4 @@
-;(function($) {
+﻿;(function($) {
     'use strict';
 
     var $elements = null,
@@ -30,7 +30,7 @@
                 break;
             default:
                 if (!isTouchDevice) {
-                    this.data("parallax-js", method);
+                    this.data("parallaxx-js", method);
                     var firstCall = ($elements === null);
                     if (firstCall) {
                         updateDimensions();
@@ -56,7 +56,7 @@
     function parseOptions() {
         var optionsArr = [],
             dataOptions = this.data("parallaxx"),
-            jsOptions = this.data("parallax-js");
+            jsOptions = this.data("parallaxx-js");
 
 // a4s, replace ' with " if it's wrongly used in data-* attribute... 
 // We need to have '{ "name": "John" }' and NOT  "{ 'name': 'John' }"
@@ -66,7 +66,7 @@ if (typeof dataOptions != "object") {
 }
 
         typeof dataOptions != "undefined" || (dataOptions = {});
-        typeof dataOptions == "object" || console.error("Unable to parse data-parallax attribute "+getSelector(this));
+        typeof dataOptions == "object" || console.error("Unable to parse data-parallaxx attribute "+getSelector(this));
         typeof jsOptions != "undefined" || (jsOptions = {});
         typeof jsOptions == "object" || console.error("Unrecognized options passed to $.fn.parallax");
         if (!Array.isArray(dataOptions)) {
@@ -87,6 +87,7 @@ if (typeof dataOptions != "object") {
             typeof options.triggerElement != "undefined" || (options.triggerElement = this[0]);
             optionsArr.push(options);
         }
+
         return optionsArr;
     }
     
@@ -115,7 +116,8 @@ if (typeof dataOptions != "object") {
                     triggerElement: options.triggerElement,
                     triggerHook: options.triggerHook,
                     duration: options.duration,
-                    offset: options.offset
+                    offset: options.offset,
+		    ease: options.ease
                 },
                 animation = {},
                 transformOptions = {},
@@ -143,9 +145,12 @@ if (typeof dataOptions != "object") {
             if (typeof options.rotate != "undefined") {
                 transformOptions.rotate = mergeOptions(options.rotate, globalOptions);
             }
+            if (typeof options.rotateY != "undefined") {
+                transformOptions.rotateY = mergeOptions(options.rotateY, globalOptions);
+            }
             if (transformOptions.x || transformOptions.y || transformOptions.z || 
                 transformOptions.scale || transformOptions.scaleX || transformOptions.scaleY || 
-                transformOptions.rotate) {
+                transformOptions.rotate || transformOptions.rotateY) {
                 animation.transform = new TransformContainer($this, transformOptions);
             }
 
@@ -389,6 +394,7 @@ if (typeof dataOptions != "object") {
     Scene.STATE_AFTER = 'after';
     Scene.prototype = {
         _setEase: function(ease) {
+
             if (typeof ease == "function") {
                 this.ease = ease;
             }
@@ -396,6 +402,7 @@ if (typeof dataOptions != "object") {
                 typeof ease === "undefined" || (this.ease = $.easing[ease]);
                 typeof this.ease === "function" || (this.ease = $.easing.linear);
             }
+	
         },
         _setDuration: function(duration) {
             var validateDurationPx = function(value) {
@@ -750,6 +757,9 @@ if (typeof dataOptions != "object") {
         if (options.rotate) {
             this.rotate = new VOScene($el, options.rotate, 'rotate', 360);
         }
+	if (options.rotateY) {
+            this.rotate = new VOScene($el, options.rotateY, 'rotateY', 360);
+        }
     }
     TransformContainer.prototype = inherit(SceneContainer.prototype, {
         update: function(style) {
@@ -775,6 +785,9 @@ if (typeof dataOptions != "object") {
             }
             if (this.rotate && this.rotate.needsUpdate()) {
                 this.rotate.update(transform);
+            }
+            if (this.rotateY && this.rotateY.needsUpdate()) {
+                this.rotateY.update(transform);
             }
             if (transform.isChanged()) {
                 var element = this.$el[0],
@@ -967,6 +980,7 @@ if (typeof dataOptions != "object") {
         this.translateX = this.translateY = this.translateZ = 0;
         this.scaleX = this.scaleY = 1;
         this.rotate = 0;
+        this.rotateY = 0;
     }
     Transform.fromMatrix = function(matrix, result) {
         result || (result = new Transform());
@@ -980,6 +994,7 @@ if (typeof dataOptions != "object") {
         result.scaleX = Math.sqrt(a*a + b*b);
         result.scaleY = Math.sqrt(c*c + d*d);
         result.rotate = Math.round(Math.atan2(b, a) * (180/Math.PI));
+//        result.rotateY = Math.round(Math.atan2(b, a) * (180/Math.PI));
         return result;
     };
     Transform.prototype = inherit(VO.prototype, {
@@ -1006,6 +1021,9 @@ if (typeof dataOptions != "object") {
             }
             if (this.rotate) {
                 string += 'rotate('+this.rotate+'deg)';
+            }
+	    if (this.rotateY) {
+                string += 'rotateY('+this.rotateY+'deg)';
             }
             return string;
         }
