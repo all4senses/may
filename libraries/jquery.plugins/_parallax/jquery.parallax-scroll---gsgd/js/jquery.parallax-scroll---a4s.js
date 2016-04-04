@@ -1,3 +1,6 @@
+(function ($) {
+
+
 var flag = 0;
 $(function() {
     ParallaxScroll.init();
@@ -215,3 +218,8 @@ var ParallaxScroll = {
         }
     }
 };
+
+
+
+
+}(jQuery));
