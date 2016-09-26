@@ -1,0 +1,351 @@
+<?php
+/**
+ * @file
+ * Allow adding image attributes to Drupal ImageFields.
+ */
+
+/**
+ * Implements hook_form_field_ui_field_edit_form_alter().
+ *
+ * Add the widget for creating new attribute types on the selected image.
+ */
+function imagefield_attributes_form_field_ui_field_edit_form_alter(&$form, &$form_state) {
+  $field = $form['#field'];
+
+  // Only act on image fields.
+  if ($field['type'] != 'image') {
+    return '';
+  }
+
+  // Settings group for attributes.
+  $form['instance']['settings']['imagefield_attributes'] = array(
+    '#title' => t('Image attributes'),
+    '#type' => 'fieldset',
+    '#tree' => TRUE,
+    '#prefix' => '<div id="field-attributes">',
+    '#suffix' => '</div>',
+  );
+
+  if (isset($form_state['values']) && !empty($form_state['values'])) {
+    $instance_settings = $form_state['values']['instance']['settings'];
+  }
+  else {
+    $instance_settings = $form['#instance']['settings'];
+  }
+
+  $attributes = isset($instance_settings['imagefield_attributes']) ? $instance_settings['imagefield_attributes'] : array();
+
+  foreach ($attributes as $delta => $attribute) {
+
+    if (!is_array($attribute)) {
+      continue;
+    }
+
+    $setting = &$form['instance']['settings']['imagefield_attributes'][$delta];
+
+    $setting = _imagefield_attributes_attribute_form($attribute);
+  }
+
+  if ($form_state['triggering_element']['#value'] == t('Add')) {
+    $form['instance']['settings']['imagefield_attributes'][] = _imagefield_attributes_attribute_form();
+  }
+
+  $form['instance']['settings']['imagefield_attributes']['add'] = array(
+    '#type' => 'submit',
+    '#value' => t('Add'),
+    '#ajax' => array(
+      'callback' => 'imagefield_attributes_add_attribute',
+      'wrapper' => 'field-attributes',
+      'method' => 'replace',
+      'effect' => 'fade',
+    ),
+    '#submit' => array('imagefield_attributes_add_submit'),
+  );
+
+}
+
+/**
+ * Submit handler for adding new attributes.
+ * Ensures the form is rebuilt.
+ */
+function imagefield_attributes_add_submit(&$form, &$form_state) {
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * AJAX Form API callback for adding a new attribute to a field instance.
+ */
+function imagefield_attributes_add_attribute(&$form, &$form_state) {
+  return $form['instance']['settings']['imagefield_attributes'];
+}
+
+/**
+ * Form API form for creating new attributes and editing existing attributes on
+ * a field instance.
+ *
+ * @param  array  $settings The attribute values.
+ * @return array            Form API form.
+ */
+function _imagefield_attributes_attribute_form($settings = array()) {
+  $form = array(
+    '#type' => 'fieldset',
+    '#title' => isset($settings['attribute']) ? $settings['attribute'] : t('Attribute'),
+  );
+
+  $form['attribute'] = array(
+    '#title' => t('Attribute'),
+    '#type' => 'textfield',
+  );
+
+  $form['description'] = array(
+    '#title' => t('Description'),
+    '#description' => t('Used in forms to identify the attribute.'),
+    '#type' => 'textfield',
+  );
+
+  $form['default_value'] = array(
+    '#title' => t('Default value'),
+    '#type' => 'textfield',
+  );
+
+  $form['form'] = array(
+    '#title' => t('Display on form?'),
+    '#type' => 'checkbox',
+  );
+
+  foreach ($settings as $key => $setting) {
+    $form[$key]['#default_value'] = $setting;
+  }
+
+  return $form;
+}
+
+/**
+ * Implements hook_field_attach_form().
+ * Act on field_attach_form().
+ */
+function imagefield_attributes_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+
+    $entity_info = entity_get_info($entity_type);
+    $bundle_key = $entity_info['entity keys']['bundle'];
+
+    // Cycle through all form elements.
+    foreach ($form as $field_name => &$form_element) {
+
+      // Only act on form elements that have 'field_' at the start of the key.
+      if (strpos($field_name, 'field_') === 0) {
+
+        // Get the settings of the field.
+        $field_info = field_info_instance($entity_type, $field_name, $entity->{$bundle_key});
+
+        if (isset($field_info['settings']['imagefield_attributes'])) {
+
+          $element = &$form_element[$form_element['#language']];
+
+          // Cycle through all items in the field.
+          foreach (element_children($element) as $delta) {
+
+            // Cycle through all attributes and add the attribute value
+            // textfield to the image upload fields.
+            foreach ($field_info['settings']['imagefield_attributes'] as $attribute) {
+
+              if (!is_array($attribute)) {
+                continue;
+              }
+              $element[$delta]['imagefield_attributes'][$attribute['attribute']] = array(
+                '#type' => 'textfield',
+                '#title' => empty($attribute['description']) ? $attribute['attribute'] : $attribute['description'],
+                '#default_value' => $attribute['default_value'],
+              );
+            }
+
+            // Check to see if the item already exists.
+            $current_value = $element[$delta]['#default_value'];
+
+            // Check to see if the item has a valid File ID.
+            if (isset($current_value['fid'])) {
+
+              // Get any attributes associated with the given File ID.
+              $attributes = _imagefield_attributes_get_attributes($current_value['fid']);
+
+              // Loop through each attribute and set the default value of the
+              // attribute textfield.
+              foreach ($attributes as $attribute => $value) {
+                if (isset($element[$delta]['imagefield_attributes'][$attribute])) {
+                  $element[$delta]['imagefield_attributes'][$attribute]['#default_value'] = $value;
+                }
+              }
+            }
+
+          }
+        }
+      }
+    }
+
+}
+
+/**
+ * Implements hook_field_attach_presave().
+ *
+ * Saves the attributes to the field instance.
+ */
+function imagefield_attributes_field_attach_presave($entity_type, $entity) {
+
+  // Extract the bundle from the entity type.
+  $entity_info = entity_get_info($entity_type);
+  $bundle_key = $entity_info['entity keys']['bundle'];
+
+  // Whether or not the attribute cache should be deleted. Set to TRUE if
+  // any attributes are changed.
+  $clear_attribute_cache = FALSE;
+
+  // Get all fields instances available to this entity & bundle.
+  $fields = field_info_instances($entity_type, $entity->{$bundle_key});
+
+  // Collect all image fields in this entity & bundle.
+  $image_fields = array();
+  foreach ($fields as $field) {
+    if ($field['widget']['module'] == 'image') {
+      $image_fields[] = $field['field_name'];
+    }
+  }
+
+  // Cycle through the image fields in this entity & bundle.
+  foreach ($image_fields as $field_name) {
+
+    // Get all images in this entity.
+    $items = field_get_items($entity_type, $entity, $field_name);
+
+    foreach ($items as $item) {
+
+      // Check to see if any attributes exist on the image in this entity.
+      if (isset($item['imagefield_attributes'])) {
+
+        // Set a flag to clear the attribute cache after the operation is
+        // complete.
+        $clear_attribute_cache = TRUE;
+
+        foreach ($item['imagefield_attributes'] as $attribute => $value) {
+          // Add / overwrite the attribute.
+          _imagefield_attributes_add_attribute($item['fid'], $attribute, $value);
+        }
+      }
+    }
+  }
+
+  // Clear the attributes cache.
+  if ($clear_attribute_cache) {
+    cache_clear_all('imagefield_attributes', 'cache');
+  }
+
+}
+
+/**
+ * Implements template_preprocess_image_formatter().
+ * Adds the attributes to the field formatted image. Works with most contrib
+ * modules that supply custom field formatters.
+ */
+function imagefield_attributes_preprocess_image_formatter(&$variables) {
+
+  // Extract the File ID from the image.
+  $fid = $variables['item']['fid'];
+
+  // Get the attributes associated with the File ID.
+  $attributes = _imagefield_attributes_get_attributes($fid);
+
+  // Create an attributes array on the image item if it doesn't already exist.
+  if (empty($variables['item']['attributes'])) {
+    $variables['item']['attributes'] = array();
+  }
+
+  // Overload the attributes array with the custom attributes.
+  $variables['item']['attributes'] += $attributes;
+
+}
+
+/**
+ * Add a new attribute or overwrite an existing attribute. Deletes attributes if
+ * no value is set.
+ * @param  int    $fid       The File ID of the image.
+ * @param  string $attribute The attribute itself.
+ * @param  string $value     The value corresponding to the attribute.
+ * @return bool              Whether or not the query was successful.
+ */
+function _imagefield_attributes_add_attribute($fid, $attribute, $value) {
+
+  // If the value is empty, delete the attribute alltogether.
+  if (empty($value)) {
+    $attributes = db_delete('imagefield_attributes_values')
+                  ->condition('fid', $fid)
+                  ->condition('type', $attribute)
+                  ->execute();
+  }
+
+  // If the value exists, merge it with the current value or add it as a new
+  // value.
+  else {
+    $attribute = db_merge('imagefield_attributes_values')
+              ->key(array('fid' => $fid, 'type' => $attribute))
+              ->fields(array(
+                'fid' => $fid,
+                'type' => $attribute,
+                'value' => $value,
+              ))
+              ->execute();
+  }
+
+  return $attribute;
+}
+
+/**
+ * Get attributes for a given Image fid.
+ * @param  int    $fid The fid (File ID) of the image.
+ * @return array       A keyed array of attributes ready for merging.
+ */
+function _imagefield_attributes_get_attributes($fid) {
+
+  $attributes = array();
+  $attributes = _imagefield_attributes_get_all_attributes();
+
+  if (isset($attributes[$fid])) {
+    return $attributes[$fid];
+  }
+  else {
+    return array();
+  }
+}
+
+/**
+ * Get and cache all available attributes in the site.
+ * @param  boolean $force Force the function to bypass the cache.
+ * @return array          An array keyed by fid of all the available attributes.
+ */
+function _imagefield_attributes_get_all_attributes($force = FALSE) {
+
+  // Attempt to return attributes from the static cache (fastest).
+  $static_cache = &drupal_static(__FUNCTION__);
+  if ($static_cache && !$force) {
+    return $static_cache;
+  }
+
+  // Attempt to return attributes from the db cache.
+  if (($cache = cache_get('imagefield_attributes')) && !$force) {
+    return $cache->data;
+  }
+
+  // Query attributes and cache the data.
+  $attributes = array();
+  $results = db_select('imagefield_attributes_values', 'a')
+              ->fields('a')
+              ->execute();
+
+  // Store results keyed by fid an attribute type.
+  foreach ($results as $result) {
+    $attributes[$result->fid][$result->type] = $result->value;
+  }
+
+  // Set the cache for retrievel later.
+  cache_set('imagefield_attributes', $attributes, 'cache');
+
+  return $attributes;
+}

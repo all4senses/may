@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function imagefield_attributes_schema() {
+  $schema['imagefield_attributes_values'] = array(
+    'description' => 'Imagefield Attributes',
+    'fields' => array(
+      'fid' => array(
+        'description' => 'The field ID the attribute corresponds to.',
+        'not null' => TRUE,
+        'type' => 'int',
+      ),
+      'type' => array(
+        'description' => 'The attribute the value belongs to.',
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'length' => 64,
+      ),
+      'value' => array(
+        'description' => 'The value of the attribute',
+        'type' => 'varchar',
+        'length' => 255,
+      ),
+    ),
+    'unique keys' => array(
+      'fid_name_type' => array('fid', 'type'),
+    ),
+  );
+  return $schema;
+}

@@ -1,0 +1,5 @@
+name = ImageField Attributes
+description = Allows adding of customizable attributes to existing imagefields.
+core = 7.x
+
+dependencies[] = image
