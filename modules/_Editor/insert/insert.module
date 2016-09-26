@@ -126,7 +126,10 @@ function insert_widgets($reset = FALSE) {
   if (!isset($widgets) || $reset) {
     $widgets = array();
     foreach (module_implements('insert_widgets') as $module) {
+        dpm($module, '$module');
       $module_widgets = module_invoke($module, 'insert_widgets');
+      dpm($module_widgets, '$module_widgets');
+      
       foreach ($module_widgets as $type => $widget) {
         $module_widgets[$type]['type'] = $type;
         $module_widgets[$type]['module'] = $module;
