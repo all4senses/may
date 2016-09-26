@@ -1,6 +1,0 @@
-name = May Blocks
-package = May
-description = "Defines different blocks for the site"
-core = 7.x
-tags[] = May
-files[] = may_blocks.module

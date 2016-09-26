@@ -1,9 +1,0 @@
-name = Adyax test
-package = A4s
-description = "Ctools Plugins test"
-core = 7.x
-dependencies[] = ctools
-dependencies[] = panels
-dependencies[] = page_manager
-tags[] = A4s
-files[] = adyax_test.module

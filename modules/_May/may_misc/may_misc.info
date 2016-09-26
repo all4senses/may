@@ -1,6 +1,0 @@
-name = May Misc
-package = May
-description = "Miscelanious helper functions and hooks implementations"
-core = 7.x
-tags[] = May
-files[] = may_misc.module
