@@ -116,10 +116,6 @@ Drupal.insert = {
    * @param content
    */
   insertIntoActiveEditor: function(content) {
-      
-    console.log('xxx');  
-    console.log(content, 'yyy');
-    
     var editorElement;
 
     // Always work in normal text areas that currently have focus.
