@@ -66,7 +66,7 @@ function _lazyloader_filter_process_matches($matches) {
   dpm($matches, '$matches');
   foreach ($matches as $m) {
     //preg_match_all("#(\w+)=['\"]{1}([^'\"]*)#", $m, $matches2);  
-    preg_match_all("#(\w+-\w+)=['\"]{1}([^'\"]*)#", $m, $matches2);
+    preg_match_all("#(\w+-*\w+)=['\"]{1}([^'\"]*)#", $m, $matches2);
     dpm($matches2, '$matches2');
     foreach($matches2[1] as $key => $val) {
       $attributes[$val] = $matches2[2][$key];
