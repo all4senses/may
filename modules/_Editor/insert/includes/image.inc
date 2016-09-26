@@ -17,8 +17,6 @@ function image_insert_widgets() {
         'alt' => 'input[name$="[alt]"], textarea[name$="[alt]"]',
         'title' => 'input[name$="[title]"], textarea[name$="[title]"]',
         'description' => 'input[name$="[description]"], textarea[name$="[description]"]',
-          
-        //'xxx' => 'input[name$="[xxx]"], textarea[name$="[xxx]"]',
       ),
     ),
   );
