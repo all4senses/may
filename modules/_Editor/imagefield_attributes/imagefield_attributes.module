@@ -46,7 +46,7 @@ function imagefield_attributes_form_field_ui_field_edit_form_alter(&$form, &$for
     $setting = _imagefield_attributes_attribute_form($attribute);
   }
 
-  if ($form_state['triggering_element']['#value'] == t('Add')) {
+  if (isset($form_state['triggering_element']['#value']) && $form_state['triggering_element']['#value'] == t('Add')) {
     $form['instance']['settings']['imagefield_attributes'][] = _imagefield_attributes_attribute_form();
   }
 
