@@ -37,6 +37,7 @@ function lazyloader_filter_form_lazyloader_admin_alter(&$form, &$form_state) {
  * Replace <img> tags with lazy loading images
  */
 function _lazyloader_filter_filter_process($text) {
+    dpm($text,'$text');
   // current lazyloader settings
   $settings = variable_get('lazyloader');
 
@@ -48,6 +49,7 @@ function _lazyloader_filter_filter_process($text) {
   ////if ($settings['enabled']) return preg_replace_callback('/<img\b[^>]*>/', '_lazyloader_filter_process_matches', $text);
   if (_lazy_loader_enabled()) return preg_replace_callback('/<img\b[^>]*>/', '_lazyloader_filter_process_matches', $text);
   
+  dpm($text,'$text');
   // not using lazy loading
   return $text;
 }
@@ -70,6 +72,8 @@ function _lazyloader_filter_process_matches($matches) {
       }
     }
   }
+  
+  dpm($attributes_string,'$attributes_string');
 
   // Return the themed image
   return theme('lazyloader_filter_image', array('attr' => $attributes, 'attr_str' => $attributes_string));
