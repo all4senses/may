@@ -118,7 +118,7 @@ Drupal.insert = {
   insertIntoActiveEditor: function(content) {
       
     console.log('xxx');  
-    console.log(content);
+    console.log(content, 'yyy');
     
     var editorElement;
 
