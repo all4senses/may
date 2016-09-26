@@ -96,7 +96,7 @@ function may_pages_form_alter(&$form, &$form_state, $form_id) {
     
     case 'article_node_form':
       
-        $extra_data = unserialize($form['field_extra_data']['und'][0]['value']['#default_value']);
+        //$extra_data = unserialize($form['field_extra_data']['und'][0]['value']['#default_value']);
         /*
         $form['author']['guest_author'] = array(
           '#type' => 'textfield',
