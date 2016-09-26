@@ -397,7 +397,7 @@ function imagefield_attributes_get_all_attributes_names($force = FALSE) {
             if (!is_array($imagefield_attribute) || empty($imagefield_attribute['attribute'])) {
                     continue;
                 }
-                $attributes_names[] = $imagefield_attribute['attribute'];
+                $attributes_names[$imagefield_attribute['attribute']] = 'input[name$="[' . $imagefield_attribute['attribute'] . ']"], textarea[name$="[' . $imagefield_attribute['attribute'] . ']"]';
             }
             // ...
         }
@@ -421,17 +421,11 @@ function imagefield_attributes_insert_widgets() {
     $widgets['image_image'] = array(
       'element_type' => 'managed_file',
       'wrapper' => '.image-widget',
-      'fields' => array(
-//        'alt' => 'input[name$="[alt]"], textarea[name$="[alt]"]',
-//        'title' => 'input[name$="[title]"], textarea[name$="[title]"]',
-//        'description' => 'input[name$="[description]"], textarea[name$="[description]"]',
-
-        //'xxx' => 'input[name$="[xxx]"], textarea[name$="[xxx]"]',
-      ),
+      'fields' => imagefield_attributes_get_all_attributes_names(TRUE),
     );
-    
-    
-    $widgets['image_image']['fields']['xxx'] = 'input[name$="[xxx]"], textarea[name$="[xxx]"]';
+//    foreach ($imagefield_attributes_names as $imagefield_attributes_name) {
+//        $widgets['image_image']['fields'][$imagefield_attributes_name] = 'input[name$="[' . $imagefield_attributes_name . ']"], textarea[name$="[' . $imagefield_attributes_name . ']"]';
+//    }
     
     return $widgets;
     

@@ -23,5 +23,11 @@
  * - __[token]_or_filename__: Any of the above tokens if available, otherwise
  *   use the file's name. i.e. __title_or_filename__.
  */
+
+$additional_fields = NULL;
+
+foreach (imagefield_attributes_get_all_attributes_names(TRUE) as $additional_field_name => $additional_field) {
+    $additional_fields .= ' ' . $additional_field_name . '="__' . $additional_field_name . '__"';
+}
 ?>
-<img src="<?php print $url ?>" width="<?php print $width ?>" height="<?php print $height ?>" xxx="__xxx__" alt="__alt__" title="__title__" <?php print $class ? 'class="' . $class . '" ' : '' ?>/>
+<img src="<?php print $url ?>" width="<?php print $width ?>" height="<?php print $height ?>" <?php print $additional_fields ?> alt="__alt__" title="__title__" <?php print $class ? 'class="' . $class . '" ' : '' ?>/>
