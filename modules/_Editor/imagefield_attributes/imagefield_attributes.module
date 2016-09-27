@@ -408,6 +408,8 @@ function imagefield_attributes_get_all_attributes_names($force = FALSE) {
  */
 function imagefield_attributes_insert_widgets() {
     
+    return;
+    
     $widgets['image_image'] = array(
       'element_type' => 'managed_file',
       'wrapper' => '.image-widget',
