@@ -15,6 +15,12 @@
     "grunt-cssnano": "^2.0.1"
   },
   "devDependencies": {
-    
+    "autoprefixer": "^6.5.0",
+    "css-mqpacker": "^5.0.1",
+    "cssnano": "^3.7.5",
+    "grunt-postcss": "^0.8.0",
+    "perfectionist": "^2.3.0",
+    "pixrem": "^3.0.2",
+    "postcss-russian-stylesheets": "^1.0.1"
   }
 }

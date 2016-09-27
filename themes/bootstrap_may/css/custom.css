@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* line 4, ../assets/sass/custom.scss */
 .test {
   color: blue;
@@ -86,3 +87,26 @@
   }
 }
 */
+/* line 75, ../assets/sass/custom.scss */
+.foo::before {
+  content: "foo on small";
+}
+
+@media (min-width: 768px) {
+  /* line 80, ../assets/sass/custom.scss */
+  .foo::before {
+    content: "foo on medium";
+  }
+}
+/* line 85, ../assets/sass/custom.scss */
+.bar::before {
+  content: "bar on small";
+}
+
+@media (min-width: 768px) {
+  /* line 90, ../assets/sass/custom.scss */
+  .bar::before {
+    content: "bar on medium";
+    ╤Ж╨▓╨╡╤В: ╤З╨╡╤А╨╜╤Л╨╣;
+  }
+}

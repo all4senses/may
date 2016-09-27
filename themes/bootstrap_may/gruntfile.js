@@ -100,6 +100,7 @@ module.exports = function (grunt) {
          
           postcss: {
               
+
                    dev: {
                         options: {
                             //map: true, // inline sourcemaps
@@ -113,6 +114,8 @@ module.exports = function (grunt) {
                             processors: [
                                 require('pixrem')(), // add fallbacks for rem units
                                 require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+                                require('css-mqpacker')(),
+                                //require('postcss-russian-stylesheets')(), // doesn't really work because of wrong codepage
                                 //require('cssnano')() // minify the result
                             ]
                         },
@@ -130,6 +133,8 @@ module.exports = function (grunt) {
                             processors: [
                                 require('pixrem')(), // add fallbacks for rem units
                                 require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+                                require('css-mqpacker')(),
+                                //require('postcss-russian-stylesheets')(), // doesn't really work because of wrong codepage
                                 require('cssnano')() // minify the result
                             ]
                         },

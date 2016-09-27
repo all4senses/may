@@ -71,3 +71,24 @@
 }
 */
 
+
+.foo::before {
+  content: "foo on small";
+}
+
+@media (min-width: 768px) {
+  .foo::before {
+    content: "foo on medium";
+  }
+}
+
+.bar::before {
+  content: "bar on small";
+}
+
+@media (min-width: 768px) {
+  .bar::before {
+    content: "bar on medium";
+    цвет: черный;
+  }
+}
