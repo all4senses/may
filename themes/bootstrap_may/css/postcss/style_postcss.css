@@ -6941,7 +6941,7 @@ button.close {
 /* line 10, ../assets/sass/custom.scss */
 .test.test_sub2 {
   float: right;
-  color: fioletos;
+  color: violet;
   display: -ms-flexbox;
   display: flex;
   -ms-flex: 0;
@@ -7010,6 +7010,7 @@ button.close {
 .bar::before {
   content: "bar on small";
 }
+
 @media print{
   /* line 9, ../bootstrap/stylesheets/bootstrap/_print.scss */
   *,
@@ -7130,6 +7131,7 @@ button.close {
     display: none !important;
   }
 }
+
 @media (min-width: 768px){
   /* line 62, ../bootstrap/stylesheets/bootstrap/_type.scss */
   .lead{
@@ -7652,6 +7654,7 @@ button.close {
     ╤Ж╨▓╨╡╤В: ╤З╨╡╤А╨╜╤Л╨╣;
   }
 }
+
 @media (min-width: 992px){
   /* line 10, ../bootstrap/stylesheets/bootstrap/_grid.scss */
   .container{
@@ -7874,6 +7877,7 @@ button.close {
     width: 100%;
   }
 }
+
 @media (min-width: 1200px){
   /* line 10, ../bootstrap/stylesheets/bootstrap/_grid.scss */
   .container{
@@ -8125,6 +8129,7 @@ button.close {
     width: 100%;
   }
 }
+
 @media screen and (max-width: 767px){
   /* line 171, ../bootstrap/stylesheets/bootstrap/_tables.scss */
   .table-responsive{
@@ -8177,6 +8182,7 @@ button.close {
     border-bottom: 0;
   }
 }
+
 @media screen and (-webkit-min-device-pixel-ratio: 0){
   /* line 193, ../bootstrap/stylesheets/bootstrap/_forms.scss */
   input[type="date"].form-control,
@@ -8228,6 +8234,7 @@ button.close {
     line-height: 46px;
   }
 }
+
 @media (max-device-width: 480px) and (orientation: landscape){
   /* line 92, ../bootstrap/stylesheets/bootstrap/_navbar.scss */
   .navbar-fixed-top .navbar-collapse,
@@ -8235,6 +8242,7 @@ button.close {
     max-height: 200px;
   }
 }
+
 @media (max-width: 767px){
   /* line 243, ../bootstrap/stylesheets/bootstrap/_navbar.scss */
   .navbar-nav .open .dropdown-menu{
@@ -8347,6 +8355,7 @@ button.close {
     display: none !important;
   }
 }
+
 @media screen and (min-width: 768px){
   /* line 6, ../bootstrap/stylesheets/bootstrap/_jumbotron.scss */
   .jumbotron{
@@ -8394,6 +8403,7 @@ button.close {
     bottom: 20px;
   }
 }
+
 @media all and (transform-3d), (-webkit-transform-3d){
   /* line 16, ../bootstrap/stylesheets/bootstrap/_carousel.scss */
   .carousel-inner > .item{
@@ -8418,6 +8428,7 @@ button.close {
     left: 0;
   }
 }
+
 @media (min-width: 768px) and (max-width: 991px){
   /* line 7, ../bootstrap/stylesheets/bootstrap/mixins/_responsive-visibility.scss */
   .visible-sm{
@@ -8453,6 +8464,7 @@ button.close {
     display: none !important;
   }
 }
+
 @media (min-width: 992px) and (max-width: 1199px){
   /* line 7, ../bootstrap/stylesheets/bootstrap/mixins/_responsive-visibility.scss */
   .visible-md{
