@@ -41,7 +41,7 @@ function bootstrap_may_preprocess_node($variables) {
 //  }
     
     //dpm($variables, '$variables');
-    $node_parallax_js = drupal_get_path('module', 'may_pages') . '/js/parallax/pn' . $variables['nid']. '.js';
+    //$node_parallax_js = drupal_get_path('module', 'may_pages') . '/js/parallax/pn' . $variables['nid']. '.js';
     //dpm('js is ' . $node_parallax_js);
     //return;
 //    if (file_exists($node_parallax_js)) {
