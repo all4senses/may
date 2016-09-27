@@ -103,14 +103,14 @@ module.exports = function (grunt) {
 
                    dev: {
                         options: {
-                            //map: true, // inline sourcemaps
+                            map: false, // inline sourcemaps
 
                             // or
 
-                            map: {
-                                inline: false, // save all sourcemaps as separate files...
-                                annotation: 'css/postcss/' // ...to the specified directory
-                            },
+//                            map: {
+//                                inline: false, // save all sourcemaps as separate files...
+//                                annotation: 'css/postcss/' // ...to the specified directory
+//                            },
                             processors: [
                                 require('pixrem')(), // add fallbacks for rem units
                                 require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
@@ -129,7 +129,7 @@ module.exports = function (grunt) {
                     },
                     prod: {
                         options: {
-                            map: true,
+                            map: false,
                             processors: [
                                 require('pixrem')(), // add fallbacks for rem units
                                 require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
