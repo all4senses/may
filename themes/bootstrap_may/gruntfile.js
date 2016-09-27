@@ -4,6 +4,7 @@ module.exports = function (grunt) {
       grunt.loadNpmTasks('grunt-contrib-compass');
       //grunt.loadNpmTasks('grunt-autoprefixer'); // Deprecated
       grunt.loadNpmTasks('grunt-postcss');
+      //grunt.loadNpmTasks('grunt-cssnano');
       grunt.loadNpmTasks('grunt-contrib-uglify');
       //grunt.loadNpmTasks('grunt-w3c-markup-validation'); // Doesn't work... :( Warning: Cannot read property 'length' of undefined Use --force to continue.
       
@@ -98,6 +99,52 @@ module.exports = function (grunt) {
           */
          
           postcss: {
+              
+                   dev: {
+                        options: {
+                            //map: true, // inline sourcemaps
+
+                            // or
+
+                            map: {
+                                inline: false, // save all sourcemaps as separate files...
+                                annotation: 'css/postcss/' // ...to the specified directory
+                            },
+                            processors: [
+                                require('pixrem')(), // add fallbacks for rem units
+                                require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+                                //require('cssnano')() // minify the result
+                            ]
+                        },
+                        // src: 'css/custom.css',
+                        // dest: 'css/custom_postcss.css'
+                        // Works.
+                        files: {
+                            'css/postcss/custom_postcss.css': 'css/custom.css', // This will not be actually used, cause it's added to style.css (below)
+                            'css/postcss/style_postcss.css': 'css/style.css'
+                        }
+                    },
+                    prod: {
+                        options: {
+                            map: true,
+                            processors: [
+                                require('pixrem')(), // add fallbacks for rem units
+                                require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+                                require('cssnano')() // minify the result
+                            ]
+                        },
+                        // src: 'css/custom.css',
+                        // dest: 'css/custom_postcss.css'
+                        // Works.
+                        files: {
+                            'css/postcss/custom_postcss.css': 'css/custom.css', // This will not be actually used, cause it's added to style.css (below)
+                            'css/postcss/style_postcss.css': 'css/style.css'
+                        }
+                    }
+              
+              
+              
+                  /*
                   options: {
                       //map: true, // inline sourcemaps
 
@@ -111,7 +158,7 @@ module.exports = function (grunt) {
                       processors: [
                           require('pixrem')(), // add fallbacks for rem units
                           require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
-                          //require('cssnano')() // minify the result
+                          require('cssnano')() // minify the result
                       ] // processors
                   }, // options
                   
@@ -124,6 +171,8 @@ module.exports = function (grunt) {
                         'css/postcss/style_postcss.css': 'css/style.css'
                     }
                   },
+                  */
+                  
 
                   // seems doesn't work
                   /*
@@ -134,7 +183,9 @@ module.exports = function (grunt) {
                     dest: 'css/postcss/' // -> dest/css/file1.css, dest/css/file2.css
                   }]
                   */
-          },
+          }, // End of postcss
+          
+           
 
           // Doesn't work... :( Warning: Cannot read property 'length' of undefined Use --force to continue.
           /*
@@ -161,7 +212,7 @@ module.exports = function (grunt) {
               */
               postcss: {
                   files: ['css/*.css'], 
-                  tasks: ['postcss']
+                  tasks: ['postcss:dev']
               },
               
               // Doesn't work... :( Warning: Cannot read property 'length' of undefined Use --force to continue.
@@ -178,5 +229,5 @@ module.exports = function (grunt) {
           } // watch
       }); // initConfig
       grunt.registerTask('default', 'watch');
-      grunt.registerTask('prod', ['uglify:js_prod', 'compass:prod', 'postcss']);
+      grunt.registerTask('prod', ['uglify:js_prod', 'compass:prod', 'postcss:prod']);
 } // exports
