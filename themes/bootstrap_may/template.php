@@ -22,8 +22,8 @@ function bootstrap_may_preprocess_page(&$variables) {
     drupal_add_js('sites/all/libraries/jquery.plugins/_parallax/jquery.parallax-scroll---gsgd/js/jquery.parallax-scroll---a4s.js');
     
     
-//    $path_to_custom_js = drupal_get_path('module', 'may_pages') . '/js/';
-//    drupal_add_js($path_to_custom_js . 'may_home_parallax.js');
+    $path_to_custom_js = drupal_get_path('module', 'may_pages') . '/js/';
+    drupal_add_js($path_to_custom_js . 'may_home_parallax.js');
     
     
     //drupal_add_library('contextual','contextual-links');
