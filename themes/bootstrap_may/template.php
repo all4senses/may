@@ -39,7 +39,7 @@ function bootstrap_may_preprocess_node($variables) {
     
     dpm($variables, '$variables');
     
-    if (file_exists(drupal_get_path('module', 'may_pages') . '/js/parallax/pn' . $variables['nid'])) {
+    if (file_exists($node_parallax_js = drupal_get_path('module', 'may_pages') . '/js/parallax/pn' . $variables['nid'])) {
         drupal_add_js($node_parallax_js);
     }
 }
