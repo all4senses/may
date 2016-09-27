@@ -63,11 +63,13 @@ function _lazyloader_filter_process_matches($matches) {
   // $attributes_string is a string of all attributes EXCEPT src (passed to template for easy theming).
   $attributes = array();
   $attributes_string = '';
-  dpm($matches, '$matches');
   foreach ($matches as $m) {
+    // a4s fix to allow attributeslike data-* in img tags being altered by lazyloader_filter  
+    // Original
     //preg_match_all("#(\w+)=['\"]{1}([^'\"]*)#", $m, $matches2);  
+    // New one
     preg_match_all("#(\w+-*\w+)=['\"]{1}([^'\"]*)#", $m, $matches2);
-    dpm($matches2, '$matches2');
+    
     foreach($matches2[1] as $key => $val) {
       $attributes[$val] = $matches2[2][$key];
       if ($val != 'src') {
@@ -75,10 +77,6 @@ function _lazyloader_filter_process_matches($matches) {
       }
     }
   }
-  
-  dpm($attributes, '$attributes');
-  dpm($attributes_string,'$attributes_string');
-
   // Return the themed image
   return theme('lazyloader_filter_image', array('attr' => $attributes, 'attr_str' => $attributes_string));
 }
