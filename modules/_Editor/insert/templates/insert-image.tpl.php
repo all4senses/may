@@ -24,6 +24,7 @@
  *   use the file's name. i.e. __title_or_filename__.
  */
 
+// a4s fix to add using custom attributes in img tags while inserting to the body
 $additional_fields = NULL;
 
 foreach (imagefield_attributes_get_all_attributes_names(TRUE) as $additional_field_name => $additional_field) {
