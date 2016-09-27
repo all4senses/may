@@ -28,3 +28,12 @@ function bootstrap_may_preprocess_page(&$variables) {
     
   }
 }
+
+
+function bootstrap_may_preprocess_node($variables) {
+//  if (drupal_get_path_alias("node/{$variables['#node']->nid}") == 'foo') {
+//    drupal_add_css(drupal_get_path('theme', 'MYTHEME') . "/css/foo.css");
+//  }
+    
+    dpm($variables, '$variables');
+}
