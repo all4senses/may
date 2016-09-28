@@ -1,6 +1,6 @@
 /* line 4, ../assets/sass/style_custom.scss */
 .test {
-  color: violet;
+  color: red;
 }
 /* line 6, ../assets/sass/style_custom.scss */
 .test .test_sub {
@@ -10,10 +10,8 @@
 .test.test_sub2 {
   float: right;
   color: violet;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex: 0;
-      flex: 0;
+  flex: 0;
 }
 
 /* line 22, ../assets/sass/style_custom.scss */
@@ -31,6 +29,24 @@
 /* line 19, ../bootstrap/stylesheets/bootstrap/mixins/_clearfix.scss */
 .container:after {
   clear: both;
+}
+@media (min-width: 768px) {
+  /* line 22, ../assets/sass/style_custom.scss */
+  .container {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  /* line 22, ../assets/sass/style_custom.scss */
+  .container {
+    width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  /* line 22, ../assets/sass/style_custom.scss */
+  .container {
+    width: 100%;
+  }
 }
 
 /* line 37, ../assets/sass/style_custom.scss */
@@ -74,32 +90,22 @@
 .foo::before {
   content: "foo on small";
 }
+
+@media (min-width: 768px) {
+  /* line 80, ../assets/sass/style_custom.scss */
+  .foo::before {
+    content: "foo on medium";
+  }
+}
 /* line 85, ../assets/sass/style_custom.scss */
 .bar::before {
   content: "bar on small";
 }
 
-@media (min-width: 768px) {/* line 22, ../assets/sass/style_custom.scss */
-  .container {
-    width: 100%;
-  }/* line 80, ../assets/sass/style_custom.scss */
-  .foo::before {
-    content: "foo on medium";
-  }/* line 90, ../assets/sass/style_custom.scss */
+@media (min-width: 768px) {
+  /* line 90, ../assets/sass/style_custom.scss */
   .bar::before {
     content: "bar on medium";
-  }
-}
-
-@media (min-width: 992px) {/* line 22, ../assets/sass/style_custom.scss */
-  .container {
-    width: 100%;
-  }
-}
-
-@media (min-width: 1200px) {/* line 22, ../assets/sass/style_custom.scss */
-  .container {
-    width: 100%;
   }
 }
 

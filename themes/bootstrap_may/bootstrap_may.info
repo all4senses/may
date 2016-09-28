@@ -19,6 +19,7 @@ regions[page_bottom] = 'Page bottom'
 ;; Stylesheets
 ;;;;;;;;;;;;;;;;;;;;;
 stylesheets[all][] = css/style.css
+stylesheets[all][] = css/custom_style.css
 ;stylesheets[all][] = css/postcss/style_postcss.css
 ;stylesheets[all][] = css/postcss/custom_postcss.css
 ; For information on choosing the desired method, please read the Drupal
