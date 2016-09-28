@@ -28,7 +28,7 @@ CKEDITOR.editorConfig = function(config) {
   // config.protectedSource.push(/<code>[\s\S]*?<\/code>/gi);
   ////config.extraPlugins = 'oembed,widget,dragresize';
 
-  /////config.extraPlugins = 'tableresize,tabletools,colordialog,dialog,dialogadvtab,div,dialogui,textselection,codemirror,sourcedialog,imagepaste'; //,showborders, ,widget,image2
+  config.extraPlugins = 'tableresize,tabletools,colordialog,dialog,dialogadvtab,div,dialogui,textselection,codemirror,sourcedialog,imagepaste'; //,showborders, ,widget,image2
  
   // Works!
   config.extraAllowedContent = 'a[*];div[*];img[*];p[*]{*}(*)';
