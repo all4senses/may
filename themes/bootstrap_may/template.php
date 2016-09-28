@@ -54,7 +54,7 @@ function bootstrap_may_preprocess_node($variables) {
 function bootstrap_may_process_html(&$variables) {
     //dpm($variables, 'process_html');
     
-    
+    /*
     $variables['styles']= '<style>
 @import url("http://a4s-local.m-a-y.ru/modules/system/system.base.css?oe89tl");
 </style>
@@ -82,8 +82,15 @@ function bootstrap_may_process_html(&$variables) {
 @import url("http://a4s-local.m-a-y.ru/sites/all/themes/bootstrap_may/css/style.css");
 @import url("http://a4s-local.m-a-y.ru/sites/all/themes/bootstrap_may/css/style_custom.css");
 </style>';
-    
+    */
     
     //dpm($variables['styles'], 'styles');
     //dpm($variables['page'], 'styles');
+    
+    
+    // Remove Query Strings from CSS filenames (CacheBuster) 
+    //$variables['styles'] = preg_replace('/.css\?.*"/','.css"', $variables['styles']); 
+    $variables['styles'] = preg_replace('/style_custom.css\?.*"/','style_custom.css"', $variables['styles']); 
+    
+    
 }
