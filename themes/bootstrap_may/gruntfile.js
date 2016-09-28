@@ -117,7 +117,7 @@ module.exports = function (grunt) {
                                 require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
                                 require('css-mqpacker')(),
                                 //require('postcss-russian-stylesheets')(), // doesn't really work because of wrong codepage
-                                //require('cssnano')() // minify the result
+                                require('cssnano')() // minify the result
                             ]
                         },
                         // src: 'css/style_custom.css',
