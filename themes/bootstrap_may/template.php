@@ -50,3 +50,7 @@ function bootstrap_may_preprocess_node($variables) {
 //    }
 }
 
+
+function bootstrap_may_process_html($variables) {
+    dpm($variables, 'process_html');
+}
