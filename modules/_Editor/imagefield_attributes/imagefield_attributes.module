@@ -408,9 +408,9 @@ function imagefield_attributes_get_all_attributes_names($force = FALSE) {
  */
 function imagefield_attributes_insert_widgets() {
     
-    return;
+    //return;
     
-    $widgets['image_image'] = array(
+    $widgets['image_attributes'] = array(
       'element_type' => 'managed_file',
       'wrapper' => '.image-widget',
       'fields' => imagefield_attributes_get_all_attributes_names(TRUE),

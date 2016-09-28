@@ -36,64 +36,27 @@ function bootstrap_may_preprocess_page(&$variables) {
 
 
 function bootstrap_may_preprocess_node($variables) {
-//  if (drupal_get_path_alias("node/{$variables['#node']->nid}") == 'foo') {
-//    drupal_add_css(drupal_get_path('theme', 'MYTHEME') . "/css/foo.css");
-//  }
+
+    //drupal_add_css(path_to_theme(). "/file.css", "theme");
+    //drupal_add_css(drupal_get_path('theme', 'MYTHEME') . "/css/foo.css");
+
     
     //dpm($variables, '$variables');
     //$node_parallax_js = drupal_get_path('module', 'may_pages') . '/js/parallax/pn' . $variables['nid']. '.js';
     //dpm('js is ' . $node_parallax_js);
-    //return;
 //    if (file_exists($node_parallax_js)) {
 //        //dpm('added js ' . $node_parallax_js);
 //        drupal_add_js($node_parallax_js);
 //    }
     
     
-    //drupal_add_css(path_to_theme(). "/file.css", "theme");
+    
 }
 
 
 function bootstrap_may_process_html(&$variables) {
-    //dpm($variables, 'process_html');
-    
-    /*
-    $variables['styles']= '<style>
-@import url("http://a4s-local.m-a-y.ru/modules/system/system.base.css?oe89tl");
-</style>
-<style>
-@import url("http://a4s-local.m-a-y.ru/modules/contextual/contextual.css?oe89tl");
-</style>
-<style>
-@import url("http://a4s-local.m-a-y.ru/modules/field/theme/field.css?oe89tl");
-@import url("http://a4s-local.m-a-y.ru/modules/node/node.css?oe89tl");
-@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Views/views/css/views.css?oe89tl");
-@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Image/lazyloader/lazyloader.css?oe89tl");
-@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Editor/ckeditor/css/ckeditor.css?oe89tl");
-@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Menu/admin_menu/admin_menu.css?oe89tl");
-@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Menu/admin_menu/admin_menu.uid1.css?oe89tl");
-@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Menu/admin_menu/admin_menu_toolbar/admin_menu_toolbar.css?oe89tl");
-@import url("http://a4s-local.m-a-y.ru/modules/shortcut/shortcut.css?oe89tl");
-</style>
-<style>
-@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Other/ctools/css/ctools.css?oe89tl");
-</style>
-<style>.jquery_colorpicker_color_display_12_0_c4ed96{background-color:#c4ed96;}
-.jquery_colorpicker_color_display_12_0_eda5ed{background-color:#eda5ed;}
-</style>
-<style>
-@import url("http://a4s-local.m-a-y.ru/sites/all/themes/bootstrap_may/css/style.css");
-@import url("http://a4s-local.m-a-y.ru/sites/all/themes/bootstrap_may/css/style_custom.css");
-</style>';
-    */
-    
-    //dpm($variables['styles'], 'styles');
-    //dpm($variables['page'], 'styles');
-    
-    
     // Remove Query Strings from CSS filenames (CacheBuster) 
     //$variables['styles'] = preg_replace('/.css\?.*"/','.css"', $variables['styles']); 
     $variables['styles'] = preg_replace('/style_custom.css\?.*"/','style_custom.css"', $variables['styles']); 
-    
-    
+
 }
