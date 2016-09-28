@@ -404,26 +404,11 @@ function imagefield_attributes_get_all_attributes_names($force = FALSE) {
 
 
 /**
- * Implementation of hook_insert_widgets().
+ * 
+ * @param type $widgets
  */
-/*
-function imagefield_attributes_insert_widgets() {
-        
-    $widgets['image_attributes'] = array(
-      'element_type' => 'managed_file',
-      'wrapper' => '.image-widget',
-      'fields' => imagefield_attributes_get_all_attributes_names(TRUE),
-    );
-
-    return $widgets;
-
-}
-*/
-
-
 function imagefield_attributes_insert_widgets_alter(&$widgets) {
     if(isset($widgets['image_image']['fields'])) {
-        $widgets['image_image']['fields'] += imagefield_attributes_get_all_attributes_names(TRUE);
+        $widgets['image_image']['fields'] += imagefield_attributes_get_all_attributes_names();
     }
-    dpm($widgets, '$widgets 2');
 }
