@@ -422,5 +422,8 @@ function imagefield_attributes_insert_widgets() {
 
 
 function imagefield_attributes_insert_widgets_alter(&$widgets) {
+    if(isset($widgets['image_image']['fields'])) {
+        $widgets['image_image']['fields'] += imagefield_attributes_get_all_attributes_names(TRUE);
+    }
     dpm($widgets, '$widgets 2');
 }
