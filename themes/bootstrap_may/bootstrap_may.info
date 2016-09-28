@@ -21,7 +21,7 @@ regions[page_bottom] = 'Page bottom'
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/style_custom.css
 ;stylesheets[all][] = css/postcss/style_postcss.css
-;stylesheets[all][] = css/postcss/custom_postcss.css
+;stylesheets[all][] = css/postcss/style_custom_postcss.css
 ; For information on choosing the desired method, please read the Drupal
 ; Bootstrap sub-theme "how-to" documentation:
 ; https://drupal.org/node/1978010

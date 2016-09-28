@@ -231,10 +231,10 @@ module.exports = function (grunt) {
                   tasks: ['autoprefixer:dev']
               }, // autoprefixer
               */
-//              postcss: {
-//                  files: ['css/*.css'], 
-//                  tasks: ['postcss:dev']
-//              },
+              postcss: {
+                  files: ['css/*.css'], 
+                  tasks: ['postcss:dev']
+              },
               
               
               // Doesn't work... :( Warning: Cannot read property 'length' of undefined Use --force to continue.
