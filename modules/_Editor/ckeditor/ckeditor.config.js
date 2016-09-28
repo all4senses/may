@@ -39,6 +39,9 @@ CKEDITOR.editorConfig = function(config) {
   config.basicEntities = false;
   config.htmlEncodeOutput = false;
   
+  
+  config.language_list = [ 'he:Hebrew:rtl', 'pt:Portuguese', 'de:German', 'ru:Russian' ];
+  
   config.codemirror = {
 
         // Set this to the theme you wish to use (codemirror themes)
