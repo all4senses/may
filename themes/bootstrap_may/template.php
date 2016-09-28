@@ -52,7 +52,7 @@ function bootstrap_may_preprocess_node($variables) {
 
 
 function bootstrap_may_process_html($variables) {
-    dpm($variables, 'process_html');
+    //dpm($variables, 'process_html');
     
     
     $variables['styles']= '<style>
@@ -82,4 +82,8 @@ function bootstrap_may_process_html($variables) {
 @import url("http://a4s-local.m-a-y.ru/sites/all/themes/bootstrap_may/css/style.css");
 @import url("http://a4s-local.m-a-y.ru/sites/all/themes/bootstrap_may/css/style_custom.css");
 </style>';
+    
+    
+    dpm($variables['styles'], 'styles');
+    dpm($variables['page'], 'styles');
 }
