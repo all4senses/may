@@ -133,6 +133,7 @@ function insert_widgets($reset = FALSE) {
       }
       $widgets = array_merge($widgets, $module_widgets);
     }
+    dpm($widgets,'$widgets');
     drupal_alter('insert_widgets', $widgets);
   }
 
