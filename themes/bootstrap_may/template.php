@@ -48,6 +48,9 @@ function bootstrap_may_preprocess_node($variables) {
 //        //dpm('added js ' . $node_parallax_js);
 //        drupal_add_js($node_parallax_js);
 //    }
+    
+    
+    //drupal_add_css(path_to_theme(). "/file.css", "theme");
 }
 
 
