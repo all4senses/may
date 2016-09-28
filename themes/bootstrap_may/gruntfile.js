@@ -103,14 +103,15 @@ module.exports = function (grunt) {
 
                    dev: {
                         options: {
-                            map: false, // inline sourcemaps
+//                            map: false, // inline sourcemaps
 
                             // or
 
-//                            map: {
-//                                inline: false, // save all sourcemaps as separate files...
-//                                annotation: 'css/postcss/' // ...to the specified directory
-//                            },
+                            map: {
+                                inline: false, // save all sourcemaps as separate files...
+                                //annotation: 'css/postcss/' // ...to the specified directory
+                                annotation: 'css/' // ...to the specified directory
+                            },
                             processors: [
                                 require('pixrem')(), // add fallbacks for rem units
                                 require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
@@ -119,12 +120,19 @@ module.exports = function (grunt) {
                                 //require('cssnano')() // minify the result
                             ]
                         },
-                        // src: 'css/custom.css',
-                        // dest: 'css/custom_postcss.css'
+                        // src: 'css/style_custom.css',
+                        // dest: 'css/style_custom_postcss.css'
                         // Works.
                         files: {
-                            'css/postcss/custom_postcss.css': 'css/custom.css', // This will not be actually used, cause it's added to style.css (below)
-                            'css/postcss/style_postcss.css': 'css/style.css'
+//                            'css/postcss/style_custom_postcss.css': 'css/style_custom.css', // This will not be actually used, cause it's added to style.css (below)
+//                            'css/postcss/style_postcss.css': 'css/style.css',
+                            
+//                            'css/style_custom_postcss.css': 'css/style_custom.css', // This will not be actually used, cause it's added to style.css (below)
+//                            'css/style_postcss.css': 'css/style.css'
+                            
+                            
+                            'css/style.css': 'css/style.css',
+                            'css/style_custom.css': 'css/style_custom.css' // This will not be actually used, cause it's added to style.css (below)
                         }
                     },
                     prod: {
@@ -138,12 +146,20 @@ module.exports = function (grunt) {
                                 require('cssnano')() // minify the result
                             ]
                         },
-                        // src: 'css/custom.css',
-                        // dest: 'css/custom_postcss.css'
+                        // src: 'css/style_custom.css',
+                        // dest: 'css/style_custom_postcss.css'
                         // Works.
                         files: {
-                            'css/postcss/custom_postcss.css': 'css/custom.css', // This will not be actually used, cause it's added to style.css (below)
-                            'css/postcss/style_postcss.css': 'css/style.css'
+//                            'css/postcss/style_custom_postcss.css': 'css/style_custom.css', // This will not be actually used, cause it's added to style.css (below)
+//                            'css/postcss/style_postcss.css': 'css/style.css',
+                            
+//                            'css/style_custom_postcss.css': 'css/style_custom.css', // This will not be actually used, cause it's added to style.css (below)
+//                            'css/style_postcss.css': 'css/style.css'
+                            
+                            
+                            'css/style.css': 'css/style.css',
+                            'css/style_custom.css': 'css/style_custom.css' // This will not be actually used, cause it's added to style.css (below)
+                            
                         }
                     }
               
@@ -168,11 +184,11 @@ module.exports = function (grunt) {
                   }, // options
                   
                   dist: {
-                    // src: 'css/custom.css',
-                    // dest: 'css/custom_postcss.css'
+                    // src: 'css/style_custom.css',
+                    // dest: 'css/style_custom_postcss.css'
                     // Works.
                     files: {
-                        'css/postcss/custom_postcss.css': 'css/custom.css', // This will not be actually used, cause it's added to style.css (below)
+                        'css/postcss/style_custom_postcss.css': 'css/style_custom.css', // This will not be actually used, cause it's added to style.css (below)
                         'css/postcss/style_postcss.css': 'css/style.css'
                     }
                   },
@@ -228,7 +244,7 @@ module.exports = function (grunt) {
               },
               */
               javascripts: {
-                  files: ['assets/js/*.js'], // We only need to watch the custom js
+                  files: ['assets/js/*.js'], // We only need to watch the style_custom js
                   tasks: ['uglify:js_dev']
               } // javascripts
           } // watch
