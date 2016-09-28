@@ -53,4 +53,33 @@ function bootstrap_may_preprocess_node($variables) {
 
 function bootstrap_may_process_html($variables) {
     dpm($variables, 'process_html');
+    
+    
+    $variables['styles']= '<style>
+@import url("http://a4s-local.m-a-y.ru/modules/system/system.base.css?oe89tl");
+</style>
+<style>
+@import url("http://a4s-local.m-a-y.ru/modules/contextual/contextual.css?oe89tl");
+</style>
+<style>
+@import url("http://a4s-local.m-a-y.ru/modules/field/theme/field.css?oe89tl");
+@import url("http://a4s-local.m-a-y.ru/modules/node/node.css?oe89tl");
+@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Views/views/css/views.css?oe89tl");
+@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Image/lazyloader/lazyloader.css?oe89tl");
+@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Editor/ckeditor/css/ckeditor.css?oe89tl");
+@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Menu/admin_menu/admin_menu.css?oe89tl");
+@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Menu/admin_menu/admin_menu.uid1.css?oe89tl");
+@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Menu/admin_menu/admin_menu_toolbar/admin_menu_toolbar.css?oe89tl");
+@import url("http://a4s-local.m-a-y.ru/modules/shortcut/shortcut.css?oe89tl");
+</style>
+<style>
+@import url("http://a4s-local.m-a-y.ru/sites/all/modules/_Other/ctools/css/ctools.css?oe89tl");
+</style>
+<style>.jquery_colorpicker_color_display_12_0_c4ed96{background-color:#c4ed96;}
+.jquery_colorpicker_color_display_12_0_eda5ed{background-color:#eda5ed;}
+</style>
+<style>
+@import url("http://a4s-local.m-a-y.ru/sites/all/themes/bootstrap_may/css/style.css");
+@import url("http://a4s-local.m-a-y.ru/sites/all/themes/bootstrap_may/css/style_custom.css");
+</style>';
 }
