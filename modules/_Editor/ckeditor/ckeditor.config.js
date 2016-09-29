@@ -32,7 +32,7 @@ CKEDITOR.editorConfig = function(config) {
 
   //config.extraPlugins = 'language, tableresize,tabletools,colordialog,dialog,dialogadvtab,div,dialogui,codemirror,sourcedialog,imagepaste,textselection'; //,showborders, ,widget,image2, 
   //config.extraPlugins = 'language, tableresize,tabletools,colordialog,,dialogadvtab,div,,,sourcedialog,imagepaste'; //,showborders, ,widget,image2, 
-  config.extraPlugins = 'codemirror, textselection, dialogui, dialog, lineutils, clipboard, widget, image2'; //
+  config.extraPlugins = 'codemirror, textselection, dialogui, dialog, lineutils, clipboard, widget, image2, imageresponsive'; //
   
  
   // Works!
