@@ -42,6 +42,7 @@
 
                 // register handler for data
                 widget.on('data', function(e) {
+                    console.log(e,'e');
                     widget = e.data;
                     // keep srcset & sizes attributes only when set.
                     if(widget.srcset)
@@ -64,7 +65,7 @@
 
                 // set data from existing variables.
                 var image = widget.element;
-
+                console.log(image,'image');
                 // since the img-tag can be wrapped with a caption, make sure we use the right element.
                 if(image.getName() != 'img')
                     image = image.findOne('img');
@@ -109,6 +110,8 @@
                         this.setValue(widget.data.sizes);
                     },
                     commit: function (widget) {
+                        console.log(widget, 'widget on setData sizes');
+                        console.log(this, 'this sizes');
                         widget.setData('sizes', this.getValue());
                     }
                 }, 'alignment');
@@ -123,7 +126,9 @@
                         this.setValue(widget.data.data_a4s);
                     },
                     commit: function (widget) {
-                        widget.setData('data-a4s', this.getValue());
+                        console.log(widget, 'widget on setData a4s');
+                        console.log(this, 'this a4s');
+                        widget.setData('data_a4s', this.getValue());
                     }
                 }, 'alignment');
                 
