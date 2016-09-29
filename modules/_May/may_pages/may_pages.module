@@ -738,3 +738,8 @@ function may_pages_sh_get() {
   
   drupal_json_output(array('status' => $status, 'url' =>$url, 'post' => $post, 'data' => $data_to));
 }
+
+
+function may_pages_css_alter(&$css) {
+ dpm($css, '$css');   
+}
