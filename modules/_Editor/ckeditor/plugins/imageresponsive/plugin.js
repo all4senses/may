@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @license Copyright (c) 2003-2014, Clemens Krack. All rights reserved.
  * @author Clemens Krack <info@clemenskrack.com>
  * For licensing, see LICENSE.md or http://ckeditor.com/license
@@ -14,7 +14,7 @@
             editor.on('widgetDefinition', function(e) {
                 var widget = e.data;
                 // figure out if this is the image dialog.
-                if(widget.name != 'image') {
+                if(widget.name != 'image')
                     return;
 
                 // should not happen but anyway...
