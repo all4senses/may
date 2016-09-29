@@ -9,22 +9,25 @@
 ( function() {
     CKEDITOR.plugins.add( 'imageresponsive', {
         lang: 'en,de',
-        requires: 'widget,dialog,image2',
+        //requires: 'widget,dialog,image2',
         beforeInit: function(editor) {
             editor.on('widgetDefinition', function(e) {
                 var widget = e.data;
                 // figure out if this is the image dialog.
-                if(widget.name != 'image')
-                    return;
-
-                // should not happen but anyway...
-                if(!widget.allowedContent.img || !widget.allowedContent.img.attributes)
-                    return;
+//                if(widget.name != 'image') {
+//                    return;
+//
+//                // should not happen but anyway...
+//                if(!widget.allowedContent.img || !widget.allowedContent.img.attributes)
+//                    return;
 
                 if(widget.allowedContent.img.attributes.indexOf('srcset') == -1)
                     widget.allowedContent.img.attributes += ',srcset'
                 if(widget.allowedContent.img.attributes.indexOf('sizes') == -1)
                     widget.allowedContent.img.attributes += ',sizes'
+                
+                if(widget.allowedContent.img.attributes.indexOf('data-a4s') == -1)
+                    widget.allowedContent.img.attributes += ',data-a4s'
             });
         },
         init: function(editor) {
@@ -33,8 +36,8 @@
                 var widget = e.data;
 
                 // figure out if this is the image dialog.
-                if(widget.name != 'image')
-                    return;
+//                if(widget.name != 'image')
+//                    return;
 
                 // register handler for data
                 widget.on('data', function(e) {
@@ -49,6 +52,11 @@
                         e.sender.parts.image.setAttribute('sizes', widget.sizes);
                     else
                         e.sender.parts.image.removeAttribute('sizes');
+                    
+                    if(widget.data_a4s)
+                        e.sender.parts.image.setAttribute('data-a4s', widget.sizes);
+                    else
+                        e.sender.parts.image.removeAttribute('data-a4s');
                 });
 
                 // set data from existing variables.
@@ -60,7 +68,8 @@
 
                 var data = {
                     srcset: image.getAttribute( 'srcset' ) || '',
-                    sizes: image.getAttribute( 'sizes' ) || ''
+                    sizes: image.getAttribute( 'sizes' ) || '',
+                    data_a4s: image.getAttribute( 'data-a4s' ) || ''
                 };
                 widget.setData(data);
             });
@@ -99,6 +108,21 @@
                         widget.setData('sizes', this.getValue());
                     }
                 }, 'alignment');
+                
+                
+                infoTab.add({
+                    id: 'data-a4s',
+                    type: 'text',
+                    requiredContent: 'img[data-a4s]',
+                    label: e.editor.lang.imageresponsive.data_a4s,
+                    setup: function(widget) {
+                        this.setValue(widget.data.data_a4s);
+                    },
+                    commit: function (widget) {
+                        widget.setData('data-a4s', this.getValue());
+                    }
+                }, 'alignment');
+                
             });
         }
     });
