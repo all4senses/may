@@ -40,7 +40,20 @@ function bootstrap_may_preprocess_node($variables) {
     //drupal_add_css(path_to_theme(). "/file.css", "theme");
     //drupal_add_css(drupal_get_path('theme', 'MYTHEME') . "/css/foo.css");
 
+    $custom_page_theme_css = path_to_theme() . '/css/pages/pn' . $variables['nid'];
+    if (file_exists($custom_page_theme_css)) {
+        dpm('added ' . $custom_page_theme_css);
+        drupal_add_css($custom_page_theme_css);
+    }
     
+    drupal_add_js(array(
+      'custom_img_attr_fields' => array(
+        'test1' => '111',
+        'test2' => '222',
+      ),
+    ),array('type' =>'setting'));
+     
+    //
     //dpm($variables, '$variables');
     //$node_parallax_js = drupal_get_path('module', 'may_pages') . '/js/parallax/pn' . $variables['nid']. '.js';
     //dpm('js is ' . $node_parallax_js);
