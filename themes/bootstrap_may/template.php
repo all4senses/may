@@ -40,6 +40,7 @@ function bootstrap_may_preprocess_node($variables) {
     //drupal_add_css(path_to_theme(). "/file.css", "theme");
     //drupal_add_css(drupal_get_path('theme', 'MYTHEME') . "/css/foo.css");
 
+    dpm(path_to_theme(),'path_to_theme()');
     $custom_page_theme_css = path_to_theme() . '/css/pages/pn' . $variables['nid'];
     if (file_exists($custom_page_theme_css)) {
         dpm('added ' . $custom_page_theme_css);
