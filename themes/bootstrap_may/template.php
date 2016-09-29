@@ -44,7 +44,7 @@ function bootstrap_may_preprocess_node($variables) {
     $custom_page_theme_css = path_to_theme() . '/css/pages/pn' . $variables['nid'] . '.css';
     if (file_exists($custom_page_theme_css)) {
         dpm('added ' . $custom_page_theme_css);
-        drupal_add_css($custom_page_theme_css);
+        drupal_add_css($custom_page_theme_css, array('weight' => 100));
     }
     
     drupal_add_js(array(
