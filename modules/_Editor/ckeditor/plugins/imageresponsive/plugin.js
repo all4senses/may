@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license Copyright (c) 2003-2014, Clemens Krack. All rights reserved.
  * @author Clemens Krack <info@clemenskrack.com>
  * For licensing, see LICENSE.md or http://ckeditor.com/license
@@ -25,9 +25,6 @@
                     widget.allowedContent.img.attributes += ',srcset'
                 if(widget.allowedContent.img.attributes.indexOf('sizes') == -1)
                     widget.allowedContent.img.attributes += ',sizes'
-                
-                if(widget.allowedContent.img.attributes.indexOf('data-a4s') == -1)
-                    widget.allowedContent.img.attributes += ',data-a4s'
             });
         },
         init: function(editor) {
@@ -41,7 +38,6 @@
 
                 // register handler for data
                 widget.on('data', function(e) {
-
                     widget = e.data;
                     // keep srcset & sizes attributes only when set.
                     if(widget.srcset)
@@ -53,32 +49,19 @@
                         e.sender.parts.image.setAttribute('sizes', widget.sizes);
                     else
                         e.sender.parts.image.removeAttribute('sizes');
-                    
-                    //if(widget.data_a4s)
-                    if(widget['data-a4s'])
-                        //e.sender.parts.image.setAttribute('data-a4s', widget.data_a4s);
-                        e.sender.parts.image.setAttribute('data-a4s', widget['data-a4s']);
-                    else
-                        e.sender.parts.image.removeAttribute('data-a4s');
-                    
-                    console.log(widget, 'widget');
-                    //console.log(widget.data_a4s, 'widget.data_a4s');
-                    console.log(widget['data-a4s'], 'widget[data-a4s]');
                 });
 
                 // set data from existing variables.
                 var image = widget.element;
+
                 // since the img-tag can be wrapped with a caption, make sure we use the right element.
                 if(image.getName() != 'img')
                     image = image.findOne('img');
 
                 var data = {
                     srcset: image.getAttribute( 'srcset' ) || '',
-                    sizes: image.getAttribute( 'sizes' ) || '',
-                    //data_a4s: image.getAttribute( 'data-a4s' ) || ''
-                    'data-a4s': image.getAttribute( 'data-a4s' ) || ''
+                    sizes: image.getAttribute( 'sizes' ) || ''
                 };
-                console.log(data,'source data');
                 widget.setData(data);
             });
 
@@ -116,26 +99,6 @@
                         widget.setData('sizes', this.getValue());
                     }
                 }, 'alignment');
-                
-                
-                infoTab.add({
-                    id: 'data-a4s',
-                    type: 'text',
-                    requiredContent: 'img[data-a4s]',
-                    //label: e.editor.lang.imageresponsive.data_a4s,
-                    label: e.editor.lang.imageresponsive['data-a4s'],
-                    setup: function(widget) {
-                        //this.setValue(widget.data.data_a4s);
-                        this.setValue(widget.data['data-a4s']);
-                    },
-                    commit: function (widget) {
-                        //widget.setData('data_a4s', this.getValue());
-                        widget.setData('data-a4s', this.getValue());
-                    }
-                }, 'alignment');
-                
-                console.log(infoTab, 'infoTab');
-                
             });
         }
     });
