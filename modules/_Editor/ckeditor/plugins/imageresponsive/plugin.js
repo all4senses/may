@@ -26,8 +26,8 @@
                 if(widget.allowedContent.img.attributes.indexOf('sizes') == -1)
                     widget.allowedContent.img.attributes += ',sizes'
                 
-                if(widget.allowedContent.img.attributes.indexOf('xxxa4s') == -1)
-                    widget.allowedContent.img.attributes += ',xxxa4s'
+                if(widget.allowedContent.img.attributes.indexOf('data-a4s') == -1)
+                    widget.allowedContent.img.attributes += ',data-a4s'
             });
         },
         init: function(editor) {
@@ -53,10 +53,10 @@
                     else
                         e.sender.parts.image.removeAttribute('sizes');
                     
-                    if(widget.xxxa4s)
-                        e.sender.parts.image.setAttribute('xxxa4s', widget.xxxa4s);
+                    if(widget.data_a4s)
+                        e.sender.parts.image.setAttribute('data-a4s', widget.data_a4s);
                     else
-                        e.sender.parts.image.removeAttribute('xxxa4s');
+                        e.sender.parts.image.removeAttribute('data-a4s');
                 });
 
                 // set data from existing variables.
@@ -69,7 +69,7 @@
                 var data = {
                     srcset: image.getAttribute( 'srcset' ) || '',
                     sizes: image.getAttribute( 'sizes' ) || '',
-                    xxxa4s: image.getAttribute( 'xxxa4s' ) || ''
+                    data_a4s: image.getAttribute( 'data-a4s' ) || ''
                 };
                 widget.setData(data);
             });
@@ -111,15 +111,15 @@
                 
                 
                 infoTab.add({
-                    id: 'xxxa4s',
+                    id: 'data-a4s',
                     type: 'text',
-                    requiredContent: 'img[xxxa4s]',
-                    label: e.editor.lang.imageresponsive.xxxa4s,
+                    requiredContent: 'img[data-a4s]',
+                    label: e.editor.lang.imageresponsive.data_a4s,
                     setup: function(widget) {
-                        this.setValue(widget.data.xxxa4s);
+                        this.setValue(widget.data.data_a4s);
                     },
                     commit: function (widget) {
-                        widget.setData('xxxa4s', this.getValue());
+                        widget.setData('data-a4s', this.getValue());
                     }
                 }, 'alignment');
                 
