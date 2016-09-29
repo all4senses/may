@@ -8,7 +8,7 @@
 
 ( function() {
     CKEDITOR.plugins.add( 'extra_img_attr_fields', {
-        lang: 'en,de',
+        //lang: 'en,de',
         requires: 'widget,dialog,image2',
         beforeInit: function(editor) {
             editor.on('widgetDefinition', function(e) {
