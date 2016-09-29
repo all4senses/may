@@ -9,7 +9,7 @@
 ( function() {
     CKEDITOR.plugins.add( 'imageresponsive', {
         lang: 'en,de',
-        //requires: 'widget,dialog,image2',
+        requires: 'widget,dialog,image2',
         beforeInit: function(editor) {
             editor.on('widgetDefinition', function(e) {
                 var widget = e.data;
@@ -54,7 +54,7 @@
                         e.sender.parts.image.removeAttribute('sizes');
                     
                     if(widget.data_a4s)
-                        e.sender.parts.image.setAttribute('data-a4s', widget.sizes);
+                        e.sender.parts.image.setAttribute('data-a4s', widget.data_a4s);
                     else
                         e.sender.parts.image.removeAttribute('data-a4s');
                 });
