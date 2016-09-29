@@ -123,7 +123,8 @@
                     type: 'text',
                     requiredContent: 'img[data-a4s]',
                     //label: e.editor.lang.imageresponsive.data_a4s,
-                    label: e.editor.lang.imageresponsive['data-a4s'],
+                    //label: e.editor.lang.imageresponsive['data-a4s'],
+                    label: 'data-a4s',
                     setup: function(widget) {
                         //this.setValue(widget.data.data_a4s);
                         this.setValue(widget.data['data-a4s']);
