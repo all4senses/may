@@ -21,7 +21,6 @@
                 if(!widget.allowedContent.img || !widget.allowedContent.img.attributes)
                     return;
 
-                    console.log(widget,'widget');
                 if(widget.allowedContent.img.attributes.indexOf('srcset') == -1)
                     widget.allowedContent.img.attributes += ',srcset'
                 if(widget.allowedContent.img.attributes.indexOf('sizes') == -1)
@@ -42,7 +41,7 @@
 
                 // register handler for data
                 widget.on('data', function(e) {
-                    console.log(e,'e');
+
                     widget = e.data;
                     // keep srcset & sizes attributes only when set.
                     if(widget.srcset)
@@ -60,12 +59,13 @@
                     else
                         e.sender.parts.image.removeAttribute('data-a4s');
                     
-                    console.log(e.sender.parts.image, 'e.sender.parts.image');
+                    console.log(widget, 'widget');
+                    console.log(widget.data_a4s, 'widget.data_a4s');
+                    console.log(widget['data_a4s'], 'widget[data_a4s]');
                 });
 
                 // set data from existing variables.
                 var image = widget.element;
-                console.log(image,'image');
                 // since the img-tag can be wrapped with a caption, make sure we use the right element.
                 if(image.getName() != 'img')
                     image = image.findOne('img');
@@ -75,7 +75,7 @@
                     sizes: image.getAttribute( 'sizes' ) || '',
                     data_a4s: image.getAttribute( 'data-a4s' ) || ''
                 };
-                console.log(data,'data');
+                console.log(data,'source data');
                 widget.setData(data);
             });
 
@@ -110,8 +110,6 @@
                         this.setValue(widget.data.sizes);
                     },
                     commit: function (widget) {
-                        console.log(widget, 'widget on setData sizes');
-                        console.log(this, 'this sizes');
                         widget.setData('sizes', this.getValue());
                     }
                 }, 'alignment');
@@ -126,8 +124,6 @@
                         this.setValue(widget.data.data_a4s);
                     },
                     commit: function (widget) {
-                        console.log(widget, 'widget on setData a4s');
-                        console.log(this, 'this a4s');
                         widget.setData('data_a4s', this.getValue());
                     }
                 }, 'alignment');
