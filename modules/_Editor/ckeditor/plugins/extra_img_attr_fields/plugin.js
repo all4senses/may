@@ -159,8 +159,9 @@
 //                    }
 //                }, 'alignment');
                 
+                console.log(infoTab, 'infoTab before');
                 console.log(img_attributes, '--- img_attributes on tab init');
-                
+                /*
                 infoTab.add({
                     id: 'data-a4s',
                     type: 'text',
@@ -177,8 +178,29 @@
                         widget.setData('data-a4s', this.getValue());
                     }
                 }, 'alignment');
+                */
                 
-                console.log(infoTab, 'infoTab');
+                jQuery.each( img_attributes, function( index, value ){
+                    infoTab.add({
+                        id: value,
+                        type: 'text',
+                        requiredContent: 'img[' + value + ']',
+                        //label: e.editor.lang.imageresponsive.data_a4s,
+                        //label: e.editor.lang.imageresponsive['data-a4s'],
+                        label: value,
+                        setup: function(widget) {
+                            //this.setValue(widget.data.data_a4s);
+                            this.setValue(widget.data[value]);
+                        },
+                        commit: function (widget) {
+                            //widget.setData('data_a4s', this.getValue());
+                            widget.setData(value, this.getValue());
+                        }
+                    }, 'alignment');
+                });
+
+                                
+                console.log(infoTab, 'infoTab after');
                 
             });
         }
