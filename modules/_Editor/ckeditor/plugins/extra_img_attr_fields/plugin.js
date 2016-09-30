@@ -89,7 +89,8 @@
 
                 console.log(widget, 'widget xxx'); 
                 console.log(image, 'image xxx');    
-                console.log(image.img, 'image img xxx');    
+                console.log(image.$, 'image $ xxx');    
+                console.log(image['$'], 'image [$] xxx');    
                 //console.log(image.img.attributes, 'image attr xxx');    
 
                 // ==================================================================
@@ -132,34 +133,35 @@
                 console.log(e, 'EEEEEE');
                 // Get a reference to the "Link Info" tab.
                 var infoTab = e.data.definition.getContents( 'info' );
-
-                // Add text fields for srcset and sizes.
-//                infoTab.add({
-//                    id: 'srcset',
-//                    type: 'text',
-//                    requiredContent: 'img[srcset]',
-//                    label: e.editor.lang.imageresponsive.srcset,
-//                    setup: function(widget) {
-//                        this.setValue(widget.data.srcset);
-//                    },
-//                    commit: function (widget) {
-//                        widget.setData('srcset', this.getValue());
-//                    }
-//                }, 'alt');
-//
-//                infoTab.add({
-//                    id: 'sizes',
-//                    type: 'text',
-//                    requiredContent: 'img[sizes]',
-//                    label: e.editor.lang.imageresponsive.sizes,
-//                    setup: function(widget) {
-//                        this.setValue(widget.data.sizes);
-//                    },
-//                    commit: function (widget) {
-//                        widget.setData('sizes', this.getValue());
-//                    }
-//                }, 'alignment');
                 
+                /*
+                // Add text fields for srcset and sizes.
+                infoTab.add({
+                    id: 'srcset',
+                    type: 'text',
+                    requiredContent: 'img[srcset]',
+                    label: e.editor.lang.imageresponsive.srcset,
+                    setup: function(widget) {
+                        this.setValue(widget.data.srcset);
+                    },
+                    commit: function (widget) {
+                        widget.setData('srcset', this.getValue());
+                    }
+                }, 'alt');
+
+                infoTab.add({
+                    id: 'sizes',
+                    type: 'text',
+                    requiredContent: 'img[sizes]',
+                    label: e.editor.lang.imageresponsive.sizes,
+                    setup: function(widget) {
+                        this.setValue(widget.data.sizes);
+                    },
+                    commit: function (widget) {
+                        widget.setData('sizes', this.getValue());
+                    }
+                }, 'alignment');
+                */
                 console.log(infoTab, 'infoTab before');
                 console.log(img_attributes, '--- img_attributes on tab init');
                 /*
