@@ -29,6 +29,8 @@
                 
                 console.log(widget.allowedContent.img.attributes, 'widget.allowedContent.img.attributes');
                 
+                //===========================
+                
                 if(widget.allowedContent.img.attributes.indexOf('data-a4s') == -1)
                     widget.allowedContent.img.attributes += ',data-a4s';
                 
@@ -81,6 +83,9 @@
                 // since the img-tag can be wrapped with a caption, make sure we use the right element.
                 if(image.getName() != 'img')
                     image = image.findOne('img');
+
+                console.log(image, 'image xxx');    
+
 
                 var data = {
 //                    srcset: image.getAttribute( 'srcset' ) || '',
