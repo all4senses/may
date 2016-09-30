@@ -30,7 +30,7 @@
                 
                 console.log(widget.allowedContent.img.attributes, 'widget.allowedContent.img.attributes');
                 
-                
+                console.log(e, 'e=====');
                 
                 
                 
