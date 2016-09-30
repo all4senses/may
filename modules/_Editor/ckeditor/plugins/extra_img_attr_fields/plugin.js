@@ -39,14 +39,14 @@
                 
                 console.log(widget, 'widget +++');
                 // set data from existing variables.
-                var image = widget.element;
+                //var image = widget.element;
                 
                 // since the img-tag can be wrapped with a caption, make sure we use the right element.
 //                if(image.getName() != 'img')
 //                    image = image.findOne('img');
 
-                console.log(image, 'image +++');    
-                console.log(image.$.attributes, 'image $ attr +++'); // shows objects right away
+//                console.log(image, 'image +++');    
+//                console.log(image.$.attributes, 'image $ attr +++'); // shows objects right away
                 // 
                 // 
                 // 
