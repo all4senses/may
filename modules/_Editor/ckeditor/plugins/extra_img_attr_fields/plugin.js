@@ -8,6 +8,7 @@
 
 ( function() {
     console.log(Drupal.settings.custom_img_attr_fields, 'Drupal.settings.custom_img_attr_fields');
+    var img_attributes = '';
     CKEDITOR.plugins.add( 'extra_img_attr_fields', {
         //lang: 'en,de',
         requires: 'widget,dialog,image2',
@@ -100,22 +101,24 @@
                 //console.log(widget.allowedContent.img.attributes, 'widget.allowedContent.img.attributes');
                 var sum = 0;
                 //var img_attributes = 'xxx,yyy,zzz';
-                var img_attributes = widget.allowedContent.img.attributes.split(",");
+                img_attributes = widget.allowedContent.img.attributes.split(",");
                 console.log(img_attributes, 'img_attributes');
                 jQuery.each( img_attributes, function( index, value ){
                 console.log(index + ":" + value);
                     sum += value;
+                    data[value] = image.getAttribute(value);
                 });
 
                 console.log( sum );
 
-
+                /*
                 var data = {
 //                    srcset: image.getAttribute( 'srcset' ) || '',
 //                    sizes: image.getAttribute( 'sizes' ) || '',
                     //data_a4s: image.getAttribute( 'data-a4s' ) || ''
                     'data-a4s': image.getAttribute( 'data-a4s' ) || ''
                 };
+                */
                 console.log(data,'source data');
                 widget.setData(data);
             });
@@ -155,6 +158,7 @@
 //                    }
 //                }, 'alignment');
                 
+                console.log(img_attributes, '--- img_attributes on tab init');
                 
                 infoTab.add({
                     id: 'data-a4s',
