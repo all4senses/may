@@ -30,9 +30,9 @@
                 console.log(widget.allowedContent.img.attributes, 'widget.allowedContent.img.attributes');
                 
                 
-                
-                arr = 'xxx,yyy,zzz';
-                arr = arr.split(",");
+                var sum = 0;
+                var arr = 'xxx,yyy,zzz';
+                var arr = arr.split(",");
                 console.log(arr);
                 jQuery.each( arr, function( index, value ){
                 console.log(index + ":" + value);
