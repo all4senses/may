@@ -89,8 +89,19 @@
 
                 console.log(widget, 'widget xxx'); 
                 console.log(image, 'image xxx');    
-                console.log(image.$, 'image $ xxx');
-                console.log(image.$.attributes, 'image $ attr xxx');
+                console.log(image.$, 'image $ xxx'); // shows html
+                console.log($($.parseHTML(image.$))[0].attributes, '$($.parseHTML(image.$))[0].attributes'); // shows objects from that html
+                console.log(image.$.attributes, 'image $ attr xxx'); // shows objects right away
+                
+                jQuery.each( image.$.attributes, function( index, value ){
+                console.log(index + ":" + value.name);
+                console.log(value, '--->value of ' + value.name);
+//                    sum += value;
+//                    data[value] = image.getAttribute(value);
+                });
+                
+                
+                
                 //console.log(image['$'], 'image [$] xxx');    
                 //console.log(image.img.attributes, 'image attr xxx');    
 
