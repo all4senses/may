@@ -78,9 +78,10 @@ function may_pages_access($type = null) {
  */
 function may_pages_form_alter(&$form, &$form_state, $form_id) {
   
-   //dpm($form_id);  dpm($form);
+   dpm($form_id);  dpm($form);
   // $conf['locale_custom_strings_en']['old string'] = 'new string'
   
+    
   switch ($form_id) {
     
     /*
@@ -122,7 +123,7 @@ function may_pages_form_alter(&$form, &$form_state, $form_id) {
     
     
     case 'project_node_form':
-        dpm($form, 'form');
+        
         
         // Restore aliased pdfs links, from /pdfs/ to /sites/default/files/pdfs/
         //$form['body'] = may_misc_rewriteLinks('pdfs', $form, 'back');
