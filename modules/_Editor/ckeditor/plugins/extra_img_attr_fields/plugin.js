@@ -95,8 +95,10 @@
                 if(image.getName() != 'img')
                     image = image.findOne('img');
 
+                console.log(widget, 'widget xxx'); 
                 console.log(image, 'image xxx');    
-                console.log(image.img.attributes, 'image attr xxx');    
+                console.log(image.img, 'image img xxx');    
+                //console.log(image.img.attributes, 'image attr xxx');    
 
                 // ==================================================================
 
