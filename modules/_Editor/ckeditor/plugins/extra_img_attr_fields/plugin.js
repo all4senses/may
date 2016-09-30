@@ -89,8 +89,9 @@
 
                 console.log(widget, 'widget xxx'); 
                 console.log(image, 'image xxx');    
-                console.log(image.$, 'image $ xxx');    
-                console.log(image['$'], 'image [$] xxx');    
+                console.log(image.$, 'image $ xxx');
+                console.log(image.$.attributes, 'image $ attr xxx');
+                //console.log(image['$'], 'image [$] xxx');    
                 //console.log(image.img.attributes, 'image attr xxx');    
 
                 // ==================================================================
