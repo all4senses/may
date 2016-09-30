@@ -8,7 +8,7 @@
 
 ( function() {
     console.log(Drupal.settings.custom_img_attr_fields, 'Drupal.settings.custom_img_attr_fields');
-    var img_attributes = '';
+    var img_attributes = {};
     CKEDITOR.plugins.add( 'extra_img_attr_fields', {
         //lang: 'en,de',
         requires: 'widget,dialog,image2',
@@ -133,12 +133,15 @@
 //                    data[value] = image.getAttribute(value);
 //                });
 
-
+                
                 jQuery.each( image.$.attributes, function( index, value ){
                 //console.log(index + ":" + value);
-                    data[value] = image.getAttribute(value);
+                    img_attributes.push(value.name);
+                    data[value.name] = image.getAttribute(value.name);
                 });
-
+                
+                console.log(img_attributes, 'img_attributes ===');
+                
                 /*
                 var data = {
 //                    srcset: image.getAttribute( 'srcset' ) || '',
