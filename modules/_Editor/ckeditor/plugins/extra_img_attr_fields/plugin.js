@@ -37,7 +37,7 @@
                 
                 // a4s injected
                 
-                console.log(widget, 'widget +++');
+                console.log(widget, 'widget ====');
                 // set data from existing variables.
                 //var image = widget.element;
                 
