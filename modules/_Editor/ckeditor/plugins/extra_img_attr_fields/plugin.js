@@ -90,7 +90,8 @@
                 console.log(widget, 'widget xxx'); 
                 console.log(image, 'image xxx');    
                 console.log(image.$, 'image $ xxx'); // shows html
-                console.log($($.parseHTML('<img alt="111 11" class="test-class" data-a4s="yyy" data-order="25" data-type="hall" height="118" sizes="123" data-cke-saved-src="/f/field/image/1023897206767caf37aada3f3947356c7d41d316449_b.jpg" src="/f/field/image/1023897206767caf37aada3f3947356c7d41d316449_b.jpg" width="118" data-cke-widget-data="%7B%7D" data-cke-widget-upcasted="1" data-cke-widget-keep-attr="0" data-widget="image">'))[0].attributes, '$($.parseHTML(image.$))[0].attributes'); // shows objects from that html
+                console.log(jQuery(jQuery.parseHTML(image.$))[0].attributes, '$($.parseHTML(image.$))[0].attributes'); // shows objects from that html
+                console.log(jQuery(jQuery.parseHTML('<img alt="111 11" class="test-class" data-a4s="yyy" data-order="25" data-type="hall" height="118" sizes="123" data-cke-saved-src="/f/field/image/1023897206767caf37aada3f3947356c7d41d316449_b.jpg" src="/f/field/image/1023897206767caf37aada3f3947356c7d41d316449_b.jpg" width="118" data-cke-widget-data="%7B%7D" data-cke-widget-upcasted="1" data-cke-widget-keep-attr="0" data-widget="image">'))[0].attributes, '$($.parseHTML(<.....>))[0].attributes'); // shows objects from that html
                 console.log(image.$.attributes, 'image $ attr xxx'); // shows objects right away
                 
                 jQuery.each( image.$.attributes, function( index, value ){
