@@ -129,6 +129,7 @@
                 if ((e.editor != editor) || (e.data.name != 'image2'))
                     return;
 
+                console.log(e, 'EEEEEE');
                 // Get a reference to the "Link Info" tab.
                 var infoTab = e.data.definition.getContents( 'info' );
 
