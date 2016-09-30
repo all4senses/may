@@ -100,6 +100,7 @@
                 //  a4s get all img attributes
                 //console.log(widget.allowedContent.img.attributes, 'widget.allowedContent.img.attributes');
                 var sum = 0;
+                var data = {};
                 //var img_attributes = 'xxx,yyy,zzz';
                 img_attributes = widget.allowedContent.img.attributes.split(",");
                 console.log(img_attributes, 'img_attributes');
