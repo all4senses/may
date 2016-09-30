@@ -32,6 +32,25 @@
                 
                 
                 
+                
+                
+                
+                // a4s injected
+                
+                console.log(widget, 'widget +++');
+                // set data from existing variables.
+                var image = widget.element;
+                // since the img-tag can be wrapped with a caption, make sure we use the right element.
+                if(image.getName() != 'img')
+                    image = image.findOne('img');
+
+                console.log(image, 'image +++');    
+                console.log(image.$.attributes, 'image $ attr +++'); // shows objects right away
+                // 
+                // 
+                // 
+                // 
+                // 
                 //===========================
                 
                 if(widget.allowedContent.img.attributes.indexOf('data-a4s') == -1)
@@ -88,19 +107,11 @@
                     image = image.findOne('img');
 
                 console.log(widget, 'widget xxx'); 
-                console.log(image, 'image xxx');    
-                console.log(image.$, 'image $ xxx'); // shows html
-                //console.log(jQuery(jQuery.parseHTML(image.$))[0].attributes, '$($.parseHTML(image.$))[0].attributes'); // shows objects from that html
-                console.log(jQuery(jQuery.parseHTML('<img alt="111 11" class="test-class" data-a4s="yyy" data-order="25" data-type="hall" height="118" sizes="123" data-cke-saved-src="/f/field/image/1023897206767caf37aada3f3947356c7d41d316449_b.jpg" src="/f/field/image/1023897206767caf37aada3f3947356c7d41d316449_b.jpg" width="118" data-cke-widget-data="%7B%7D" data-cke-widget-upcasted="1" data-cke-widget-keep-attr="0" data-widget="image">'))[0].attributes, '$($.parseHTML(<.....>))[0].attributes'); // shows objects from that html
+                
+//                console.log(image, 'image xxx');    
+//                console.log(image.$, 'image $ xxx'); // shows html, but it's kind of an abject still
+//                console.log(jQuery(jQuery.parseHTML('<img alt="111 11" class="test-class" data-a4s="yyy" data-order="25" data-type="hall" height="118" sizes="123" data-cke-saved-src="/f/field/image/1023897206767caf37aada3f3947356c7d41d316449_b.jpg" src="/f/field/image/1023897206767caf37aada3f3947356c7d41d316449_b.jpg" width="118" data-cke-widget-data="%7B%7D" data-cke-widget-upcasted="1" data-cke-widget-keep-attr="0" data-widget="image">'))[0].attributes, '$($.parseHTML(<.....>))[0].attributes'); // shows objects from that html
                 console.log(image.$.attributes, 'image $ attr xxx'); // shows objects right away
-                
-                jQuery.each( image.$.attributes, function( index, value ){
-                console.log(index + ":" + value.name);
-                console.log(value, '--->value of ' + value.name);
-//                    sum += value;
-//                    data[value] = image.getAttribute(value);
-                });
-                
                 
                 
                 //console.log(image['$'], 'image [$] xxx');    
@@ -113,18 +124,19 @@
 
                 //  a4s get all img attributes
                 //console.log(widget.allowedContent.img.attributes, 'widget.allowedContent.img.attributes');
-                var sum = 0;
                 var data = {};
-                //var img_attributes = 'xxx,yyy,zzz';
-                img_attributes = widget.allowedContent.img.attributes.split(",");
-                console.log(img_attributes, 'img_attributes');
-                jQuery.each( img_attributes, function( index, value ){
-                console.log(index + ":" + value);
-                    sum += value;
+
+//                img_attributes = widget.allowedContent.img.attributes.split(",");
+//                jQuery.each( img_attributes, function( index, value ){
+//                console.log(index + ":" + value);
+//                    data[value] = image.getAttribute(value);
+//                });
+
+
+                jQuery.each( image.$.attributes, function( index, value ){
+                //console.log(index + ":" + value);
                     data[value] = image.getAttribute(value);
                 });
-
-                console.log( sum );
 
                 /*
                 var data = {
