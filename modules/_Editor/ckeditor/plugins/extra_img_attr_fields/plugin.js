@@ -8,7 +8,7 @@
 
 ( function() {
     console.log(Drupal.settings.custom_img_attr_fields, 'Drupal.settings.custom_img_attr_fields');
-    var img_attributes = {};
+    var img_attributes = [];
     CKEDITOR.plugins.add( 'extra_img_attr_fields', {
         //lang: 'en,de',
         requires: 'widget,dialog,image2',
