@@ -100,7 +100,6 @@ module.exports = function (grunt) {
          
           postcss: {
               
-
                    dev: {
                         options: {
 //                            map: false, // inline sourcemaps
@@ -120,9 +119,9 @@ module.exports = function (grunt) {
                                 //require('cssnano')() // minify the result
                             ]
                         },
-                        // src: 'css/style_custom.css',
-                        // dest: 'css/style_custom_postcss.css'
+
                         // Works.
+                        /*
                         files: {
 //                            'css/postcss/style_custom_postcss.css': 'css/style_custom.css', // This will not be actually used, cause it's added to style.css (below)
 //                            'css/postcss/style_postcss.css': 'css/style.css',
@@ -130,11 +129,45 @@ module.exports = function (grunt) {
 //                            'css/style_custom_postcss.css': 'css/style_custom.css', // This will not be actually used, cause it's added to style.css (below)
 //                            'css/style_postcss.css': 'css/style.css'
                             
-                            
-                            'css/style.css': 'css/style.css',
-                            'css/style_custom.css': 'css/style_custom.css' // This will not be actually used, cause it's added to style.css (below)
-                        }
+//                            'css/style.css': 'css/style.css',
+//                            'css/style_custom.css': 'css/style_custom.css',
+//                            'css/pn4.css': 'css/pn4.css',
+                        },
+                        */
+                       
+                       //WORKS!
+                        files: [{
+                          expand: true,
+                          //cwd: 'css/',
+                          src: 'css/*.css',
+                          //dest: '' // if i enable this, it will loop eternaly
+                        }]
+                       
+                       
+                       //Other files examples
+                       
+//                       dist: {
+//                        files: [{
+//                          expand: true,
+//                          cwd: 'css/',
+//                          src: ['**/*.css'],
+//                          dest: 'css/prod/'
+//                        }]
+//                      }
+                       
+                        /*
+                        multiple_files: [{
+                            expand: true,
+                            flatten: true,
+//                            src: 'src/css/*.css', // -> src/css/file1.css, src/css/file2.css
+//                            dest: 'dest/css/' // -> dest/css/file1.css, dest/css/file2.css
+                            src: 'css/*.css', // -> src/css/file1.css, src/css/file2.css
+                            dest: 'css/' // -> dest/css/file1.css, dest/css/file2.css
+                        }]
+                        */
                     },
+                    
+                    
                     prod: {
                         options: {
                             map: false,
@@ -146,64 +179,15 @@ module.exports = function (grunt) {
                                 require('cssnano')() // minify the result
                             ]
                         },
-                        // src: 'css/style_custom.css',
-                        // dest: 'css/style_custom_postcss.css'
-                        // Works.
-                        files: {
-//                            'css/postcss/style_custom_postcss.css': 'css/style_custom.css', // This will not be actually used, cause it's added to style.css (below)
-//                            'css/postcss/style_postcss.css': 'css/style.css',
-                            
-//                            'css/style_custom_postcss.css': 'css/style_custom.css', // This will not be actually used, cause it's added to style.css (below)
-//                            'css/style_postcss.css': 'css/style.css'
-                            
-                            
-                            'css/style.css': 'css/style.css',
-                            'css/style_custom.css': 'css/style_custom.css' // This will not be actually used, cause it's added to style.css (below)
-                            
-                        }
+                        //WORKS!
+                        files: [{
+                          expand: true,
+                          //cwd: 'css/',
+                          src: 'css/*.css',
+                          //dest: '' // if i enable this, it will loop eternaly
+                        }]
                     }
               
-              
-              
-                  /*
-                  options: {
-                      //map: true, // inline sourcemaps
-
-                      // or
-                      
-                      map: {
-                          inline: false, // save all sourcemaps as separate files...
-                          annotation: 'css/postcss/' // ...to the specified directory
-                      },
-                      
-                      processors: [
-                          require('pixrem')(), // add fallbacks for rem units
-                          require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
-                          require('cssnano')() // minify the result
-                      ] // processors
-                  }, // options
-                  
-                  dist: {
-                    // src: 'css/style_custom.css',
-                    // dest: 'css/style_custom_postcss.css'
-                    // Works.
-                    files: {
-                        'css/postcss/style_custom_postcss.css': 'css/style_custom.css', // This will not be actually used, cause it's added to style.css (below)
-                        'css/postcss/style_postcss.css': 'css/style.css'
-                    }
-                  },
-                  */
-                  
-
-                  // seems doesn't work
-                  /*
-                  multiple_files: [{
-                    //expand: true,
-                    //flatten: true,
-                    src: 'css/*.css', // -> src/css/file1.css, src/css/file2.css
-                    dest: 'css/postcss/' // -> dest/css/file1.css, dest/css/file2.css
-                  }]
-                  */
           }, // End of postcss
           
            

@@ -7,6 +7,7 @@
 'use strict';
 
 ( function() {
+    console.log(Drupal.settings.custom_img_attr_fields, 'Drupal.settings.custom_img_attr_fields');
     CKEDITOR.plugins.add( 'extra_img_attr_fields', {
         //lang: 'en,de',
         requires: 'widget,dialog,image2',
@@ -26,8 +27,12 @@
 //                if(widget.allowedContent.img.attributes.indexOf('sizes') == -1)
 //                    widget.allowedContent.img.attributes += ',sizes'
                 
+                console.log(widget.allowedContent.img.attributes, 'widget.allowedContent.img.attributes');
+                
                 if(widget.allowedContent.img.attributes.indexOf('data-a4s') == -1)
-                    widget.allowedContent.img.attributes += ',data-a4s'
+                    widget.allowedContent.img.attributes += ',data-a4s';
+                
+                console.log(widget.allowedContent.img.attributes, 'widget.allowedContent.img.attributes 2');
             });
         },
         init: function(editor) {
@@ -54,12 +59,17 @@
 //                    else
 //                        e.sender.parts.image.removeAttribute('sizes');
                     
+                    
+                    console.log(e.sender.parts.image, 'e.sender.parts.image');
+                    
                     //if(widget.data_a4s)
                     if(widget['data-a4s'])
                         //e.sender.parts.image.setAttribute('data-a4s', widget.data_a4s);
                         e.sender.parts.image.setAttribute('data-a4s', widget['data-a4s']);
                     else
                         e.sender.parts.image.removeAttribute('data-a4s');
+                    
+                    console.log(e.sender.parts.image, 'e.sender.parts.image 2');
                     
                     console.log(widget, 'widget');
                     //console.log(widget.data_a4s, 'widget.data_a4s');

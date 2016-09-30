@@ -1,0 +1,1 @@
+{"version":3,"sources":["pn4.css","../assets/sass/pn4.scss"],"names":[],"mappings":"AAAA,qCAAqC;ACArC;EACI,WAAU;CDEb","file":"pn4.css","sourcesContent":["/* line 1, ../assets/sass/pn4.scss */\r\n.test {\r\n  color: red;\r\n}\r\n\r\n/*# sourceMappingURL=pn4.css.map */\r\n",null]}
