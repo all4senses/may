@@ -30,16 +30,7 @@
                 console.log(widget.allowedContent.img.attributes, 'widget.allowedContent.img.attributes');
                 
                 
-                var sum = 0;
-                var arr = 'xxx,yyy,zzz';
-                var arr = arr.split(",");
-                console.log(arr);
-                jQuery.each( arr, function( index, value ){
-                console.log(index + ":" + value);
-                    sum += value;
-                });
-
-                console.log( sum );
+                
                 //===========================
                 
                 if(widget.allowedContent.img.attributes.indexOf('data-a4s') == -1)
@@ -101,6 +92,23 @@
                 //console.log(image.img.attributes, 'image attr xxx');    
 
                 // ==================================================================
+
+
+
+
+                //  a4s get all img attributes
+                //console.log(widget.allowedContent.img.attributes, 'widget.allowedContent.img.attributes');
+                var sum = 0;
+                //var img_attributes = 'xxx,yyy,zzz';
+                var img_attributes = widget.allowedContent.img.attributes.split(",");
+                console.log(img_attributes, 'img_attributes');
+                jQuery.each( img_attributes, function( index, value ){
+                console.log(index + ":" + value);
+                    sum += value;
+                });
+
+                console.log( sum );
+
 
                 var data = {
 //                    srcset: image.getAttribute( 'srcset' ) || '',
