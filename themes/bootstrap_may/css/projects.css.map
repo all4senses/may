@@ -1,0 +1,1 @@
+{"version":3,"sources":["projects.css","../assets/sass/projects.scss"],"names":[],"mappings":"AAAA,0CAA0C;ACA1C;EACI,WAAU;CDEb","file":"projects.css","sourcesContent":["/* line 1, ../assets/sass/projects.scss */\r\n.test {\r\n  color: red;\r\n}\r\n\r\n/*# sourceMappingURL=projects.css.map */\r\n",null]}

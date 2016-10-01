@@ -37,16 +37,17 @@ function bootstrap_may_preprocess_page(&$variables) {
 
 function bootstrap_may_preprocess_node($variables) {
 
-    //drupal_add_css(path_to_theme(). "/file.css", "theme");
-    //drupal_add_css(drupal_get_path('theme', 'MYTHEME') . "/css/foo.css");
+    //dpm($variables, '$variables via template');
 
-    dpm(path_to_theme(),'path_to_theme()');
-    $custom_page_theme_css = path_to_theme() . '/css/pages/__pn' . $variables['nid'] . '.css';
-    if (file_exists($custom_page_theme_css)) {
-        dpm('added ' . $custom_page_theme_css);
-        drupal_add_css($custom_page_theme_css, array('weight' => 99, 'group' => 200));
+    static $custom_pages_css_added;
+    if ($variables['type'] == 'project' && !$custom_pages_css_added) {
+        $custom_pages_css_added = TRUE;
+        $custom_page_theme_css = path_to_theme() . '/css/projects.css';
+        if (file_exists($custom_page_theme_css)) {
+            dpm('added ' . $custom_page_theme_css);
+            drupal_add_css($custom_page_theme_css, array('weight' => 99, 'group' => 200));
+        }
     }
-    
     drupal_add_js(array(
       'custom_img_attr_fields' => array(
         'test1' => '111',
@@ -55,7 +56,7 @@ function bootstrap_may_preprocess_node($variables) {
     ),array('type' =>'setting'));
      
     //
-    //dpm($variables, '$variables via template');
+    
     //$node_parallax_js = drupal_get_path('module', 'may_pages') . '/js/parallax/pn' . $variables['nid']. '.js';
     //dpm('js is ' . $node_parallax_js);
 //    if (file_exists($node_parallax_js)) {
