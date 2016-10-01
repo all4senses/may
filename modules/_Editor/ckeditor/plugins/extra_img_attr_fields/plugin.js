@@ -105,7 +105,7 @@
                     
                     jQuery.each( Drupal.settings.custom_img_attr_fields, function( index, value ){
                         if(widget[value])
-                            e.sender.parts.image.setAttribute('data-a4s', widget[value]);
+                            e.sender.parts.image.setAttribute(value, widget[value]);
                         else
                             e.sender.parts.image.removeAttribute(value); 
                     });
