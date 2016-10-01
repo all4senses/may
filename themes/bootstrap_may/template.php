@@ -55,7 +55,7 @@ function bootstrap_may_preprocess_node($variables) {
     ),array('type' =>'setting'));
      
     //
-    //dpm($variables, '$variables');
+    dpm($variables, '$variables via template');
     //$node_parallax_js = drupal_get_path('module', 'may_pages') . '/js/parallax/pn' . $variables['nid']. '.js';
     //dpm('js is ' . $node_parallax_js);
 //    if (file_exists($node_parallax_js)) {

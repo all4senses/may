@@ -81,6 +81,12 @@ function may_pages_form_alter(&$form, &$form_state, $form_id) {
    dpm($form_id);  dpm($form);
   // $conf['locale_custom_strings_en']['old string'] = 'new string'
   
+   drupal_add_js(array(
+      'custom_img_attr_fields' => array(
+        'test1' => '111',
+        'test2' => '222',
+      ),
+    ),array('type' =>'setting'));
     
   switch ($form_id) {
     
