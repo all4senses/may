@@ -95,7 +95,7 @@ function may_pages_form_alter(&$form, &$form_state, $form_id) {
 
     
     case 'article_node_form':
-        may_pages_addNewAttributesToTags_inCkeditor();
+        may_pages_addNewAllowedContent_tagsAttributes_inCkeditor();
       
         //$extra_data = unserialize($form['field_extra_data']['und'][0]['value']['#default_value']);
         /*
@@ -124,7 +124,7 @@ function may_pages_form_alter(&$form, &$form_state, $form_id) {
     
     case 'project_node_form':
         
-        may_pages_addNewAttributesToTags_inCkeditor();
+        may_pages_addNewAllowedContent_tagsAttributes_inCkeditor();
         // Restore aliased pdfs links, from /pdfs/ to /sites/default/files/pdfs/
         //$form['body'] = may_misc_rewriteLinks('pdfs', $form, 'back');
         
