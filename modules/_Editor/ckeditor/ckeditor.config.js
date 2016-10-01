@@ -8,7 +8,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  If you don't do this, you may notice that browser is ignoring all your changes.
  */
 
-CKEDITOR.config.customConfig = 'http://a4s-local.m-a-y.ru/sites/all/modules/_Editor/ckeditor/ckeditor.config.js';
+//CKEDITOR.config.customConfig = 'http://a4s-local.m-a-y.ru/sites/all/modules/_Editor/ckeditor/ckeditor.config.js';
 
 CKEDITOR.editorConfig = function(config) {
   config.indentClasses = [ 'rteindent1', 'rteindent2', 'rteindent3', 'rteindent4' ];
