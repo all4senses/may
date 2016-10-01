@@ -163,7 +163,7 @@
                 // Add to allowed / newly added for editing content attributes names from a specific img tag (also added manually)
                 jQuery.each( image.$.attributes, function( index, value ){
                     //console.log(index + ":" + value);
-                    if(value.name.indexOf('data-cke') == -1 && img_attributes_to_exclude_from_adding.indexOf(value.name) == -1) {
+                    if(value.name.indexOf('data-cke') == -1 && img_attributes_to_exclude_from_adding.indexOf(value.name) == -1 && Drupal.settings.custom_img_attr_fields.indexOf(value.name) == -1) {
                         Drupal.settings.custom_img_attr_fields.push(value.name);
                     }
                     //data[value.name] = image.getAttribute(value.name);
