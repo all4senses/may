@@ -7,9 +7,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  WARNING: clear browser's cache after you modify this file.
  If you don't do this, you may notice that browser is ignoring all your changes.
  */
-
-//CKEDITOR.config.customConfig = 'http://a4s-local.m-a-y.ru/sites/all/modules/_Editor/ckeditor/ckeditor.config.js';
-
 CKEDITOR.editorConfig = function(config) {
   config.indentClasses = [ 'rteindent1', 'rteindent2', 'rteindent3', 'rteindent4' ];
 
@@ -29,43 +26,7 @@ CKEDITOR.editorConfig = function(config) {
 
   // [#1762328] Uncomment the line below to protect <code> tags in CKEditor (hide them in wysiwyg mode).
   // config.protectedSource.push(/<code>[\s\S]*?<\/code>/gi);
-  ////config.extraPlugins = 'oembed,widget,dragresize';
-
-
-
-  //config.extraPlugins = 'language, tableresize,tabletools,colordialog,dialog,dialogadvtab,div,dialogui,codemirror,sourcedialog,imagepaste,textselection'; //,showborders, ,widget,image2, 
-  //config.extraPlugins = 'language, tableresize,tabletools,colordialog,,dialogadvtab,div,,,sourcedialog,imagepaste'; //,showborders, ,widget,image2, 
-  config.extraPlugins = 'codemirror, textselection, dialogui, dialog, lineutils, clipboard, widget, image2, imageresponsive, extra_img_attr_fields, stylesheetparser'; //
-  
- 
-  // Works!
-  config.extraAllowedContent = 'a[*];div[*];img[*];p[*]{*}(*)';
-  
-  config.entities_latin = false; 
-  config.entities_greek = false;
-  config.entities = false; 
-  config.basicEntities = false;
-  config.htmlEncodeOutput = false;
-  
-    
-  
-  // a4s Doesn't work for some reason...
-  // For a definition in an external file.
-  //config.stylesSet = 'gv_styles:http://getvoip.com/sites/all/modules/_Editor/ckeditor/ckeditor.gv_styles.js';
-  
-  // Connect a current theme extra css file
-  config.contentsCss = Drupal.settings.project_custom_css_file;
-  
-  console.log(Drupal.settings.project_custom_css_file, 'Drupal.settings.project_custom_css_file DRUPAL');
-  
-  /*
-   * 
-   // Defines a toolbar with only one strip containing the "Source" button, a
-// separator, and the "Bold" and "Italic" buttons.
-config.toolbar = [
-    [ 'Source', '-', 'Bold', 'Italic', 'oembed', 'Maximize', 'dragresize']
-];
-   */
+  config.extraPlugins = '';
 
   /*
     * Append here extra CSS rules that should be applied into the editing area.
@@ -76,7 +37,6 @@ config.toolbar = [
   /**
     * Sample extraCss code for the "marinelli" theme.
     */
-   /*
   if (Drupal.settings.ckeditor.theme == "marinelli") {
     config.extraCss += "body{background:#FFF;text-align:left;font-size:0.8em;}";
     config.extraCss += "#primary ol, #primary ul{margin:10px 0 10px 25px;}";
@@ -84,27 +44,26 @@ config.toolbar = [
   if (Drupal.settings.ckeditor.theme == "newsflash") {
     config.extraCss = "body{min-width:400px}";
   }
-  */
 
   /**
     * CKEditor's editing area body ID & class.
     * See http://drupal.ckeditor.com/tricks
     * This setting can be used if CKEditor does not work well with your theme by default.
     */
-   /*
   config.bodyClass = '';
   config.bodyId = '';
-  */
   /**
     * Sample bodyClass and BodyId for the "marinelli" theme.
     */
-   /*
   if (Drupal.settings.ckeditor.theme == "marinelli") {
     config.bodyClass = 'singlepage';
     config.bodyId = 'primary';
   }
-  */
-  
+
+  // Make CKEditor's edit area as high as the textarea would be.
+  if (this.element.$.rows > 0) {
+    config.height = this.element.$.rows * 20 + 'px';
+  }
 }
 
 /*
@@ -126,8 +85,7 @@ Drupal.settings.cke_toolbar_DrupalAdvanced = [
   ['Bold','Italic','Underline','Strike','-','Subscript','Superscript','-','RemoveFormat'],
   ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
   ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl'],
-  ['Link','Unlink','Anchor','Linkit','LinkToNode','LinkToMenu'],
-  ['oembed']
+  ['Link','Unlink','Anchor','Linkit','LinkToNode','LinkToMenu']
 ];
 
 // Toolbar definition for all buttons
@@ -145,6 +103,5 @@ Drupal.settings.cke_toolbar_DrupalFull = [
   ['Format','Font','FontSize'],
   ['TextColor','BGColor'],
   ['Maximize', 'ShowBlocks'],
-  ['DrupalBreak', 'DrupalPageBreak'],
-  ['oembed']
+  ['DrupalBreak', 'DrupalPageBreak']
 ];
