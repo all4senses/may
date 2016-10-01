@@ -59,8 +59,6 @@ function may_pages_access($type = null) {
   return true;
 }
 
-
-
 /**
  * Implements hook_form_alter().
  *
@@ -78,15 +76,10 @@ function may_pages_access($type = null) {
  */
 function may_pages_form_alter(&$form, &$form_state, $form_id) {
   
-   dpm($form_id);  dpm($form);
+   //dpm($form_id);  dpm($form);
   // $conf['locale_custom_strings_en']['old string'] = 'new string'
   
-   drupal_add_js(array(
-      'custom_img_attr_fields_2' => array(
-        'test1' => '111',
-        'test2' => '222',
-      ),
-    ),array('type' =>'setting'));
+   
     
   switch ($form_id) {
     
@@ -102,6 +95,7 @@ function may_pages_form_alter(&$form, &$form_state, $form_id) {
 
     
     case 'article_node_form':
+        may_pages_addNewAttributesToTags_inCkeditor();
       
         //$extra_data = unserialize($form['field_extra_data']['und'][0]['value']['#default_value']);
         /*
@@ -130,7 +124,7 @@ function may_pages_form_alter(&$form, &$form_state, $form_id) {
     
     case 'project_node_form':
         
-        
+        may_pages_addNewAttributesToTags_inCkeditor();
         // Restore aliased pdfs links, from /pdfs/ to /sites/default/files/pdfs/
         //$form['body'] = may_misc_rewriteLinks('pdfs', $form, 'back');
         
@@ -752,10 +746,34 @@ function may_pages_sh_get() {
 // dpm($css, '$css');   
 //}
 
+
+/**
+ * 
+ * @param type $variables
+ * Works with page view only, not on edit form
+ */
 function may_pages_preprocess_node($variables) {
-    dpm($variables, '$variables node');
+    //dpm($variables, '$variables node');
 }
 
+
+/**
+ * 
+ * @param type $variables
+ * Works with page view and edit form
+ */
 function may_pages_preprocess_page($variables) {
-    dpm($variables, '$variables page');
+    
+    //dpm($variables, '$variables page');
+}
+
+
+
+/**
+ * 
+ */
+function may_pages_addNewAttributesToTags_inCkeditor() {
+    drupal_add_js(array(
+      'custom_img_attr_fields' => imagefield_attributes_get_all_attributes_names(FALSE, TRUE),
+    ),array('type' =>'setting'));
 }

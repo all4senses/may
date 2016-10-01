@@ -356,7 +356,7 @@ function _imagefield_attributes_get_all_attributes($force = FALSE) {
  * @param type $force
  * @return type
  */
-function imagefield_attributes_get_all_attributes_names($force = FALSE) {
+function imagefield_attributes_get_all_attributes_names($force = FALSE, $only_names = FALSE) {
 
   // Attempt to return attributes from the static cache (fastest).
   $static_cache = &drupal_static(__FUNCTION__);
@@ -399,6 +399,10 @@ function imagefield_attributes_get_all_attributes_names($force = FALSE) {
   // Set the cache for retrievel later.
   cache_set('imagefield_attributes_names', $attributes_names, 'cache');
 
+  
+  if ($only_names) {
+      $attributes_names = array_keys($attributes_names);
+  }
   return $attributes_names;
 }
 
