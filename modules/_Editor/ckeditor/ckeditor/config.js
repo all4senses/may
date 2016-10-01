@@ -35,9 +35,4 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
-        
-        
-        config.contentsCss = Drupal.settings.project_custom_css_file;
-  
-        console.log(Drupal.settings.project_custom_css_file, 'Drupal.settings.project_custom_css_file CK');
 };
