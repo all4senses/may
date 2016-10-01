@@ -9,6 +9,11 @@
 ( function() {
     console.log(Drupal.settings.custom_img_attr_fields, 'Drupal.settings.custom_img_attr_fields');
     var img_attributes = [];
+    
+    if (typeof Drupal.settings.custom_img_attr_fields === 'undefined') {
+        Drupal.settings.custom_img_attr_fields = [];
+    }
+    
     CKEDITOR.plugins.add( 'extra_img_attr_fields', {
         //lang: 'en,de',
         requires: 'widget,dialog,image2',
@@ -54,8 +59,14 @@
                 // 
                 //===========================
                 
-                if(widget.allowedContent.img.attributes.indexOf('data-a4s') == -1)
-                    widget.allowedContent.img.attributes += ',data-a4s';
+                // Add to allowed content from custom Drupal settings, set from a4s custom module via drupal_add_js()
+                jQuery.each( Drupal.settings.custom_img_attr_fields, function( index, value ){
+                    if(widget.allowedContent.img.attributes.indexOf(value) == -1)
+                        widget.allowedContent.img.attributes += ',' + value;
+                });
+                
+//                if(widget.allowedContent.img.attributes.indexOf('data-a4s') == -1)
+//                    widget.allowedContent.img.attributes += ',data-a4s';
                 
                 console.log(widget.allowedContent.img.attributes, 'widget.allowedContent.img.attributes 2');
             });
@@ -87,12 +98,25 @@
                     
                     console.log(e.sender.parts.image, 'e.sender.parts.image');
                     
+                    
+                    //Drupal.settings.custom_img_attr_fields
+                    
+                    
+                    jQuery.each( Drupal.settings.custom_img_attr_fields, function( index, value ){
+                        if(widget[value])
+                            e.sender.parts.image.setAttribute('data-a4s', widget[value]);
+                        else
+                            e.sender.parts.image.removeAttribute(value); 
+                    });
+                    
+                    /*
                     //if(widget.data_a4s)
                     if(widget['data-a4s'])
                         //e.sender.parts.image.setAttribute('data-a4s', widget.data_a4s);
                         e.sender.parts.image.setAttribute('data-a4s', widget['data-a4s']);
                     else
                         e.sender.parts.image.removeAttribute('data-a4s');
+                    */
                     
                     console.log(e.sender.parts.image, 'e.sender.parts.image 2');
                     
@@ -134,13 +158,33 @@
 //                });
 
                 
+                console.log(Drupal.settings.custom_img_attr_fields, 'Drupal.settings.custom_img_attr_fields -1');
+                // Add to allowed / newly added for editing content attributes names from a specific img tag (also added manually)
+                jQuery.each( image.$.attributes, function( index, value ){
+                //console.log(index + ":" + value);
+                    Drupal.settings.custom_img_attr_fields.push(value.name);
+                    //data[value.name] = image.getAttribute(value.name);
+                });
+                
+                console.log(Drupal.settings.custom_img_attr_fields, 'Drupal.settings.custom_img_attr_fields -2');
+                
+                /*
                 jQuery.each( image.$.attributes, function( index, value ){
                 //console.log(index + ":" + value);
                     img_attributes.push(value.name);
                     data[value.name] = image.getAttribute(value.name);
                 });
+                */
+               
+                jQuery.each( Drupal.settings.custom_img_attr_fields, function( index, value ){
+                //console.log(index + ":" + value);
+//                    img_attributes.push(value);
+                    data[value] = image.getAttribute(value);
+                });
                 
-                console.log(img_attributes, 'img_attributes ===');
+                
+                
+                //console.log(img_attributes, 'img_attributes ===');
                 
                 /*
                 var data = {
@@ -159,7 +203,7 @@
                 if ((e.editor != editor) || (e.data.name != 'image2'))
                     return;
 
-                console.log(e, 'EEEEEE');
+                //console.log(e, 'EEEEEE');
                 // Get a reference to the "Link Info" tab.
                 var infoTab = e.data.definition.getContents( 'info' );
                 
@@ -192,7 +236,7 @@
                 }, 'alignment');
                 */
                 console.log(infoTab, 'infoTab before');
-                console.log(img_attributes, '--- img_attributes on tab init');
+                //console.log(img_attributes, '--- img_attributes on tab init');
                 /*
                 infoTab.add({
                     id: 'data-a4s',
@@ -212,7 +256,13 @@
                 }, 'alignment');
                 */
                 
-                jQuery.each( img_attributes, function( index, value ){
+                
+                
+                
+                
+                
+                //jQuery.each( img_attributes, function( index, value ){
+                jQuery.each( Drupal.settings.custom_img_attr_fields, function( index, value ){    
                     infoTab.add({
                         id: value,
                         type: 'text',

@@ -772,8 +772,8 @@ function may_pages_preprocess_page($variables) {
 /**
  * 
  */
-function may_pages_addNewAttributesToTags_inCkeditor() {
+function may_pages_addNewAllowedContent_tagsAttributes_inCkeditor() {
     drupal_add_js(array(
-      'custom_img_attr_fields' => imagefield_attributes_get_all_attributes_names(FALSE, TRUE),
+      'custom_img_attr_fields' => imagefield_attributes_get_all_attributes_names(FALSE, TRUE) + array('alt', 'title', 'class', 'width', 'height'),
     ),array('type' =>'setting'));
 }
