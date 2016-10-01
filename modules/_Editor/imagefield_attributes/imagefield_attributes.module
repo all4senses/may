@@ -361,49 +361,51 @@ function imagefield_attributes_get_all_attributes_names($force = FALSE, $only_na
   // Attempt to return attributes from the static cache (fastest).
   $static_cache = &drupal_static(__FUNCTION__);
   if ($static_cache && !$force) {
-    return $static_cache;
+    $return = $static_cache;
+    //return $static_cache;
   }
-
   // Attempt to return attributes from the db cache.
-  if (($cache = cache_get('imagefield_attributes_names')) && !$force) {
-    return $cache->data;
+  elseif (($cache = cache_get('imagefield_attributes_names')) && !$force) {
+    $return = $cache->data;
+    //return $cache->data;
   }
+  else {
+    // Query attributes and cache the data.
+    $attributes_names = array();
 
-  // Query attributes and cache the data.
-  $attributes_names = array();
-      
-  //$field = field_info_instance($entity_type, $field_name, $bundle_name);
-  $entity_types = field_info_instances();
-  foreach ($entity_types as $entity_type => $bundle_names) {
-    if (empty($entity_type)) {
-      continue;
+    //$field = field_info_instance($entity_type, $field_name, $bundle_name);
+    $entity_types = field_info_instances();
+    foreach ($entity_types as $entity_type => $bundle_names) {
+      if (empty($entity_type)) {
+        continue;
+      }
+      foreach ($bundle_names as $bundle_name => $field_names) {
+          if (empty($field_names)) {
+            continue;
+          }
+          foreach ($field_names as $field_name => $field) {
+              if (empty($field) || empty($field['settings']['imagefield_attributes']) ) {
+                continue;
+              }
+              foreach ($field['settings']['imagefield_attributes'] as $imagefield_attribute) {
+              if (!is_array($imagefield_attribute) || empty($imagefield_attribute['attribute'])) {
+                      continue;
+                  }
+                  $attributes_names[$imagefield_attribute['attribute']] = 'input[name$="[' . $imagefield_attribute['attribute'] . ']"], textarea[name$="[' . $imagefield_attribute['attribute'] . ']"]';
+              }
+          }
+      }
     }
-    foreach ($bundle_names as $bundle_name => $field_names) {
-        if (empty($field_names)) {
-          continue;
-        }
-        foreach ($field_names as $field_name => $field) {
-            if (empty($field) || empty($field['settings']['imagefield_attributes']) ) {
-              continue;
-            }
-            foreach ($field['settings']['imagefield_attributes'] as $imagefield_attribute) {
-            if (!is_array($imagefield_attribute) || empty($imagefield_attribute['attribute'])) {
-                    continue;
-                }
-                $attributes_names[$imagefield_attribute['attribute']] = 'input[name$="[' . $imagefield_attribute['attribute'] . ']"], textarea[name$="[' . $imagefield_attribute['attribute'] . ']"]';
-            }
-        }
-    }
+
+    // Set the cache for retrievel later.
+    cache_set('imagefield_attributes_names', $attributes_names, 'cache');
+    $return = $attributes_names;
   }
-    
-  // Set the cache for retrievel later.
-  cache_set('imagefield_attributes_names', $attributes_names, 'cache');
-
   
   if ($only_names) {
-      $attributes_names = array_keys($attributes_names);
+      $return = array_keys($return);
   }
-  return $attributes_names;
+  return $return;
 }
 
 
