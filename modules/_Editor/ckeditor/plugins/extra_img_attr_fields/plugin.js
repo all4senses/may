@@ -9,6 +9,7 @@
 ( function() {
     console.log(Drupal.settings.custom_img_attr_fields, 'Drupal.settings.custom_img_attr_fields');
     var img_attributes = [];
+    var img_attributes_to_exclude_from_adding = ['src', 'height', 'width', 'data-widget'];
     
     if (typeof Drupal.settings.custom_img_attr_fields === 'undefined') {
         Drupal.settings.custom_img_attr_fields = [];
@@ -161,8 +162,10 @@
                 console.log(Drupal.settings.custom_img_attr_fields, 'Drupal.settings.custom_img_attr_fields -1');
                 // Add to allowed / newly added for editing content attributes names from a specific img tag (also added manually)
                 jQuery.each( image.$.attributes, function( index, value ){
-                //console.log(index + ":" + value);
-                    Drupal.settings.custom_img_attr_fields.push(value.name);
+                    //console.log(index + ":" + value);
+                    if(value.indexOf('data-cke') == -1 && img_attributes_to_exclude_from_adding.indexOf(value) == -1) {
+                        Drupal.settings.custom_img_attr_fields.push(value.name);
+                    }
                     //data[value.name] = image.getAttribute(value.name);
                 });
                 
