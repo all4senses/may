@@ -45,7 +45,7 @@ CKEDITOR.editorConfig = function(config) {
   config.htmlEncodeOutput = false;
   
   
-  config.language_list = [ 'he:Hebrew:rtl', 'pt:Portuguese', 'de:German', 'ru:Russian' ];
+  //config.language_list = [ 'he:Hebrew:rtl', 'pt:Portuguese', 'de:German', 'ru:Russian' ];
   
   config.codemirror = {
 
@@ -118,6 +118,10 @@ CKEDITOR.editorConfig = function(config) {
   // For a definition in an external file.
   //config.stylesSet = 'gv_styles:http://getvoip.com/sites/all/modules/_Editor/ckeditor/ckeditor.gv_styles.js';
   
+  // Connect a current theme extra css file
+  config.contentsCss = Drupal.settings.project_custom_css_file;
+  
+  console.log(Drupal.settings.project_custom_css_file, 'Drupal.settings.project_custom_css_file');
   
   /*
    * 

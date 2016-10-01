@@ -6,10 +6,8 @@
 'use strict';
 
 ( function() {
-    console.log(Drupal.settings.custom_img_attr_fields, 'Drupal.settings.custom_img_attr_fields');
-
-    var img_attributes_to_exclude_from_adding = ['src', 'height', 'width', 'data-widget', 'sizes', 'srcset']; // 'sizes' and 'srcset' will be added by the imageresponsive plugin
     
+    var img_attributes_to_exclude_from_adding = ['src', 'height', 'width', 'data-widget', 'sizes', 'srcset']; // 'sizes' and 'srcset' will be added by the imageresponsive plugin
     // Allowed content from custom Drupal settings, set from a4s custom module via drupal_add_js()
     if (typeof Drupal.settings.custom_img_attr_fields === 'undefined') {
         Drupal.settings.custom_img_attr_fields = [];

@@ -95,7 +95,7 @@ function may_pages_form_alter(&$form, &$form_state, $form_id) {
 
     
     case 'article_node_form':
-        may_pages_addNewAllowedContent_tagsAttributes_inCkeditor();
+        may_pages_passExtraParametersToCKEditor();
       
         //$extra_data = unserialize($form['field_extra_data']['und'][0]['value']['#default_value']);
         /*
@@ -124,7 +124,7 @@ function may_pages_form_alter(&$form, &$form_state, $form_id) {
     
     case 'project_node_form':
         
-        may_pages_addNewAllowedContent_tagsAttributes_inCkeditor();
+        may_pages_passExtraParametersToCKEditor();
         // Restore aliased pdfs links, from /pdfs/ to /sites/default/files/pdfs/
         //$form['body'] = may_misc_rewriteLinks('pdfs', $form, 'back');
         
@@ -770,10 +770,14 @@ function may_pages_preprocess_page($variables) {
 
 
 /**
- * 
+ * Pass extra parameters to cKeditor
  */
-function may_pages_addNewAllowedContent_tagsAttributes_inCkeditor() {
+function may_pages_passExtraParametersToCKEditor() {
+    dpm(path_to_theme() . '/css/projects.css', 'theme file');
     drupal_add_js(array(
+       // Add New Allowed Content attributes to tags in CKEditor
       'custom_img_attr_fields' => imagefield_attributes_get_all_attributes_names(FALSE, TRUE) + array('alt', 'title', 'class'),
+       // Pass to CKEditor a css file for the Project page type 
+      'project_custom_css_file' => path_to_theme() . '/css/projects.css',
     ),array('type' =>'setting'));
 }
