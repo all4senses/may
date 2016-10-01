@@ -774,16 +774,12 @@ function may_pages_preprocess_page($variables) {
  */
 function may_pages_passExtraParametersToCKEditor() {
     
-    //dpm(path_to_theme() . '/css/projects.css', 'theme file');
-    $default_theme_path = drupal_get_path('theme', variable_get('theme_default', NULL));
-    dpm(DRUPAL_ROOT, 'DRUPAL_ROOT');
+    $default_theme_path = url(drupal_get_path('theme', variable_get('theme_default', NULL)) . '/css/projects.css', array('absolute' => TRUE));
     dpm($default_theme_path, '$default_theme_path');
-    dpm(base_path(), 'base_path()');
-    dpm(url($default_theme_path, array('absolute' => TRUE)), '$default_theme_path with url()');
     drupal_add_js(array(
        // Add New Allowed Content attributes to tags in CKEditor
       'custom_img_attr_fields' => imagefield_attributes_get_all_attributes_names(FALSE, TRUE) + array('alt', 'title', 'class'),
        // Pass to CKEditor a css file for the Project page type 
-      'project_custom_css_file' => base_path() . drupal_get_path('theme', variable_get('theme_default', NULL)) . '/css/projects.css',
+      'project_custom_css_file' => $default_theme_path,
     ),array('type' =>'setting'));
 }
