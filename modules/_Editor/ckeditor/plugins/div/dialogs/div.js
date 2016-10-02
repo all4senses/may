@@ -5,6 +5,7 @@
 
 ( function() {
 
+        console.log(element, 'element');
 	// Add to collection with DUP examination.
 	// @param {Object} collection
 	// @param {Object} element
@@ -22,6 +23,8 @@
 	// @param {Object} editor
 	// @param {String} command	The command name which indicate what the current command is.
 	function divDialog( editor, command ) {
+                console.log(editor, 'editor');
+                console.log(command, 'command');
 		// Definition of elements at which div operation should stopped.
 		var divLimitDefinition = ( function() {
 
