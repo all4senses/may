@@ -61,7 +61,6 @@
 		// @memberof divDialog
 		function setupFields() {
                         console.log(this, 'this');
-                        console.log(field, 'field');
 			this.foreach( function( field ) {
                                 console.log(field, '---field');
 				// Exclude layout container elements
