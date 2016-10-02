@@ -104,7 +104,8 @@
                             this.setValue(widget.data['x1']);
                         },
                         commit: function (widget) {
-                            widget.setData('x1', this.getValue());
+                            console.log(widget,'widget x1');
+                            //widget.setData('x1', this.getValue());
                         }
                     }//, 'class'
                             );
