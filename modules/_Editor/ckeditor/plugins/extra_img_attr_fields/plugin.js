@@ -42,12 +42,14 @@
                 var widget = e.data;
 
                 // figure out if this is the image dialog.
-                if(widget.name != 'image')
-                    return;
+                // 
+                // temporary disabled a4s
+//                if(widget.name != 'image')
+//                    return;
 
                 // register handler for data
                 widget.on('data', function(e) {
-
+                    console.log(e, 'e in on-data');
                     widget = e.data;
                     
                     // keep extra attributes only when set.
