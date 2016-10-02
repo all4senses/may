@@ -41,6 +41,7 @@
 		// Get the first div limit element on the element's path.
 		// @param {Object} element
 		function getDivContainer( element ) {
+                        console.log(element, 'element');
 			var container = editor.elementPath( element ).blockLimit;
 
 			// Never consider read-only (i.e. contenteditable=false) element as
@@ -320,6 +321,17 @@
 							requiredContent: 'div[title]',
 							style: 'width: 100%;',
 							label: editor.lang.common.advisoryTitle,
+							'default': ''
+						} ]
+					},
+                                        {
+						type: 'hbox',
+						children: [ {
+							type: 'text',
+							id: 'title2',
+							requiredContent: 'div[title2]',
+							style: 'width: 100%;',
+							label: 'xxxx', //editor.lang.common.advisoryTitle,
 							'default': ''
 						} ]
 					},
