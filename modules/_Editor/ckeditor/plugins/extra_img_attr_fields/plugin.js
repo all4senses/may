@@ -92,8 +92,8 @@
                     var infoTab = dialogDefinition.getContents( 'info' );
 
                     // Set the default value for the URL field.
-                    var urlField = infoTab.get( 'url' );
-                    urlField[ 'default' ] = 'www.example.com';
+//                    var urlField = infoTab.get( 'url' );
+//                    urlField[ 'default' ] = 'www.example.com';
                     
                     infoTab.add({
                         id: 'x1',
