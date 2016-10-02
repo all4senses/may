@@ -127,7 +127,7 @@
                      
                     var if_attr_exists = infoTab.get( 'x1' );
                      
-                    if (typeof if_attr_exists !== 'undefined') {
+                    if (typeof if_attr_exists !== 'undefined' && if_attr_exists != null) {
                         console.log(if_attr_exists, 'if_attr_exists');
                         return;
                     }
