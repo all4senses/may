@@ -105,6 +105,7 @@
                         },
                         commit: function (widget) {
                             console.log(widget,'widget x1');
+                            console.log(this,'this x1');
                             //widget.setData('x1', this.getValue());
                         }
                     }//, 'class'
