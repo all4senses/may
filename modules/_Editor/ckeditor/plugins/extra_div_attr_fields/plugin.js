@@ -123,7 +123,15 @@
 //                    var urlField = infoTab.get( 'url' );
 //                    urlField[ 'default' ] = 'www.example.com';
 
-                     console.log(infoTab, 'infoTab before');
+                    console.log(infoTab, 'infoTab before');
+                     
+                    var if_attr_exists = infoTab.get( 'x1' );
+                     
+                    if (typeof if_attr_exists !== 'undefined') {
+                        console.log(if_attr_exists, 'if_attr_exists');
+                        return;
+                    }
+                     
                      
                     infoTab.add({
                         id: 'x1',
