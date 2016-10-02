@@ -54,6 +54,7 @@
 				container = parentPath.blockLimit;
 			}
 
+                        console.log(container, 'container');
 			return container;
 		}
 
@@ -92,6 +93,7 @@
 
 		// Wrapping 'div' element around appropriate blocks among the selected ranges.
 		// @param {Object} editor
+                /*
 		function createDiv( editor ) {
 			// new adding containers OR detected pre-existed containers.
 			var containers = [];
@@ -174,7 +176,7 @@
 			selection.selectBookmarks( bookmarks );
 			return containers;
 		}
-
+                */
 		// Divide a set of nodes to different groups by their path's blocklimit element.
 		// Note: the specified nodes should be in source order naturally, which mean they are supposed to producea by following class:
 		//  * CKEDITOR.dom.range.Iterator
@@ -224,7 +226,7 @@
 
 		// @type divDialog
 		return {
-			title: editor.lang.div.title,
+			title: editor.lang.div_extra.title,
 			minWidth: 400,
 			minHeight: 165,
 			contents: [ {
@@ -377,7 +379,7 @@
 			onShow: function() {
 				// Whether always create new container regardless of existed
 				// ones.
-				if ( command == 'editdiv' ) {
+				if ( command == 'editdiv_extra' ) {
 					// Try to discover the containers that already existed in
 					// ranges
 					// update dialog field values
@@ -385,10 +387,10 @@
 				}
 			},
 			onOk: function() {
-				if ( command == 'editdiv' )
+				if ( command == 'editdiv_extra' )
 					containers = [ this._element ];
-				else
-					containers = createDiv( editor, true );
+//				else
+//					containers = createDiv( editor, true );
 
 				// Update elements attributes
 				var size = containers.length;
@@ -403,19 +405,19 @@
 			},
 			onHide: function() {
 				// Remove style only when editing existing DIV. (#6315)
-				if ( command == 'editdiv' )
+				if ( command == 'editdiv_extra' )
 					this._element.removeCustomData( 'elementStyle' );
 				delete this._element;
 			}
 		};
 	}
 
-	CKEDITOR.dialog.add( 'creatediv', function( editor ) {
-		return divDialog( editor, 'creatediv' );
-	} );
+//	CKEDITOR.dialog.add( 'creatediv', function( editor ) {
+//		return divDialog( editor, 'creatediv' );
+//	} );
 
-	CKEDITOR.dialog.add( 'editdiv', function( editor ) {
-		return divDialog( editor, 'editdiv' );
+	CKEDITOR.dialog.add( 'editdiv_extra', function( editor ) {
+		return divDialog( editor, 'editdiv_extra' );
 	} );
 
 } )();

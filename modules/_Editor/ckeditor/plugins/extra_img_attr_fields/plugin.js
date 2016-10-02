@@ -18,16 +18,14 @@
         requires: 'widget,dialog,image2',
         beforeInit: function(editor) {
             editor.on('widgetDefinition', function(e) {
-                console.log(e, 'e on w-definiion');
-                return;
                 var widget = e.data;
                 // figure out if this is the image dialog.
-//                if(widget.name != 'image')
-//                    return;
+                if(widget.name != 'image')
+                    return;
 
                 // should not happen but anyway...
-//                if(!widget.allowedContent.img || !widget.allowedContent.img.attributes)
-//                    return;
+                if(!widget.allowedContent.img || !widget.allowedContent.img.attributes)
+                    return;
                 
                 // a4s
                 // Add to allowed content from custom Drupal settings, set from a4s custom module via drupal_add_js()
@@ -35,10 +33,6 @@
                     if(widget.allowedContent.img.attributes.indexOf(value) == -1)
                         widget.allowedContent.img.attributes += ',' + value;
                 });
-
-                if(widget.allowedContent.img.attributes.indexOf('x1') == -1)
-                        widget.allowedContent.img.attributes += ',x1';
-
 
             });
         },
@@ -48,15 +42,12 @@
                 var widget = e.data;
 
                 // figure out if this is the image dialog.
-                // 
-                // temporary disabled a4s
-//                if(widget.name != 'image')
-//                    return;
+                if(widget.name != 'image')
+                    return;
 
                 // register handler for data
                 widget.on('data', function(e) {
-                    console.log('e on-data');
-                    return;
+
                     widget = e.data;
                     
                     // keep extra attributes only when set.
@@ -68,8 +59,6 @@
                     });
                 });
 
-                return;
-                
                 // set data from existing variables.
                 var image = widget.element;
                 // since the img-tag can be wrapped with a caption, make sure we use the right element.
@@ -88,51 +77,10 @@
                 jQuery.each( Drupal.settings.custom_img_attr_fields, function( index, value ){
                     data[value] = image.getAttribute(value);
                 });
-                
-                data['x1'] = 'default x1';
-                
                 widget.setData(data);
             });
 
             CKEDITOR.on('dialogDefinition', function(e) {
-                
-                // Take the dialog name and its definition from the event data.
-                var dialogName = e.data.name;
-                var dialogDefinition = e.data.definition;
-
-                // Check if the definition is from the dialog window you are interested in (the "Link" dialog window).
-                if ( dialogName == 'editdiv' ) {
-                    // Get a reference to the "Link Info" tab.
-                    var infoTab = dialogDefinition.getContents( 'info' );
-
-                    // Set the default value for the URL field.
-//                    var urlField = infoTab.get( 'url' );
-//                    urlField[ 'default' ] = 'www.example.com';
-
-                     console.log(infoTab, 'infoTab before');
-                     
-                    infoTab.add({
-                        id: 'x1',
-                        type: 'text',
-                        requiredContent: 'div[x1]',
-                        label: 'x1',
-                        setup: function(widget) {
-                            this.setValue(widget.data['x1']);
-                        },
-                        commit: function (widget) {
-                            console.log(widget,'widget x1');
-                            console.log(this,'this x1');
-                            //widget.setData('x1', this.getValue());
-                        }
-                    }//, 'class'
-                            );
-                    
-                    
-                    console.log(infoTab, 'infoTab afer');
-                }
-
-                return;
-                
                 // make sure this is the right editor (there can be more on one page) and the right dialog.
                 if ((e.editor != editor) || (e.data.name != 'image2'))
                     return;
