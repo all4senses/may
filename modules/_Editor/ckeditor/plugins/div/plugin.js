@@ -24,7 +24,7 @@
 				allowed = 'div(*)';
 
 			if ( CKEDITOR.dialog.isTabEnabled( editor, 'editdiv', 'advanced' ) )
-				allowed += ';div[dir,id,lang,title]{*}';
+				allowed += ';div[dir,id,lang,title,data-a4s]{*}';
 
 			editor.addCommand( 'creatediv', new CKEDITOR.dialogCommand( 'creatediv', {
 				allowedContent: allowed,

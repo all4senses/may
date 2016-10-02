@@ -60,6 +60,7 @@
 		// Init all fields' setup/commit function.
 		// @memberof divDialog
 		function setupFields() {
+                    console.log(setupFields, 'setupFields');
 			this.foreach( function( field ) {
 				// Exclude layout container elements
 				if ( /^(?!vbox|hbox)/.test( field.type ) ) {
