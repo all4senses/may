@@ -37,7 +37,7 @@ CKEDITOR.editorConfig = function(config) {
  config.font_names =
     'Arial/Arial, Helvetica, sans-serif;' +
     'Times New Roman/Times New Roman, Times, serif;' +
-    'Verdana' +
+    'Verdana;' +
     'GoogleWebFonts;';
 
 
