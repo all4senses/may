@@ -62,9 +62,9 @@
 		// Init all fields' setup/commit function.
 		// @memberof divDialog
 		function setupFields() {
-                        console.log(this, 'this');
+                        //console.log(this, 'this');
 			this.foreach( function( field ) {
-                                console.log(field, '---field');
+                                //console.log(field, '---field');
 				// Exclude layout container elements
 				if ( /^(?!vbox|hbox)/.test( field.type ) ) {
 					if ( !field.setup ) {
@@ -204,6 +204,7 @@
 		// Synchronous field values to other impacted fields is required, e.g. div styles
 		// change should also alter inline-style text.
 		function commitInternally( targetFields ) {
+                        console.log(targetFields, 'targetFields');
 			var dialog = this.getDialog(),
 				element = dialog._element && dialog._element.clone() || new CKEDITOR.dom.element( 'div', editor.document );
 
