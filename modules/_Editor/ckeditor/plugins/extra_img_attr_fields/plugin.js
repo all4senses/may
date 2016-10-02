@@ -81,6 +81,35 @@
             });
 
             CKEDITOR.on('dialogDefinition', function(e) {
+                
+                // Take the dialog name and its definition from the event data.
+                var dialogName = e.data.name;
+                var dialogDefinition = e.data.definition;
+
+                // Check if the definition is from the dialog window you are interested in (the "Link" dialog window).
+                if ( dialogName == 'editdiv' ) {
+                    // Get a reference to the "Link Info" tab.
+                    var infoTab = dialogDefinition.getContents( 'info' );
+
+                    // Set the default value for the URL field.
+                    var urlField = infoTab.get( 'url' );
+                    urlField[ 'default' ] = 'www.example.com';
+                    
+                    infoTab.add({
+                        id: 'x1',
+                        type: 'text',
+                        requiredContent: 'div[x1]',
+                        label: 'x1',
+                        setup: function(widget) {
+                            this.setValue(widget.data['x1']);
+                        },
+                        commit: function (widget) {
+                            widget.setData(value, this.getValue());
+                        }
+                    }, 'class');
+                }
+
+
                 // make sure this is the right editor (there can be more on one page) and the right dialog.
                 if ((e.editor != editor) || (e.data.name != 'image2'))
                     return;
