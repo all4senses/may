@@ -64,6 +64,11 @@ CKEDITOR.editorConfig = function(config) {
   if (this.element.$.rows > 0) {
     config.height = this.element.$.rows * 20 + 'px';
   }
+  
+  // Connect a current theme extra css file
+  config.contentsCss = Drupal.settings.project_custom_css_file;
+  console.log(Drupal.settings.project_custom_css_file, 'Drupal.settings.project_custom_css_file DRUPAL');
+  
 }
 
 /*
