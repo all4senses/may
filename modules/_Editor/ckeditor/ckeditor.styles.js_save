@@ -43,13 +43,8 @@ if(typeof(CKEDITOR) !== 'undefined') {
             { name : 'Superscript'		, element : 'sup' },
             */
 
-            //{ name : 'Table padding'	, element : 'table', styles : { 'border-collapse' : 'separate', 'border-spacing' : '35px' } },
-            
-            { name : 'Marker: Yellow---'	, element : 'span', styles : { 'background-color' : 'Red' } },
-            { name : 'Marker: Green---'	, element : 'span', styles : { 'background-color' : 'Lime' } },
-            
-            { name : 'Div: Yellow---'	, element : 'div', styles : { 'background-color' : 'Red' } },
-            { name : 'Div: Green---'	, element : 'div', styles : { 'background-color' : 'Lime' } },
+            { name : 'Marker: Yellow'	, element : 'span', styles : { 'background-color' : 'Yellow' } },
+            { name : 'Marker: Green'	, element : 'span', styles : { 'background-color' : 'Lime' } },
 
             { name : 'Big'				, element : 'big' },
             { name : 'Small'			, element : 'small' },
@@ -72,18 +67,7 @@ if(typeof(CKEDITOR) !== 'undefined') {
             /* Object Styles */
 
             {
-                    name : 'Table padding',
-                    element : 'table',
-                    attributes :
-                    {
-                            'style' : 'border-collapse:separate;border-spacing:30px;'//,
-                            //'border' : '2',
-                            //'align' : 'left'
-                    }
-            },
-            
-            {
-                    name : 'Image on Left---',
+                    name : 'Image on Left',
                     element : 'img',
                     attributes :
                     {
@@ -94,7 +78,7 @@ if(typeof(CKEDITOR) !== 'undefined') {
             },
 
             {
-                    name : 'Image on Right+++',
+                    name : 'Image on Right',
                     element : 'img',
                     attributes :
                     {
