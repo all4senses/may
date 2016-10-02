@@ -18,6 +18,8 @@
         requires: 'widget,dialog,image2',
         beforeInit: function(editor) {
             editor.on('widgetDefinition', function(e) {
+                dpm(e, 'e on w-definiion')
+                return;
                 var widget = e.data;
                 // figure out if this is the image dialog.
 //                if(widget.name != 'image')
@@ -54,6 +56,7 @@
                 // register handler for data
                 widget.on('data', function(e) {
                     console.log('e on-data');
+                    return;
                     widget = e.data;
                     
                     // keep extra attributes only when set.
@@ -65,6 +68,8 @@
                     });
                 });
 
+                return;
+                
                 // set data from existing variables.
                 var image = widget.element;
                 // since the img-tag can be wrapped with a caption, make sure we use the right element.
@@ -126,7 +131,8 @@
                     console.log(infoTab, 'infoTab afer');
                 }
 
-
+                return;
+                
                 // make sure this is the right editor (there can be more on one page) and the right dialog.
                 if ((e.editor != editor) || (e.data.name != 'image2'))
                     return;
