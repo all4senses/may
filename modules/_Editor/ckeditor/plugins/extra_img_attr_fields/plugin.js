@@ -42,14 +42,12 @@
                 var widget = e.data;
 
                 // figure out if this is the image dialog.
-                // 
-                // temporary disabled a4s
-//                if(widget.name != 'image')
-//                    return;
+                if(widget.name != 'image')
+                    return;
 
                 // register handler for data
                 widget.on('data', function(e) {
-                    console.log(e, 'e in on-data');
+
                     widget = e.data;
                     
                     // keep extra attributes only when set.
@@ -83,39 +81,6 @@
             });
 
             CKEDITOR.on('dialogDefinition', function(e) {
-                
-                // Take the dialog name and its definition from the event data.
-                var dialogName = e.data.name;
-                var dialogDefinition = e.data.definition;
-
-                // Check if the definition is from the dialog window you are interested in (the "Link" dialog window).
-                if ( dialogName == 'editdiv' ) {
-                    // Get a reference to the "Link Info" tab.
-                    var infoTab = dialogDefinition.getContents( 'info' );
-
-                    // Set the default value for the URL field.
-//                    var urlField = infoTab.get( 'url' );
-//                    urlField[ 'default' ] = 'www.example.com';
-                     
-                    infoTab.add({
-                        id: 'x1',
-                        type: 'text',
-                        requiredContent: 'div[x1]',
-                        label: 'x1',
-                        setup: function(widget) {
-                            this.setValue(widget.data['x1']);
-                        },
-                        commit: function (widget) {
-                            console.log(widget,'widget x1');
-                            console.log(this,'this x1');
-                            console.log(this.getValue(),'this.getValue() x1');
-                            //widget.setData('x1', this.getValue());
-                        }
-                    }//, 'class'
-                            );
-                }
-
-
                 // make sure this is the right editor (there can be more on one page) and the right dialog.
                 if ((e.editor != editor) || (e.data.name != 'image2'))
                     return;
