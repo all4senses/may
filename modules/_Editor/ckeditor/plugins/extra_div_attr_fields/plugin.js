@@ -130,19 +130,18 @@
                         type: 'text',
                         requiredContent: 'div[x1]',
                         label: 'x1',
-                        setup: function(element) {
-                            console.log(element, 'element on setup');
-                            this.setValue(element.data['x1']);
-                        },
-                        commit: function( element ) {
-                                    console.log(element, 'element on commit');
-                                    element.setAttribute( 'x1', this.getValue() );
-                                }
-//                                function (widget) {
-//                            console.log(widget,'widget x1');
-//                            console.log(this,'this x1');
-//                            //widget.setData('x1', this.getValue());
-//                        }
+//                        setup: function(element) {
+//                            console.log(element, 'element on setup');
+//                            console.log(element.$.attributes['x1'], 'element.$.attributes[x1]');
+//                            console.log(element.$.attributes['x1'].value, 'element.$.attributes[x1].value');
+//                            
+//                            this.setValue(element.$.attributes['x1'].value);
+//                        },
+//                        commit: function( element ) {
+//                                    console.log(element, 'element on commit');
+//                                    element.setAttribute( 'x1', this.getValue() );
+//                                }
+
                         
                         
                         
