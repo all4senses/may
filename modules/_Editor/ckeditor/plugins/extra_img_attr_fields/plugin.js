@@ -106,7 +106,8 @@
                         commit: function (widget) {
                             widget.setData('x1', this.getValue());
                         }
-                    }, 'class');
+                    }//, 'class'
+                            );
                 }
 
 
