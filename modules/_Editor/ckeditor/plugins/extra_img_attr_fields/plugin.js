@@ -18,7 +18,7 @@
         requires: 'widget,dialog,image2',
         beforeInit: function(editor) {
             editor.on('widgetDefinition', function(e) {
-                dpm(e, 'e on w-definiion')
+                console.log(e, 'e on w-definiion');
                 return;
                 var widget = e.data;
                 // figure out if this is the image dialog.
