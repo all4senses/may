@@ -77,9 +77,11 @@
                                         //console.log(element.$.attributes[value].value, 'element.$.attributes[' + value + '].value');
                                         // So we chack for this
                                         if (typeof element.$.attributes[value] === 'undefined' || element.$.attributes[value].value == 'undefined') {
-                                            element.$.attributes[value].value = '';
+                                            this.setValue('');
                                         }
-                                        this.setValue(element.$.attributes[value].value);
+                                        else {
+                                            this.setValue(element.$.attributes[value].value);
+                                        }
                             },
                             commit: function( element ) {
                                         console.log(element, 'element on commit');
