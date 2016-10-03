@@ -40,6 +40,7 @@
                         'id':'extra',
                         'label':'Extra label',
                         'title':'Extra title',
+                        'hidden': false,
                         'elements': []
                     });
                     
