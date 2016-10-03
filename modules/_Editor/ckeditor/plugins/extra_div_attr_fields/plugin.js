@@ -55,7 +55,8 @@
                     }
                      
                      
-                    infoTab.add({
+                    //infoTab.add({ 
+                    extraTab.add({
                         id: 'x1',
                         type: 'text',
                         requiredContent: 'div[x1]',
