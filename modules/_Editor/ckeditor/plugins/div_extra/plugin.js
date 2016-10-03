@@ -38,11 +38,13 @@
 				}
 			} ) );
                         */
-			editor.addCommand( 'editdiv_extra', new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li' } ) );
-                        /*
-			editor.addCommand( 'removediv', {
-				requiredContent: 'div',
-				exec: function( editor ) {
+			editor.addCommand( 'editdiv_extra', new CKEDITOR.dialogCommand( 'div_extra', { requiredContent: 'li' } ) );
+                        
+			editor.addCommand( 'removediv_extra', {
+				requiredContent: 'li',
+				exec: alert('xxx'); 
+                                   /*     
+                                function( editor ) {
 					var selection = editor.getSelection(),
 						ranges = selection && selection.getRanges(),
 						range,
@@ -51,7 +53,7 @@
 						toRemove = [];
 
 					function findDiv( node ) {
-						var div = CKEDITOR.plugins.div.getSurroundDiv( editor, node );
+						var div = CKEDITOR.plugins.div_extra.getSurroundDiv( editor, node );
 						if ( div && !div.data( 'cke-div-added' ) ) {
 							toRemove.push( div );
 							div.data( 'cke-div-added' );
@@ -74,8 +76,9 @@
 
 					selection.selectBookmarks( bookmarks );
 				}
+                                */
 			} );
-                        */
+                        
                        
                         /*
 			editor.ui.addButton && editor.ui.addButton( 'CreateDiv', {
@@ -93,14 +96,14 @@
 						group: 'div',
 						order: 1
 					},
-                                        /*
+                                        
 					removediv_extra: {
 						label: lang.remove,
 						command: 'removediv_extra',
 						group: 'li',
 						order: 5
 					}
-                                        */
+                                        
                                         
 				} );
                                 
@@ -115,7 +118,7 @@
                                                     console.log(element, 'element x2');
 							return {
 								editdiv_extra: CKEDITOR.TRISTATE_OFF,
-								//removediv_extra: CKEDITOR.TRISTATE_OFF
+								removediv_extra: CKEDITOR.TRISTATE_OFF
 							};
 						}
 
