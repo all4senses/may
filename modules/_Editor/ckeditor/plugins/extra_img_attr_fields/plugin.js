@@ -146,7 +146,7 @@
                         }
                         extra.add({
                             id: value,
-                            type: 'textarea',
+                            type: fieldtype,
                             requiredContent: 'img[' + value + ']',
                             label: value,
                             setup: function(widget) {
