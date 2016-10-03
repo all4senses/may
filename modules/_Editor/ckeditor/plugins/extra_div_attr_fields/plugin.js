@@ -23,132 +23,140 @@
             
             CKEDITOR.on('dialogDefinition', function(e) {
                 
-                console.log(e, 'e...');
-                
                 // Take the dialog name and its definition from the event data.
                 var dialogName = e.data.name;
                 var dialogDefinition = e.data.definition;
+                
+                // Alter only the editdiv dialog
+                if ( dialogName != 'editdiv' ) {
+                    return;
+                }
+                
+                console.log(e, 'e...');
+                 
+                    
+                var extra = dialogDefinition.getContents( 'extra' );
 
-                // Check if the definition is from the dialog window you are interested in (the "Link" dialog window).
-                if ( dialogName == 'editdiv' ) {
-                    
-                    
-                    var extra = dialogDefinition.getContents( 'extra' );
-                    
-                    if (typeof extra !== 'undefined' && extra != null) {
-                        return;
-                    }
-                    
-                    console.log(dialogDefinition, 'dialogDefinition before');
-                    
-                    // Get a reference to the "Link Info" tab.
-                    var infoTab = dialogDefinition.getContents( 'info' );
-                    console.log(infoTab, 'infoTab ...');
-//                    if (typeof infoTab === 'undefined' || infoTab == null) {
-//                        return;
-//                    }
-                    
-                    
-                    //console.log(infoTab, 'infoTab before');
-                    
-                    
-                    
-                    
-                    
-                    extra = jQuery.extend(true, {}, infoTab);
-                    
-                    
-                    extra.id = 'extra';
-                    extra.label = 'xxx  lab';
-                    extra.title = 'xxx  title';
-                    extra.elements = [];
-                    
-                    dialogDefinition.addContents(extra);
-                    
-                    console.log(extra, 'extra before');
-                    
-//                    var extraTab = dialogDefinition.addContents({
-//                        'id':'extra',
-//                        'label':'Extra label',
-//                        'title':'Extra title',
-//                        'hidden': false,
-//                        'elements': []
-//                    });
+                if (typeof extra !== 'undefined' && extra != null) {
+                    return;
+                }
 
+                console.log(dialogDefinition, 'dialogDefinition before');
 
+                // Copy the info tab and based on it create a new extra tab 
+                var infoTab = dialogDefinition.getContents( 'info' );
+                console.log(infoTab, 'infoTab ...');
+                if (typeof infoTab === 'undefined' || infoTab == null) {
+                    return;
+                }
 
+                extra = jQuery.extend(true, {}, infoTab);
 
-                    extra.add({ 
+                extra.id = 'extra';
+                extra.label = 'xxx  lab';
+                extra.title = 'xxx  title';
+                extra.elements = [];
+
+                dialogDefinition.addContents(extra);
+
+                console.log(extra, 'extra before');
+
+                // Add new fields to the new tab
+                extra.add({ 
                         id: 'x1',
                         type: 'text',
                         requiredContent: 'div[x1]',
                         label: 'x1',
                         setup: function(element) {
-                            console.log(element, 'element on setup');
-                            console.log(element.$.attributes['x1'], 'element.$.attributes[x1]');
-                            console.log(element.$.attributes['x1'].value, 'element.$.attributes[x1].value');
-                            
-                            this.setValue(element.$.attributes['x1'].value);
+                                    console.log(element, 'element on setup');
+                                    console.log(element.$.attributes['x1'], 'element.$.attributes[x1]');
+                                    console.log(element.$.attributes['x1'].value, 'element.$.attributes[x1].value');
+
+                                    this.setValue(element.$.attributes['x1'].value);
                         },
                         commit: function( element ) {
                                     console.log(element, 'element on commit');
                                     element.setAttribute( 'x1', this.getValue() );
-                                }
-                        
-                        }//, 'class'
-                    );
-                    
-                    console.log(extra, 'extra after');
-                    console.log(dialogDefinition, 'dialogDefinition after');
-                    
-                    
-                    return;
-                    
-                    
-                    
-                    
-                    var infoTab = dialogDefinition.getContents( 'extra' );
+                        }
 
-                    // Set the default value for the URL field.
+                    }//, 'class' // 'class' is the element id before which we want to add a new one
+                );
+
+
+                // Move some fields from existing before tabs to a new tab
+                
+                var advancedTab = dialogDefinition.getContents( 'advanced' );
+                var title_field = advancedTab.get( 'title' );
+
+                // Skip diplicates 
+                if (typeof title_field !== 'undefined' && title_field != null) {
+                    extra.add(title_field
+                            //, 'class' // 'class' is the element id before which we want to add a new one
+                    );
+                    advancedTab.remove('title');
+                }
+                
+                
+                
+                
+
+
+                console.log(extra, 'extra after');
+                console.log(dialogDefinition, 'dialogDefinition after');
+
+
+
+
+
+                return;
+
+
+
+
+
+
+                var infoTab = dialogDefinition.getContents( 'extra' );
+
+                // Set the default value for the URL field.
 //                    var urlField = infoTab.get( 'url' );
 //                    urlField[ 'default' ] = 'www.example.com';
 
-                    console.log(infoTab, 'infoTab before');
-                     
-                    var if_attr_exists = infoTab.get( 'x1' );
-                     
-                    // Skip diplicates 
-                    if (typeof if_attr_exists !== 'undefined' && if_attr_exists != null) {
-                        return;
-                    }
-                     
-                     
-                    infoTab.add({ 
-                        id: 'x1',
-                        type: 'text',
-                        requiredContent: 'div[x1]',
-                        label: 'x1',
-                        setup: function(element) {
-                            console.log(element, 'element on setup');
-                            console.log(element.$.attributes['x1'], 'element.$.attributes[x1]');
-                            console.log(element.$.attributes['x1'].value, 'element.$.attributes[x1].value');
-                            
-                            this.setValue(element.$.attributes['x1'].value);
-                        },
-                        commit: function( element ) {
-                                    console.log(element, 'element on commit');
-                                    element.setAttribute( 'x1', this.getValue() );
-                                }
+                console.log(infoTab, 'infoTab before');
 
-                        
-                        
-                        
-                    }//, 'class'
-                            );
-                    
-                    
-                    console.log(infoTab, 'infoTab afer');
+                var if_attr_exists = infoTab.get( 'x1' );
+
+                // Skip diplicates 
+                if (typeof if_attr_exists !== 'undefined' && if_attr_exists != null) {
+                    return;
                 }
+
+
+                infoTab.add({ 
+                    id: 'x1',
+                    type: 'text',
+                    requiredContent: 'div[x1]',
+                    label: 'x1',
+                    setup: function(element) {
+                        console.log(element, 'element on setup');
+                        console.log(element.$.attributes['x1'], 'element.$.attributes[x1]');
+                        console.log(element.$.attributes['x1'].value, 'element.$.attributes[x1].value');
+
+                        this.setValue(element.$.attributes['x1'].value);
+                    },
+                    commit: function( element ) {
+                                console.log(element, 'element on commit');
+                                element.setAttribute( 'x1', this.getValue() );
+                            }
+
+
+
+
+                }//, 'class'
+                        );
+
+
+                console.log(infoTab, 'infoTab afer');
+
 
 //                return;
                 
