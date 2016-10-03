@@ -57,10 +57,14 @@
                 // Remove fields, that will be added to the Extra tab, from other tabs
                 var tabs_to_check = ['info', 'advanced'];
                 jQuery.each( tabs_to_check, function( index1, value1 ){  
+                    console.log(value1, 'value1');
                     var checkTab = dialogDefinition.getContents( value1 );
-                    jQuery.each( Drupal.settings.custom_div_attr_fields, function( index2, value2 ){    
+                    jQuery.each( Drupal.settings.custom_div_attr_fields, function( index2, value2 ){
+                        console.log(value2, 'value2');
                         var checkField = checkTab.get(value2);
-                        if (typeof title_field !== 'undefined' && title_field != null) {
+                        console.log(checkField, 'checkField');
+                        if (typeof checkField !== 'undefined' && checkField != null) {
+                            console.log('removing...');
                             // We could add this field to a new tab right now, but we won't
                             /*
                             extra.add(checkField
