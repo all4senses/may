@@ -45,7 +45,7 @@
                     infoTab.label = 'xxx  lab';
                     infoTab.title = 'xxx  title';
                     
-                    dialogDefinition.addContents(infoTab);
+                    //dialogDefinition.addContents(infoTab);
                     
                     console.log(infoTab, 'infoTab after');
                     
