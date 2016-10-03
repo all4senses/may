@@ -253,8 +253,6 @@
 						},
 						commit: function( element ) {
 							var styleName;
-                                                        console.log(styleName, 'styleName');
-                                                        console.log(this.getValue(), 'this.getValue()');
 							if ( ( styleName = this.getValue() ) ) {
 								var style = styles[ styleName ];
 								style.applyToObject( element, editor );

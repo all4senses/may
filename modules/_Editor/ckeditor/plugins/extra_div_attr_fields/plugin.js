@@ -56,6 +56,7 @@
                 var checkField = null;
                 jQuery.each( tabs_to_check, function( index1, value1 ){  
                     checkTab = dialogDefinition.getContents( value1 );
+                    
                     jQuery.each( Drupal.settings.custom_div_attr_fields, function( index2, value2 ){
                         checkField = checkTab.get(value2);
                         if (typeof checkField !== 'undefined' && checkField != null) {
@@ -100,33 +101,24 @@
                     }
                 }); // jQuery.each( Drupal.settings.custom_div_attr_fields, function( index, value ){   
                 
-                var advanced = dialogDefinition.getContents( 'advanced' );
-                checkField = advanced.get('style');
-                console.log(checkField, 'checkField');
-                advanced.remove('style');
-                extra.add(checkField);
-                  
                 
-                var info = dialogDefinition.getContents( 'info' );
-                checkField = info.get('elementStyle');
-                checkField.commit = function( element ) {
-							var styleName;
-                                                        console.log(styleName, 'styleName');
-                                                        console.log(this.getValue(), 'this.getValue()');
-							if ( ( styleName = this.getValue() ) ) {
-								var style = styles[ styleName ];
-								style.applyToObject( element, editor );
-							}
-							else {
-								//element.removeAttribute( 'style' );
-							}
-                                                    };
-                console.log(checkField, 'elementStyle');
-                
-                //info.remove('elementStyle');
-                
-                //dialogDefinition.removeContents( 'advanced' );
-                //dialogDefinition.removeContents( 'info' );
+//                var info = dialogDefinition.getContents( 'info' );
+//                checkField = info.get('elementStyle');
+//                console.log(checkField, 'elementStyle before');
+//                checkField.commit = function( element ) {
+//							var styleName;
+//                                                        console.log(styleName, 'styleName');
+//                                                        console.log(this.getValue(), 'this.getValue()');
+//							if ( ( styleName = this.getValue() ) ) {
+//								var style = styles[ styleName ];
+//								style.applyToObject( element, editor );
+//							}
+//							else {
+//								//element.removeAttribute( 'style' );
+//							}
+//                                                    };
+//                console.log(checkField, 'elementStyle after');
+    
                 
                 
             }); // End of CKEDITOR.on('dialogDefinition', function(e) {
