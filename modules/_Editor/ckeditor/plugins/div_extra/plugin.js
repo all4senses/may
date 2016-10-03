@@ -130,10 +130,26 @@
 
 	CKEDITOR.plugins.div_extra = {
 		getSurroundDiv: function( editor, start ) {
-                    console.log(editor, 'editor');
-                    console.log(start, 'start');
+                    console.log(editor, 'editor in getSurroundDiv');
+                    console.log(start, 'start in getSurroundDiv');
 			var path = editor.elementPath( start );
                         console.log(path, 'path');
+                        
+                        var contains = editor.elementPath( path.blockLimit ).contains( function( node ) {
+                            console.log(node, 'node');
+                            console.log(node.is( 'li' ) , 'node.is(li) ');
+				// Avoid read-only (i.e. contenteditable="false") divs (#11083).
+				return node.is( 'li' ) && !node.isReadOnly();
+			}, 1 );
+                        console.log(contains, 'contains');
+                        
+                        if (node.is( 'li' ) && !node.isReadOnly()) {
+                            console.log( 'node.is(li) && !node.isReadOnly()' + ' = TRUE');
+                        }
+                        else {
+                            console.log( 'node.is(li) && !node.isReadOnly()' + ' = FALSE');
+                        }
+                        
 			return editor.elementPath( path.blockLimit ).contains( function( node ) {
                             console.log(node, 'node');
                             console.log(node.is( 'li' ) , 'node.is(li) ');
