@@ -85,23 +85,24 @@
 			} );
                         */
 			if ( editor.addMenuItems ) {
-                            /*
+                            
 				editor.addMenuItems( {
 					editdiv: {
 						label: lang.edit,
-						command: 'editdiv',
+						command: 'editdiv_extra',
 						group: 'div',
 						order: 1
 					},
-
+                                        
 					removediv: {
 						label: lang.remove,
 						command: 'removediv',
 						group: 'div',
 						order: 5
 					}
+                                        
 				} );
-                                */
+                                
 				if ( editor.contextMenu ) {
 					editor.contextMenu.addListener( function( element ) {
 						if ( !element || element.isReadOnly() )
@@ -143,16 +144,17 @@
 			}, 1 );
                         console.log(contains, 'contains');
                         
-                        if (node.is( 'li' ) && !node.isReadOnly()) {
-                            console.log( 'node.is(li) && !node.isReadOnly()' + ' = TRUE');
-                        }
-                        else {
-                            console.log( 'node.is(li) && !node.isReadOnly()' + ' = FALSE');
-                        }
+                        
                         
 			return editor.elementPath( path.blockLimit ).contains( function( node ) {
                             console.log(node, 'node');
                             console.log(node.is( 'li' ) , 'node.is(li) ');
+                            if (node.is( 'li' ) && !node.isReadOnly()) {
+                                console.log( 'node.is(li) && !node.isReadOnly()' + ' = TRUE');
+                            }
+                            else {
+                                console.log( 'node.is(li) && !node.isReadOnly()' + ' = FALSE');
+                            }
 				// Avoid read-only (i.e. contenteditable="false") divs (#11083).
 				return node.is( 'li' ) && !node.isReadOnly();
 			}, 1 );
