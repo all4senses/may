@@ -71,9 +71,14 @@
                             label: value,
                             setup: function(element) {
                                         console.log(element, 'element on setup');
-                                        console.log(element.$.attributes[value], 'element.$.attributes[' + value + ']');
-                                        console.log(element.$.attributes[value].value, 'element.$.attributes[' + value + '].value');
-
+                                        
+                                        // This could be undefined it an element doesn't have this attribute yet
+                                        //console.log(element.$.attributes[value], 'element.$.attributes[' + value + ']');
+                                        //console.log(element.$.attributes[value].value, 'element.$.attributes[' + value + '].value');
+                                        // So we chack for this
+                                        if (typeof element.$.attributes[value] === 'undefined' || element.$.attributes[value].value == 'undefined') {
+                                            element.$.attributes[value].value = '';
+                                        }
                                         this.setValue(element.$.attributes[value].value);
                             },
                             commit: function( element ) {
