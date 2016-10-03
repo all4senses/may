@@ -108,7 +108,7 @@
                   
                 
                 var info = dialogDefinition.getContents( 'info' );
-                info.remove('elementStyle');
+                //info.remove('elementStyle');
                 
                 //dialogDefinition.removeContents( 'advanced' );
                 //dialogDefinition.removeContents( 'info' );
