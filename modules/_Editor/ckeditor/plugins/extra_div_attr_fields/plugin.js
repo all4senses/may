@@ -37,13 +37,16 @@
                         return;
                     }
                     
+                    console.log(dialogDefinition, 'dialogDefinition before');
+                    console.log(infoTab, 'infoTab before');
+                    
                     infoTab.id = 'extra';
                     infoTab.label = 'xxx  lab';
                     infoTab.title = 'xxx  title';
                     
                     dialogDefinition.addContents(infoTab);
                     
-                    console.log(dialogDefinition, 'dialogDefinition before');
+                    console.log(infoTab, 'infoTab after');
                     
 //                    var extraTab = dialogDefinition.addContents({
 //                        'id':'extra',
