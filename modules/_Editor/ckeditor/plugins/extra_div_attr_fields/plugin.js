@@ -120,6 +120,7 @@
 							else {
 								//element.removeAttribute( 'style' );
 							}
+                                                    };
                 console.log(checkField, 'elementStyle');
                 
                 //info.remove('elementStyle');
