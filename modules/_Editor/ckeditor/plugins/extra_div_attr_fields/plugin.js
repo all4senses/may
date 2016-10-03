@@ -141,6 +141,24 @@
 //                        }, 0 );
                 } );
                            
+                           
+                // Synchronous field values to other impacted fields is required, e.g. div styles
+		// change should also alter inline-style text.
+		function commitInternally( targetFields ) {
+			var dialog = this.getDialog(),
+				element = dialog._element && dialog._element.clone() || new CKEDITOR.dom.element( 'div', editor.document );
+
+			// Commit this field and broadcast to target fields.
+			this.commit( element, true );
+
+			targetFields = [].concat( targetFields );
+			var length = targetFields.length,
+				field;
+			for ( var i = 0; i < length; i++ ) {
+				field = dialog.getContentElement.apply( dialog, targetFields[ i ].split( ':' ) );
+				field && field.setup && field.setup( element, true );
+			}
+		}
                 checkField.onChange = function() {
                                     commitInternally.call( this, [ 'info:elementStyle', 'extra:class', 'advanced:dir', 'extra:style' ] );
                                     };
