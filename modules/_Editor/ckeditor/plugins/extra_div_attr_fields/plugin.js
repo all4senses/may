@@ -103,7 +103,7 @@
                 
                 // Alter a bit a elementStyle field, so it wouldn't cause a problem with moved Style field (from advanced to extra tab)
                 // All this functions below is to recreate all needed functions in new commit/onCange functions that are being altered
-                var infoTab = dialogDefinition.getContents( 'info' );
+                //var infoTab = dialogDefinition.getContents( 'info' );
                 elementStyleField = infoTab.get('elementStyle');
                 // Reuse the 'stylescombo' plugin's styles definition.
                 // Registered 'CKEDITOR.style' instances.
