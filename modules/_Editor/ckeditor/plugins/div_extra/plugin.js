@@ -42,7 +42,7 @@
                         
 			editor.addCommand( 'removediv_extra', {
 				requiredContent: 'li',
-				exec: alert('xxx'); 
+				exec: alert('xxx'),
                                    /*     
                                 function( editor ) {
 					var selection = editor.getSelection(),
