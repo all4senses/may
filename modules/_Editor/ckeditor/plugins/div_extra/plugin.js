@@ -9,6 +9,7 @@
  */
 
 ( function() {
+    console.log('111');
 	CKEDITOR.plugins.add( 'div_extra', {
 		requires: 'dialog',
 		// jscs:disable maximumLineLength
@@ -17,6 +18,7 @@
 		//icons: 'creatediv', // %REMOVE_LINE_CORE%
 		//hidpi: true, // %REMOVE_LINE_CORE%
 		init: function( editor ) {
+                    console.log(editor, 'editor');
 			if ( editor.blockless )
 				return;
 
@@ -105,15 +107,17 @@
 						if ( !element || element.isReadOnly() )
 							return null;
 
-
-						//if ( CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) ) 
+                                                        console.log(element, 'element x1');
+						if ( CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) ) 
                                                 {
+                                                    console.log(element, 'element x2');
 							return {
 								editdiv_extra: CKEDITOR.TRISTATE_OFF,
 //								removediv: CKEDITOR.TRISTATE_OFF
 							};
 						}
 
+                                                console.log(element, 'element x3');
 						return null;
 					} );
 				}

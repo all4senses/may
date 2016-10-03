@@ -4,7 +4,7 @@
  */
 
 ( function() {
-
+        console.log('in div.js');
 	// Add to collection with DUP examination.
 	// @param {Object} collection
 	// @param {Object} element
@@ -429,6 +429,7 @@
 //	} );
 
 	CKEDITOR.dialog.add( 'editdiv_extra', function( editor ) {
+            console.log(editor, 'editor ddd1');
 		return divDialog( editor, 'editdiv_extra' );
 	} );
 
