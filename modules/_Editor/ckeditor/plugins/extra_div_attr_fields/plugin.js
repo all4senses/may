@@ -56,7 +56,6 @@
                 var checkField = null;
                 jQuery.each( tabs_to_check, function( index1, value1 ){  
                     checkTab = dialogDefinition.getContents( value1 );
-                    
                     jQuery.each( Drupal.settings.custom_div_attr_fields, function( index2, value2 ){
                         checkField = checkTab.get(value2);
                         if (typeof checkField !== 'undefined' && checkField != null) {
@@ -102,12 +101,10 @@
                 }); // jQuery.each( Drupal.settings.custom_div_attr_fields, function( index, value ){   
                 
                 
-                var info = dialogDefinition.getContents( 'info' );
-                checkField = info.get('elementStyle');
-                console.log(checkField, 'elementStyle before');
-                
-                
-                
+                // Alter a bit a elementStyle field, so it wouldn't cause a problem with moved Style field (from advanced to extra tab)
+                // All this functions below is to recreate all needed functions in new commit/onCange functions that are being altered
+                var infoTab = dialogDefinition.getContents( 'info' );
+                elementStyleField = infoTab.get('elementStyle');
                 // Reuse the 'stylescombo' plugin's styles definition.
                 // Registered 'CKEDITOR.style' instances.
 		var styles = {};
@@ -141,7 +138,6 @@
 //                        }, 0 );
                 } );
                            
-                           
                 // Synchronous field values to other impacted fields is required, e.g. div styles
 		// change should also alter inline-style text.
 		function commitInternally( targetFields ) {
@@ -159,27 +155,25 @@
 				field && field.setup && field.setup( element, true );
 			}
 		}
-                checkField.onChange = function() {
+                
+                elementStyleField.onChange = function() {
                                     commitInternally.call( this, [ 'info:elementStyle', 'extra:class', 'advanced:dir', 'extra:style' ] );
                                     };
-                checkField.setup = function( element ) {
+                elementStyleField.setup = function( element ) {
 							for ( var name in styles )
                                                             styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
                                                         };
-                checkField.commit = function( element ) {
+                elementStyleField.commit = function( element ) {
 							var styleName;
-                                                        console.log(styleName, 'styleName');
-                                                        console.log(this.getValue(), 'this.getValue()');
 							if ( ( styleName = this.getValue() ) ) {
 								var style = styles[ styleName ];
 								style.applyToObject( element, editor );
 							}
 							else {
+                                                                // a4s This caused empty style attribute after submitting
 								//element.removeAttribute( 'style' );
 							}
                                                     };
-                console.log(checkField, 'elementStyle after');
-    
                 
                 
             }); // End of CKEDITOR.on('dialogDefinition', function(e) {
