@@ -32,14 +32,16 @@
                 // Check if the definition is from the dialog window you are interested in (the "Link" dialog window).
                 if ( dialogName == 'editdiv' ) {
                     // Get a reference to the "Link Info" tab.
-                    var infoTab = dialogDefinition.getContents( 'info' );
+                    //var infoTab = dialogDefinition.getContents( 'info' );
                     
                     var extraTab = dialogDefinition.addContents({
-                        'id':'Extra',
+                        'id':'extra',
                         'label':'Extra label',
                         'title':'Extra title',
                         'elements': []
                     });
+                    
+                    var infoTab = dialogDefinition.getContents( 'extra' );
 
                     // Set the default value for the URL field.
 //                    var urlField = infoTab.get( 'url' );
@@ -55,8 +57,7 @@
                     }
                      
                      
-                    //infoTab.add({ 
-                    extraTab.add({
+                    infoTab.add({ 
                         id: 'x1',
                         type: 'text',
                         requiredContent: 'div[x1]',
