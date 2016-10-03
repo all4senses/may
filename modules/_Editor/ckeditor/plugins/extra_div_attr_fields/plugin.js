@@ -108,6 +108,9 @@
                   
                 
                 var info = dialogDefinition.getContents( 'info' );
+                checkField = advanced.get('elementStyle');
+                console.log(checkField, 'elementStyle');
+                
                 //info.remove('elementStyle');
                 
                 //dialogDefinition.removeContents( 'advanced' );
