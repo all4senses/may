@@ -100,6 +100,13 @@
                     }
                 }); // jQuery.each( Drupal.settings.custom_div_attr_fields, function( index, value ){   
                 
+                var advanced = dialogDefinition.getContents( 'advanced' );
+                checkField = advanced.get('style');
+                console.log(checkField, 'checkField');
+                advanced.remove('style');
+                extra.add(checkField);
+                
+                
             }); // End of CKEDITOR.on('dialogDefinition', function(e) {
         }
     }); // End of CKEDITOR.plugins.add( 'extra_div_attr_fields', {
