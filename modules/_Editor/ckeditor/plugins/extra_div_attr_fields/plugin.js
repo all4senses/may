@@ -38,6 +38,7 @@
                         'id':'Extra',
                         'label':'Extra label',
                         'title':'Extra title',
+                        'elements': []
                     });
 
                     // Set the default value for the URL field.
