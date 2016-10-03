@@ -31,6 +31,16 @@
 
                 // Check if the definition is from the dialog window you are interested in (the "Link" dialog window).
                 if ( dialogName == 'editdiv' ) {
+                    
+                    
+                    var extra = dialogDefinition.getContents( 'extra' );
+                    
+                    if (typeof extra !== 'undefined' && extra != null) {
+                        return;
+                    }
+                    
+                    console.log(dialogDefinition, 'dialogDefinition before');
+                    
                     // Get a reference to the "Link Info" tab.
                     var infoTab = dialogDefinition.getContents( 'info' );
                     console.log(infoTab, 'infoTab ...');
@@ -38,11 +48,14 @@
 //                        return;
 //                    }
                     
-                    console.log(dialogDefinition, 'dialogDefinition before');
-                    console.log(infoTab, 'infoTab before');
+                    
+                    //console.log(infoTab, 'infoTab before');
                     
                     
-                    var extra = jQuery.extend(true, {}, infoTab);
+                    
+                    
+                    
+                    extra = jQuery.extend(true, {}, infoTab);
                     
                     
                     extra.id = 'extra';
