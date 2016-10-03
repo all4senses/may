@@ -260,7 +260,7 @@
 								style.applyToObject( element, editor );
 							}
 							else {
-								//element.removeAttribute( 'style' );
+								element.removeAttribute( 'style' );
 							}
 						}
 					},

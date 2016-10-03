@@ -109,6 +109,17 @@
                 
                 var info = dialogDefinition.getContents( 'info' );
                 checkField = info.get('elementStyle');
+                checkField.commit = function( element ) {
+							var styleName;
+                                                        console.log(styleName, 'styleName');
+                                                        console.log(this.getValue(), 'this.getValue()');
+							if ( ( styleName = this.getValue() ) ) {
+								var style = styles[ styleName ];
+								style.applyToObject( element, editor );
+							}
+							else {
+								//element.removeAttribute( 'style' );
+							}
                 console.log(checkField, 'elementStyle');
                 
                 //info.remove('elementStyle');
