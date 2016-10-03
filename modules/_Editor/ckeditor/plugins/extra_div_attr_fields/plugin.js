@@ -140,7 +140,10 @@
 //                                dialog._element && stylesField.setup( dialog._element );
 //                        }, 0 );
                 } );
-                                
+                           
+                checkField.onChange = function() {
+                                    commitInternally.call( this, [ 'info:elementStyle', 'extra:class', 'advanced:dir', 'extra:style' ] );
+                                    };
                 checkField.setup = function( element ) {
 							for ( var name in styles )
                                                             styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
