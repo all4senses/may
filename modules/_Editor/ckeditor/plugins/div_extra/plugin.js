@@ -90,14 +90,14 @@
 					editdiv_extra: {
 						label: lang.edit,
 						command: 'editdiv_extra',
-						group: 'div',
+						group: 'li',
 						order: 1
 					},
                                         /*
 					removediv_extra: {
 						label: lang.remove,
 						command: 'removediv_extra',
-						group: 'div',
+						group: 'li',
 						order: 5
 					}
                                         */
