@@ -57,7 +57,7 @@
                 extra.title = 'xxx  title';
                 extra.elements = [];
 
-                dialogDefinition.addContents(extra);
+                dialogDefinition.addContents(extra,'info');
 
                 console.log(extra, 'extra before');
 
