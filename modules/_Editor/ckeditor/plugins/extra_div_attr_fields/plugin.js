@@ -33,6 +33,7 @@
                 if ( dialogName == 'editdiv' ) {
                     // Get a reference to the "Link Info" tab.
                     var infoTab = dialogDefinition.getContents( 'info' );
+                    console.log(infoTab, 'infoTab ...');
                     if (typeof infoTab === 'undefined' || infoTab == null) {
                         return;
                     }
