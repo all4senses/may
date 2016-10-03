@@ -77,7 +77,7 @@
 						// Read the dialog fields values from the specified
 						// element attributes.
 						field.setup = function( element ) {
-                                                    cobsole.log(element, 'element in setupFields');
+                                                        cobsole.log(element, 'element in setupFields');
 							field.setValue( element.getAttribute( field.id ) || '', 1 );
 						};
 					}
