@@ -56,12 +56,14 @@
                 console.log(Drupal.settings.custom_div_attr_fields, 'Drupal.settings.custom_div_attr_fields');
                 // Remove fields, that will be added to the Extra tab, from other tabs
                 var tabs_to_check = ['info', 'advanced'];
+                var checkTab = null;
+                var checkField = null;
                 jQuery.each( tabs_to_check, function( index1, value1 ){  
                     console.log(value1, 'value1');
-                    var checkTab = dialogDefinition.getContents( value1 );
+                    checkTab = dialogDefinition.getContents( value1 );
                     jQuery.each( Drupal.settings.custom_div_attr_fields, function( index2, value2 ){
                         console.log(value2, 'value2');
-                        var checkField = checkTab.get(value2);
+                        checkField = checkTab.get(value2);
                         console.log(checkField, 'checkField');
                         if (typeof checkField !== 'undefined' && checkField != null) {
                             console.log('removing...');
@@ -77,29 +79,33 @@
                 });
                 
                 // Add extra attributes fields
-                jQuery.each( Drupal.settings.custom_div_attr_fields, function( index, value ){    
-                    extra.add({ 
-                            id: value,
-                            type: 'text',
-                            requiredContent: 'div[' + value + ']',
-                            label: value,
-                            // Works but we don't need it here
-                            /*
-                            setup: function(element) {
-                                        // So we chack for this
-                                        if (typeof element.$.attributes[value] === 'undefined' || element.$.attributes[value].value == 'undefined') {
-                                            this.setValue('');
-                                        }
-                                        else {
-                                            this.setValue(element.$.attributes[value].value);
-                                        }
-                            },
-                            commit: function( element ) {
-                                        element.setAttribute( value, this.getValue() );
-                            }
-                            */
-                        }//, 'class' // 'class' is the element id before which we want to add a new one
-                    );
+                jQuery.each( Drupal.settings.custom_div_attr_fields, function( index, value ){   
+                    // Skip diplicates 
+                    checkField = extra.get(value);
+                    if (typeof checkField === 'undefined' || checkField == null) {
+                        extra.add({ 
+                                id: value,
+                                type: 'text',
+                                requiredContent: 'div[' + value + ']',
+                                label: value,
+                                // Works but we don't need it here
+                                /*
+                                setup: function(element) {
+                                            // So we chack for this
+                                            if (typeof element.$.attributes[value] === 'undefined' || element.$.attributes[value].value == 'undefined') {
+                                                this.setValue('');
+                                            }
+                                            else {
+                                                this.setValue(element.$.attributes[value].value);
+                                            }
+                                },
+                                commit: function( element ) {
+                                            element.setAttribute( value, this.getValue() );
+                                }
+                                */
+                            }//, 'class' // 'class' is the element id before which we want to add a new one
+                        );
+                    }
                 });
 
 
