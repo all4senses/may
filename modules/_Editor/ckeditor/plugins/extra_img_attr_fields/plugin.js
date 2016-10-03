@@ -87,38 +87,6 @@
 
                 var dialogDefinition = e.data.definition;
                 
-                
-                /*
-                // Get a reference to the "Link Info" tab.
-                var infoTab = dialogDefinition.getContents( 'info' );
-             
-                console.log(infoTab, 'infoTab before');
-                
-                jQuery.each( Drupal.settings.custom_img_attr_fields, function( index, value ){    
-                    infoTab.add({
-                        id: value,
-                        type: 'text',
-                        requiredContent: 'img[' + value + ']',
-                        label: value,
-                        setup: function(widget) {
-                            this.setValue(widget.data[value]);
-                        },
-                        commit: function (widget) {
-                            widget.setData(value, this.getValue());
-                        }
-                    }, 'alignment');
-                });
-                                
-                console.log(infoTab, 'infoTab after');
-                */
-                
-                
-                
-                
-                
-                
-                
-                
                 // Create an extra tab    
                 var extra = dialogDefinition.getContents( 'extra' );
                 // Skip If it already exists
@@ -170,7 +138,7 @@
                     if (typeof checkField === 'undefined' || checkField == null) {
                         extra.add({
                             id: value,
-                            type: 'text',
+                            type: 'textarea',
                             requiredContent: 'img[' + value + ']',
                             label: value,
                             setup: function(widget) {
@@ -182,14 +150,6 @@
                         });
                     }
                 }); // jQuery.each( Drupal.settings.custom_img_attr_fields, function( index, value ){   
-                
-                
-                
-                
-                
-                
-                
-                
                 
                 
             });
