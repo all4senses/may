@@ -90,7 +90,7 @@
 					editdiv_extra: {
 						label: 'Edit li', //lang.edit,
 						command: 'editdiv_extra',
-						group: 'li',
+						group: 'div',
 						order: 1
 					},
                                         /*
