@@ -34,12 +34,22 @@
                     // Get a reference to the "Link Info" tab.
                     //var infoTab = dialogDefinition.getContents( 'info' );
                     
+                    console.log(dialogDefinition, 'dialogDefinition before');
+                    
                     var extraTab = dialogDefinition.addContents({
                         'id':'extra',
                         'label':'Extra label',
                         'title':'Extra title',
                         'elements': []
                     });
+                    
+                    console.log(dialogDefinition, 'dialogDefinition after');
+                    
+                    
+                    return;
+                    
+                    
+                    
                     
                     var infoTab = dialogDefinition.getContents( 'extra' );
 
