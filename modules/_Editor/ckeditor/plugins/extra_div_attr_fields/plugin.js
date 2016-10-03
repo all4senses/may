@@ -105,7 +105,7 @@
                 console.log(checkField, 'checkField');
                 advanced.remove('style');
                 extra.add(checkField);
-                
+                  
                 
                 var info = dialogDefinition.getContents( 'info' );
                 info.remove('elementStyle');
