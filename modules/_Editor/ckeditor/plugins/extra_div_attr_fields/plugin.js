@@ -31,37 +31,63 @@
                 if ( dialogName != 'editdiv' ) {
                     return;
                 }
-                
-                console.log(e, 'e...');
-                 
-                    
+                // Create an extra tab    
                 var extra = dialogDefinition.getContents( 'extra' );
-
+                // Skip If it already exists
                 if (typeof extra !== 'undefined' && extra != null) {
                     return;
                 }
 
-                console.log(dialogDefinition, 'dialogDefinition before');
-
                 // Copy the info tab and based on it create a new extra tab 
                 var infoTab = dialogDefinition.getContents( 'info' );
-                console.log(infoTab, 'infoTab ...');
                 if (typeof infoTab === 'undefined' || infoTab == null) {
                     return;
                 }
-
+                // Clone object of existing tab "info" to a new tab "extra"
                 extra = jQuery.extend(true, {}, infoTab);
-
+                // And set new properties
                 extra.id = 'extra';
-                extra.label = 'xxx  lab';
-                extra.title = 'xxx  title';
+                extra.label = 'Extra attributes';
+                extra.title = 'Extra attributes';
                 extra.elements = [];
-
+                // Add it to the dialog
                 dialogDefinition.addContents(extra,'info');
 
                 console.log(extra, 'extra before');
 
+
+
+
+
+
+
+                //var new_fields = ['x1', 'x2'];
+                
+                jQuery.each( Drupal.settings.custom_div_attr_fields, function( index, value ){    
+                    extra.add({ 
+                            id: value,
+                            type: 'text',
+                            requiredContent: 'div['+ value+ ']',
+                            label: value,
+                            setup: function(element) {
+                                        console.log(element, 'element on setup');
+                                        console.log(element.$.attributes[value], 'element.$.attributes[' + value + ']');
+                                        console.log(element.$.attributes[value].value, 'element.$.attributes[' + value + '].value');
+
+                                        this.setValue(element.$.attributes[value].value);
+                            },
+                            commit: function( element ) {
+                                        console.log(element, 'element on commit');
+                                        element.setAttribute( value, this.getValue() );
+                            }
+
+                        }//, 'class' // 'class' is the element id before which we want to add a new one
+                    );
+                });
+
+
                 // Add new fields to the new tab
+                /*
                 extra.add({ 
                         id: 'x1',
                         type: 'text',
@@ -81,20 +107,18 @@
 
                     }//, 'class' // 'class' is the element id before which we want to add a new one
                 );
+                */
 
-
-                // Move some fields from existing before tabs to a new tab
-                
-                var advancedTab = dialogDefinition.getContents( 'advanced' );
-                var title_field = advancedTab.get( 'title' );
-
-                // Skip diplicates 
-                if (typeof title_field !== 'undefined' && title_field != null) {
-                    extra.add(title_field
-                            //, 'class' // 'class' is the element id before which we want to add a new one
-                    );
-                    advancedTab.remove('title');
-                }
+//                // Move some fields from existing before tabs to a new tab
+//                var advancedTab = dialogDefinition.getContents( 'advanced' );
+//                var title_field = advancedTab.get( 'title' );
+//                // Skip diplicates 
+//                if (typeof title_field !== 'undefined' && title_field != null) {
+//                    extra.add(title_field
+//                            //, 'class' // 'class' is the element id before which we want to add a new one
+//                    );
+//                    advancedTab.remove('title');
+//                }
                 
                 
                 
