@@ -107,6 +107,7 @@
                 extra.add(checkField);
                 
                 dialogDefinition.removeContents( 'advanced' );
+                dialogDefinition.removeContents( 'info' );
                 
                 
             }); // End of CKEDITOR.on('dialogDefinition', function(e) {
