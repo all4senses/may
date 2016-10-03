@@ -131,11 +131,19 @@
                     });
                 });
                 
+                var fieldtype;
+                var texttype_fields = ['id', 'class', 'alt', 'title'];
                 // Add extra attributes fields
                 jQuery.each( Drupal.settings.custom_img_attr_fields, function( index, value ){   
                     // Skip duplicates 
                     checkField = extra.get(value);
                     if (typeof checkField === 'undefined' || checkField == null) {
+                        if(texttype_fields.indexOf(value) == -1) {
+                            fieldtype = 'textarea';
+                        }
+                        else {
+                            fieldtype = 'text';
+                        }
                         extra.add({
                             id: value,
                             type: 'textarea',
