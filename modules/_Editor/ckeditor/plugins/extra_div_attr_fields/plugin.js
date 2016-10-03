@@ -102,22 +102,22 @@
                 }); // jQuery.each( Drupal.settings.custom_div_attr_fields, function( index, value ){   
                 
                 
-//                var info = dialogDefinition.getContents( 'info' );
-//                checkField = info.get('elementStyle');
-//                console.log(checkField, 'elementStyle before');
-//                checkField.commit = function( element ) {
-//							var styleName;
-//                                                        console.log(styleName, 'styleName');
-//                                                        console.log(this.getValue(), 'this.getValue()');
-//							if ( ( styleName = this.getValue() ) ) {
-//								var style = styles[ styleName ];
-//								style.applyToObject( element, editor );
-//							}
-//							else {
-//								//element.removeAttribute( 'style' );
-//							}
-//                                                    };
-//                console.log(checkField, 'elementStyle after');
+                var info = dialogDefinition.getContents( 'info' );
+                checkField = info.get('elementStyle');
+                console.log(checkField, 'elementStyle before');
+                checkField.commit = function( element ) {
+							var styleName;
+                                                        console.log(styleName, 'styleName');
+                                                        console.log(this.getValue(), 'this.getValue()');
+							if ( ( styleName = this.getValue() ) ) {
+								var style = styles[ styleName ];
+								style.applyToObject( element, editor );
+							}
+							else {
+								//element.removeAttribute( 'style' );
+							}
+                                                    };
+                console.log(checkField, 'elementStyle after');
     
                 
                 
