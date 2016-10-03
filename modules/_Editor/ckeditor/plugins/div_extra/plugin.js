@@ -38,11 +38,11 @@
 				}
 			} ) );
                         */
-			editor.addCommand( 'editdiv_extra', new CKEDITOR.dialogCommand( 'div_extra', { requiredContent: 'li' } ) );
+			editor.addCommand( 'editdiv_extra', new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li' } ) );
                         
 			editor.addCommand( 'removediv_extra', {
 				requiredContent: 'li',
-				exec: alert('xxx'),
+				exec: console.log('remove event'),
                                    /*     
                                 function( editor ) {
 					var selection = editor.getSelection(),
