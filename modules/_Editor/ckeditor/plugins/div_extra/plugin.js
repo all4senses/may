@@ -135,6 +135,8 @@
 			var path = editor.elementPath( start );
                         console.log(path, 'path');
 			return editor.elementPath( path.blockLimit ).contains( function( node ) {
+                            console.log(node, 'node');
+                            console.log(node.is( 'li' ) , 'node.is(li) ');
 				// Avoid read-only (i.e. contenteditable="false") divs (#11083).
 				return node.is( 'li' ) && !node.isReadOnly();
 			}, 1 );
