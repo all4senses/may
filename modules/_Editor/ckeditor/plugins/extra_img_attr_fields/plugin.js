@@ -131,6 +131,8 @@
                 if (typeof infoTab === 'undefined' || infoTab == null) {
                     return;
                 }
+                infoTab.label = 'Image basics'
+                
                 // Clone object of existing tab "info" to a new tab "extra"
                 extra = jQuery.extend(true, {}, infoTab);
                 // And set new properties
@@ -179,7 +181,7 @@
                             }
                         });
                     }
-                }); // jQuery.each( Drupal.settings.custom_div_attr_fields, function( index, value ){   
+                }); // jQuery.each( Drupal.settings.custom_img_attr_fields, function( index, value ){   
                 
                 
                 
