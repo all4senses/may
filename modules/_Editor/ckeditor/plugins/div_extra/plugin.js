@@ -87,16 +87,16 @@
 			if ( editor.addMenuItems ) {
                             
 				editor.addMenuItems( {
-					editdiv: {
+					editdiv_extra: {
 						label: lang.edit,
 						command: 'editdiv_extra',
 						group: 'div',
 						order: 1
 					},
                                         
-					removediv: {
+					removediv_extra: {
 						label: lang.remove,
-						command: 'removediv',
+						command: 'removediv_extra',
 						group: 'div',
 						order: 5
 					}
@@ -114,7 +114,7 @@
                                                     console.log(element, 'element x2');
 							return {
 								editdiv_extra: CKEDITOR.TRISTATE_ON,
-//								removediv: CKEDITOR.TRISTATE_OFF
+								removediv_extra: CKEDITOR.TRISTATE_OFF
 							};
 						}
 
