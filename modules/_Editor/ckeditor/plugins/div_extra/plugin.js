@@ -109,7 +109,7 @@
 							return null;
 
                                                         console.log(element, 'element x1');
-						if ( CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) ) 
+						//if ( CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) ) 
                                                 {
                                                     console.log(element, 'element x2');
 							return {
