@@ -38,23 +38,31 @@
 		// DTD of 'div' element
 		var dtd = CKEDITOR.dtd.li;
 
+                console.log(dtd, 'dtd');
+                
 		// Get the first div limit element on the element's path.
 		// @param {Object} element
 		function getDivContainer( element ) {
 			var container = editor.elementPath( element ).blockLimit;
 
+                        console.log(element, 'element 1');
+                        console.log(container, 'container 1');
+                        
 			// Never consider read-only (i.e. contenteditable=false) element as
 			// a first div limit (#11083).
 			if ( container.isReadOnly() )
 				container = container.getParent();
 
+                        console.log(container, 'container 2');
+                        
 			// Dont stop at 'td' and 'th' when div should wrap entire table.
 			if ( editor.config.div_wrapTable && container.is( [ 'td', 'th' ] ) ) {
 				var parentPath = editor.elementPath( container.getParent() );
 				container = parentPath.blockLimit;
 			}
 
-                        console.log(container, 'container');
+                        
+                        console.log(container, 'container 3');
 			return container;
 		}
 
@@ -183,6 +191,7 @@
 		//  * CKEDITOR.dom.domWalker
 		// @returns {Array[]} the grouped nodes
 		function groupByDivLimit( nodes ) {
+                    console.log(nodes, 'nodes');
 			var groups = [],
 				lastDivLimit = null,
 				block;
@@ -196,6 +205,7 @@
 				}
 				groups[ groups.length - 1 ].push( block );
 			}
+                        console.log(groups, 'groups');
 			return groups;
 		}
 
@@ -240,7 +250,7 @@
 						id: 'elementStyle',
 						type: 'select',
 						style: 'width: 100%;',
-						label: editor.lang.div.styleSelectLabel,
+						label: editor.lang.div_extra.styleSelectLabel,
 						'default': '',
 						// Options are loaded dynamically.
 						items: [
@@ -349,6 +359,8 @@
 				editor.getStylesSet( function( stylesDefinitions ) {
 					var styleName, style;
 
+                                        console.log(stylesDefinitions, 'stylesDefinitions');
+                                        
 					if ( stylesDefinitions ) {
 						// Digg only those styles that apply to 'div'.
 						for ( var i = 0; i < stylesDefinitions.length; i++ ) {

@@ -120,13 +120,16 @@
 			}
 
 //			CKEDITOR.dialog.add( 'creatediv', this.path + 'dialogs/div.js' );
-			CKEDITOR.dialog.add( 'editdiv', this.path + 'dialogs/div.js' );
+			CKEDITOR.dialog.add( 'editdiv_extra', this.path + 'dialogs/div.js' );
 		}
 	} );
 
 	CKEDITOR.plugins.div_extra = {
 		getSurroundDiv: function( editor, start ) {
+                    console.log(editor, 'editor');
+                    console.log(start, 'start');
 			var path = editor.elementPath( start );
+                        console.log(path, 'path');
 			return editor.elementPath( path.blockLimit ).contains( function( node ) {
 				// Avoid read-only (i.e. contenteditable="false") divs (#11083).
 				return node.is( 'li' ) && !node.isReadOnly();
