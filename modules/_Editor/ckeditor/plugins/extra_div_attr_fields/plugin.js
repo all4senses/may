@@ -7,9 +7,8 @@
 
 ( function() {
     
-//    var img_attributes_to_exclude_from_adding = ['src', 'height', 'width', 'data-widget', 'sizes', 'srcset']; // 'sizes' and 'srcset' will be added by the imageresponsive plugin
-//    // Allowed content from custom Drupal settings, set from a4s custom module via drupal_add_js()
-    console.log(Drupal.settings.custom_div_attr_fields, 'Drupal.settings.custom_div_attr_fields 1');
+    // var img_attributes_to_exclude_from_adding = ['src', 'height', 'width', 'data-widget', 'sizes', 'srcset']; // 'sizes' and 'srcset' will be added by the imageresponsive plugin
+    // Allowed content from custom Drupal settings, set from a4s custom module via drupal_add_js()
     if (typeof Drupal.settings.custom_div_attr_fields === 'undefined') {
         Drupal.settings.custom_div_attr_fields = [];
     }
