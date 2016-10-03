@@ -32,17 +32,24 @@
                 // Check if the definition is from the dialog window you are interested in (the "Link" dialog window).
                 if ( dialogName == 'editdiv' ) {
                     // Get a reference to the "Link Info" tab.
-                    //var infoTab = dialogDefinition.getContents( 'info' );
+                    var infoTab = dialogDefinition.getContents( 'info' );
+                    
+                    
+                    infoTab.id = 'extra';
+                    infoTab.label = 'xxx  lab';
+                    infoTab.title = 'xxx  title';
+                    
+                    dialogDefinition.addContents(infoTab);
                     
                     console.log(dialogDefinition, 'dialogDefinition before');
                     
-                    var extraTab = dialogDefinition.addContents({
-                        'id':'extra',
-                        'label':'Extra label',
-                        'title':'Extra title',
-                        'hidden': false,
-                        'elements': []
-                    });
+//                    var extraTab = dialogDefinition.addContents({
+//                        'id':'extra',
+//                        'label':'Extra label',
+//                        'title':'Extra title',
+//                        'hidden': false,
+//                        'elements': []
+//                    });
                     
                     console.log(dialogDefinition, 'dialogDefinition after');
                     
