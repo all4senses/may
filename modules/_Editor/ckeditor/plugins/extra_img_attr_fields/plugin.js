@@ -85,8 +85,12 @@
                 if ((e.editor != editor) || (e.data.name != 'image2'))
                     return;
 
+                var dialogDefinition = e.data.definition;
+                
+                
+                /*
                 // Get a reference to the "Link Info" tab.
-                var infoTab = e.data.definition.getContents( 'info' );
+                var infoTab = dialogDefinition.getContents( 'info' );
              
                 console.log(infoTab, 'infoTab before');
                 
@@ -106,6 +110,85 @@
                 });
                                 
                 console.log(infoTab, 'infoTab after');
+                */
+                
+                
+                
+                
+                
+                
+                
+                
+                // Create an extra tab    
+                var extra = dialogDefinition.getContents( 'extra' );
+                // Skip If it already exists
+                if (typeof extra !== 'undefined' && extra != null) {
+                    return;
+                }
+
+                // Copy the info tab and based on it create a new extra tab 
+                var infoTab = dialogDefinition.getContents( 'info' );
+                if (typeof infoTab === 'undefined' || infoTab == null) {
+                    return;
+                }
+                // Clone object of existing tab "info" to a new tab "extra"
+                extra = jQuery.extend(true, {}, infoTab);
+                // And set new properties
+                extra.id = 'extra';
+                extra.label = 'Extra attributes';
+                extra.title = 'Extra attributes';
+                extra.elements = [];
+                // Add it to the dialog
+                dialogDefinition.addContents(extra,'info'); // Add a new tab before the Info tab
+
+                // Remove fields, that will be added to the Extra tab, from other tabs
+                var tabs_to_check = ['info'];
+                var checkTab = null;
+                var checkField = null;
+                jQuery.each( tabs_to_check, function( index1, value1 ){  
+                    checkTab = dialogDefinition.getContents( value1 );
+                    jQuery.each( Drupal.settings.custom_img_attr_fields, function( index2, value2 ){
+                        checkField = checkTab.get(value2);
+                        if (typeof checkField !== 'undefined' && checkField != null) {
+                            // We could add this field to a new tab right now, but we won't
+                            /*
+                            extra.add(checkField
+                                    //, 'class' // 'class' is the element id before which we want to add a new one
+                            );
+                            */
+                            checkTab.remove(value2);
+                        }
+                    });
+                });
+                
+                // Add extra attributes fields
+                jQuery.each( Drupal.settings.custom_img_attr_fields, function( index, value ){   
+                    // Skip duplicates 
+                    checkField = extra.get(value);
+                    if (typeof checkField === 'undefined' || checkField == null) {
+                        extra.add({
+                            id: value,
+                            type: 'text',
+                            requiredContent: 'img[' + value + ']',
+                            label: value,
+                            setup: function(widget) {
+                                this.setValue(widget.data[value]);
+                            },
+                            commit: function (widget) {
+                                widget.setData(value, this.getValue());
+                            }
+                        });
+                    }
+                }); // jQuery.each( Drupal.settings.custom_div_attr_fields, function( index, value ){   
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
             });
         }
