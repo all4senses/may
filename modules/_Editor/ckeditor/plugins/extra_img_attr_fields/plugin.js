@@ -12,6 +12,9 @@
     if (typeof Drupal.settings.custom_img_attr_fields === 'undefined') {
         Drupal.settings.custom_img_attr_fields = [];
     }
+    if (typeof Drupal.settings.custom_attr_fields_textarea_type === 'undefined') {
+        Drupal.settings.custom_attr_fields_textarea_type = [];
+    }
     
     CKEDITOR.plugins.add( 'extra_img_attr_fields', {
         //lang: 'en,de',
@@ -131,22 +134,16 @@
                     });
                 });
                 
-                var fieldtype;
-                var texttype_fields = ['id', 'class', 'alt', 'title'];
+                Drupal.settings.custom_attr_fields_textarea_type
+                
                 // Add extra attributes fields
                 jQuery.each( Drupal.settings.custom_img_attr_fields, function( index, value ){   
                     // Skip duplicates 
                     checkField = extra.get(value);
                     if (typeof checkField === 'undefined' || checkField == null) {
-                        if(texttype_fields.indexOf(value) == -1) {
-                            fieldtype = 'textarea';
-                        }
-                        else {
-                            fieldtype = 'text';
-                        }
                         extra.add({
                             id: value,
-                            type: fieldtype,
+                            type: (Drupal.settings.custom_attr_fields_textarea_type.indexOf(value) == -1) ? 'text' : 'textarea',
                             requiredContent: 'img[' + value + ']',
                             label: value,
                             setup: function(widget) {

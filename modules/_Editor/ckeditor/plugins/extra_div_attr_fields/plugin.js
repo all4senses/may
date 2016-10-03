@@ -12,6 +12,9 @@
     if (typeof Drupal.settings.custom_div_attr_fields === 'undefined') {
         Drupal.settings.custom_div_attr_fields = [];
     }
+    if (typeof Drupal.settings.custom_attr_fields_textarea_type === 'undefined') {
+        Drupal.settings.custom_attr_fields_textarea_type = [];
+    }
     
     CKEDITOR.plugins.add( 'extra_div_attr_fields', {
         //lang: 'en,de',
@@ -77,7 +80,7 @@
                     if (typeof checkField === 'undefined' || checkField == null) {
                         extra.add({ 
                                 id: value,
-                                type: 'text',
+                                type: (Drupal.settings.custom_attr_fields_textarea_type.indexOf(value) == -1) ? 'text' : 'textarea',
                                 requiredContent: 'div[' + value + ']',
                                 label: value,
                                 // Works but we don't need it here

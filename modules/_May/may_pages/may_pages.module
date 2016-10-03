@@ -779,6 +779,7 @@ function may_pages_passExtraParametersToCKEditor() {
        // Add New Allowed Content attributes to tags in CKEditor
       'custom_img_attr_fields' => array_merge(array('id', 'class', 'alt', 'title'), $extra_imagefield_attributes),
       'custom_div_attr_fields' => array_merge(array('id', 'class', 'alt', 'title', 'style'), $extra_imagefield_attributes),  
+      'custom_attr_fields_textarea_type' => array('data-type', 'data-order', 'style'),
        // Pass to CKEditor a css file for the Project page type 
       'project_custom_css_file' => url(drupal_get_path('theme', variable_get('theme_default', NULL)) . '/css/projects.css', array('absolute' => TRUE)),
     );
