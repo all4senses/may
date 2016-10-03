@@ -105,6 +105,11 @@
                 var info = dialogDefinition.getContents( 'info' );
                 checkField = info.get('elementStyle');
                 console.log(checkField, 'elementStyle before');
+                
+                checkField.setup = function( element ) {
+							for ( var name in styles )
+                                                            styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
+                                                        };
                 checkField.commit = function( element ) {
 							var styleName;
                                                         console.log(styleName, 'styleName');
