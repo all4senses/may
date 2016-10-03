@@ -777,10 +777,12 @@ function may_pages_passExtraParametersToCKEditor() {
     $default_theme_path = url(drupal_get_path('theme', variable_get('theme_default', NULL)) . '/css/projects.css', array('absolute' => TRUE));
     dpm($default_theme_path, '$default_theme_path');
     
+    $extra_imagefield_attributes = imagefield_attributes_get_all_attributes_names(FALSE, TRUE);
+    dpm($extra_imagefield_attributes, '$extra_imagefield_attributes');
     $extraParametersToCKEditor = array(
        // Add New Allowed Content attributes to tags in CKEditor
-      'custom_img_attr_fields' => imagefield_attributes_get_all_attributes_names(FALSE, TRUE) + array('alt', 'title', 'class'),
-      'custom_div_attr_fields' => imagefield_attributes_get_all_attributes_names(FALSE, TRUE) + array('alt', 'title', 'class', 'data-a4s', 'x1', 'x2'),  
+      'custom_img_attr_fields' => $extra_imagefield_attributes + array('alt', 'title', 'class'),
+      'custom_div_attr_fields' => $extra_imagefield_attributes + array('alt', 'title', 'class', 'data-a4s', 'x1', 'x2'),  
        // Pass to CKEditor a css file for the Project page type 
       'project_custom_css_file' => $default_theme_path,
     );
