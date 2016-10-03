@@ -113,7 +113,7 @@
                                                 {
                                                     console.log(element, 'element x2');
 							return {
-								editdiv_extra: CKEDITOR.TRISTATE_OFF,
+								editdiv_extra: CKEDITOR.TRISTATE_ON,
 //								removediv: CKEDITOR.TRISTATE_OFF
 							};
 						}
