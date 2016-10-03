@@ -65,7 +65,7 @@
                     
                     dialogDefinition.addContents(extra);
                     
-                    console.log(extra, 'extra');
+                    console.log(extra, 'extra before');
                     
 //                    var extraTab = dialogDefinition.addContents({
 //                        'id':'extra',
@@ -74,7 +74,31 @@
 //                        'hidden': false,
 //                        'elements': []
 //                    });
+
+
+
+
+                    extra.add({ 
+                        id: 'x1',
+                        type: 'text',
+                        requiredContent: 'div[x1]',
+                        label: 'x1',
+                        setup: function(element) {
+                            console.log(element, 'element on setup');
+                            console.log(element.$.attributes['x1'], 'element.$.attributes[x1]');
+                            console.log(element.$.attributes['x1'].value, 'element.$.attributes[x1].value');
+                            
+                            this.setValue(element.$.attributes['x1'].value);
+                        },
+                        commit: function( element ) {
+                                    console.log(element, 'element on commit');
+                                    element.setAttribute( 'x1', this.getValue() );
+                                }
+                        
+                        }//, 'class'
+                    );
                     
+                    console.log(extra, 'extra after');
                     console.log(dialogDefinition, 'dialogDefinition after');
                     
                     
