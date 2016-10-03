@@ -34,20 +34,24 @@
                     // Get a reference to the "Link Info" tab.
                     var infoTab = dialogDefinition.getContents( 'info' );
                     console.log(infoTab, 'infoTab ...');
-                    if (typeof infoTab === 'undefined' || infoTab == null) {
-                        return;
-                    }
+//                    if (typeof infoTab === 'undefined' || infoTab == null) {
+//                        return;
+//                    }
                     
                     console.log(dialogDefinition, 'dialogDefinition before');
                     console.log(infoTab, 'infoTab before');
                     
-                    infoTab.id = 'extra';
-                    infoTab.label = 'xxx  lab';
-                    infoTab.title = 'xxx  title';
                     
-                    //dialogDefinition.addContents(infoTab);
+                    var extra = jQuery.extend(true, {}, infoTab);
                     
-                    console.log(infoTab, 'infoTab after');
+                    
+                    extra.id = 'extra';
+                    extra.label = 'xxx  lab';
+                    extra.title = 'xxx  title';
+                    
+                    dialogDefinition.addContents(extra);
+                    
+                    console.log(extra, 'extra');
                     
 //                    var extraTab = dialogDefinition.addContents({
 //                        'id':'extra',
