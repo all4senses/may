@@ -106,8 +106,12 @@
                 advanced.remove('style');
                 extra.add(checkField);
                 
+                
+                var info = dialogDefinition.getContents( 'info' );
+                info.remove('elementStyle');
+                
                 dialogDefinition.removeContents( 'advanced' );
-                dialogDefinition.removeContents( 'info' );
+                //dialogDefinition.removeContents( 'info' );
                 
                 
             }); // End of CKEDITOR.on('dialogDefinition', function(e) {
