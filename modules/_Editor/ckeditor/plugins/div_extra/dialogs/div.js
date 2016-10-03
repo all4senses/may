@@ -36,7 +36,7 @@
 		} )();
 
 		// DTD of 'div' element
-		var dtd = CKEDITOR.dtd.div;
+		var dtd = CKEDITOR.dtd.li;
 
 		// Get the first div limit element on the element's path.
 		// @param {Object} element
@@ -203,7 +203,7 @@
 		// change should also alter inline-style text.
 		function commitInternally( targetFields ) {
 			var dialog = this.getDialog(),
-				element = dialog._element && dialog._element.clone() || new CKEDITOR.dom.element( 'div', editor.document );
+				element = dialog._element && dialog._element.clone() || new CKEDITOR.dom.element( 'li', editor.document );
 
 			// Commit this field and broadcast to target fields.
 			this.commit( element, true );
@@ -267,7 +267,7 @@
 					{
 						id: 'class',
 						type: 'text',
-						requiredContent: 'div(cke-xyz)', // Random text like 'xyz' will check if all are allowed.
+						requiredContent: 'li(cke-xyz)', // Random text like 'xyz' will check if all are allowed.
 						label: editor.lang.common.cssClass,
 						'default': ''
 					} ]
@@ -286,14 +286,14 @@
 						children: [ {
 							type: 'text',
 							id: 'id',
-							requiredContent: 'div[id]',
+							requiredContent: 'li[id]',
 							label: editor.lang.common.id,
 							'default': ''
 						},
 						{
 							type: 'text',
 							id: 'lang',
-							requiredContent: 'div[lang]',
+							requiredContent: 'li[lang]',
 							label: editor.lang.common.langCode,
 							'default': ''
 						} ]
@@ -303,7 +303,7 @@
 						children: [ {
 							type: 'text',
 							id: 'style',
-							requiredContent: 'div{cke-xyz}', // Random text like 'xyz' will check if all are allowed.
+							requiredContent: 'li{cke-xyz}', // Random text like 'xyz' will check if all are allowed.
 							style: 'width: 100%;',
 							label: editor.lang.common.cssStyle,
 							'default': '',
@@ -317,7 +317,7 @@
 						children: [ {
 							type: 'text',
 							id: 'title',
-							requiredContent: 'div[title]',
+							requiredContent: 'li[title]',
 							style: 'width: 100%;',
 							label: editor.lang.common.advisoryTitle,
 							'default': ''
@@ -326,7 +326,7 @@
 					{
 						type: 'select',
 						id: 'dir',
-						requiredContent: 'div[dir]',
+						requiredContent: 'li[dir]',
 						style: 'width: 100%;',
 						label: editor.lang.common.langDir,
 						'default': '',
@@ -353,7 +353,7 @@
 						// Digg only those styles that apply to 'div'.
 						for ( var i = 0; i < stylesDefinitions.length; i++ ) {
 							var styleDefinition = stylesDefinitions[ i ];
-							if ( styleDefinition.element && styleDefinition.element == 'div' ) {
+							if ( styleDefinition.element && styleDefinition.element == 'li' ) {
 								styleName = styleDefinition.name;
 								styles[ styleName ] = style = new CKEDITOR.style( styleDefinition );
 
@@ -383,7 +383,7 @@
 					// Try to discover the containers that already existed in
 					// ranges
 					// update dialog field values
-					this.setupContent( this._element = CKEDITOR.plugins.div.getSurroundDiv( editor ) );
+					this.setupContent( this._element = CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) );
 				}
 			},
 			onOk: function() {

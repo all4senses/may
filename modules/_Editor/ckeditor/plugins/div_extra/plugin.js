@@ -21,10 +21,10 @@
 				return;
 
 			var lang = editor.lang.div_extra,
-				allowed = 'div(*)';
+				allowed = 'li(*)';
 
 			if ( CKEDITOR.dialog.isTabEnabled( editor, 'editdiv_extra', 'advanced' ) )
-				allowed += ';div[dir,id,lang,title]{*}';
+				allowed += ';li[dir,id,lang,title]{*}';
                         /*
 			editor.addCommand( 'creatediv', new CKEDITOR.dialogCommand( 'creatediv', {
 				allowedContent: allowed,
@@ -36,7 +36,7 @@
 				}
 			} ) );
                         */
-			editor.addCommand( 'editdiv_extra', new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'div' } ) );
+			editor.addCommand( 'editdiv_extra', new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li' } ) );
                         /*
 			editor.addCommand( 'removediv', {
 				requiredContent: 'div',
@@ -129,7 +129,7 @@
 			var path = editor.elementPath( start );
 			return editor.elementPath( path.blockLimit ).contains( function( node ) {
 				// Avoid read-only (i.e. contenteditable="false") divs (#11083).
-				return node.is( 'div' ) && !node.isReadOnly();
+				return node.is( 'li' ) && !node.isReadOnly();
 			}, 1 );
 		}
 	};
