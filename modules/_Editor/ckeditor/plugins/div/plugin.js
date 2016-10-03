@@ -102,7 +102,7 @@
 							return null;
 
 
-						//if ( CKEDITOR.plugins.div.getSurroundDiv( editor ) ) 
+						if ( CKEDITOR.plugins.div.getSurroundDiv( editor ) ) 
                                                 {
 							return {
 								editdiv: CKEDITOR.TRISTATE_OFF,

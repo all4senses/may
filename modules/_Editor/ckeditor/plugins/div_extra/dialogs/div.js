@@ -70,12 +70,14 @@
 		// @memberof divDialog
 		function setupFields() {
 			this.foreach( function( field ) {
+                            console.log(field, 'field');
 				// Exclude layout container elements
 				if ( /^(?!vbox|hbox)/.test( field.type ) ) {
 					if ( !field.setup ) {
 						// Read the dialog fields values from the specified
 						// element attributes.
 						field.setup = function( element ) {
+                                                    cobsole.log(element, 'element in setupFields');
 							field.setValue( element.getAttribute( field.id ) || '', 1 );
 						};
 					}

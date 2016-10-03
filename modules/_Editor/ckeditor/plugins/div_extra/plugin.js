@@ -88,7 +88,7 @@
                             
 				editor.addMenuItems( {
 					editdiv_extra: {
-						label: lang.edit,
+						label: 'Edit li', //lang.edit,
 						command: 'editdiv_extra',
 						group: 'li',
 						order: 1
@@ -114,7 +114,7 @@
                                                 {
                                                     console.log(element, 'element x2');
 							return {
-								editdiv_extra: CKEDITOR.TRISTATE_ON,
+								editdiv_extra: CKEDITOR.TRISTATE_OFF,
 								//removediv_extra: CKEDITOR.TRISTATE_OFF
 							};
 						}
