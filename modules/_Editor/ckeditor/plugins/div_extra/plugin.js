@@ -41,11 +41,11 @@
 			} ) );
                         */
                        
-                       var com =  new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li' } );
-                       console.log(com, 'com 1');
-                       
-                       com =  new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li', xxx: 'xxx111' } );
-                       console.log(com, 'com 2');
+//                       var com =  new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li' } );
+//                       console.log(com, 'com 1');
+//                       
+//                       com =  new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li', xxx: 'xxx111' } );
+//                       console.log(com, 'com 2');
                        
 			editor.addCommand( 'editdiv_extra_1', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 1 } ) );
                         editor.addCommand( 'editdiv_extra_2', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 2 } ) );
@@ -184,19 +184,25 @@
                                                             cur_element_parent_label += ', class="' + cur_element_parents[i].$.attributes.class.value + '"'; 
                                                         }
                                                         console.log(cur_element_parent_label, 'cur_element_parent_label');
-                                                        
+                                                        /*
                                                         editor.addMenuItem('editdiv_extra_' + j, {
                                                             label: cur_element_parent_label,
-                                                            command: 'editdiv_extra',
+                                                            command: 'editdiv_extra_'+ j,
                                                             group: 'div',
                                                             order: 10+i
                                                         });
                                                         mi = editor.getMenuItem('editdiv_extra_' + j);
                                                         allowed_menu_items['editdiv_extra_' + j] = CKEDITOR.TRISTATE_OFF;
-                                                        /*
-                                                        mi = editor.getMenuItem('editdiv_extra_' + j);
-                                                        mi.label = cur_element_parent_label;
                                                         */
+                                                        
+                                                        mi = editor.getMenuItem('editdiv_extra_' + j);
+                                                        mi = {
+                                                            label: cur_element_parent_label,
+                                                            command: 'editdiv_extra_'+ j,
+                                                            group: 'div',
+                                                            order: 10+i
+                                                        };
+                                                        
                                                         console.log(mi, 'mi'+j);
                                                     }
                                                     
