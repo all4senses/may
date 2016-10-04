@@ -113,13 +113,13 @@
 						label: 'Edit tag',// + cur_element_parents[1].$.nodeName,
 						command: 'editdiv_extra_2',
 						group: 'div',
-						order: 10
+						order: 11
 					},
                                         editdiv_extra_3: {
 						label: 'Edit tag',// + cur_element_parents[2].$.nodeName,
 						command: 'editdiv_extra_3',
 						group: 'div',
-						order: 10
+						order: 12
 					},
                                         
                                         
@@ -192,7 +192,7 @@
                                                             order: 10+i
                                                         });
                                                         mi = editor.getMenuItem('editdiv_extra_' + j);
-                                                        allowed_menu_items['editdiv_extra_' + j] = CKEDITOR.TRISTATE_OFF;
+                                                        
                                                         */
                                                         
                                                         mi = editor.getMenuItem('editdiv_extra_' + j);
@@ -204,6 +204,7 @@
                                                         };
                                                         
                                                         console.log(mi, 'mi'+j);
+                                                        allowed_menu_items['editdiv_extra_' + j] = CKEDITOR.TRISTATE_OFF;
                                                     }
                                                     
                                                     
