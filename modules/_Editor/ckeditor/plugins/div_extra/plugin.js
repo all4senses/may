@@ -125,11 +125,11 @@
                                                     console.log(cur_selection,'cur_selection menu');
                                                     
                                                     mi.label = 'Edit tag ' + cur_element.$.nodeName;
-                                                    if (cur_element.$.attributes.id.value) {
-                                                        mi.label += ', id="' + cur_element.$.attributes.id.value + '"'; 
+                                                    if (cur_element.$.attributes.id) {
+                                                        mi.label += ', id="' + cur_element.$.attributes.id + '"'; 
                                                     }
-                                                    if (cur_element.$.attributes.class.value) {
-                                                        mi.label += ', class="' + cur_element.$.attributes.class.value + '"'; 
+                                                    if (cur_element.$.attributes.class) {
+                                                        mi.label += ', class="' + cur_element.$.attributes.class + '"'; 
                                                     }
                                                     console.log(mi, 'mi');
 							return {
