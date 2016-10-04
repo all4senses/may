@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2003-2015, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
@@ -39,6 +39,13 @@
 		var dtd = CKEDITOR.dtd.li;
 
                 console.log(dtd, 'dtd');
+                
+                //element.getAscendant
+                var sel = editor.getSelection(),
+                    el = sel.getStartElement();
+            
+                    console.log(el,'el');
+                    console.log(sel,'sel');
                 
 		// Get the first div limit element on the element's path.
 		// @param {Object} element
