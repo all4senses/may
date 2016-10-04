@@ -6,6 +6,8 @@
 ( function() {
         
         var current_element;
+        var current_selection;
+        
         console.log('in div.js');
 	// Add to collection with DUP examination.
 	// @param {Object} collection
@@ -44,13 +46,7 @@
                 
                 
            
-                //element.getAscendant
-                var sel = editor.getSelection();
-            
-                current_element = sel.getStartElement();
-            
-                    console.log(current_element,'current_element');
-                    console.log(sel,'sel');
+                
                 
 		// Get the first div limit element on the element's path.
 		// @param {Object} element
@@ -265,6 +261,12 @@
 		// Hold a collection of created block container elements.
 		var containers = [];
 
+                //element.getAscendant
+                current_selection = editor.getSelection();
+                current_element = current_selection.getStartElement();
+                console.log(current_element,'current_element');
+                console.log(sel,'sel');
+                    
 		// @type divDialog
 		return {
 			title: editor.lang.div_extra.title,
@@ -390,6 +392,12 @@
 				]
 			} ],
 			onLoad: function() {
+                            
+                                current_selection = editor.getSelection();
+                                current_element = current_selection.getStartElement();
+                                console.log(current_element,'current_element onLoad');
+                                console.log(current_selection,'current_selection onLoad');
+                
 				setupFields.call( this );
 
 				// Preparing for the 'elementStyle' field.
