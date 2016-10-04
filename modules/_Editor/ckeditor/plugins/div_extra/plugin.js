@@ -90,7 +90,7 @@
 			if ( editor.addMenuItems ) {
                             
                             var cur_selection = editor.getSelection();
-                            var cur_element = current_selection.getStartElement();
+                            var cur_element = cur_selection.getStartElement();
                             console.log(cur_element,'cur_element menu');
                             console.log(cur_selection,'cur_selection menu');
                 
