@@ -134,7 +134,7 @@
                                                         mi.label += ', class="' + cur_element.$.attributes.class.value + '"'; 
                                                     }
                                                     
-                                                    console.log(cur_element.getParents(), 'parents');
+                                                    console.log(cur_element.getParents(true), 'parents');
                                                     
                                                     
                                                     console.log(mi, 'mi');
