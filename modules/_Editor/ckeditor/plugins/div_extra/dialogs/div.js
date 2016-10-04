@@ -86,6 +86,7 @@
 						// Set element attributes assigned by the dialog
 						// fields.
 						field.commit = function( element ) {
+                                                    console.log(element, 'element in setupFields 2');
 							var fieldValue = this.getValue();
 							// ignore default element attribute values
 							if ( field.id == 'dir' && element.getComputedStyle( 'direction' ) == fieldValue ) {
@@ -104,7 +105,7 @@
 
 		// Wrapping 'div' element around appropriate blocks among the selected ranges.
 		// @param {Object} editor
-                /*
+                
 		function createDiv( editor ) {
 			// new adding containers OR detected pre-existed containers.
 			var containers = [];
@@ -151,7 +152,7 @@
 				for ( j = 1; j < blockGroups[ i ].length; j++ )
 					ancestor = ancestor.getCommonAncestor( blockGroups[ i ][ j ] );
 
-				divElement = new CKEDITOR.dom.element( 'div', editor.document );
+				divElement = new CKEDITOR.dom.element( 'li', editor.document );
 
 				// Normalize the blocks in each group to a common parent.
 				for ( j = 0; j < blockGroups[ i ].length; j++ ) {
@@ -187,7 +188,7 @@
 			selection.selectBookmarks( bookmarks );
 			return containers;
 		}
-                */
+                
 		// Divide a set of nodes to different groups by their path's blocklimit element.
 		// Note: the specified nodes should be in source order naturally, which mean they are supposed to producea by following class:
 		//  * CKEDITOR.dom.range.Iterator
@@ -273,7 +274,7 @@
 								style.applyToObject( element, editor );
 							}
 							else {
-								element.removeAttribute( 'style' );
+								//element.removeAttribute( 'style' );
 							}
 						}
 					},
@@ -394,19 +395,23 @@
 			onShow: function() {
 				// Whether always create new container regardless of existed
 				// ones.
+                                console.log(command, 'command');
+                                console.log(command, 'command');
 				if ( command == 'editdiv_extra' ) {
 					// Try to discover the containers that already existed in
 					// ranges
 					// update dialog field values
 					this.setupContent( this._element = CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) );
+                                        console.log(this._element, 'this._element');
 				}
 			},
 			onOk: function() {
 				if ( command == 'editdiv_extra' )
 					containers = [ this._element ];
-//				else
-//					containers = createDiv( editor, true );
+				else
+					containers = createDiv( editor, true );
 
+                                console.log(containers, 'containers');
 				// Update elements attributes
 				var size = containers.length;
 				for ( var i = 0; i < size; i++ ) {
@@ -419,6 +424,7 @@
 				this.hide();
 			},
 			onHide: function() {
+                            console.log(this._element, 'this._element');
 				// Remove style only when editing existing DIV. (#6315)
 				if ( command == 'editdiv_extra' )
 					this._element.removeCustomData( 'elementStyle' );
