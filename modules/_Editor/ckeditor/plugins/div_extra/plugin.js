@@ -126,10 +126,10 @@
                                                     
                                                     mi.label = 'Edit tag ' + cur_element.$.nodeName;
                                                     if (cur_element.$.attributes.id) {
-                                                        mi.label += ', id="' + cur_element.$.attributes.id + '"'; 
+                                                        mi.label += ', id="' + cur_element.$.attributes.id.value + '"'; 
                                                     }
                                                     if (cur_element.$.attributes.class) {
-                                                        mi.label += ', class="' + cur_element.$.attributes.class + '"'; 
+                                                        mi.label += ', class="' + cur_element.$.attributes.class.value + '"'; 
                                                     }
                                                     console.log(mi, 'mi');
 							return {
