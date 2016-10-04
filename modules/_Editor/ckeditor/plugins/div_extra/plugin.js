@@ -121,7 +121,7 @@
 						//if ( CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) ) 
                                                 {
                                                     //console.log(element, 'element x2');
-                                                    var mi = editor.getMenuItem('editdiv_extra');
+                                                    var mi = editor.getMenuItem('editdiv_extra_1');
                                                     var cur_selection = editor.getSelection();
                                                     var cur_element = cur_selection.getStartElement();
                                                     console.log(cur_element,'cur_element menu');
