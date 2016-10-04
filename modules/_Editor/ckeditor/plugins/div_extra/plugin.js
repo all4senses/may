@@ -96,7 +96,7 @@
                 
 				editor.addMenuItems( {
 					editdiv_extra: {
-						label: 'Edit tag ' + cur_element.$.nodeName, //lang.edit,
+						label: 'Edit tag ',// + cur_element.$.nodeName, //lang.edit,
 						command: 'editdiv_extra',
 						group: 'div',
 						order: 1
