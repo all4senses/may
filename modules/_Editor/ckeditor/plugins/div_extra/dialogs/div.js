@@ -264,8 +264,8 @@
                 //element.getAscendant
                 current_selection = editor.getSelection();
                 current_element = current_selection.getStartElement();
-                console.log(current_element,'current_element');
-                console.log(sel,'sel');
+                console.log(current_element,'current_element init');
+                console.log(current_selection,'current_selection init');
                     
 		// @type divDialog
 		return {
