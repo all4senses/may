@@ -302,7 +302,13 @@
 						type: 'text',
 						requiredContent: 'li(cke-xyz)', // Random text like 'xyz' will check if all are allowed.
 						label: editor.lang.common.cssClass,
-						'default': ''
+						'default': '',
+                                                
+                                                
+                                                setup: function( element ) {
+                                                    console.log(element.getAttribute( 'class'),'new class');
+                                                            this.setValue(element.getAttribute( 'class') );
+                                                        },
 					} ]
 				} ]
 			},
