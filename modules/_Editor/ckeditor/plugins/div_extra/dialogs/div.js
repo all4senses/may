@@ -339,14 +339,14 @@
 						children: [ {
 							type: 'text',
 							id: 'id',
-							requiredContent: 'li[id]',
+							//requiredContent: 'li[id]',
 							label: editor.lang.common.id,
 							'default': ''
 						},
 						{
 							type: 'text',
 							id: 'lang',
-							requiredContent: 'li[lang]',
+							//requiredContent: 'li[lang]',
 							label: editor.lang.common.langCode,
 							'default': ''
 						} ]
@@ -356,13 +356,13 @@
 						children: [ {
 							type: 'text',
 							id: 'style',
-							requiredContent: 'li{cke-xyz}', // Random text like 'xyz' will check if all are allowed.
+							//requiredContent: 'li{cke-xyz}', // Random text like 'xyz' will check if all are allowed.
 							style: 'width: 100%;',
 							label: editor.lang.common.cssStyle,
 							'default': '',
-							commit: function( element ) {
-								element.setAttribute( 'style', this.getValue() );
-							}
+//							commit: function( element ) {
+//								element.setAttribute( 'style', this.getValue() );
+//							}
 						} ]
 					},
 					{

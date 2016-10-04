@@ -26,7 +26,7 @@
 				allowed = 'li(*)';
 
 			if ( CKEDITOR.dialog.isTabEnabled( editor, 'editdiv_extra', 'advanced' ) )
-				allowed += ';li[dir,id,lang,title]{*}';
+				allowed += ';li[*]{*}';
                         /*
 			editor.addCommand( 'creatediv', new CKEDITOR.dialogCommand( 'creatediv', {
 				allowedContent: allowed,
@@ -89,9 +89,14 @@
                         */
 			if ( editor.addMenuItems ) {
                             
+                            var cur_selection = editor.getSelection();
+                            var cur_element = current_selection.getStartElement();
+                            console.log(cur_element,'cur_element menu');
+                            console.log(cur_selection,'cur_selection menu');
+                
 				editor.addMenuItems( {
 					editdiv_extra: {
-						label: 'Edit li', //lang.edit,
+						label: 'Edit tag ' + cur_element.$.nodeName, //lang.edit,
 						command: 'editdiv_extra',
 						group: 'div',
 						order: 1
@@ -100,7 +105,7 @@
 					removediv_extra: {
 						label: lang.remove,
 						command: 'removediv_extra',
-						group: 'li',
+						group: 'div',
 						order: 5
 					}
                                         
