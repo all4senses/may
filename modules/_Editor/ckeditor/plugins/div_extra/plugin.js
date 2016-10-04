@@ -100,6 +100,7 @@
 						order: 1
 					},
                                         
+                                        
                                         /*
 					removediv_extra: {
 						label: lang.remove,
@@ -140,6 +141,10 @@
                                                     cur_element_parents = cur_element.getParents(true);
                                                     console.log(cur_element_parents, 'parents');
                                                     
+                                                    var allowed_menu_items = new Object;
+                                                    allowed_menu_items['editdiv_extra_1'] = CKEDITOR.TRISTATE_OFF;
+                                                    
+                                                    
                                                     // 0th element is the cur element iself
                                                     // Let's show only 2 parent elements
                                                     for (var i = 1, j=2; i < 3/*cur_element_parents.length*/; i++, j++) {
@@ -157,23 +162,31 @@
                                                             cur_element_parent_label += ', class="' + cur_element_parents[i].$.attributes.class.value + '"'; 
                                                         }
                                                         console.log(cur_element_parent_label, 'cur_element_parent_label');
+                                                        
                                                         editor.addMenuItem('editdiv_extra_' + j, {
                                                             label: cur_element_parent_label,
                                                             command: 'editdiv_extra',
                                                             group: 'div',
                                                             order: j
                                                         });
-                                                        
                                                         mi = editor.getMenuItem('editdiv_extra_' + j);
+                                                        allowed_menu_items['editdiv_extra_' + j] = CKEDITOR.TRISTATE_OFF;
+                                                        /*
+                                                        mi = editor.getMenuItem('editdiv_extra_' + j);
+                                                        mi.label = cur_element_parent_label;
+                                                        */
                                                         console.log(mi, 'mi'+j);
                                                     }
                                                     
                                                     
-                                                    
+                                                    /*
                                                     return {
                                                             editdiv_extra: CKEDITOR.TRISTATE_OFF,
-                                                            removediv_extra: CKEDITOR.TRISTATE_OFF
+                                                            //removediv_extra: CKEDITOR.TRISTATE_OFF
                                                     };
+                                                    */
+                                                    return allowed_menu_items;
+                                                    
 						}
 
                                                 console.log(element, 'element x3');
