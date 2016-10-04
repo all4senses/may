@@ -93,18 +93,20 @@
                 
 				editor.addMenuItems( {
 					editdiv_extra: {
-						label: 'Edit tag ',// + cur_element.$.nodeName, //lang.edit,
+						label: 'Edit tag',// + cur_element.$.nodeName, //lang.edit,
 						command: 'editdiv_extra',
 						group: 'div',
 						order: 1
 					},
                                         
+                                        /*
 					removediv_extra: {
 						label: lang.remove,
 						command: 'removediv_extra',
 						group: 'div',
 						order: 5
 					}
+                                        */
                                         
                                         
 				} );
@@ -131,6 +133,10 @@
                                                     if (cur_element.$.attributes.class) {
                                                         mi.label += ', class="' + cur_element.$.attributes.class.value + '"'; 
                                                     }
+                                                    
+                                                    console.log(cur_element.getParents(), 'parents');
+                                                    
+                                                    
                                                     console.log(mi, 'mi');
 							return {
 								editdiv_extra: CKEDITOR.TRISTATE_OFF,
