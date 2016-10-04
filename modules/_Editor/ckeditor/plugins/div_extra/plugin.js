@@ -89,10 +89,7 @@
                         */
 			if ( editor.addMenuItems ) {
                             
-//                            var cur_selection = editor.getSelection();
-//                            var cur_element = cur_selection.getStartElement();
-//                            console.log(cur_element,'cur_element menu');
-//                            console.log(cur_selection,'cur_selection menu');
+//                            
                 
 				editor.addMenuItems( {
 					editdiv_extra: {
@@ -122,7 +119,13 @@
                                                 {
                                                     //console.log(element, 'element x2');
                                                     var mi = editor.getMenuItem('editdiv_extra');
-                                                    mi.label = 'xxx yyy';
+                                                    var cur_selection = editor.getSelection();
+                                                    var cur_element = cur_selection.getStartElement();
+                                                    console.log(cur_element,'cur_element menu');
+                                                    console.log(cur_selection,'cur_selection menu');
+
+                                                    mi.label = 'Edit tag ' + cur_element.$.nodeName;
+                                                    
                                                     console.log(mi, 'mi');
 							return {
 								editdiv_extra: CKEDITOR.TRISTATE_OFF,
