@@ -84,6 +84,14 @@
 			this.foreach( function( field ) {
                             console.log(field, 'field');
 				// Exclude layout container elements
+                                 if(/^(?!vbox|hbox)/.test( field.type )) {
+                                     console.log('/^(?!vbox|hbox)/.test( field.type ) TRUE');
+                                 }
+                                 else {
+                                     console.log('/^(?!vbox|hbox)/.test( field.type ) FALSE');
+                                 }
+                                 
+                                 
 				if ( /^(?!vbox|hbox)/.test( field.type ) ) {
 					if ( !field.setup ) {
 						// Read the dialog fields values from the specified
@@ -300,15 +308,16 @@
 					{
 						id: 'class',
 						type: 'text',
-						requiredContent: 'li(cke-xyz)', // Random text like 'xyz' will check if all are allowed.
+						//requiredContent: 'li(cke-xyz)', // Random text like 'xyz' will check if all are allowed.
 						label: editor.lang.common.cssClass,
-						'default': '',
+						'default': 'aaaaa',
                                                 
                                                 
                                                 setup: function( element ) {
                                                     if (!element) {
                                                         element = current_element;
                                                     }
+                                                    console.log(element, 'element in setupField class');
                                                     console.log(element.getAttribute( 'class'),'new class');
                                                             this.setValue(element.getAttribute( 'class') );
                                                         },
