@@ -39,6 +39,13 @@
 				}
 			} ) );
                         */
+                       
+                       var com =  new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li' } );
+                       console.log(com, 'com 1');
+                       
+                       com =  new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li', xxx: 'xxx111' } );
+                       console.log(com, 'com 2');
+                       
 			editor.addCommand( 'editdiv_extra', new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li' } ) );
                         
 			editor.addCommand( 'removediv_extra', {
@@ -97,7 +104,19 @@
 						label: 'Edit tag',// + cur_element.$.nodeName, //lang.edit,
 						command: 'editdiv_extra',
 						group: 'div',
-						order: 1
+						order: 10
+					},
+                                        editdiv_extra_2: {
+						label: 'Edit tag',// + cur_element_parents[1].$.nodeName,
+						command: 'editdiv_extra',
+						group: 'div',
+						order: 10
+					},
+                                        editdiv_extra_3: {
+						label: 'Edit tag',// + cur_element_parents[2].$.nodeName,
+						command: 'editdiv_extra',
+						group: 'div',
+						order: 10
 					},
                                         
                                         
@@ -167,7 +186,7 @@
                                                             label: cur_element_parent_label,
                                                             command: 'editdiv_extra',
                                                             group: 'div',
-                                                            order: j
+                                                            order: 10+i
                                                         });
                                                         mi = editor.getMenuItem('editdiv_extra_' + j);
                                                         allowed_menu_items['editdiv_extra_' + j] = CKEDITOR.TRISTATE_OFF;
