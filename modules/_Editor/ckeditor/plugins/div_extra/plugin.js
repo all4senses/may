@@ -135,13 +135,16 @@
                                                         mi.label += ', class="' + cur_element.$.attributes.class.value + '"'; 
                                                     }
                                                     
-                                                    console.log(mi, 'mi');
+                                                    console.log(mi, 'mi 1');
                                                     
                                                     cur_element_parents = cur_element.getParents(true);
                                                     console.log(cur_element_parents, 'parents');
                                                     
                                                     // 0th element is the cur element iself
-                                                    for (var i = 1; i < cur_element_parents.length; i++) {
+                                                    // Let's show only 2 parent elements
+                                                    for (var i = 1, j=2; i < 3/*cur_element_parents.length*/; i++, j++) {
+                                                        console.log(i, 'i');
+                                                        console.log(cur_element_parents[i].$.nodeName, 'cur_element_parents[i].$.nodeName');
                                                         if (cur_element_parents[i].$.nodeName == 'BODY') {
                                                             break;
                                                         }
@@ -153,12 +156,16 @@
                                                         if (cur_element_parents[i].$.attributes.class) {
                                                             cur_element_parent_label += ', class="' + cur_element_parents[i].$.attributes.class.value + '"'; 
                                                         }
-                                                        editor.addMenuItem('editdiv_extra_' + (i + 1), {
+                                                        console.log(cur_element_parent_label, 'cur_element_parent_label');
+                                                        editor.addMenuItem('editdiv_extra_' + j, {
                                                             label: cur_element_parent_label,
                                                             command: 'editdiv_extra',
                                                             group: 'div',
-                                                            order: i + 1
+                                                            order: j
                                                         });
+                                                        
+                                                        mi = editor.getMenuItem('editdiv_extra_' + j);
+                                                        console.log(mi, 'mi'+j);
                                                     }
                                                     
                                                     
