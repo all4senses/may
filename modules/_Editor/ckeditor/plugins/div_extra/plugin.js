@@ -123,9 +123,14 @@
                                                     var cur_element = cur_selection.getStartElement();
                                                     console.log(cur_element,'cur_element menu');
                                                     console.log(cur_selection,'cur_selection menu');
-
-                                                    mi.label = 'Edit tag ' + cur_element.$.nodeName;
                                                     
+                                                    mi.label = 'Edit tag ' + cur_element.$.nodeName;
+                                                    if (cur_element.$.atributes.id.value) {
+                                                        mi.label += ', id="' + cur_element.$.atributes.id.value + '"'; 
+                                                    }
+                                                    if (cur_element.$.atributes.class.value) {
+                                                        mi.label += ', class="' + cur_element.$.atributes.class.value + '"'; 
+                                                    }
                                                     console.log(mi, 'mi');
 							return {
 								editdiv_extra: CKEDITOR.TRISTATE_OFF,
