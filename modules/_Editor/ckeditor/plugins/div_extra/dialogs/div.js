@@ -421,6 +421,12 @@
 					// ranges
 					// update dialog field values
 					this.setupContent( this._element = CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) );
+                                        
+                                        if (!this._element) {
+                                            console.log('this._element init from none');
+                                            this._element = current_element;
+                                        }
+                                        
                                         console.log(this._element, 'this._element');
 				}
 			},
@@ -445,8 +451,9 @@
 			onHide: function() {
                             console.log(this._element, 'this._element');
 				// Remove style only when editing existing DIV. (#6315)
-				if ( command == 'editdiv_extra' )
+				if ( command == 'editdiv_extra' ) {
 					this._element.removeCustomData( 'elementStyle' );
+                                    }
 				delete this._element;
 			}
 		};
