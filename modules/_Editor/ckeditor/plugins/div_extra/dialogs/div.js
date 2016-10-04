@@ -4,6 +4,8 @@
  */
 
 ( function() {
+        
+        var current_element;
         console.log('in div.js');
 	// Add to collection with DUP examination.
 	// @param {Object} collection
@@ -40,11 +42,14 @@
 
                 console.log(dtd, 'dtd');
                 
+                
+           
                 //element.getAscendant
-                var sel = editor.getSelection(),
-                    el = sel.getStartElement();
+                var sel = editor.getSelection();
             
-                    console.log(el,'el');
+                current_element = sel.getStartElement();
+            
+                    console.log(current_element,'current_element');
                     console.log(sel,'sel');
                 
 		// Get the first div limit element on the element's path.
@@ -84,15 +89,22 @@
 						// Read the dialog fields values from the specified
 						// element attributes.
 						field.setup = function( element ) {
+                                                    
+                                                    if (!element) {
+                                                        element = current_element;
+                                                    }
                                                         console.log(element, 'element in setupFields');
                                                         console.log(field, 'field in setupFields');
-                                                                //field.setValue( element.getAttribute( field.id ) || '', 1 );
+                                                        field.setValue( element.getAttribute( field.id ) || '', 1 );
 						};
 					}
 					if ( !field.commit ) {
 						// Set element attributes assigned by the dialog
 						// fields.
 						field.commit = function( element ) {
+                                                    if (!element) {
+                                                        element = current_element;
+                                                    }
                                                     console.log(element, 'element in setupFields 2');
 							var fieldValue = this.getValue();
 							// ignore default element attribute values
