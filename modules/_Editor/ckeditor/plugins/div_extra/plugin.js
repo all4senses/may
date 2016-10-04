@@ -89,10 +89,10 @@
                         */
 			if ( editor.addMenuItems ) {
                             
-                            var cur_selection = editor.getSelection();
-                            var cur_element = cur_selection.getStartElement();
-                            console.log(cur_element,'cur_element menu');
-                            console.log(cur_selection,'cur_selection menu');
+//                            var cur_selection = editor.getSelection();
+//                            var cur_element = cur_selection.getStartElement();
+//                            console.log(cur_element,'cur_element menu');
+//                            console.log(cur_selection,'cur_selection menu');
                 
 				editor.addMenuItems( {
 					editdiv_extra: {
@@ -120,7 +120,9 @@
                                                         console.log(element, 'element x1');
 						//if ( CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) ) 
                                                 {
-                                                    console.log(element, 'element x2');
+                                                    //console.log(element, 'element x2');
+                                                    var mi = editor.getMenuItem('editdiv_extra');
+                                                    console.log(mi, 'mi');
 							return {
 								editdiv_extra: CKEDITOR.TRISTATE_OFF,
 								removediv_extra: CKEDITOR.TRISTATE_OFF
