@@ -10,6 +10,7 @@
 
 ( function() {
     console.log('111');
+    var cur_element_parents, cur_element_parent_label;
 	CKEDITOR.plugins.add( 'div_extra', {
 		requires: 'dialog',
 		// jscs:disable maximumLineLength
@@ -92,7 +93,7 @@
 //                            
                 
 				editor.addMenuItems( {
-					editdiv_extra: {
+					editdiv_extra_1: {
 						label: 'Edit tag',// + cur_element.$.nodeName, //lang.edit,
 						command: 'editdiv_extra',
 						group: 'div',
@@ -116,7 +117,7 @@
 						if ( !element || element.isReadOnly() )
 							return null;
 
-                                                        console.log(element, 'element x1');
+                                                console.log(element, 'element x1');
 						//if ( CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) ) 
                                                 {
                                                     //console.log(element, 'element x2');
@@ -134,14 +135,38 @@
                                                         mi.label += ', class="' + cur_element.$.attributes.class.value + '"'; 
                                                     }
                                                     
-                                                    console.log(cur_element.getParents(true), 'parents');
-                                                    
-                                                    
                                                     console.log(mi, 'mi');
-							return {
-								editdiv_extra: CKEDITOR.TRISTATE_OFF,
-								removediv_extra: CKEDITOR.TRISTATE_OFF
-							};
+                                                    
+                                                    cur_element_parents = cur_element.getParents(true);
+                                                    console.log(cur_element_parents, 'parents');
+                                                    
+                                                    // 0th element is the cur element iself
+                                                    for (var i = 1; i < cur_element_parents.length; i++) {
+                                                        if (cur_element_parents[i].$.nodeName == 'BODY') {
+                                                            break;
+                                                        }
+                                                        
+                                                        cur_element_parent_label = 'Edit tag ' + cur_element_parents[i].$.nodeName;
+                                                        if (cur_element_parents[i].$.attributes.id) {
+                                                            cur_element_parent_label += ', id="' + cur_element_parents[i].$.attributes.id.value + '"'; 
+                                                        }
+                                                        if (cur_element_parents[i].$.attributes.class) {
+                                                            cur_element_parent_label += ', class="' + cur_element_parents[i].$.attributes.class.value + '"'; 
+                                                        }
+                                                        editor.addMenuItem('editdiv_extra_' + (i + 1), {
+                                                            label: cur_element_parent_label,
+                                                            command: 'editdiv_extra',
+                                                            group: 'div',
+                                                            order: i + 1
+                                                        });
+                                                    }
+                                                    
+                                                    
+                                                    
+                                                    return {
+                                                            editdiv_extra: CKEDITOR.TRISTATE_OFF,
+                                                            removediv_extra: CKEDITOR.TRISTATE_OFF
+                                                    };
 						}
 
                                                 console.log(element, 'element x3');
