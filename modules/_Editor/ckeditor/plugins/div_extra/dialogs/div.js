@@ -7,7 +7,7 @@
         
         var current_element;
         var current_selection;
-        
+        console.log(some_pass, 'some_pass in div.js');
         console.log('in div.js');
 	// Add to collection with DUP examination.
 	// @param {Object} collection
