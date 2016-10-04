@@ -10,6 +10,7 @@
 
 ( function() {
     console.log('111');
+    var some_pass = 'passss';
     var cur_element_parents, cur_element_parent_label;
 	CKEDITOR.plugins.add( 'div_extra', {
 		requires: 'dialog',
@@ -46,7 +47,9 @@
                        com =  new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li', xxx: 'xxx111' } );
                        console.log(com, 'com 2');
                        
-			editor.addCommand( 'editdiv_extra', new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li' } ) );
+			editor.addCommand( 'editdiv_extra_1', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 1 } ) );
+                        editor.addCommand( 'editdiv_extra_2', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 2 } ) );
+                        editor.addCommand( 'editdiv_extra_3', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 3 } ) );
                         
 			editor.addCommand( 'removediv_extra', {
 				requiredContent: 'li',
@@ -102,19 +105,19 @@
 				editor.addMenuItems( {
 					editdiv_extra_1: {
 						label: 'Edit tag',// + cur_element.$.nodeName, //lang.edit,
-						command: 'editdiv_extra',
+						command: 'editdiv_extra_1',
 						group: 'div',
 						order: 10
 					},
                                         editdiv_extra_2: {
 						label: 'Edit tag',// + cur_element_parents[1].$.nodeName,
-						command: 'editdiv_extra',
+						command: 'editdiv_extra_2',
 						group: 'div',
 						order: 10
 					},
                                         editdiv_extra_3: {
 						label: 'Edit tag',// + cur_element_parents[2].$.nodeName,
-						command: 'editdiv_extra',
+						command: 'editdiv_extra_3',
 						group: 'div',
 						order: 10
 					},
