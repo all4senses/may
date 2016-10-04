@@ -306,6 +306,9 @@
                                                 
                                                 
                                                 setup: function( element ) {
+                                                    if (!element) {
+                                                        element = current_element;
+                                                    }
                                                     console.log(element.getAttribute( 'class'),'new class');
                                                             this.setValue(element.getAttribute( 'class') );
                                                         },
