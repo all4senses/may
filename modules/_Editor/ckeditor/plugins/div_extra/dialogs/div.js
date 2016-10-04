@@ -240,7 +240,7 @@
 		// change should also alter inline-style text.
 		function commitInternally( targetFields ) {
 			var dialog = this.getDialog(),
-				element = dialog._element && dialog._element.clone() || new CKEDITOR.dom.element( 'li', editor.document );
+				element = dialog._element && dialog._element.clone();// || new CKEDITOR.dom.element( 'li', editor.document );
 
 			// Commit this field and broadcast to target fields.
 			this.commit( element, true );
@@ -312,17 +312,17 @@
 						type: 'text',
 						//requiredContent: 'li(cke-xyz)', // Random text like 'xyz' will check if all are allowed.
 						label: editor.lang.common.cssClass,
-						'default': 'aaaaa',
+						'default': '',
                                                 
                                                 
-                                                setup: function( element ) {
-                                                    if (!element) {
-                                                        element = current_element;
-                                                    }
-                                                    console.log(element, 'element in setupField class');
-                                                    console.log(element.getAttribute( 'class'),'new class');
-                                                            this.setValue(element.getAttribute( 'class') );
-                                                        },
+//                                                setup: function( element ) {
+//                                                    if (!element) {
+//                                                        element = current_element;
+//                                                    }
+//                                                    console.log(element, 'element in setupField class');
+//                                                    console.log(element.getAttribute( 'class'),'new class');
+//                                                            this.setValue(element.getAttribute( 'class') );
+//                                                        },
 					} ]
 				} ]
 			},
@@ -393,10 +393,10 @@
 			} ],
 			onLoad: function() {
                             
-                                current_selection = editor.getSelection();
-                                current_element = current_selection.getStartElement();
-                                console.log(current_element,'current_element onLoad');
-                                console.log(current_selection,'current_selection onLoad');
+//                                current_selection = editor.getSelection();
+//                                current_element = current_selection.getStartElement();
+//                                console.log(current_element,'current_element onLoad');
+//                                console.log(current_selection,'current_selection onLoad');
                 
 				setupFields.call( this );
 
