@@ -440,6 +440,11 @@
 			onShow: function() {
 				// Whether always create new container regardless of existed
 				// ones.
+                                current_selection = editor.getSelection();
+                                current_element = current_selection.getStartElement();
+                                console.log(current_element,'current_element onShow');
+                                console.log(current_selection,'current_selection onShow');
+                                
                                 console.log(command, 'command');
                                 console.log(command, 'command');
 				if ( command == 'editdiv_extra' ) {
