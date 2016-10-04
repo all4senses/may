@@ -122,6 +122,7 @@
                                                 {
                                                     //console.log(element, 'element x2');
                                                     var mi = editor.getMenuItem('editdiv_extra');
+                                                    mi.label = 'xxx yyy';
                                                     console.log(mi, 'mi');
 							return {
 								editdiv_extra: CKEDITOR.TRISTATE_OFF,
