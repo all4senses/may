@@ -232,7 +232,9 @@
 			}
 
 //			CKEDITOR.dialog.add( 'creatediv', this.path + 'dialogs/div.js' );
-			CKEDITOR.dialog.add( 'editdiv_extra', this.path + 'dialogs/div.js' );
+			CKEDITOR.dialog.add( 'editdiv_extra_1', this.path + 'dialogs/div.js' );
+                        CKEDITOR.dialog.add( 'editdiv_extra_2', this.path + 'dialogs/div.js' );
+                        CKEDITOR.dialog.add( 'editdiv_extra_3', this.path + 'dialogs/div.js' );
 		}
 	} );
 
