@@ -145,6 +145,8 @@
                                                 {
                                                     //console.log(element, 'element x2');
                                                     var mi = editor.getMenuItem('editdiv_extra_1');
+                                                    console.log(mi, 'mi 11');
+                                                    
                                                     var cur_selection = editor.getSelection();
                                                     var cur_element = cur_selection.getStartElement();
                                                     console.log(cur_element,'cur_element menu');
@@ -158,7 +160,7 @@
                                                         mi.label += ', class="' + cur_element.$.attributes.class.value + '"'; 
                                                     }
                                                     
-                                                    console.log(mi, 'mi 1');
+                                                    console.log(mi, 'mi 12');
                                                     
                                                     cur_element_parents = cur_element.getParents(true);
                                                     console.log(cur_element_parents, 'parents');
