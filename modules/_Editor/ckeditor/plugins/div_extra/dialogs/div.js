@@ -431,9 +431,6 @@
                 
 				setupFields.call( this );
                                 
-                                this.definition.title = '1232fsfsd fsdkfjskjh';
-                                this.getElement().getFirst().find('.cke_dialog_title').getItem(0).setText('[insert new title here]');
-                                
 				// Preparing for the 'elementStyle' field.
 				var dialog = this,
 					stylesField = this.getContentElement( 'info', 'elementStyle' );
@@ -479,6 +476,11 @@
                                 //current_element = editor.getSelection().getStartElement();
                                 current_element = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
                                 console.log(current_element,'current_element onShow');
+                                
+                                
+                                this.getElement().getFirst().find('.cke_dialog_title').getItem(0).setText(Drupal.settings.cur_element_and_its_parents_labels[current_element_or_its_parent_index - 1]);
+                                
+                                
                                 
                                 console.log(this, 'this======================');
 				if ( command == 'editdiv_extra' ) {

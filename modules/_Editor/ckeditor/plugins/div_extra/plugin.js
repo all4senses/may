@@ -11,10 +11,10 @@
 ( function() {
     console.log('in plugins.js...');
     if (typeof Drupal === 'undefined') {
-        Drupal = {settings: {cur_element_and_its_parents: []}};
+        Drupal = {settings: {cur_element_and_its_parents: [], cur_element_and_its_parents_labels: []}};
     }
     else if (typeof Drupal.settings === 'undefined') {
-        Drupal.settings = {cur_element_and_its_parents: []};
+        Drupal.settings = {cur_element_and_its_parents: [], cur_element_and_its_parents_labels: []};
     }
     
     var cur_element_and_its_parents, cur_element_parent_label;
@@ -152,8 +152,8 @@
 						//if ( CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) ) 
                                                 {
                                                     //console.log(element, 'element x2');
-                                                    var mi;;
-                                                    mi = editor.getMenuItem('editdiv_extra_1');
+                                                    
+                                                    var mi = editor.getMenuItem('editdiv_extra_1');
                                                     console.log(mi, 'mi 11');
                                                     
                                                     var cur_element = editor.getSelection().getStartElement();
@@ -166,6 +166,8 @@
                                                     if (cur_element.$.attributes.class) {
                                                         mi.label += ', class="' + cur_element.$.attributes.class.value + '"'; 
                                                     }
+                                                    
+                                                    Drupal.settings.cur_element_and_its_parents_labels[0] = mi.label;
                                                     
                                                     console.log(mi, 'mi 12');
                                                     
@@ -194,7 +196,8 @@
                                                             cur_element_parent_label += ', class="' + cur_element_and_its_parents[i].$.attributes.class.value + '"'; 
                                                         }
                                                         console.log(cur_element_parent_label, 'cur_element_parent_label');
-                                                
+                                                        
+                                                        Drupal.settings.cur_element_and_its_parents_labels[i] = cur_element_parent_label;
                                                         
 //                                                        editor.addMenuItem('editdiv_extra_' + j, {
 //                                                            label: cur_element_parent_label,
