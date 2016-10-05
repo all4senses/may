@@ -47,9 +47,9 @@
 //                       com =  new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li', xxx: 'xxx111' } );
 //                       console.log(com, 'com 2');
                        
-			editor.addCommand( 'editdiv_extra', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 1 } ) );
-                        //editor.addCommand( 'editdiv_extra_2', new CKEDITOR.dialogCommand( 'editdiv_extra_2', { element_number: 2 } ) );
-                        //editor.addCommand( 'editdiv_extra_3', new CKEDITOR.dialogCommand( 'editdiv_extra_3', { element_number: 3 } ) );
+			editor.addCommand( 'editdiv_extra_1', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 1 } ) );
+                        editor.addCommand( 'editdiv_extra_2', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 2 } ) );
+                        editor.addCommand( 'editdiv_extra_3', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 3 } ) );
                         
 			editor.addCommand( 'removediv_extra', {
 				requiredContent: 'li',
@@ -103,13 +103,13 @@
 //                            
                 
 				editor.addMenuItems( {
-					editdiv_extra: {
+					editdiv_extra_1: {
 						label: 'Edit tag',// + cur_element.$.nodeName, //lang.edit,
 						command: 'editdiv_extra',
 						group: 'div',
 						order: 10
 					},
-                                        /*
+                                        
                                         editdiv_extra_2: {
 						label: 'Edit tag',// + cur_element_parents[1].$.nodeName,
 						command: 'editdiv_extra_2',
@@ -122,7 +122,7 @@
 						group: 'div',
 						order: 12
 					},
-                                        */
+                                        
                                         
                                         
                                         /*
@@ -174,7 +174,7 @@
                                                     
                                                     // 0th element is the cur element iself
                                                     // Let's show only 2 parent elements
-                                                    /*
+                                                    
                                                     for (var i = 1, j=2; i < 3; i++, j++) {
                                                         console.log(i, 'i');
                                                         console.log(cur_element_parents[i].$.nodeName, 'cur_element_parents[i].$.nodeName');
@@ -214,7 +214,7 @@
                                                         console.log(mis[i], 'mi'+j+'after');
                                                         allowed_menu_items['editdiv_extra_' + j] = CKEDITOR.TRISTATE_OFF;
                                                     }
-                                                    */
+                                                    
                                                     
                                                     /*
                                                     return {
