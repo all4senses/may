@@ -106,19 +106,19 @@
 					editdiv_extra_1: {
 						label: 'Edit tag',// + cur_element.$.nodeName, //lang.edit,
 						command: 'editdiv_extra_1',
-						group: 'edit_tag',
+						group: 'div',
 						order: 10
 					},
                                         editdiv_extra_2: {
 						label: 'Edit tag',// + cur_element_parents[1].$.nodeName,
 						command: 'editdiv_extra_2',
-						group: 'edit_tag',
+						group: 'div',
 						order: 11
 					},
                                         editdiv_extra_3: {
 						label: 'Edit tag',// + cur_element_parents[2].$.nodeName,
 						command: 'editdiv_extra_3',
-						group: 'edit_tag',
+						group: 'div',
 						order: 12
 					},
                                         
