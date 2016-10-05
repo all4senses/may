@@ -156,10 +156,8 @@
                                                     mi = editor.getMenuItem('editdiv_extra_1');
                                                     console.log(mi, 'mi 11');
                                                     
-                                                    var cur_selection = editor.getSelection();
-                                                    var cur_element = cur_selection.getStartElement();
+                                                    var cur_element = editor.getSelection().getStartElement();
                                                     console.log(cur_element,'cur_element menu');
-                                                    console.log(cur_selection,'cur_selection menu');
                                                     
                                                     mi.label = 'Edit tag: ' + cur_element.$.nodeName;
                                                     if (cur_element.$.attributes.id) {
