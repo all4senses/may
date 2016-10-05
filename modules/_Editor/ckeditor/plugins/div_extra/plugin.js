@@ -9,7 +9,7 @@
  */
 
 ( function() {
-    console.log('in plugins.js...');
+    
     if (typeof Drupal === 'undefined') {
         Drupal = {settings: {cur_element_and_its_parents: []}};
     }
