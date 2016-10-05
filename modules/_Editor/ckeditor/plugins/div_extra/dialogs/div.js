@@ -446,11 +446,12 @@
 				// Whether always create new container regardless of existed
 				// ones.
                                 
+                                
                                 //current_element = editor.getSelection().getStartElement();
                                 current_element = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
                                 console.log(current_element,'current_element onShow');
                                 
-                                console.log(command, 'command');
+                                console.log(this, 'this======================');
 				if ( command == 'editdiv_extra' ) {
 					// Try to discover the containers that already existed in
 					// ranges
