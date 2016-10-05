@@ -274,7 +274,18 @@
                     
 		// @type divDialog
 		return {
-			title: 'Edit tag: ' + current_element_or_its_parent_index, //editor.lang.div_extra.title,
+			title: //'Edit tag: ' + Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index], //editor.lang.div_extra.title,
+                            function() {
+                                var el = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
+                                var cur_element_parent_label = 'Edit tag: ' + el.$.nodeName;
+                                if (el.$.attributes.id) {
+                                    cur_element_parent_label += ', id="' + el.$.attributes.id.value + '"'; 
+                                }
+                                if (el.$.attributes.class) {
+                                    cur_element_parent_label += ', class="' + el.$.attributes.class.value + '"'; 
+                                }
+                               return cur_element_parent_label;
+                           },
 			minWidth: 400,
 			minHeight: 165,
 			contents: [ {
