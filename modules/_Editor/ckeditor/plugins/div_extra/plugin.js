@@ -169,7 +169,7 @@
                                                     console.log(cur_element_parents, 'parents');
                                                     
                                                     var allowed_menu_items = new Object;
-                                                    allowed_menu_items['editdiv_extra'] = CKEDITOR.TRISTATE_OFF;
+                                                    allowed_menu_items['editdiv_extra_1'] = CKEDITOR.TRISTATE_OFF;
                                                     
                                                     
                                                     // 0th element is the cur element iself
@@ -204,12 +204,11 @@
                                                         
                                                         mis[i] = editor.getMenuItem('editdiv_extra_' + j);
                                                         console.log(mis[i], 'mi'+j + ' before');
-                                                        mis[i] = {
-                                                            label: cur_element_parent_label,
-                                                            command: 'editdiv_extra_'+ j,
-                                                            group: 'div',
-                                                            order: 10+i
-                                                        };
+                                                        mis[i].label = cur_element_parent_label;
+                                                        mis[i].command = 'editdiv_extra_'+ j;
+                                                        mis[i].group = 'div';
+                                                        mis[i].order = 10+i;
+                                                        
                                                         
                                                         console.log(mis[i], 'mi'+j+'after');
                                                         allowed_menu_items['editdiv_extra_' + j] = CKEDITOR.TRISTATE_OFF;
