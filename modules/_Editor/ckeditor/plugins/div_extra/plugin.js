@@ -47,9 +47,9 @@
 //                       com =  new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li', xxx: 'xxx111' } );
 //                       console.log(com, 'com 2');
                        
-			editor.addCommand( 'editdiv_extra_1', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 1 } ) );
-                        editor.addCommand( 'editdiv_extra_2', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 2 } ) );
-                        editor.addCommand( 'editdiv_extra_3', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 3 } ) );
+			editor.addCommand( 'editdiv_extra_1', new CKEDITOR.dialogCommand( 'editdiv_extra_1', { element_number: 1 } ) );
+                        editor.addCommand( 'editdiv_extra_2', new CKEDITOR.dialogCommand( 'editdiv_extra_2', { element_number: 2 } ) );
+                        editor.addCommand( 'editdiv_extra_3', new CKEDITOR.dialogCommand( 'editdiv_extra_3', { element_number: 3 } ) );
                         
 			editor.addCommand( 'removediv_extra', {
 				requiredContent: 'li',
@@ -106,19 +106,19 @@
 					editdiv_extra_1: {
 						label: 'Edit tag',// + cur_element.$.nodeName, //lang.edit,
 						command: 'editdiv_extra_1',
-						group: 'div',
+						group: 'edit_tag',
 						order: 10
 					},
                                         editdiv_extra_2: {
 						label: 'Edit tag',// + cur_element_parents[1].$.nodeName,
 						command: 'editdiv_extra_2',
-						group: 'div',
+						group: 'edit_tag',
 						order: 11
 					},
                                         editdiv_extra_3: {
 						label: 'Edit tag',// + cur_element_parents[2].$.nodeName,
 						command: 'editdiv_extra_3',
-						group: 'div',
+						group: 'edit_tag',
 						order: 12
 					},
                                         
@@ -150,7 +150,7 @@
                                                     console.log(cur_element,'cur_element menu');
                                                     console.log(cur_selection,'cur_selection menu');
                                                     
-                                                    mi.label = 'Edit tag ' + cur_element.$.nodeName;
+                                                    mi.label = 'Edit tag: ' + cur_element.$.nodeName;
                                                     if (cur_element.$.attributes.id) {
                                                         mi.label += ', id="' + cur_element.$.attributes.id.value + '"'; 
                                                     }
@@ -176,7 +176,7 @@
                                                             break;
                                                         }
                                                         
-                                                        cur_element_parent_label = 'Edit tag ' + cur_element_parents[i].$.nodeName;
+                                                        cur_element_parent_label = 'Edit tag: ' + cur_element_parents[i].$.nodeName;
                                                         if (cur_element_parents[i].$.attributes.id) {
                                                             cur_element_parent_label += ', id="' + cur_element_parents[i].$.attributes.id.value + '"'; 
                                                         }

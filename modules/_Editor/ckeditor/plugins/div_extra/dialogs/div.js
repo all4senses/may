@@ -7,7 +7,7 @@
         
         var current_element;
         var current_selection;
-        console.log(some_pass, 'some_pass in div.js');
+        //console.log(some_pass, 'some_pass in div.js');
         console.log('in div.js');
 	// Add to collection with DUP examination.
 	// @param {Object} collection
@@ -494,8 +494,20 @@
 //		return divDialog( editor, 'creatediv' );
 //	} );
 
-	CKEDITOR.dialog.add( 'editdiv_extra', function( editor ) {
+	CKEDITOR.dialog.add( 'editdiv_extra_1', function( editor ) {
             console.log(editor, 'editor ddd1');
+		return divDialog( editor, 'editdiv_extra' );
+	} );
+        
+        
+        CKEDITOR.dialog.add( 'editdiv_extra_2', function( editor ) {
+            console.log(editor, 'editor ddd1222');
+		return divDialog( editor, 'editdiv_extra' );
+	} );
+        
+        
+        CKEDITOR.dialog.add( 'editdiv_extra_3', function( editor ) {
+            console.log(editor, 'editor ddd1333');
 		return divDialog( editor, 'editdiv_extra' );
 	} );
 
