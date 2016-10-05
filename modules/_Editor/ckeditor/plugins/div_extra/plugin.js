@@ -101,7 +101,7 @@
 			if ( editor.addMenuItems ) {
                             
 //                            
-                
+                                editor.addMenuGroup('edit_tag');
 				editor.addMenuItems( {
 					editdiv_extra_1: {
 						label: 'Edit tag',// + cur_element.$.nodeName, //lang.edit,
@@ -146,24 +146,24 @@
 						//if ( CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) ) 
                                                 {
                                                     //console.log(element, 'element x2');
-                                                    var mis = [];
-                                                    mis[0] = editor.getMenuItem('editdiv_extra_1');
-                                                    console.log(mis[0], 'mi 11');
+                                                    var mi;;
+                                                    mi = editor.getMenuItem('editdiv_extra_1');
+                                                    console.log(mi, 'mi 11');
                                                     
                                                     var cur_selection = editor.getSelection();
                                                     var cur_element = cur_selection.getStartElement();
                                                     console.log(cur_element,'cur_element menu');
                                                     console.log(cur_selection,'cur_selection menu');
                                                     
-                                                    mis[0].label = 'Edit tag: ' + cur_element.$.nodeName;
+                                                    mi.label = 'Edit tag: ' + cur_element.$.nodeName;
                                                     if (cur_element.$.attributes.id) {
-                                                        mis[0].label += ', id="' + cur_element.$.attributes.id.value + '"'; 
+                                                        mi.label += ', id="' + cur_element.$.attributes.id.value + '"'; 
                                                     }
                                                     if (cur_element.$.attributes.class) {
-                                                        mis[0].label += ', class="' + cur_element.$.attributes.class.value + '"'; 
+                                                        mi.label += ', class="' + cur_element.$.attributes.class.value + '"'; 
                                                     }
                                                     
-                                                    console.log(mis[0], 'mi 12');
+                                                    console.log(mi, 'mi 12');
                                                     
                                                     cur_element_parents = cur_element.getParents(true);
                                                     console.log(cur_element_parents, 'parents');
@@ -202,15 +202,15 @@
                                                         
                                                        
                                                         
-                                                        mis[i] = editor.getMenuItem('editdiv_extra_' + j);
-                                                        console.log(mis[i], 'mi'+j + ' before');
-                                                        mis[i].label = cur_element_parent_label;
-                                                        mis[i].command = 'editdiv_extra_'+ j;
-                                                        mis[i].group = 'div';
-                                                        mis[i].order = 10+i;
+                                                        mi = editor.getMenuItem('editdiv_extra_' + j);
+                                                        console.log(mi, 'mi'+j + ' before');
+                                                        mi.label = cur_element_parent_label;
+                                                        mi.command = 'editdiv_extra_'+ j;
+                                                        mi.group = 'div';
+                                                        mi.order = 10+i;
                                                         
                                                         
-                                                        console.log(mis[i], 'mi'+j+'after');
+                                                        console.log(mi, 'mi'+j+'after');
                                                         allowed_menu_items['editdiv_extra_' + j] = CKEDITOR.TRISTATE_OFF;
                                                     }
                                                     
