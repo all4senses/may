@@ -175,7 +175,7 @@
                                                     // 0th element is the cur element iself
                                                     // Let's show only 2 parent elements
                                                     /*
-                                                    for (var i = 1, j=2; i < 3/*cur_element_parents.length*/; i++, j++) {
+                                                    for (var i = 1, j=2; i < 3; i++, j++) {
                                                         console.log(i, 'i');
                                                         console.log(cur_element_parents[i].$.nodeName, 'cur_element_parents[i].$.nodeName');
                                                         if (cur_element_parents[i].$.nodeName == 'BODY') {
@@ -190,18 +190,20 @@
                                                             cur_element_parent_label += ', class="' + cur_element_parents[i].$.attributes.class.value + '"'; 
                                                         }
                                                         console.log(cur_element_parent_label, 'cur_element_parent_label');
-                                                        /*
-                                                        editor.addMenuItem('editdiv_extra_' + j, {
-                                                            label: cur_element_parent_label,
-                                                            command: 'editdiv_extra_'+ j,
-                                                            group: 'div',
-                                                            order: 10+i
-                                                        });
-                                                        mi = editor.getMenuItem('editdiv_extra_' + j);
+                                                
                                                         
-                                                        */
+//                                                        editor.addMenuItem('editdiv_extra_' + j, {
+//                                                            label: cur_element_parent_label,
+//                                                            command: 'editdiv_extra_'+ j,
+//                                                            group: 'div',
+//                                                            order: 10+i
+//                                                        });
+//                                                        mi = editor.getMenuItem('editdiv_extra_' + j);
+                                                        
+                                                       
                                                         
                                                         mis[i] = editor.getMenuItem('editdiv_extra_' + j);
+                                                        console.log(mis[i], 'mi'+j + ' before');
                                                         mis[i] = {
                                                             label: cur_element_parent_label,
                                                             command: 'editdiv_extra_'+ j,
@@ -209,7 +211,7 @@
                                                             order: 10+i
                                                         };
                                                         
-                                                        console.log(mis[i], 'mi'+j);
+                                                        console.log(mis[i], 'mi'+j+'after');
                                                         allowed_menu_items['editdiv_extra_' + j] = CKEDITOR.TRISTATE_OFF;
                                                     }
                                                     */
