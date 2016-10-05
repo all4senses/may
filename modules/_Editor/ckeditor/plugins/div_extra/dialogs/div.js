@@ -274,7 +274,7 @@
                     
 		// @type divDialog
 		return {
-			title: editor.lang.div_extra.title,
+			title: 'Edit tag: ' + current_element_or_its_parent_index, //editor.lang.div_extra.title,
 			minWidth: 400,
 			minHeight: 165,
 			contents: [ {
