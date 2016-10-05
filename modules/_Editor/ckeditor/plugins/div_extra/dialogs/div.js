@@ -274,7 +274,8 @@
                     
 		// @type divDialog
 		return {
-			title: //'Edit tag: ' + Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index], //editor.lang.div_extra.title,
+			title: 'Edit tag: ' + Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index].$.nodeName, //editor.lang.div_extra.title,
+                        /*
                             function() {
                                 //var el = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
                                 //console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents---');
@@ -288,6 +289,7 @@
 //                               return cur_element_parent_label;
                             return 'xxx';
                            },
+                           */
 			minWidth: 400,
 			minHeight: 165,
 			contents: [ {
