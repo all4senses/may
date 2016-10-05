@@ -477,8 +477,21 @@
                                 current_element = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
                                 console.log(current_element,'current_element onShow');
                                 
-                                
-                                this.getElement().getFirst().find('.cke_dialog_title').getItem(0).setText(Drupal.settings.cur_element_and_its_parents_labels[current_element_or_its_parent_index - 1]);
+
+                                //console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents---');
+                                var cur_element_parent_label = 'Edit tag: ' + current_element.$.nodeName;
+                                if (current_element.$.attributes.id) {
+                                    cur_element_parent_label += ', id="' + current_element.$.attributes.id.value + '"'; 
+                                }
+                                if (current_element.$.attributes.class) {
+                                    cur_element_parent_label += ', class="' + current_element.$.attributes.class.value + '"'; 
+                                }
+                               
+
+                                this.getElement().getFirst().find('.cke_dialog_title').getItem(0).setText(
+                                        //Drupal.settings.cur_element_and_its_parents_labels[current_element_or_its_parent_index - 1]
+                                        cur_element_parent_label
+                                        );
                                 
                                 
                                 
