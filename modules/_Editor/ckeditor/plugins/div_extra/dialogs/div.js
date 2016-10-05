@@ -7,6 +7,17 @@
         
         var current_element;
         var current_selection;
+        if (typeof Drupal === 'undefined') {
+            Drupal = {settings: {cur_element_and_its_parents: []}};
+        }
+        else if (typeof Drupal.settings === 'undefined') {
+            Drupal.settings = {cur_element_and_its_parents: []};
+        }
+        else if (typeof Drupal.settings.cur_element_and_its_parents === 'undefined') {
+            Drupal.settings.cur_element_and_its_parents = [];
+        }
+
+        
         //console.log(some_pass, 'some_pass in div.js');
         console.log('in div.js');
 	// Add to collection with DUP examination.
@@ -25,7 +36,7 @@
 	// Dialog reused by both 'creatediv' and 'editdiv' commands.
 	// @param {Object} editor
 	// @param {String} command	The command name which indicate what the current command is.
-	function divDialog( editor, command ) {
+	function divDialog( editor, command, current_element_or_its_parent_index ) {
 		// Definition of elements at which div operation should stopped.
 		var divLimitDefinition = ( function() {
 
@@ -260,12 +271,6 @@
 
 		// Hold a collection of created block container elements.
 		var containers = [];
-
-                //element.getAscendant
-                current_selection = editor.getSelection();
-                current_element = current_selection.getStartElement();
-                console.log(current_element,'current_element init');
-                console.log(current_selection,'current_selection init');
                     
 		// @type divDialog
 		return {
@@ -440,12 +445,11 @@
 			onShow: function() {
 				// Whether always create new container regardless of existed
 				// ones.
-                                current_selection = editor.getSelection();
-                                current_element = current_selection.getStartElement();
-                                console.log(current_element,'current_element onShow');
-                                console.log(current_selection,'current_selection onShow');
                                 
-                                console.log(command, 'command');
+                                //current_element = editor.getSelection().getStartElement();
+                                current_element = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
+                                console.log(current_element,'current_element onShow');
+                                
                                 console.log(command, 'command');
 				if ( command == 'editdiv_extra' ) {
 					// Try to discover the containers that already existed in
@@ -496,19 +500,20 @@
 
 	CKEDITOR.dialog.add( 'editdiv_extra_1', function( editor ) {
             console.log(editor, 'editor ddd1');
-		return divDialog( editor, 'editdiv_extra' );
+                
+		return divDialog( editor, 'editdiv_extra', 0 );
 	} );
         
         
         CKEDITOR.dialog.add( 'editdiv_extra_2', function( editor ) {
             console.log(editor, 'editor ddd1222');
-		return divDialog( editor, 'editdiv_extra' );
+		return divDialog( editor, 'editdiv_extra', 1 );
 	} );
         
         
         CKEDITOR.dialog.add( 'editdiv_extra_3', function( editor ) {
             console.log(editor, 'editor ddd1333');
-		return divDialog( editor, 'editdiv_extra' );
+		return divDialog( editor, 'editdiv_extra', 2 );
 	} ); 
         
         

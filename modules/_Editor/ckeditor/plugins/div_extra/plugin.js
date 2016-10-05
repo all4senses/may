@@ -9,9 +9,15 @@
  */
 
 ( function() {
-    console.log('111');
-    var some_pass = 'passss';
-    var cur_element_parents, cur_element_parent_label;
+    console.log('in plugins.js...');
+    if (typeof Drupal === 'undefined') {
+        Drupal = {settings: {cur_element_and_its_parents: []}};
+    }
+    else if (typeof Drupal.settings === 'undefined') {
+        Drupal.settings = {cur_element_and_its_parents: []};
+    }
+    
+    var cur_element_and_its_parents, cur_element_parent_label;
 	CKEDITOR.plugins.add( 'div_extra', {
 		requires: 'dialog',
 		// jscs:disable maximumLineLength
@@ -111,13 +117,13 @@
 					},
                                         
                                         editdiv_extra_2: {
-						label: 'Edit tag',// + cur_element_parents[1].$.nodeName,
+						label: 'Edit tag',// + cur_element_and_its_parents[1].$.nodeName,
 						command: 'editdiv_extra_2',
 						group: 'div',
 						order: 11
 					},
                                         editdiv_extra_3: {
-						label: 'Edit tag',// + cur_element_parents[2].$.nodeName,
+						label: 'Edit tag',// + cur_element_and_its_parents[2].$.nodeName,
 						command: 'editdiv_extra_3',
 						group: 'div',
 						order: 12
@@ -165,8 +171,8 @@
                                                     
                                                     console.log(mi, 'mi 12');
                                                     
-                                                    cur_element_parents = cur_element.getParents(true);
-                                                    console.log(cur_element_parents, 'parents');
+                                                    Drupal.settings.cur_element_and_its_parents = cur_element_and_its_parents = cur_element.getParents(true);
+                                                    console.log(cur_element_and_its_parents, 'parents');
                                                     
                                                     var allowed_menu_items = new Object;
                                                     allowed_menu_items['editdiv_extra_1'] = CKEDITOR.TRISTATE_OFF;
@@ -177,17 +183,17 @@
                                                     
                                                     for (var i = 1, j=2; i < 3; i++, j++) {
                                                         console.log(i, 'i');
-                                                        console.log(cur_element_parents[i].$.nodeName, 'cur_element_parents[i].$.nodeName');
-                                                        if (cur_element_parents[i].$.nodeName == 'BODY') {
+                                                        console.log(cur_element_and_its_parents[i].$.nodeName, 'cur_element_and_its_parents[i].$.nodeName');
+                                                        if (cur_element_and_its_parents[i].$.nodeName == 'BODY') {
                                                             break;
                                                         }
                                                         
-                                                        cur_element_parent_label = 'Edit tag: ' + cur_element_parents[i].$.nodeName;
-                                                        if (cur_element_parents[i].$.attributes.id) {
-                                                            cur_element_parent_label += ', id="' + cur_element_parents[i].$.attributes.id.value + '"'; 
+                                                        cur_element_parent_label = 'Edit tag: ' + cur_element_and_its_parents[i].$.nodeName;
+                                                        if (cur_element_and_its_parents[i].$.attributes.id) {
+                                                            cur_element_parent_label += ', id="' + cur_element_and_its_parents[i].$.attributes.id.value + '"'; 
                                                         }
-                                                        if (cur_element_parents[i].$.attributes.class) {
-                                                            cur_element_parent_label += ', class="' + cur_element_parents[i].$.attributes.class.value + '"'; 
+                                                        if (cur_element_and_its_parents[i].$.attributes.class) {
+                                                            cur_element_parent_label += ', class="' + cur_element_and_its_parents[i].$.attributes.class.value + '"'; 
                                                         }
                                                         console.log(cur_element_parent_label, 'cur_element_parent_label');
                                                 
