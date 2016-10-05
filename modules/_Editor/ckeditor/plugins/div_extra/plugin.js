@@ -48,8 +48,8 @@
 //                       console.log(com, 'com 2');
                        
 			editor.addCommand( 'editdiv_extra_1', new CKEDITOR.dialogCommand( 'editdiv_extra_1', { element_number: 1 } ) );
-                        //editor.addCommand( 'editdiv_extra_2', new CKEDITOR.dialogCommand( 'editdiv_extra_2', { element_number: 2 } ) );
-                        //editor.addCommand( 'editdiv_extra_3', new CKEDITOR.dialogCommand( 'editdiv_extra_3', { element_number: 3 } ) );
+                        editor.addCommand( 'editdiv_extra_2', new CKEDITOR.dialogCommand( 'editdiv_extra_2', { element_number: 2 } ) );
+                        editor.addCommand( 'editdiv_extra_3', new CKEDITOR.dialogCommand( 'editdiv_extra_3', { element_number: 3 } ) );
                         
 			editor.addCommand( 'removediv_extra', {
 				requiredContent: 'li',
