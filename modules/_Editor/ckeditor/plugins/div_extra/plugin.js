@@ -105,7 +105,7 @@
 				editor.addMenuItems( {
 					editdiv_extra_1: {
 						label: 'Edit tag',// + cur_element.$.nodeName, //lang.edit,
-						command: 'editdiv_extra',
+						command: 'editdiv_extra_1',
 						group: 'div',
 						order: 10
 					},
@@ -147,7 +147,7 @@
                                                 {
                                                     //console.log(element, 'element x2');
                                                     var mis = [];
-                                                    mis[0] = editor.getMenuItem('editdiv_extra');
+                                                    mis[0] = editor.getMenuItem('editdiv_extra_1');
                                                     console.log(mis[0], 'mi 11');
                                                     
                                                     var cur_selection = editor.getSelection();
