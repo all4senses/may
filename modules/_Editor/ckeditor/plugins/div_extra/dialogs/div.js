@@ -16,23 +16,8 @@
             Drupal.settings.cur_element_and_its_parents = [];
         }
 
-	// Add to collection with DUP examination.
-	// @param {Object} collection
-	// @param {Object} element
-	// @param {Object} database
-	function addSafely( collection, element, database ) {
-		// 1. IE doesn't support customData on text nodes;
-		// 2. Text nodes never get chance to appear twice;
-		if ( !element.is || !element.getCustomData( 'block_processed' ) ) {
-			element.is && CKEDITOR.dom.element.setMarker( database, element, 'block_processed', true );
-			collection.push( element );
-		}
-	}
-
-	// Dialog reused by both 'creatediv' and 'editdiv' commands.
 	// @param {Object} editor
-	// @param {String} command	The command name which indicate what the current command is.
-	function divDialog( editor, command, current_element_or_its_parent_index ) {
+	function divDialog( editor, current_element_or_its_parent_index ) {
 		// Definition of elements at which div operation should stopped.
 		var divLimitDefinition = ( function() {
 
@@ -45,35 +30,6 @@
 			}
 			return definition;
 		} )();
-
-		// DTD of 'div' element
-		var dtd = CKEDITOR.dtd.li;
-
-		// Get the first div limit element on the element's path.
-		// @param {Object} element
-		function getDivContainer( element ) {
-			var container = editor.elementPath( element ).blockLimit;
-
-                        console.log(element, 'element 1');
-                        console.log(container, 'container 1');
-                        
-			// Never consider read-only (i.e. contenteditable=false) element as
-			// a first div limit (#11083).
-			if ( container.isReadOnly() )
-				container = container.getParent();
-
-                        console.log(container, 'container 2');
-                        
-			// Dont stop at 'td' and 'th' when div should wrap entire table.
-			if ( editor.config.div_wrapTable && container.is( [ 'td', 'th' ] ) ) {
-				var parentPath = editor.elementPath( container.getParent() );
-				container = parentPath.blockLimit;
-			}
-
-                        
-                        console.log(container, 'container 3');
-			return container;
-		}
 
 		// Init all fields' setup/commit function.
 		// @memberof divDialog
@@ -113,114 +69,6 @@
 					}
 				}
 			} );
-		}
-
-		// Wrapping 'div' element around appropriate blocks among the selected ranges.
-		// @param {Object} editor
-                
-		function createDiv( editor ) {
-			// new adding containers OR detected pre-existed containers.
-			var containers = [];
-			// node markers store.
-			var database = {};
-			// All block level elements which contained by the ranges.
-			var containedBlocks = [],
-				block;
-
-			// Get all ranges from the selection.
-			var selection = editor.getSelection(),
-				ranges = selection.getRanges();
-			var bookmarks = selection.createBookmarks();
-			var i, iterator;
-
-			// collect all included elements from dom-iterator
-			for ( i = 0; i < ranges.length; i++ ) {
-				iterator = ranges[ i ].createIterator();
-				while ( ( block = iterator.getNextParagraph() ) ) {
-					// include contents of blockLimit elements.
-					if ( block.getName() in divLimitDefinition && !block.isReadOnly() ) {
-						var j,
-							childNodes = block.getChildren();
-						for ( j = 0; j < childNodes.count(); j++ )
-							addSafely( containedBlocks, childNodes.getItem( j ), database );
-					} else {
-						while ( !dtd[ block.getName() ] && !block.equals( ranges[ i ].root ) )
-							block = block.getParent();
-						addSafely( containedBlocks, block, database );
-					}
-				}
-			}
-
-			CKEDITOR.dom.element.clearAllMarkers( database );
-
-			var blockGroups = groupByDivLimit( containedBlocks );
-			var ancestor, divElement;
-
-			for ( i = 0; i < blockGroups.length; i++ ) {
-				var currentNode = blockGroups[ i ][ 0 ];
-
-				// Calculate the common parent node of all contained elements.
-				ancestor = currentNode.getParent();
-				for ( j = 1; j < blockGroups[ i ].length; j++ )
-					ancestor = ancestor.getCommonAncestor( blockGroups[ i ][ j ] );
-
-				divElement = new CKEDITOR.dom.element( 'li', editor.document );
-
-				// Normalize the blocks in each group to a common parent.
-				for ( j = 0; j < blockGroups[ i ].length; j++ ) {
-					currentNode = blockGroups[ i ][ j ];
-
-					while ( !currentNode.getParent().equals( ancestor ) )
-						currentNode = currentNode.getParent();
-
-					// This could introduce some duplicated elements in array.
-					blockGroups[ i ][ j ] = currentNode;
-				}
-
-				// Wrapped blocks counting
-				for ( j = 0; j < blockGroups[ i ].length; j++ ) {
-					currentNode = blockGroups[ i ][ j ];
-
-					// Avoid DUP elements introduced by grouping.
-					if ( !( currentNode.getCustomData && currentNode.getCustomData( 'block_processed' ) ) ) {
-						currentNode.is && CKEDITOR.dom.element.setMarker( database, currentNode, 'block_processed', true );
-
-						// Establish new container, wrapping all elements in this group.
-						if ( !j )
-							divElement.insertBefore( currentNode );
-
-						divElement.append( currentNode );
-					}
-				}
-
-				CKEDITOR.dom.element.clearAllMarkers( database );
-				containers.push( divElement );
-			}
-
-			selection.selectBookmarks( bookmarks );
-			return containers;
-		}
-                
-		// Divide a set of nodes to different groups by their path's blocklimit element.
-		// Note: the specified nodes should be in source order naturally, which mean they are supposed to producea by following class:
-		//  * CKEDITOR.dom.range.Iterator
-		//  * CKEDITOR.dom.domWalker
-		// @returns {Array[]} the grouped nodes
-		function groupByDivLimit( nodes ) {
-			var groups = [],
-				lastDivLimit = null,
-				block;
-
-			for ( var i = 0; i < nodes.length; i++ ) {
-				block = nodes[ i ];
-				var limit = getDivContainer( block );
-				if ( !limit.equals( lastDivLimit ) ) {
-					lastDivLimit = limit;
-					groups.push( [] );
-				}
-				groups[ groups.length - 1 ].push( block );
-			}
-			return groups;
 		}
 
 		// Synchronous field values to other impacted fields is required, e.g. div styles
@@ -294,7 +142,6 @@
 						//requiredContent: 'li(cke-xyz)', // Random text like 'xyz' will check if all are allowed.
 						label: editor.lang.common.cssClass,
 						'default': '',
-                                                
                                                 
 //                                                setup: function( element ) {
 //                                                    if (!element) {
@@ -417,7 +264,7 @@
                                 current_element = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
                                 //console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents');
                                 //console.log(current_element_or_its_parent_index,'current_element_or_its_parent_index');
-                                console.log(current_element,'current_element onShow');
+                                //console.log(current_element,'current_element onShow');
                                 
                                 //console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents---');
                                 var cur_element_parent_label = 'Edit tag: ' + current_element.$.nodeName;
@@ -433,64 +280,48 @@
                                         cur_element_parent_label
                                         );
                                 
-				if ( command == 'editdiv_extra' ) {
-					// Try to discover the containers that already existed in
-					// ranges
-					// update dialog field values
-					this.setupContent( this._element = CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) );
-                                        
-                                        if (!this._element) {
-                                            this._element = current_element;
-                                        }
-				}
+                                // Try to discover the containers that already existed in
+                                // ranges
+                                // update dialog field values
+                                this.setupContent( this._element = CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) );
+
+                                if (!this._element) {
+                                    this._element = current_element;
+                                }
 			},
 			onOk: function() {
-				if ( command == 'editdiv_extra' )
-					containers = [ this._element ];
-				else
-					containers = createDiv( editor, true );
+                                containers = [ this._element ];
 
 				// Update elements attributes
 				var size = containers.length;
 				for ( var i = 0; i < size; i++ ) {
-					this.commitContent( containers[ i ] );
-
-					// Remove empty 'style' attribute.
-					!containers[ i ].getAttribute( 'style' ) && containers[ i ].removeAttribute( 'style' );
+                                    this.commitContent( containers[ i ] );
+                                    // Remove empty 'style' attribute.
+                                    !containers[ i ].getAttribute( 'style' ) && containers[ i ].removeAttribute( 'style' );
 				}
 
 				this.hide();
 			},
 			onHide: function() {
 				// Remove style only when editing existing DIV. (#6315)
-				if ( command == 'editdiv_extra' ) {
-					this._element.removeCustomData( 'elementStyle' );
-                                    }
+                                this._element.removeCustomData( 'elementStyle' );
 				delete this._element;
 			}
 		};
 	}
 
-//	CKEDITOR.dialog.add( 'creatediv', function( editor ) {
-//		return divDialog( editor, 'creatediv' );
-//	} );
-
 	CKEDITOR.dialog.add( 'editdiv_extra_1', function( editor ) {
-		return divDialog( editor, 'editdiv_extra', 0 );
+		return divDialog( editor, 0 );
 	} );
-        
         
         CKEDITOR.dialog.add( 'editdiv_extra_2', function( editor ) {
-		return divDialog( editor, 'editdiv_extra', 1 );
+		return divDialog( editor, 1 );
 	} );
         
-        
         CKEDITOR.dialog.add( 'editdiv_extra_3', function( editor ) {
-		return divDialog( editor, 'editdiv_extra', 2 );
+		return divDialog( editor, 2 );
 	} ); 
         
-        
-
 } )();
 
 /**
