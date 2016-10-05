@@ -494,7 +494,7 @@
 //		return divDialog( editor, 'creatediv' );
 //	} );
 
-	CKEDITOR.dialog.add( 'editdiv_extra_1', function( editor ) {
+	CKEDITOR.dialog.add( 'editdiv_extra', function( editor ) {
             console.log(editor, 'editor ddd1');
 		return divDialog( editor, 'editdiv_extra' );
 	} );

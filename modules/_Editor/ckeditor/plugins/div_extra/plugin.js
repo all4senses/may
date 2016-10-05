@@ -47,7 +47,7 @@
 //                       com =  new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li', xxx: 'xxx111' } );
 //                       console.log(com, 'com 2');
                        
-			editor.addCommand( 'editdiv_extra_1', new CKEDITOR.dialogCommand( 'editdiv_extra_1', { element_number: 1 } ) );
+			editor.addCommand( 'editdiv_extra', new CKEDITOR.dialogCommand( 'editdiv_extra', { element_number: 1 } ) );
                         //editor.addCommand( 'editdiv_extra_2', new CKEDITOR.dialogCommand( 'editdiv_extra_2', { element_number: 2 } ) );
                         //editor.addCommand( 'editdiv_extra_3', new CKEDITOR.dialogCommand( 'editdiv_extra_3', { element_number: 3 } ) );
                         
@@ -103,9 +103,9 @@
 //                            
                 
 				editor.addMenuItems( {
-					editdiv_extra_1: {
+					editdiv_extra: {
 						label: 'Edit tag',// + cur_element.$.nodeName, //lang.edit,
-						command: 'editdiv_extra_1',
+						command: 'editdiv_extra',
 						group: 'div',
 						order: 10
 					},
@@ -147,7 +147,7 @@
                                                 {
                                                     //console.log(element, 'element x2');
                                                     var mis = [];
-                                                    mis[0] = editor.getMenuItem('editdiv_extra_1');
+                                                    mis[0] = editor.getMenuItem('editdiv_extra');
                                                     console.log(mis[0], 'mi 11');
                                                     
                                                     var cur_selection = editor.getSelection();
@@ -169,7 +169,7 @@
                                                     console.log(cur_element_parents, 'parents');
                                                     
                                                     var allowed_menu_items = new Object;
-                                                    allowed_menu_items['editdiv_extra_1'] = CKEDITOR.TRISTATE_OFF;
+                                                    allowed_menu_items['editdiv_extra'] = CKEDITOR.TRISTATE_OFF;
                                                     
                                                     
                                                     // 0th element is the cur element iself
