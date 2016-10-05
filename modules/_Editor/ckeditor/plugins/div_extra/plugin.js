@@ -27,7 +27,6 @@
 		//icons: 'creatediv', // %REMOVE_LINE_CORE%
 		//hidpi: true, // %REMOVE_LINE_CORE%
 		init: function( editor ) {
-                    console.log(editor, 'editor');
 			if ( editor.blockless )
 				return;
 
@@ -47,12 +46,6 @@
 				}
 			} ) );
                         */
-                       
-//                       var com =  new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li' } );
-//                       console.log(com, 'com 1');
-//                       
-//                       com =  new CKEDITOR.dialogCommand( 'editdiv_extra', { requiredContent: 'li', xxx: 'xxx111' } );
-//                       console.log(com, 'com 2');
                        
 			editor.addCommand( 'editdiv_extra_1', new CKEDITOR.dialogCommand( 'editdiv_extra_1', { element_number: 1 } ) );
                         editor.addCommand( 'editdiv_extra_2', new CKEDITOR.dialogCommand( 'editdiv_extra_2', { element_number: 2 } ) );
@@ -107,7 +100,6 @@
                         */
 			if ( editor.addMenuItems ) {
                             
-//                            
                                 editor.addMenuGroup('edit_tag');
 				editor.addMenuItems( {
 					editdiv_extra_1: {
@@ -130,8 +122,6 @@
 						order: 12
 					},
                                         
-                                        
-                                        
                                         /*
 					removediv_extra: {
 						label: lang.remove,
@@ -141,7 +131,6 @@
 					}
                                         */
                                         
-                                        
 				} );
                                 
 				if ( editor.contextMenu ) {
@@ -149,16 +138,13 @@
 						if ( !element || element.isReadOnly() )
 							return null;
 
-                                                console.log(element, 'element x1');
 						//if ( CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) ) 
                                                 {
                                                     //console.log(element, 'element x2');
                                                     
                                                     var mi = editor.getMenuItem('editdiv_extra_1');
-                                                    console.log(mi, 'mi 11');
                                                     
                                                     var cur_element = editor.getSelection().getStartElement();
-                                                    console.log(cur_element,'cur_element menu');
                                                     
                                                     mi.label = 'Edit tag: ' + cur_element.$.nodeName;
                                                     if (cur_element.$.attributes.id) {
@@ -170,21 +156,16 @@
                                                     
                                                     Drupal.settings.cur_element_and_its_parents_labels[0] = mi.label;
                                                     
-                                                    console.log(mi, 'mi 12');
-                                                    
                                                     Drupal.settings.cur_element_and_its_parents = cur_element_and_its_parents = cur_element.getParents(true);
-                                                    console.log(cur_element_and_its_parents, 'parents');
                                                     
                                                     var allowed_menu_items = new Object;
                                                     allowed_menu_items['editdiv_extra_1'] = CKEDITOR.TRISTATE_OFF;
                                                     
                                                     
-                                                    // 0th element is the cur element iself
+                                                    // 0-th element is the cur element iself
                                                     // Let's show only 2 parent elements
                                                     
                                                     for (var i = 1, j=2; i < 3; i++, j++) {
-                                                        console.log(i, 'i');
-                                                        console.log(cur_element_and_its_parents[i].$.nodeName, 'cur_element_and_its_parents[i].$.nodeName');
                                                         if (cur_element_and_its_parents[i].$.nodeName == 'BODY') {
                                                             break;
                                                         }
@@ -196,29 +177,14 @@
                                                         if (cur_element_and_its_parents[i].$.attributes.class) {
                                                             cur_element_parent_label += ', class="' + cur_element_and_its_parents[i].$.attributes.class.value + '"'; 
                                                         }
-                                                        console.log(cur_element_parent_label, 'cur_element_parent_label');
                                                         
                                                         Drupal.settings.cur_element_and_its_parents_labels[i] = cur_element_parent_label;
                                                         
-//                                                        editor.addMenuItem('editdiv_extra_' + j, {
-//                                                            label: cur_element_parent_label,
-//                                                            command: 'editdiv_extra_'+ j,
-//                                                            group: 'div',
-//                                                            order: 10+i
-//                                                        });
-//                                                        mi = editor.getMenuItem('editdiv_extra_' + j);
-                                                        
-                                                       
-                                                        
                                                         mi = editor.getMenuItem('editdiv_extra_' + j);
-                                                        console.log(mi, 'mi'+j + ' before');
                                                         mi.label = cur_element_parent_label;
                                                         mi.command = 'editdiv_extra_'+ j;
                                                         mi.group = 'div';
                                                         mi.order = 10+i;
-                                                        
-                                                        
-                                                        console.log(mi, 'mi'+j+'after');
                                                         allowed_menu_items['editdiv_extra_' + j] = CKEDITOR.TRISTATE_OFF;
                                                     }
                                                     
@@ -233,7 +199,6 @@
                                                     
 						}
 
-                                                console.log(element, 'element x3');
 						return null;
 					} );
 				}
@@ -248,32 +213,15 @@
 
 	CKEDITOR.plugins.div_extra = {
 		getSurroundDiv: function( editor, start ) {
-                    console.log(editor, 'editor in getSurroundDiv');
-                    console.log(start, 'start in getSurroundDiv');
-			var path = editor.elementPath( start );
-                        console.log(path, 'path');
-                        
-                        var contains = editor.elementPath( path.blockLimit ).contains( function( node ) {
-                            console.log(node, 'node');
-                            console.log(node.is( 'li' ) , 'node.is(li) ');
-				// Avoid read-only (i.e. contenteditable="false") divs (#11083).
-				return node.is( 'li' ) && !node.isReadOnly();
+                            var path = editor.elementPath( start );
+                            var contains = editor.elementPath( path.blockLimit ).contains( function( node ) {
+                            // Avoid read-only (i.e. contenteditable="false") divs (#11083).
+                            return node.is( 'li' ) && !node.isReadOnly();
 			}, 1 );
-                        console.log(contains, 'contains');
-                        
-                        
                         
 			return editor.elementPath( path.blockLimit ).contains( function( node ) {
-                            console.log(node, 'node');
-                            console.log(node.is( 'li' ) , 'node.is(li) ');
-                            if (node.is( 'li' ) && !node.isReadOnly()) {
-                                console.log( 'node.is(li) && !node.isReadOnly()' + ' = TRUE');
-                            }
-                            else {
-                                console.log( 'node.is(li) && !node.isReadOnly()' + ' = FALSE');
-                            }
-				// Avoid read-only (i.e. contenteditable="false") divs (#11083).
-				return node.is( 'li' ) && !node.isReadOnly();
+                            // Avoid read-only (i.e. contenteditable="false") divs (#11083).
+                            return node.is( 'li' ) && !node.isReadOnly();
 			}, 1 );
 		}
 	};

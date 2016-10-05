@@ -6,7 +6,6 @@
 ( function() {
         
         var current_element;
-        var current_selection;
         if (typeof Drupal === 'undefined') {
             Drupal = {settings: {cur_element_and_its_parents: []}};
         }
@@ -17,9 +16,6 @@
             Drupal.settings.cur_element_and_its_parents = [];
         }
 
-        
-        //console.log(some_pass, 'some_pass in div.js');
-        console.log('in div.js');
 	// Add to collection with DUP examination.
 	// @param {Object} collection
 	// @param {Object} element
@@ -53,12 +49,6 @@
 		// DTD of 'div' element
 		var dtd = CKEDITOR.dtd.li;
 
-                console.log(dtd, 'dtd');
-                
-                
-           
-                
-                
 		// Get the first div limit element on the element's path.
 		// @param {Object} element
 		function getDivContainer( element ) {
@@ -89,17 +79,8 @@
 		// @memberof divDialog
 		function setupFields() {
 			this.foreach( function( field ) {
-                            console.log(field, 'field');
 				// Exclude layout container elements
-                                 if(/^(?!vbox|hbox)/.test( field.type )) {
-                                     console.log('/^(?!vbox|hbox)/.test( field.type ) TRUE');
-                                 }
-                                 else {
-                                     console.log('/^(?!vbox|hbox)/.test( field.type ) FALSE');
-                                 }
-                                 
-                                 
-				if ( /^(?!vbox|hbox)/.test( field.type ) ) {
+        			if ( /^(?!vbox|hbox)/.test( field.type ) ) {
 					if ( !field.setup ) {
 						// Read the dialog fields values from the specified
 						// element attributes.
@@ -108,9 +89,7 @@
                                                     if (!element) {
                                                         element = current_element;
                                                     }
-                                                        console.log(element, 'element in setupFields');
-                                                        console.log(field, 'field in setupFields');
-                                                        field.setValue( element.getAttribute( field.id ) || '', 1 );
+                                                    field.setValue( element.getAttribute( field.id ) || '', 1 );
 						};
 					}
 					if ( !field.commit ) {
@@ -120,17 +99,16 @@
                                                     if (!element) {
                                                         element = current_element;
                                                     }
-                                                    console.log(element, 'element in setupFields 2');
-							var fieldValue = this.getValue();
-							// ignore default element attribute values
-							if ( field.id == 'dir' && element.getComputedStyle( 'direction' ) == fieldValue ) {
-								return;
-							}
+                                                    var fieldValue = this.getValue();
+                                                    // ignore default element attribute values
+                                                    if ( field.id == 'dir' && element.getComputedStyle( 'direction' ) == fieldValue ) {
+                                                            return;
+                                                    }
 
-							if ( fieldValue )
-								element.setAttribute( field.id, fieldValue );
-							else
-								element.removeAttribute( field.id );
+                                                    if ( fieldValue )
+                                                            element.setAttribute( field.id, fieldValue );
+                                                    else
+                                                            element.removeAttribute( field.id );
 						};
 					}
 				}
@@ -229,7 +207,6 @@
 		//  * CKEDITOR.dom.domWalker
 		// @returns {Array[]} the grouped nodes
 		function groupByDivLimit( nodes ) {
-                    console.log(nodes, 'nodes');
 			var groups = [],
 				lastDivLimit = null,
 				block;
@@ -243,7 +220,6 @@
 				}
 				groups[ groups.length - 1 ].push( block );
 			}
-                        console.log(groups, 'groups');
 			return groups;
 		}
 
@@ -274,33 +250,7 @@
                     
 		// @type divDialog
 		return {
-			title:  'Edit tag <>',
-                          /*      
-                            'Edit tag: ' 
-                                + '<' + 
-                                //Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index].$.nodeName 
-                                editor.getSelection().getStartElement().getParents(true)[current_element_or_its_parent_index].$.nodeName
-                                + '>'
-                                //+ (!Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index].$.attributes.id ? '' : ', id="' + Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index].$.attributes.id.value + '"')
-                                //+ (!Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index].$.attributes.class ? '' : ', class="' + Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index].$.attributes.class.value + '"')
-                        , 
-                        */
-                        //editor.lang.div_extra.title,
-                        /*
-                            function() {
-                                //var el = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
-                                //console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents---');
-//                                var cur_element_parent_label = 'Edit tag: ' + el.$.nodeName;
-//                                if (el.$.attributes.id) {
-//                                    cur_element_parent_label += ', id="' + el.$.attributes.id.value + '"'; 
-//                                }
-//                                if (el.$.attributes.class) {
-//                                    cur_element_parent_label += ', class="' + el.$.attributes.class.value + '"'; 
-//                                }
-//                               return cur_element_parent_label;
-                            return 'xxx';
-                           },
-                           */
+			title:  'Edit tag <>', // To be overriden on onShow event
 			minWidth: 400,
 			minHeight: 165,
 			contents: [ {
@@ -438,9 +388,6 @@
 				// Reuse the 'stylescombo' plugin's styles definition.
 				editor.getStylesSet( function( stylesDefinitions ) {
 					var styleName, style;
-
-                                        console.log(stylesDefinitions, 'stylesDefinitions');
-                                        
 					if ( stylesDefinitions ) {
 						// Digg only those styles that apply to 'div'.
 						for ( var i = 0; i < stylesDefinitions.length; i++ ) {
@@ -475,6 +422,8 @@
                                 
                                 //current_element = editor.getSelection().getStartElement();
                                 current_element = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
+                                console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents');
+                                console.log(current_element_or_its_parent_index,'current_element_or_its_parent_index');
                                 console.log(current_element,'current_element onShow');
                                 
 
@@ -494,8 +443,6 @@
                                         );
                                 
                                 
-                                
-                                console.log(this, 'this======================');
 				if ( command == 'editdiv_extra' ) {
 					// Try to discover the containers that already existed in
 					// ranges
@@ -503,11 +450,8 @@
 					this.setupContent( this._element = CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) );
                                         
                                         if (!this._element) {
-                                            console.log('this._element init from none');
                                             this._element = current_element;
                                         }
-                                        
-                                        console.log(this._element, 'this._element');
 				}
 			},
 			onOk: function() {
@@ -516,7 +460,6 @@
 				else
 					containers = createDiv( editor, true );
 
-                                console.log(containers, 'containers');
 				// Update elements attributes
 				var size = containers.length;
 				for ( var i = 0; i < size; i++ ) {
@@ -529,7 +472,6 @@
 				this.hide();
 			},
 			onHide: function() {
-                            console.log(this._element, 'this._element');
 				// Remove style only when editing existing DIV. (#6315)
 				if ( command == 'editdiv_extra' ) {
 					this._element.removeCustomData( 'elementStyle' );
