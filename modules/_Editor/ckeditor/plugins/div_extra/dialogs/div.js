@@ -509,7 +509,7 @@
         CKEDITOR.dialog.add( 'editdiv_extra_3', function( editor ) {
             console.log(editor, 'editor ddd1333');
 		return divDialog( editor, 'editdiv_extra' );
-	} );
+	} ); 
         
 
 } )();
