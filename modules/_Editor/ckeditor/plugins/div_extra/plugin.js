@@ -11,11 +11,12 @@
 ( function() {
     console.log('in plugins.js...');
     if (typeof Drupal === 'undefined') {
-        Drupal = {settings: {cur_element_and_its_parents: [], cur_element_and_its_parents_labels: []}};
+        Drupal = {settings: {cur_element_and_its_parents: []}};
     }
     else if (typeof Drupal.settings === 'undefined') {
-        Drupal.settings = {cur_element_and_its_parents: [], cur_element_and_its_parents_labels: []};
+        Drupal.settings = {cur_element_and_its_parents: []};
     }
+    Drupal.settings.cur_element_and_its_parents_labels = [];
     
     var cur_element_and_its_parents, cur_element_parent_label;
 	CKEDITOR.plugins.add( 'div_extra', {
