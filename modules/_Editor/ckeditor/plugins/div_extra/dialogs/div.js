@@ -300,8 +300,6 @@
 //                                                    if (!element) {
 //                                                        element = current_element;
 //                                                    }
-//                                                    console.log(element, 'element in setupField class');
-//                                                    console.log(element.getAttribute( 'class'),'new class');
 //                                                            this.setValue(element.getAttribute( 'class') );
 //                                                        },
 					} ]
@@ -373,11 +371,6 @@
 				]
 			} ],
 			onLoad: function() {
-                            
-//                                current_selection = editor.getSelection();
-//                                current_element = current_selection.getStartElement();
-//                                console.log(current_element,'current_element onLoad');
-//                                console.log(current_selection,'current_selection onLoad');
                 
 				setupFields.call( this );
                                 
@@ -422,11 +415,10 @@
                                 
                                 //current_element = editor.getSelection().getStartElement();
                                 current_element = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
-                                console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents');
-                                console.log(current_element_or_its_parent_index,'current_element_or_its_parent_index');
+                                //console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents');
+                                //console.log(current_element_or_its_parent_index,'current_element_or_its_parent_index');
                                 console.log(current_element,'current_element onShow');
                                 
-
                                 //console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents---');
                                 var cur_element_parent_label = 'Edit tag: ' + current_element.$.nodeName;
                                 if (current_element.$.attributes.id) {
@@ -435,13 +427,11 @@
                                 if (current_element.$.attributes.class) {
                                     cur_element_parent_label += ', class="' + current_element.$.attributes.class.value + '"'; 
                                 }
-                               
-
+                                
+                                // Alter a dialog window title
                                 this.getElement().getFirst().find('.cke_dialog_title').getItem(0).setText(
-                                        //Drupal.settings.cur_element_and_its_parents_labels[current_element_or_its_parent_index - 1]
                                         cur_element_parent_label
                                         );
-                                
                                 
 				if ( command == 'editdiv_extra' ) {
 					// Try to discover the containers that already existed in
