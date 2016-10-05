@@ -419,7 +419,9 @@
 //                                console.log(current_selection,'current_selection onLoad');
                 
 				setupFields.call( this );
-
+                                
+                                this.definition.title = '1232fsfsd fsdkfjskjh';
+                                
 				// Preparing for the 'elementStyle' field.
 				var dialog = this,
 					stylesField = this.getContentElement( 'info', 'elementStyle' );
