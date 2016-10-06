@@ -120,6 +120,7 @@
                 
                 
                 // Alter a bit a elementStyle field, so it wouldn't cause a problem with moved Style field (from advanced to extra tab)
+                
                 // All this functions below is to recreate all needed functions in new commit/onCange functions that are being altered
                 var elementStyleField = infoTab.get('elementStyle');
                 // Reuse the 'stylescombo' plugin's styles definition.
@@ -155,7 +156,7 @@
 //                                dialog._element && stylesField.setup( dialog._element );
 //                        }, 0 );
                 } );
-                           
+                 /*          
                 // Synchronous field values to other impacted fields is required, e.g. div styles
 		// change should also alter inline-style text.
 		function commitInternally( targetFields ) {
@@ -194,6 +195,7 @@
                                                             }
                                                         
                                                         };
+                         */                             
                 elementStyleField.commit = function( element ) {
 							var styleName;
 							if ( ( styleName = this.getValue() ) ) {
