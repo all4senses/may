@@ -370,8 +370,8 @@
 
 								if ( editor.filter.check( style ) ) {
 									// Populate the styles field options with style name.
-//									stylesField.items.push( [ styleName, styleName ] );
-//									stylesField.add( styleName, styleName );
+									stylesField.items.push( [ styleName, styleName ] );
+									stylesField.add( styleName, styleName );
 								}
 							}
 						}
@@ -386,7 +386,7 @@
 						dialog._element && stylesField.setup( dialog._element );
 					}, 0 );
                                         
-                                        console.log(stylesField, 'stylesField in div on load 1');
+                                        console.log(stylesField, 'stylesField in div on load 2');
 				} );
 			},
 			onShow: function() {
