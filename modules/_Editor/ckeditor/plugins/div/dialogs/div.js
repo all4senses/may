@@ -386,7 +386,7 @@
 						dialog._element && stylesField.setup( dialog._element );
 					}, 0 );
                                         
-                                        consle.log(stylesField, 'stylesField in div on load');
+                                        console.log(stylesField, 'stylesField in div on load');
 				} );
 			},
 			onShow: function() {
