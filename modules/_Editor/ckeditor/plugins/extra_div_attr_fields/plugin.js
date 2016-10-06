@@ -53,8 +53,7 @@
                     return;
                 }
                 
-                console.log(infoTab, 'infoTab');
-                
+                 
                 // Clone object of existing tab "info" to a new tab "extra"
                 extra = jQuery.extend(true, {}, infoTab);
                 
@@ -198,7 +197,7 @@
                                                                 }
                                                                 
                                                                 
-                                                                styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
+                                                                //styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
                                                                 
                                                                 
 //                                                                if (styles[ name ].checkElementRemovable( element, true, editor )) {
