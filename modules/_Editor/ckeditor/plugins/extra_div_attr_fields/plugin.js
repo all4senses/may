@@ -156,7 +156,7 @@
 //                                dialog._element && stylesField.setup( dialog._element );
 //                        }, 0 );
                 } );
-                 /*          
+                           
                 // Synchronous field values to other impacted fields is required, e.g. div styles
 		// change should also alter inline-style text.
 		function commitInternally( targetFields ) {
@@ -195,7 +195,7 @@
                                                             }
                                                         
                                                         };
-                         */                             
+                                                      
                 elementStyleField.commit = function( element ) {
 							var styleName;
 							if ( ( styleName = this.getValue() ) ) {
