@@ -199,7 +199,7 @@
                                                                 }
                                                                 styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
                                                                 
-                                                                this.setValue( name, 1 );
+                                                                this.setValue( name, 0 );
                                                             }
                                                         
                                                         };
