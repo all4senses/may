@@ -248,8 +248,20 @@
 							commitInternally.call( this, [ 'info:elementStyle', 'info:class', 'advanced:dir', 'advanced:style' ] );
 						},
 						setup: function( element ) {
-							for ( var name in styles )
-								styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
+							for ( var name in styles ) {
+                                                            if (styles[ name ].checkElementRemovable( element, true, editor )) {
+                                                                    console.log('styles[ name ].checkElementRemovable( element, true, editor ) TRUE');
+                                                                    console.log(this, 'this-------');
+                                                                    console.log(name, 'name');
+                                                                    console.log(styles[ name ], 'styles[ name ]');
+                                                                }
+								//styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
+                                                                
+                                                                if (styles[ name ].checkElementRemovable( element, true, editor )) {
+                                                                    //console.log('styles[ name ].checkElementRemovable( element, true, editor ) TRUE');
+                                                                    console.log(this, 'this------- 222');
+                                                                }
+                                                            }
 						},
 						commit: function( element ) {
 							var styleName;
