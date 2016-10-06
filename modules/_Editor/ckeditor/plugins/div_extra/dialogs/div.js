@@ -277,7 +277,8 @@
                                 
                                 // Alter a dialog window title
                                 this.getElement().getFirst().find('.cke_dialog_title').getItem(0).setText(
-                                        cur_element_parent_label
+                                        //cur_element_parent_label
+                                        Drupal.settings.cur_element_and_its_parents_labels[current_element_or_its_parent_index - 1]
                                         );
                                 
                                 // Try to discover the containers that already existed in

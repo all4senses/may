@@ -138,7 +138,7 @@
                                                             break;
                                                         }
                                                         
-                                                        cur_element_parent_label = 'Edit tag: ' + cur_element_and_its_parents[i].$.nodeName;
+                                                        cur_element_parent_label = 'Edit tag: <' + cur_element_and_its_parents[i].$.nodeName + '>';
                                                         if (cur_element_and_its_parents[i].$.attributes.id) {
                                                             cur_element_parent_label += ', id="' + cur_element_and_its_parents[i].$.attributes.id.value + '"'; 
                                                         }
