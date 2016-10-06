@@ -176,6 +176,11 @@
                                     commitInternally.call( this, [ 'info:elementStyle', 'extra:class', 'advanced:dir', 'extra:style' ] );
                                     };
                 elementStyleField.setup = function( element ) {
+                                                        if (!element) {
+                                                            console.log(this, 'this-------');
+                                                            var dialog = this.getDialog();
+                                                            element = dialog._element;
+                                                        }
                                                         console.log(element, 'element----');
                                                         console.log(styles, 'styles-----');
 							for ( var name in styles )
