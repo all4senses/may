@@ -122,6 +122,7 @@
 							commitInternally.call( this, [ 'info:elementStyle', 'info:class', 'advanced:dir', 'advanced:style' ] );
 						},
 						setup: function( element ) {
+                                                    console.log('in setup EXTRA ... 3');
 							for ( var name in styles )
 								styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
 						},
@@ -253,6 +254,8 @@
 					setTimeout( function() {
 						dialog._element && stylesField.setup( dialog._element );
 					}, 0 );
+                                        
+                                        console.log(stylesField, 'stylesField in EXTRA on load 3');
 				} );
 			},
 			onShow: function() {
