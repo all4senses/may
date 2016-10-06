@@ -187,9 +187,9 @@
                                                             //console.log(element, 'element----');
                                                             //console.log(styles, 'styles-----');
                                                             for ( var name in styles ) {
-//                                                                console.log(name, 'name');
-//                                                                console.log(styles[ name ], 'styles[ name ]');
-//                                                                console.log(this, 'this-------');
+                                                                console.log(name, 'name');
+                                                                console.log(styles[ name ], 'styles[ name ]');
+                                                                console.log(this, 'this-------');
                                                                 styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
                                                             }
                                                         
