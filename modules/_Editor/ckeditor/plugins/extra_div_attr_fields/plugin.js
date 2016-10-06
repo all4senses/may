@@ -46,6 +46,8 @@
 
                 // Copy the info tab and based on it create a new extra tab 
                 var infoTab = dialogDefinition.getContents( 'info' );
+                console.log(infoTab, 'infoTab');
+                
                 if (typeof infoTab === 'undefined' || infoTab == null) {
                     return;
                 }
@@ -54,6 +56,9 @@
                 
                 // Clone object of existing tab "info" to a new tab "extra"
                 extra = jQuery.extend(true, {}, infoTab);
+                
+                console.log(extra, 'extra');
+                
                 // And set new properties
                 extra.id = 'extra';
                 extra.label = 'Extra attributes';
