@@ -265,12 +265,13 @@
                                         Drupal.settings.cur_element_and_its_parents_labels[current_element_or_its_parent_index]
                                         );
                                 
-                                // Try to discover the containers that already existed in ranges update dialog field values
-                                this.setupContent( this._element = CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) );
-
                                 if (!this._element) {
                                     this._element = current_element;
                                 }
+                                
+                                // Try to discover the containers that already existed in ranges update dialog field values
+                                //this.setupContent( this._element = CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) );
+                                this.setupContent( this._element );
 			},
 			onOk: function() {
                                 if (!this._element) {
