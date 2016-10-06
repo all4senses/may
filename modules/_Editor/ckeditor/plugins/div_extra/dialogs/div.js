@@ -237,7 +237,7 @@
 						for ( var i = 0; i < stylesDefinitions.length; i++ ) {
 							var styleDefinition = stylesDefinitions[ i ];
 							if ( styleDefinition.element && styleDefinition.element == 'li' ) {
-                                                                console.log(stylesDefinition, 'stylesDefinition extra 1');
+                                                                console.log(styleDefinition, 'styleDefinition extra 2');
 								styleName = styleDefinition.name;
 								styles[ styleName ] = style = new CKEDITOR.style( styleDefinition );
 
