@@ -273,6 +273,9 @@
                                 }
 			},
 			onOk: function() {
+                                if (!this._element) {
+                                    this._element = current_element;
+                                }
                                 containers = [ this._element ];
 
                                 console.log(this, 'this....');
