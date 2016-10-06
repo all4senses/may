@@ -94,7 +94,7 @@
                         extra.add({ 
                                 id: value,
                                 type: (Drupal.settings.custom_attr_fields_textarea_type.indexOf(value) == -1) ? 'text' : 'textarea',
-                                requiredContent: 'div[' + value + ']',
+                                //requiredContent: 'div[' + value + ']',
                                 label: value,
                                 // Works but we don't need it here
                                 /*
@@ -177,6 +177,7 @@
                                     };
                 elementStyleField.setup = function( element ) {
                                                         if (!element) {
+                                                            console.log(current_element, 'current_element---');
                                                             console.log(this, 'this-------');
                                                             var dialog = this.getDialog();
                                                             element = dialog._element;
