@@ -176,6 +176,8 @@
                                     commitInternally.call( this, [ 'info:elementStyle', 'extra:class', 'advanced:dir', 'extra:style' ] );
                                     };
                 elementStyleField.setup = function( element ) {
+                                                        console.log(element, 'element----');
+                                                        console.log(styles, 'styles-----');
 							for ( var name in styles )
                                                             styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
                                                         };
