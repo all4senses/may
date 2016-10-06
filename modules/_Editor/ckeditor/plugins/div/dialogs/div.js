@@ -373,8 +373,8 @@
 
 								if ( editor.filter.check( style ) ) {
 									// Populate the styles field options with style name.
-//									stylesField.items.push( [ styleName, styleName ] );
-//									stylesField.add( styleName, styleName );
+									stylesField.items.push( [ styleName, styleName ] );
+									stylesField.add( styleName, styleName );
 								}
 							}
 						}
