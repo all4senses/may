@@ -190,16 +190,27 @@
                                                             for ( var name in styles ) {
                                                                 console.log(name, 'name');
                                                                 console.log(styles[ name ], 'styles[ name ]');
-                                                                console.log(this, 'this-------');
+                                                                
                                                                 if (styles[ name ].checkElementRemovable( element, true, editor )) {
                                                                     console.log('styles[ name ].checkElementRemovable( element, true, editor ) TRUE');
+                                                                    console.log(this, 'this-------');
                                                                 }
-                                                                else {
-                                                                    console.log('styles[ name ].checkElementRemovable( element, true, editor ) FALSE');
-                                                                }
+                                                                
+                                                                
                                                                 styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
                                                                 
-                                                                //this.setValue( name, 0 );
+                                                                
+//                                                                if (styles[ name ].checkElementRemovable( element, true, editor )) {
+//                                                                    console.log('styles[ name ].checkElementRemovable( element, true, editor ) TRUE');
+//                                                                }
+//                                                                else {
+//                                                                    console.log('styles[ name ].checkElementRemovable( element, true, editor ) FALSE');
+//                                                                }
+                                                                
+                                                                if (styles[ name ].checkElementRemovable( element, true, editor )) {
+                                                                    //console.log('styles[ name ].checkElementRemovable( element, true, editor ) TRUE');
+                                                                    console.log(this, 'this------- 222');
+                                                                }
                                                             }
                                                         
                                                         };
