@@ -275,6 +275,9 @@
 			onOk: function() {
                                 containers = [ this._element ];
 
+                                console.log(this, 'this....');
+                                console.log(containers, 'containers...');
+
 				// Update elements attributes
 				var size = containers.length;
 				for ( var i = 0; i < size; i++ ) {

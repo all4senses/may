@@ -27,8 +27,8 @@
                 var dialogName = e.data.name;
                 var dialogDefinition = e.data.definition;
                 
-                console.log(dialogName, 'dialogName');
-                console.log(dialogDefinition,'dialogDefinition');
+                //console.log(dialogName, 'dialogName');
+                //console.log(dialogDefinition,'dialogDefinition');
                 
                 // make sure this is the right editor (there can be more on one page) and the right dialog.
                 if ((e.editor != editor) || (dialogName != 'editdiv' && dialogName != 'editdiv_extra_1'))
@@ -38,15 +38,14 @@
                 // Create an extra tab    
                 var extra = dialogDefinition.getContents( 'extra' );
                 // Skip If it already exists
-//                if (typeof extra !== 'undefined' && extra != null) {
-//                    return;
-//                }
+                if (typeof extra !== 'undefined' && extra != null) {
+                    return;
+                }
                 
                 
 
                 // Copy the info tab and based on it create a new extra tab 
                 var infoTab = dialogDefinition.getContents( 'info' );
-                console.log(infoTab, 'infoTab');
                 
                 if (typeof infoTab === 'undefined' || infoTab == null) {
                     return;
@@ -57,7 +56,7 @@
                 // Clone object of existing tab "info" to a new tab "extra"
                 extra = jQuery.extend(true, {}, infoTab);
                 
-                console.log(extra, 'extra');
+                
                 
                 // And set new properties
                 extra.id = 'extra';
@@ -131,7 +130,8 @@
                                 // Digg only those styles that apply to 'div'.
                                 for ( var i = 0; i < stylesDefinitions.length; i++ ) {
                                         var styleDefinition = stylesDefinitions[ i ];
-                                        if ( styleDefinition.element && styleDefinition.element == 'div' ) {
+                                        //if ( styleDefinition.element && styleDefinition.element == 'div' ) 
+                                        {
                                                 styleName = styleDefinition.name;
                                                 styles[ styleName ] = style = new CKEDITOR.style( styleDefinition );
 
