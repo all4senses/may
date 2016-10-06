@@ -218,11 +218,7 @@
 				]
 			} ],
 			onLoad: function() {
-                
-                                if (!this._element) {
-                                    this._element = current_element;
-                                }
-                                
+                 
 				setupFields.call( this );
                                 
 				// Preparing for the 'elementStyle' field.
@@ -296,6 +292,9 @@
 				this.hide();
 			},
 			onHide: function() {
+                                if (!this._element) {
+                                    this._element = current_element;
+                                }
 				// Remove style only when editing existing DIV. (#6315)
                                 this._element.removeCustomData( 'elementStyle' );
 				delete this._element;
