@@ -177,11 +177,12 @@
                                     };
                 elementStyleField.setup = function( element ) {
                                                         if (!element) {
+                                                            current_element = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
                                                             console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents---');
-                                                            //console.log(current_element, 'current_element---');
+                                                            console.log(current_element, 'current_element---');
                                                             console.log(this, 'this-------');
                                                             var dialog = this.getDialog();
-                                                            element = dialog._element;
+                                                            element = current_element;
                                                         }
                                                         console.log(element, 'element----');
                                                         console.log(styles, 'styles-----');
