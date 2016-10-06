@@ -176,19 +176,24 @@
                                     commitInternally.call( this, [ 'info:elementStyle', 'extra:class', 'advanced:dir', 'extra:style' ] );
                                     };
                 elementStyleField.setup = function( element ) {
-                                                        if (!element) {
-                                                            //current_element = ;
-                                                            console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents---');
-                                                            console.log(Drupal.settings.current_element_or_its_parent_index, 'Drupal.settings.current_element_or_its_parent_index---');
-                                                            //console.log(current_element, 'current_element---');
-                                                            //console.log(this, 'this-------');
-                                                            //var dialog = this.getDialog();
-                                                            element = Drupal.settings.cur_element_and_its_parents[Drupal.settings.current_element_or_its_parent_index];
-                                                        }
-                                                        console.log(element, 'element----');
-                                                        console.log(styles, 'styles-----');
-							for ( var name in styles )
-                                                            styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
+                                                            if (!element) {
+                                                                //current_element = ;
+                                                                console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents---');
+                                                                console.log(Drupal.settings.current_element_or_its_parent_index, 'Drupal.settings.current_element_or_its_parent_index---');
+                                                                //console.log(current_element, 'current_element---');
+                                                                //
+                                                                //var dialog = this.getDialog();
+                                                                element = Drupal.settings.cur_element_and_its_parents[Drupal.settings.current_element_or_its_parent_index];
+                                                            }
+                                                            console.log(element, 'element----');
+                                                            console.log(styles, 'styles-----');
+                                                            for ( var name in styles ) {
+                                                                console.log(name, 'name');
+                                                                console.log(styles[ name ], 'styles[ name ]');
+                                                                console.log(this, 'this-------');
+                                                                styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
+                                                            }
+                                                        
                                                         };
                 elementStyleField.commit = function( element ) {
 							var styleName;
