@@ -222,16 +222,73 @@
                  
 				setupFields.call( this );
                                 
-				// Preparing for the 'elementStyle' field.
+//				// Preparing for the 'elementStyle' field.
+//				var dialog = this,
+//					stylesField = this.getContentElement( 'info', 'elementStyle' );
+//                                        
+//				// Reuse the 'stylescombo' plugin's styles definition.
+//				editor.getStylesSet( function( stylesDefinitions ) {
+//					var styleName, style;
+//					if ( stylesDefinitions ) {
+//						// Digg only those styles that apply to 'div'.
+//						for ( var i = 0; i < stylesDefinitions.length; i++ ) {
+//							var styleDefinition = stylesDefinitions[ i ];
+//							if ( styleDefinition.element && styleDefinition.element == 'div' ) {
+//                                                                console.log(styleDefinition, 'styleDefinition extra 2');
+//								styleName = styleDefinition.name;
+//								styles[ styleName ] = style = new CKEDITOR.style( styleDefinition );
+//
+//								if ( editor.filter.check( style ) ) {
+//									// Populate the styles field options with style name.
+//									stylesField.items.push( [ styleName, styleName ] );
+//									stylesField.add( styleName, styleName );
+//								}
+//							}
+//						}
+//					}
+//
+//					// We should disable the content element
+//					// it if no options are available at all.
+//					stylesField[ stylesField.items.length > 1 ? 'enable' : 'disable' ]();
+//
+//					// Now setup the field value manually if dialog was opened on element. (#9689)
+//					setTimeout( function() {
+//						dialog._element && stylesField.setup( dialog._element );
+//					}, 0 );
+//                                        
+//                                        console.log(stylesField, 'stylesField in EXTRA on load 3');
+//				} );
+			},
+			onShow: function() {
+                                
+                                //current_element = editor.getSelection().getStartElement();
+                                current_element = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
+                                
+                                // Alter a dialog window title
+                                this.getElement().getFirst().find('.cke_dialog_title').getItem(0).setText(
+                                        Drupal.settings.cur_element_and_its_parents_labels[current_element_or_its_parent_index]
+                                        );
+                                
+                                if (!this._element) {
+                                    this._element = current_element;
+                                }
+                                
+                                // Try to discover the containers that already existed in ranges update dialog field values
+                                //this.setupContent( this._element = CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) );
+                                this.setupContent( this._element );
+                                
+                                
+                                
+                                
+                                
+                                
+                                // Preparing for the 'elementStyle' field.
 				var dialog = this,
 					stylesField = this.getContentElement( 'info', 'elementStyle' );
-
-                                        console.log(stylesField, 'stylesField in extra 1');
                                         
 				// Reuse the 'stylescombo' plugin's styles definition.
 				editor.getStylesSet( function( stylesDefinitions ) {
 					var styleName, style;
-                                        console.log(stylesDefinitions, 'stylesDefinitionS extra 1');
 					if ( stylesDefinitions ) {
 						// Digg only those styles that apply to 'div'.
 						for ( var i = 0; i < stylesDefinitions.length; i++ ) {
@@ -259,26 +316,11 @@
 						dialog._element && stylesField.setup( dialog._element );
 					}, 0 );
                                         
-                                        console.log(stylesField, 'stylesField in EXTRA on load 3');
+                                        console.log(stylesField, 'stylesField in EXTRA on show 4');
 				} );
-			},
-			onShow: function() {
                                 
-                                //current_element = editor.getSelection().getStartElement();
-                                current_element = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
                                 
-                                // Alter a dialog window title
-                                this.getElement().getFirst().find('.cke_dialog_title').getItem(0).setText(
-                                        Drupal.settings.cur_element_and_its_parents_labels[current_element_or_its_parent_index]
-                                        );
                                 
-                                if (!this._element) {
-                                    this._element = current_element;
-                                }
-                                
-                                // Try to discover the containers that already existed in ranges update dialog field values
-                                //this.setupContent( this._element = CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) );
-                                this.setupContent( this._element );
 			},
 			onOk: function() {
                                 if (!this._element) {
