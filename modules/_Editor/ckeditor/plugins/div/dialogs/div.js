@@ -248,10 +248,11 @@
 							commitInternally.call( this, [ 'info:elementStyle', 'info:class', 'advanced:dir', 'advanced:style' ] );
 						},
 						setup: function( element ) {
+                                                        console.log(this, 'this------- in div');
 							for ( var name in styles ) {
                                                             if (styles[ name ].checkElementRemovable( element, true, editor )) {
                                                                     console.log('styles[ name ].checkElementRemovable( element, true, editor ) TRUE');
-                                                                    console.log(this, 'this-------');
+                                                                    
                                                                     console.log(name, 'name');
                                                                     console.log(styles[ name ], 'styles[ name ]');
                                                                 }
@@ -384,6 +385,8 @@
 					setTimeout( function() {
 						dialog._element && stylesField.setup( dialog._element );
 					}, 0 );
+                                        
+                                        consle.log(stylesField, 'stylesField in div on load');
 				} );
 			},
 			onShow: function() {
