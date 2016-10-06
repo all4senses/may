@@ -27,8 +27,9 @@
                 var dialogName = e.data.name;
                 var dialogDefinition = e.data.definition;
                 
+                console.log(dialogName, 'dialogName');
                 // make sure this is the right editor (there can be more on one page) and the right dialog.
-                if ((e.editor != editor) || (dialogName != 'editdiv'))
+                if ((e.editor != editor) || (dialogName != 'editdiv') || (dialogName != 'editdiv_extra_1'))
                     return;
              
                 // Create an extra tab    
