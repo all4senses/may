@@ -31,7 +31,7 @@
                 console.log(dialogDefinition,'dialogDefinition');
                 
                 // make sure this is the right editor (there can be more on one page) and the right dialog.
-                if ((e.editor != editor) || (dialogName != 'editdiv') || (dialogName != 'editdiv_extra_1'))
+                if ((e.editor != editor) || (dialogName != 'editdiv' && dialogName != 'editdiv_extra_1'))
                     return;
              
                  
