@@ -177,7 +177,8 @@
                                     };
                 elementStyleField.setup = function( element ) {
                                                         if (!element) {
-                                                            console.log(current_element, 'current_element---');
+                                                            console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents---');
+                                                            //console.log(current_element, 'current_element---');
                                                             console.log(this, 'this-------');
                                                             var dialog = this.getDialog();
                                                             element = dialog._element;
