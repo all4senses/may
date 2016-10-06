@@ -219,6 +219,10 @@
 			} ],
 			onLoad: function() {
                 
+                                if (!this._element) {
+                                    this._element = current_element;
+                                }
+                                
 				setupFields.call( this );
                                 
 				// Preparing for the 'elementStyle' field.
