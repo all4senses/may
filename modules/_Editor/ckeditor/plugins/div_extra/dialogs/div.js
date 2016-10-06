@@ -293,7 +293,7 @@
 						// Digg only those styles that apply to 'div'.
 						for ( var i = 0; i < stylesDefinitions.length; i++ ) {
 							var styleDefinition = stylesDefinitions[ i ];
-							if ( styleDefinition.element && styleDefinition.element == 'div' ) {
+							if ( styleDefinition.element && styleDefinition.element == current_element.$.nodeName /*'div'*/ ) {
                                                                 console.log(styleDefinition, 'styleDefinition extra 2');
 								styleName = styleDefinition.name;
 								styles[ styleName ] = style = new CKEDITOR.style( styleDefinition );
