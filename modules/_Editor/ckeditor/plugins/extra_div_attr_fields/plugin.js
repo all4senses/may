@@ -32,18 +32,24 @@
                 if ((e.editor != editor) || (dialogName != 'editdiv') || (dialogName != 'editdiv_extra_1'))
                     return;
              
+                 
                 // Create an extra tab    
                 var extra = dialogDefinition.getContents( 'extra' );
                 // Skip If it already exists
                 if (typeof extra !== 'undefined' && extra != null) {
                     return;
                 }
+                
+                console.log(dialogDefinition,'dialogDefinition');
 
                 // Copy the info tab and based on it create a new extra tab 
                 var infoTab = dialogDefinition.getContents( 'info' );
                 if (typeof infoTab === 'undefined' || infoTab == null) {
                     return;
                 }
+                
+                console.log(infoTab, 'infoTab');
+                
                 // Clone object of existing tab "info" to a new tab "extra"
                 extra = jQuery.extend(true, {}, infoTab);
                 // And set new properties
