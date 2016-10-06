@@ -303,15 +303,18 @@
 	}
 
 	CKEDITOR.dialog.add( 'editdiv_extra_1', function( editor ) {
-		return divDialog( editor, 0 );
+            Drupal.settings.current_element_or_its_parent_index = 0;
+            return divDialog( editor, 0 );
 	} );
         
         CKEDITOR.dialog.add( 'editdiv_extra_2', function( editor ) {
-		return divDialog( editor, 1 );
+            Drupal.settings.current_element_or_its_parent_index = 1;
+            return divDialog( editor, 1 );
 	} );
         
         CKEDITOR.dialog.add( 'editdiv_extra_3', function( editor ) {
-		return divDialog( editor, 2 );
+            Drupal.settings.current_element_or_its_parent_index = 2;
+            return divDialog( editor, 2 );
 	} ); 
         
 } )();
