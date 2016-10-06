@@ -38,9 +38,9 @@
                 // Create an extra tab    
                 var extra = dialogDefinition.getContents( 'extra' );
                 // Skip If it already exists
-                if (typeof extra !== 'undefined' && extra != null) {
-                    return;
-                }
+//                if (typeof extra !== 'undefined' && extra != null) {
+//                    return;
+//                }
                 
                 
 
