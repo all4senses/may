@@ -356,15 +356,18 @@
 				var dialog = this,
 					stylesField = this.getContentElement( 'info', 'elementStyle' );
 
+                                        console.log(stylesField, 'stylesField in div 1');
+                                        
 				// Reuse the 'stylescombo' plugin's styles definition.
 				editor.getStylesSet( function( stylesDefinitions ) {
 					var styleName, style;
-
+                                        console.log(stylesDefinitions, 'stylesDefinitionS div 1');
 					if ( stylesDefinitions ) {
 						// Digg only those styles that apply to 'div'.
 						for ( var i = 0; i < stylesDefinitions.length; i++ ) {
 							var styleDefinition = stylesDefinitions[ i ];
 							if ( styleDefinition.element && styleDefinition.element == 'div' ) {
+                                                                console.log(stylesDefinition, 'stylesDefinition div 1');
 								styleName = styleDefinition.name;
 								styles[ styleName ] = style = new CKEDITOR.style( styleDefinition );
 
