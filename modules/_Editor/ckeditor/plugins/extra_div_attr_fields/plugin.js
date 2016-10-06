@@ -188,12 +188,13 @@
                                                             //console.log(element, 'element----');
                                                             //console.log(styles, 'styles-----');
                                                             for ( var name in styles ) {
-                                                                console.log(name, 'name');
-                                                                console.log(styles[ name ], 'styles[ name ]');
+                                                                
                                                                 
                                                                 if (styles[ name ].checkElementRemovable( element, true, editor )) {
                                                                     console.log('styles[ name ].checkElementRemovable( element, true, editor ) TRUE');
                                                                     console.log(this, 'this-------');
+                                                                    console.log(name, 'name');
+                                                                    console.log(styles[ name ], 'styles[ name ]');
                                                                 }
                                                                 
                                                                 
