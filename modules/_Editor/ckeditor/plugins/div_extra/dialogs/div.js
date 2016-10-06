@@ -256,34 +256,16 @@
 				} );
 			},
 			onShow: function() {
-				// Whether always create new container regardless of existed
-				// ones.
-                                
                                 
                                 //current_element = editor.getSelection().getStartElement();
                                 current_element = Drupal.settings.cur_element_and_its_parents[current_element_or_its_parent_index];
-                                //console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents');
-                                //console.log(current_element_or_its_parent_index,'current_element_or_its_parent_index');
-                                //console.log(current_element,'current_element onShow');
-                                
-                                //console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents---');
-                                var cur_element_parent_label = 'Edit tag: ' + current_element.$.nodeName;
-                                if (current_element.$.attributes.id) {
-                                    cur_element_parent_label += ', id="' + current_element.$.attributes.id.value + '"'; 
-                                }
-                                if (current_element.$.attributes.class) {
-                                    cur_element_parent_label += ', class="' + current_element.$.attributes.class.value + '"'; 
-                                }
                                 
                                 // Alter a dialog window title
                                 this.getElement().getFirst().find('.cke_dialog_title').getItem(0).setText(
-                                        //cur_element_parent_label
-                                        Drupal.settings.cur_element_and_its_parents_labels[current_element_or_its_parent_index] + ' xxx'
+                                        Drupal.settings.cur_element_and_its_parents_labels[current_element_or_its_parent_index]
                                         );
                                 
-                                // Try to discover the containers that already existed in
-                                // ranges
-                                // update dialog field values
+                                // Try to discover the containers that already existed in ranges update dialog field values
                                 this.setupContent( this._element = CKEDITOR.plugins.div_extra.getSurroundDiv( editor ) );
 
                                 if (!this._element) {

@@ -77,61 +77,8 @@
                                                     cur_element_and_its_parents = Drupal.settings.cur_element_and_its_parents = cur_element.getParents(true);
                                                     var allowed_menu_items = {};
                                                     
-                                                    
-                                                    
-                                                    /*
-                                                    mi.label = 'Edit tag: ' + cur_element.$.nodeName;
-                                                    if (cur_element.$.attributes.id) {
-                                                        mi.label += ', id="' + cur_element.$.attributes.id.value + '"'; 
-                                                    }
-                                                    if (cur_element.$.attributes.class) {
-                                                        mi.label += ', class="' + cur_element.$.attributes.class.value + '"'; 
-                                                    }
-                                                    
-                                                    Drupal.settings.cur_element_and_its_parents_labels[0] = mi.label;
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    allowed_menu_items['editdiv_extra_1'] = CKEDITOR.TRISTATE_OFF;
-                                                    
-                                                    
                                                     // 0-th element is the cur element iself
                                                     // Let's show only 2 parent elements (except the current element itself)
-                                                    
-                                                    for (var i = 1, j=2; i < 3; i++, j++) {
-                                                        if (cur_element_and_its_parents[i].$.nodeName == 'BODY') {
-                                                            break;
-                                                        }
-                                                        
-                                                        cur_element_parent_label = 'Edit tag: ' + cur_element_and_its_parents[i].$.nodeName;
-                                                        if (cur_element_and_its_parents[i].$.attributes.id) {
-                                                            cur_element_parent_label += ', id="' + cur_element_and_its_parents[i].$.attributes.id.value + '"'; 
-                                                        }
-                                                        if (cur_element_and_its_parents[i].$.attributes.class) {
-                                                            cur_element_parent_label += ', class="' + cur_element_and_its_parents[i].$.attributes.class.value + '"'; 
-                                                        }
-                                                        
-                                                        Drupal.settings.cur_element_and_its_parents_labels[i] = cur_element_parent_label;
-                                                        
-                                                        mi = editor.getMenuItem('editdiv_extra_' + j);
-                                                        mi.label = cur_element_parent_label;
-                                                        mi.command = 'editdiv_extra_'+ j;
-                                                        mi.group = 'edit_tag';
-                                                        mi.order = 10+i;
-                                                        allowed_menu_items['editdiv_extra_' + j] = CKEDITOR.TRISTATE_OFF;
-                                                    }
-                                                    */
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
                                                     
                                                     for (var i = 0, j = 1; i < 3; i++, j++) {
                                                         if (cur_element_and_its_parents[i].$.nodeName == 'BODY') {
@@ -155,9 +102,6 @@
                                                         mi.order = 10  + i;
                                                         allowed_menu_items['editdiv_extra_' + j] = CKEDITOR.TRISTATE_OFF;
                                                     }
-                                                    
-                                                    
-                                                    
                                                     
                                                     return allowed_menu_items;
 						}
