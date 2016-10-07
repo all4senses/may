@@ -122,8 +122,11 @@
 							commitInternally.call( this, [ 'info:elementStyle', 'info:class', 'advanced:dir', 'advanced:style' ] );
 						},
 						setup: function( element ) {
-							for ( var name in styles )
+                                                    console.log(this, 'this');
+							for ( var name in styles ){
 								styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
+                                                            }
+                                                    console.log(this, 'this 2');
 						},
 						commit: function( element ) {
 							var styleName;
