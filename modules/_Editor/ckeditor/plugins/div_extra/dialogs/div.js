@@ -285,7 +285,10 @@
                                 // Preparing for the 'elementStyle' field.
 				var dialog = this,
 					stylesField = this.getContentElement( 'info', 'elementStyle' );
-                                        stylesField.items = [];
+                                
+                                console.log(stylesField, 'stylesField');
+                                stylesField.items = [];
+                                console.log(stylesField, 'stylesField 2');
                                         
 				// Reuse the 'stylescombo' plugin's styles definition.
 				editor.getStylesSet( function( stylesDefinitions ) {
