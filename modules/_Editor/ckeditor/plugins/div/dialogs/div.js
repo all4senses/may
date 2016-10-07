@@ -248,20 +248,8 @@
 							commitInternally.call( this, [ 'info:elementStyle', 'info:class', 'advanced:dir', 'advanced:style' ] );
 						},
 						setup: function( element ) {
-                                                        console.log(this, 'this------- in div');
 							for ( var name in styles ) {
-                                                            if (styles[ name ].checkElementRemovable( element, true, editor )) {
-                                                                    console.log('styles[ name ].checkElementRemovable( element, true, editor ) TRUE');
-                                                                    
-                                                                    console.log(name, 'name');
-                                                                    console.log(styles[ name ], 'styles[ name ]');
-                                                                }
-								//styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
-                                                                
-                                                                if (styles[ name ].checkElementRemovable( element, true, editor )) {
-                                                                    //console.log('styles[ name ].checkElementRemovable( element, true, editor ) TRUE');
-                                                                    console.log(this, 'this------- 222');
-                                                                }
+								styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
                                                             }
 						},
 						commit: function( element ) {
@@ -356,18 +344,14 @@
 				var dialog = this,
 					stylesField = this.getContentElement( 'info', 'elementStyle' );
 
-                                        console.log(stylesField, 'stylesField in div 1');
-                                        
 				// Reuse the 'stylescombo' plugin's styles definition.
 				editor.getStylesSet( function( stylesDefinitions ) {
 					var styleName, style;
-                                        console.log(stylesDefinitions, 'stylesDefinitionS div 1');
 					if ( stylesDefinitions ) {
 						// Digg only those styles that apply to 'div'.
 						for ( var i = 0; i < stylesDefinitions.length; i++ ) {
 							var styleDefinition = stylesDefinitions[ i ];
 							if ( styleDefinition.element && styleDefinition.element == 'div' ) {
-                                                                console.log(styleDefinition, 'styleDefinition div 2');
 								styleName = styleDefinition.name;
 								styles[ styleName ] = style = new CKEDITOR.style( styleDefinition );
 
@@ -388,8 +372,6 @@
 					setTimeout( function() {
 						dialog._element && stylesField.setup( dialog._element );
 					}, 0 );
-                                        
-                                        console.log(stylesField, 'stylesField in div on load 2');
 				} );
 			},
 			onShow: function() {

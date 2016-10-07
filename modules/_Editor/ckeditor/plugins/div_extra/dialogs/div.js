@@ -122,7 +122,6 @@
 							commitInternally.call( this, [ 'info:elementStyle', 'info:class', 'advanced:dir', 'advanced:style' ] );
 						},
 						setup: function( element ) {
-                                                    console.log('in setup EXTRA ... 3');
 							for ( var name in styles )
 								styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
 						},
@@ -222,42 +221,43 @@
                  
 				setupFields.call( this );
                                 
-//				// Preparing for the 'elementStyle' field.
-//				var dialog = this,
-//					stylesField = this.getContentElement( 'info', 'elementStyle' );
-//                                        
-//				// Reuse the 'stylescombo' plugin's styles definition.
-//				editor.getStylesSet( function( stylesDefinitions ) {
-//					var styleName, style;
-//					if ( stylesDefinitions ) {
-//						// Digg only those styles that apply to 'div'.
-//						for ( var i = 0; i < stylesDefinitions.length; i++ ) {
-//							var styleDefinition = stylesDefinitions[ i ];
-//							if ( styleDefinition.element && styleDefinition.element == 'div' ) {
-//                                                                console.log(styleDefinition, 'styleDefinition extra 2');
-//								styleName = styleDefinition.name;
-//								styles[ styleName ] = style = new CKEDITOR.style( styleDefinition );
-//
-//								if ( editor.filter.check( style ) ) {
-//									// Populate the styles field options with style name.
-//									stylesField.items.push( [ styleName, styleName ] );
-//									stylesField.add( styleName, styleName );
-//								}
-//							}
-//						}
-//					}
-//
-//					// We should disable the content element
-//					// it if no options are available at all.
-//					stylesField[ stylesField.items.length > 1 ? 'enable' : 'disable' ]();
-//
-//					// Now setup the field value manually if dialog was opened on element. (#9689)
-//					setTimeout( function() {
-//						dialog._element && stylesField.setup( dialog._element );
-//					}, 0 );
-//                                        
-//                                        console.log(stylesField, 'stylesField in EXTRA on load 3');
-//				} );
+                                // Moved to onShow event because of need to update dialog on every show (because if different tags being handled on every onShow event)
+                                /*
+				// Preparing for the 'elementStyle' field.
+				var dialog = this,
+					stylesField = this.getContentElement( 'info', 'elementStyle' );
+                                        
+				// Reuse the 'stylescombo' plugin's styles definition.
+				editor.getStylesSet( function( stylesDefinitions ) {
+					var styleName, style;
+					if ( stylesDefinitions ) {
+						// Digg only those styles that apply to 'div'.
+						for ( var i = 0; i < stylesDefinitions.length; i++ ) {
+							var styleDefinition = stylesDefinitions[ i ];
+							if ( styleDefinition.element && styleDefinition.element == 'div' ) {
+								styleName = styleDefinition.name;
+								styles[ styleName ] = style = new CKEDITOR.style( styleDefinition );
+
+								if ( editor.filter.check( style ) ) {
+									// Populate the styles field options with style name.
+									stylesField.items.push( [ styleName, styleName ] );
+									stylesField.add( styleName, styleName );
+								}
+							}
+						}
+					}
+
+					// We should disable the content element
+					// it if no options are available at all.
+					stylesField[ stylesField.items.length > 1 ? 'enable' : 'disable' ]();
+
+					// Now setup the field value manually if dialog was opened on element. (#9689)
+					setTimeout( function() {
+						dialog._element && stylesField.setup( dialog._element );
+					}, 0 );
+                                        
+				} );
+                                */
 			},
 			onShow: function() {
                                 
@@ -294,7 +294,6 @@
 						for ( var i = 0; i < stylesDefinitions.length; i++ ) {
 							var styleDefinition = stylesDefinitions[ i ];
 							if ( styleDefinition.element && styleDefinition.element == current_element.$.nodeName.toLowerCase() /*'div'*/ ) {
-                                                                console.log(styleDefinition, 'styleDefinition extra 2');
 								styleName = styleDefinition.name;
 								styles[ styleName ] = style = new CKEDITOR.style( styleDefinition );
 
@@ -315,8 +314,6 @@
 					setTimeout( function() {
 						dialog._element && stylesField.setup( dialog._element );
 					}, 0 );
-                                        
-                                        console.log(stylesField, 'stylesField in EXTRA on show 4');
 				} );
                                 
                                 
@@ -327,9 +324,6 @@
                                     this._element = current_element;
                                 }
                                 containers = [ this._element ];
-
-                                console.log(this, 'this....');
-                                console.log(containers, 'containers...');
 
 				// Update elements attributes
 				var size = containers.length;
