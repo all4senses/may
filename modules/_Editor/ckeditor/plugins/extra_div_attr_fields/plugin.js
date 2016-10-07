@@ -186,6 +186,7 @@
                                                             }
                                                             //console.log(element, 'element----');
                                                             //console.log(styles, 'styles-----');
+                                                            console.log(this, 'this-------');
                                                             for ( var name in styles ) {
                                                                 
                                                                 
