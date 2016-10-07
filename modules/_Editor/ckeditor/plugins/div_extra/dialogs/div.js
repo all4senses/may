@@ -289,12 +289,13 @@
 				var dialog = this,
 					stylesField = this.getContentElement( 'info', 'elementStyle' );
                                 
-                                console.log(this, 'this xxx 2');
+                                console.log(this, 'this xxx 3');
                                  
                                 console.log(stylesField, 'stylesField');
                                 //stylesField.items = [];
                                 stylesField.clear();
                                 stylesField.items.push( [ editor.lang.common.notSet, '' ] );
+                                stylesField.add( [ editor.lang.common.notSet, '' ] );
                                 
                                 console.log(stylesField, 'stylesField 2');
                                         
