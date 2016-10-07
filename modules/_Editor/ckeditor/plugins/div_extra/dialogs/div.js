@@ -132,7 +132,9 @@
 							var styleName;
 							if ( ( styleName = this.getValue() ) ) {
 								var style = styles[ styleName ];
-								style.applyToObject( element, editor );
+                                                                if (typeof style !== 'undefined') {
+                                                                    style.applyToObject( element, editor );
+                                                                }
 							}
 							else {
 								//element.removeAttribute( 'style' );
