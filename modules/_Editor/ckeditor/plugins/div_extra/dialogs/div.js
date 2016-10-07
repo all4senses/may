@@ -289,6 +289,8 @@
 				var dialog = this,
 					stylesField = this.getContentElement( 'info', 'elementStyle' );
                                 
+                                console.log(this, 'this xxx');
+                                 
                                 console.log(stylesField, 'stylesField');
                                 stylesField.items = [];
                                 console.log(stylesField, 'stylesField 2');

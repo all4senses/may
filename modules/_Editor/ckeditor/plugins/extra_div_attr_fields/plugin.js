@@ -198,7 +198,7 @@
                                                                 }
                                                                 
                                                                 
-                                                                //styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
+                                                                styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
                                                                 
                                                                 
 //                                                                if (styles[ name ].checkElementRemovable( element, true, editor )) {
