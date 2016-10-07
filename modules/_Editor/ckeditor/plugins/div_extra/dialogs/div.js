@@ -292,8 +292,10 @@
                                 console.log(this, 'this xxx');
                                  
                                 console.log(stylesField, 'stylesField');
-                                stylesField.items = [];
+                                //stylesField.items = [];
                                 stylesField.clear();
+                                stylesField.items.push( [ editor.lang.common.notSet, '' ] );
+                                
                                 console.log(stylesField, 'stylesField 2');
                                         
 				// Reuse the 'stylescombo' plugin's styles definition.
