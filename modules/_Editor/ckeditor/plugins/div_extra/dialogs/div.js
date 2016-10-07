@@ -122,11 +122,9 @@
 							commitInternally.call( this, [ 'info:elementStyle', 'info:class', 'advanced:dir', 'advanced:style' ] );
 						},
 						setup: function( element ) {
-                                                    console.log(this, 'this');
 							for ( var name in styles ){
 								styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
                                                             }
-                                                    console.log(this, 'this 2');
 						},
 						commit: function( element ) {
 							var styleName;
@@ -285,21 +283,13 @@
                                 
                                 
                                 
-                                
-                                
                                 // Preparing for the 'elementStyle' field.
 				var dialog = this,
 					stylesField = this.getContentElement( 'info', 'elementStyle' );
                                 
-                                console.log(this, 'this xxx 4');
-                                 
-                                console.log(stylesField, 'stylesField');
-                                //stylesField.items = [];
                                 stylesField.clear();
                                 stylesField.items.push( [ editor.lang.common.notSet, '' ] );
                                 stylesField.add( [ editor.lang.common.notSet, '' ] );
-                                
-                                console.log(stylesField, 'stylesField 2');
                                         
 				// Reuse the 'stylescombo' plugin's styles definition.
 				editor.getStylesSet( function( stylesDefinitions ) {

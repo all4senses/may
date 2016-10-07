@@ -27,9 +27,6 @@
                 var dialogName = e.data.name;
                 var dialogDefinition = e.data.definition;
                 
-                //console.log(dialogName, 'dialogName');
-                //console.log(dialogDefinition,'dialogDefinition');
-                
                 // make sure this is the right editor (there can be more on one page) and the right dialog.
                 
                 //if ((e.editor != editor) || (dialogName != 'editdiv' && dialogName != 'editdiv_extra_1'))
@@ -179,39 +176,10 @@
                                     };
                 elementStyleField.setup = function( element ) {
                                                             if (!element && typeof Drupal.settings.cur_element_and_its_parents !== 'undefined' && typeof Drupal.settings.current_element_or_its_parent_index !== 'undefined') {
-//                                                                console.log(Drupal.settings.cur_element_and_its_parents, 'Drupal.settings.cur_element_and_its_parents---');
-//                                                                console.log(Drupal.settings.current_element_or_its_parent_index, 'Drupal.settings.current_element_or_its_parent_index---');
-                                                                //console.log(current_element, 'current_element---');
                                                                 element = Drupal.settings.cur_element_and_its_parents[Drupal.settings.current_element_or_its_parent_index];
                                                             }
-                                                            //console.log(element, 'element----');
-                                                            //console.log(styles, 'styles-----');
-                                                            console.log(this, 'this-------');
                                                             for ( var name in styles ) {
-                                                                
-                                                                
-                                                                if (styles[ name ].checkElementRemovable( element, true, editor )) {
-                                                                    console.log('styles[ name ].checkElementRemovable( element, true, editor ) TRUE');
-                                                                    console.log(this, 'this-------');
-                                                                    console.log(name, 'name');
-                                                                    console.log(styles[ name ], 'styles[ name ]');
-                                                                }
-                                                                
-                                                                
                                                                 styles[ name ].checkElementRemovable( element, true, editor ) && this.setValue( name, 1 );
-                                                                
-                                                                
-//                                                                if (styles[ name ].checkElementRemovable( element, true, editor )) {
-//                                                                    console.log('styles[ name ].checkElementRemovable( element, true, editor ) TRUE');
-//                                                                }
-//                                                                else {
-//                                                                    console.log('styles[ name ].checkElementRemovable( element, true, editor ) FALSE');
-//                                                                }
-                                                                
-                                                                if (styles[ name ].checkElementRemovable( element, true, editor )) {
-                                                                    //console.log('styles[ name ].checkElementRemovable( element, true, editor ) TRUE');
-                                                                    console.log(this, 'this------- 222');
-                                                                }
                                                             }
                                                         
                                                         };
