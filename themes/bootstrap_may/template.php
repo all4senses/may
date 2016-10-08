@@ -11,6 +11,8 @@
 function bootstrap_may_preprocess_page(&$variables) {
   //dpm($variables);
   
+  $variables['navbar_classes_array'][] = 'cd-auto-hide-header';
+  
   if ($variables['is_front']) {
    
     //drupal_add_js('sites/all/libraries/jquery.plugins/_parallax/scrolly/jquery.scrolly.js');
@@ -37,7 +39,7 @@ function bootstrap_may_preprocess_page(&$variables) {
 
 function bootstrap_may_preprocess_node($variables) {
 
-    dpm($variables, '$variables via template');
+    //dpm($variables, '$variables via template');
 
     static $custom_pages_css_added;
     if ($variables['type'] == 'project' && !$custom_pages_css_added) {

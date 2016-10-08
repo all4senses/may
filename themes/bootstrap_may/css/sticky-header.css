@@ -363,84 +363,6 @@ Intro Section
   text-align: center;
 }
 
-/* line 6, ../assets/sass/style_custom.scss */
-.test {
-  color: red;
-}
-/* line 8, ../assets/sass/style_custom.scss */
-.test .test_sub {
-  color: red;
-}
-/* line 12, ../assets/sass/style_custom.scss */
-.test.test_sub2 {
-  float: right;
-  color: violet;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex: 0;
-      flex: 0;
-}
-
-/* line 24, ../assets/sass/style_custom.scss */
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-/* line 39, ../assets/sass/sticky-header-partials/_mixins.scss */
-.container::after {
-  clear: both;
-  content: "";
-  display: block;
-}
-
-/* line 39, ../assets/sass/style_custom.scss */
-.main-container {
-  padding: 0;
-}
-/* line 41, ../assets/sass/style_custom.scss */
-.main-container .row {
-  margin: 0;
-}
-/* line 45, ../assets/sass/style_custom.scss */
-.main-container .row #row-main-column .node-wrapper-outer {
-  margin: 0 -15px 0 -15px;
-  background-color: bisque;
-}
-/* line 48, ../assets/sass/style_custom.scss */
-.main-container .row #row-main-column .node-wrapper-outer article {
-  width: 768px;
-  margin: auto;
-}
-
-/*
- // Moved to the Seven (admin theme) style.css 
-.jquery_colorpicker {
-  .inner_wrapper {
-    width: 100% !important;
-    overflow: hidden;
-    height: 200px !important;
-    background: none !important;
-    border: 1px solid gray;
-  }
-  .color_picker{
-    height: 300px !important;
-    background-image: none !important;
-    position: static !important;
-    width: 100% !important;
-  }
-}
-*/
-/* line 77, ../assets/sass/style_custom.scss */
-.foo::before {
-  content: "foo on small";
-}
-/* line 87, ../assets/sass/style_custom.scss */
-.bar::before {
-  content: "bar on small";
-}
-
 @media only screen and (min-width: 1024px) {/* line 44, ../assets/sass/sticky-header.scss */
   .cd-auto-hide-header {
     height: 80px;
@@ -538,28 +460,4 @@ Intro Section
     height: 400px;
   }
 }
-
-@media (min-width: 768px) {/* line 24, ../assets/sass/style_custom.scss */
-  .container {
-    width: 100%;
-  }/* line 82, ../assets/sass/style_custom.scss */
-  .foo::before {
-    content: "foo on medium";
-  }/* line 92, ../assets/sass/style_custom.scss */
-  .bar::before {
-    content: "bar on medium";
-  }
-}
-
-@media (min-width: 992px) {/* line 24, ../assets/sass/style_custom.scss */
-  .container {
-    width: 100%;
-  }
-}
-
-@media (min-width: 1200px) {/* line 24, ../assets/sass/style_custom.scss */
-  .container {
-    width: 100%;
-  }
-}
-/*# sourceMappingURL=style_custom.css.map */
+/*# sourceMappingURL=sticky-header.css.map */

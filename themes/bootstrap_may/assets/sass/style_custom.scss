@@ -1,5 +1,7 @@
 @import "variables";
 @import "../../bootstrap/stylesheets/bootstrap/mixins";
+// Sticky header
+@import "sticky-header";
 
 .test {
   color: red;
