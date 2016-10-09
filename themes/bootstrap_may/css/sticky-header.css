@@ -16,6 +16,16 @@ html {
 /* line 23, ../assets/sass/sticky-header.scss */
 body {
   font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
   font-size: 1.6rem;
   font-family: "Hind", sans-serif;
   color: #25283D;
@@ -86,6 +96,16 @@ a {
   display: table;
   height: 100%;
   padding: 0 1em;
+  font-size: 12px;
+  font-size: 12px;
+  font-size: 12px;
+  font-size: 12px;
+  font-size: 12px;
+  font-size: 12px;
+  font-size: 12px;
+  font-size: 12px;
+  font-size: 12px;
+  font-size: 12px;
   font-size: 12px;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -189,6 +209,16 @@ a {
   line-height: 50px;
   padding-left: 5%;
   color: #25283D;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
   font-size: 18px;
   font-size: 1.8rem;
   border-top: 1px solid #f2f2f2;
@@ -348,6 +378,16 @@ a {
   padding-left: 5%;
   color: #25283D;
   font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
   font-size: 1.8rem;
   border-top: 1px solid #f2f2f2;
 }
@@ -440,7 +480,6 @@ Intro Section
   vertical-align: middle;
   text-align: center;
 }
-
 @media only screen and (min-width: 1024px) {/* line 44, ../assets/sass/sticky-header.scss */
   .cd-auto-hide-header {
     height: 80px;
@@ -535,11 +574,9 @@ Intro Section
     margin-top: 80px;
   }
 }
-
 @media only screen and (min-width: 768px) {/* line 517, ../assets/sass/sticky-header.scss */
   .cd-hero {
     height: 400px;
   }
 }
-
 /*# sourceMappingURL=sticky-header.css.map */

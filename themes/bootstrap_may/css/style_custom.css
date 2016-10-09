@@ -5,7 +5,7 @@ Primary style
 -------------------------------- */
 /* line 15, ../assets/sass/sticky-header.scss */
 *, *::after, *::before {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 /* line 19, ../assets/sass/sticky-header.scss */
@@ -15,6 +15,12 @@ html {
 
 /* line 23, ../assets/sass/sticky-header.scss */
 body {
+  font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
   font-size: 16px;
   font-size: 1.6rem;
   font-family: "Hind", sans-serif;
@@ -86,6 +92,12 @@ a {
   display: table;
   height: 100%;
   padding: 0 1em;
+  font-size: 12px;
+  font-size: 12px;
+  font-size: 12px;
+  font-size: 12px;
+  font-size: 12px;
+  font-size: 12px;
   font-size: 12px;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -178,17 +190,23 @@ a {
   left: 0;
   width: 100%;
   background-color: #ffffff;
-  display: none;
+  /* display: none; */
   box-shadow: 0 14px 20px rgba(0, 0, 0, 0.2);
 }
 /* line 174, ../assets/sass/sticky-header.scss */
 .cd-primary-nav > ul a {
   /* target primary-nav links */
-  display: block;
-  height: 50px;
-  line-height: 50px;
-  padding-left: 5%;
+  /* display: block; */
+  /* height: 50px; */
+  /* line-height: 50px; */
+  /* padding-left: 5%; */
   color: #25283D;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
   font-size: 18px;
   font-size: 1.8rem;
   border-top: 1px solid #f2f2f2;
@@ -199,15 +217,12 @@ a {
 }
 
 /* line 229, ../assets/sass/sticky-header.scss */
-.nav-open.cd-secondary-nav ul,
-.cd-secondary-nav ul:target,
-.nav-open .cd-primary-nav ul,
-.cd-primary-nav ul:target {
+.nav-open.cd-secondary-nav ul, .cd-secondary-nav ul:target, .nav-open .cd-primary-nav ul, .cd-primary-nav ul:target {
   /* 
   	show primary nav - mobile only 
   	:target is used to show navigation on no-js devices
   */
-  display: block;
+  /* display: block; */
 }
 
 /* -------------------------------- 
@@ -347,6 +362,12 @@ a {
   line-height: 50px;
   padding-left: 5%;
   color: #25283D;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
+  font-size: 18px;
   font-size: 18px;
   font-size: 1.8rem;
   border-top: 1px solid #f2f2f2;
@@ -518,7 +539,6 @@ Intro Section
 .bar::before {
   content: "bar on small";
 }
-
 @media only screen and (min-width: 1024px) {/* line 44, ../assets/sass/sticky-header.scss */
   .cd-auto-hide-header {
     height: 80px;
@@ -559,7 +579,7 @@ Intro Section
     padding: 0;
     border: none;
   }/* line 229, ../assets/sass/sticky-header.scss */
-  .nav-open.cd-secondary-nav ul,
+  .nav-open .cd-secondary-nav ul,
   .cd-secondary-nav ul:target,
   .nav-open .cd-primary-nav ul,
   .cd-primary-nav ul:target {
@@ -613,13 +633,11 @@ Intro Section
     margin-top: 80px;
   }
 }
-
 @media only screen and (min-width: 768px) {/* line 517, ../assets/sass/sticky-header.scss */
   .cd-hero {
     height: 400px;
   }
 }
-
 @media (min-width: 768px) {/* line 24, ../assets/sass/style_custom.scss */
   .container {
     width: 100%;
@@ -631,17 +649,14 @@ Intro Section
     content: "bar on medium";
   }
 }
-
 @media (min-width: 992px) {/* line 24, ../assets/sass/style_custom.scss */
   .container {
     width: 100%;
   }
 }
-
 @media (min-width: 1200px) {/* line 24, ../assets/sass/style_custom.scss */
   .container {
     width: 100%;
   }
 }
-
 /*# sourceMappingURL=style_custom.css.map */

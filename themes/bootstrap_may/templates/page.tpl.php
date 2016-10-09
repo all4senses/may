@@ -164,6 +164,150 @@
 </nav> <!-- .cd-secondary-nav -->
 
 
+
+<div class="navbar navbar-default yamm">
+          <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target="#navbar-collapse-2" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand">Yamm Megamenu</a>
+          </div>
+          <div id="navbar-collapse-2" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <!-- Media Example -->
+              <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Media<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <div class="yamm-content">
+                      <ul class="media-list">
+                        <li class="media"><a href="#" class="pull-right"><img src="demo/img/64x64.gif" alt="64x64" class="media-object"></a>
+                          <div class="media-body">
+                            <h4 class="media-heading">Media heading</h4>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante.
+                          </div>
+                        </li>
+                        <li class="media"><a href="#" class="pull-right"><img src="demo/img/64x64.gif" alt="64x64" class="media-object"></a>
+                          <div class="media-body">
+                            <h4 class="media-heading">Media heading</h4>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque.
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <!-- Tables -->
+              <li class="dropdown yamm-fullwidth"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Tables<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <div class="yamm-content">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <!-- Thumbnails demo -->
+              <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Thumbnails<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <div class="yamm-content">
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <div class="thumbnail"><img alt="260x130" src="demo/img/260.jpg">
+                            <div class="caption">
+                              <h3>Thumb Label</h3>
+                              <p>Mazagran doppio half and half aftertaste organic, rich doppio</p>
+                              <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn btn-default">Action</a></p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="thumbnail"><img alt="260x130" src="demo/img/260.jpg">
+                            <div class="caption">
+                              <h3>Thumb Label</h3>
+                              <p>Black latte cinnamon, cultivar trifecta crema cappuccino</p>
+                              <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn btn-default">Action</a></p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="thumbnail"><img alt="260x130" src="demo/img/260.jpg">
+                            <div class="caption">
+                              <h3>Thumb Label</h3>
+                              <p>Bar roast et, as latte café au lait, mocha aromatic robusta</p>
+                              <p><a href="#" class="btn btn-primary">Action </a> <a href="#" class="btn btn-default">Action </a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <!-- Forms -->
+              <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Forms<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <div class="yamm-content">
+                      <form action="send.php">
+                        <div class="form-group">
+                          <input id="inputName" type="text" placeholder="Name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <input id="inputEmail" type="password" placeholder="Email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <textarea placeholder="Write your message.." class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-success">Send</button>
+                        </div>
+                      </form>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
 <div class="main-container <?php print $container_class; ?>">
 
   <header role="banner" id="page-header">
