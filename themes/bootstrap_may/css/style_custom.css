@@ -17,7 +17,6 @@ html {
 body {
   font-size: 16px;
   font-size: 16px;
-  font-size: 16px;
   font-size: 1.6rem;
   font-family: "Hind", sans-serif;
   color: #25283D;
@@ -86,7 +85,6 @@ a {
   display: table;
   height: 100%;
   padding: 0 1em;
-  font-size: 12px;
   font-size: 12px;
   font-size: 12px;
   font-size: 1.2rem;
@@ -179,7 +177,6 @@ a {
   line-height: 50px;
   padding-left: 5%;
   color: #25283D;
-  font-size: 18px;
   font-size: 18px;
   font-size: 18px;
   font-size: 1.8rem;
@@ -386,15 +383,43 @@ Intro Section
   text-align: center;
 }
 
-/* line 6, ../assets/sass/style_custom.scss */
+/*!
+ * Yamm!3 - Yet another megamenu for Bootstrap 3
+ * http://geedmo.github.com/yamm3
+ *
+ * @geedmo - Licensed under the MIT license
+ */
+/* line 15, ../assets/sass/yamm-menu.scss */
+.yamm .nav, .yamm .collapse, .yamm .dropup, .yamm .dropdown {
+  position: static;
+}
+/* line 20, ../assets/sass/yamm-menu.scss */
+.yamm .container {
+  position: relative;
+}
+/* line 25, ../assets/sass/yamm-menu.scss */
+.yamm .dropdown-menu {
+  left: auto;
+}
+/* line 30, ../assets/sass/yamm-menu.scss */
+.yamm .yamm-content {
+  padding: 20px 30px;
+}
+/* line 35, ../assets/sass/yamm-menu.scss */
+.yamm .dropdown.yamm-fw .dropdown-menu {
+  left: 0;
+  right: 0;
+}
+
+/* line 8, ../assets/sass/style_custom.scss */
 .test {
   color: red;
 }
-/* line 8, ../assets/sass/style_custom.scss */
+/* line 10, ../assets/sass/style_custom.scss */
 .test .test_sub {
   color: red;
 }
-/* line 12, ../assets/sass/style_custom.scss */
+/* line 14, ../assets/sass/style_custom.scss */
 .test.test_sub2 {
   float: right;
   color: violet;
@@ -404,7 +429,7 @@ Intro Section
       flex: 0;
 }
 
-/* line 24, ../assets/sass/style_custom.scss */
+/* line 26, ../assets/sass/style_custom.scss */
 .container {
   margin-right: auto;
   margin-left: auto;
@@ -418,20 +443,20 @@ Intro Section
   display: block;
 }
 
-/* line 39, ../assets/sass/style_custom.scss */
+/* line 41, ../assets/sass/style_custom.scss */
 .main-container {
   padding: 0;
 }
-/* line 41, ../assets/sass/style_custom.scss */
+/* line 43, ../assets/sass/style_custom.scss */
 .main-container .row {
   margin: 0;
 }
-/* line 45, ../assets/sass/style_custom.scss */
+/* line 47, ../assets/sass/style_custom.scss */
 .main-container .row #row-main-column .node-wrapper-outer {
   margin: 0 -15px 0 -15px;
   background-color: bisque;
 }
-/* line 48, ../assets/sass/style_custom.scss */
+/* line 50, ../assets/sass/style_custom.scss */
 .main-container .row #row-main-column .node-wrapper-outer article {
   width: 768px;
   margin: auto;
@@ -455,14 +480,15 @@ Intro Section
   }
 }
 */
-/* line 77, ../assets/sass/style_custom.scss */
+/* line 79, ../assets/sass/style_custom.scss */
 .foo::before {
   content: "foo on small";
 }
-/* line 87, ../assets/sass/style_custom.scss */
+/* line 89, ../assets/sass/style_custom.scss */
 .bar::before {
   content: "bar on small";
 }
+
 @media only screen and (min-width: 1024px) {/* line 44, ../assets/sass/sticky-header.scss */
   .cd-auto-hide-header {
     height: 80px;
@@ -535,28 +561,32 @@ Intro Section
     margin-top: 80px;
   }
 }
+
 @media only screen and (min-width: 768px) {/* line 448, ../assets/sass/sticky-header.scss */
   .cd-hero {
     height: 400px;
   }
 }
-@media (min-width: 768px) {/* line 24, ../assets/sass/style_custom.scss */
+
+@media (min-width: 768px) {/* line 26, ../assets/sass/style_custom.scss */
   .container {
     width: 100%;
-  }/* line 82, ../assets/sass/style_custom.scss */
+  }/* line 84, ../assets/sass/style_custom.scss */
   .foo::before {
     content: "foo on medium";
-  }/* line 92, ../assets/sass/style_custom.scss */
+  }/* line 94, ../assets/sass/style_custom.scss */
   .bar::before {
     content: "bar on medium";
   }
 }
-@media (min-width: 992px) {/* line 24, ../assets/sass/style_custom.scss */
+
+@media (min-width: 992px) {/* line 26, ../assets/sass/style_custom.scss */
   .container {
     width: 100%;
   }
 }
-@media (min-width: 1200px) {/* line 24, ../assets/sass/style_custom.scss */
+
+@media (min-width: 1200px) {/* line 26, ../assets/sass/style_custom.scss */
   .container {
     width: 100%;
   }
