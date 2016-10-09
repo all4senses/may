@@ -12,6 +12,9 @@ function bootstrap_may_preprocess_page(&$variables) {
   //dpm($variables);
   
   $variables['navbar_classes_array'][] = 'cd-auto-hide-header';
+  dpm($variables['container_class'], '$variables[container_class]');
+  
+  $variables['container_class'] .= ' cd-main-content sub-nav-hero';
   
   if ($variables['is_front']) {
    
@@ -67,5 +70,5 @@ function bootstrap_may_process_html(&$variables) {
     // Remove Query Strings from CSS filenames (CacheBuster) 
     //$variables['styles'] = preg_replace('/.css\?.*"/','.css"', $variables['styles']); 
     $variables['styles'] = preg_replace('/style_custom.css\?.*"/','style_custom.css"', $variables['styles']); 
-
+    
 }

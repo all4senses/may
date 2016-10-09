@@ -74,6 +74,7 @@
  */
 ?>
 
+<?php /*
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
   <div class="<?php print $container_class; ?>">
     <div class="navbar-header">
@@ -114,6 +115,48 @@
     <?php endif; ?>
   </div>
 </header>
+*/?>
+
+<header class="cd-auto-hide-header">
+	<div class="logo"><a href="#0"><img src="img/cd-logo.svg" alt="Logo"></a></div>
+
+	<nav class="cd-primary-nav">
+		<a href="#cd-navigation" class="nav-trigger">
+			<span>
+				<em aria-hidden="true"></em>
+				Menu
+			</span>
+		</a> <!-- .nav-trigger -->
+
+		<ul id="cd-navigation">
+			<li><a href="#0">The team</a></li>
+			<li><a href="#0">Our Products</a></li>
+			<li><a href="#0">Our Services</a></li>
+			<li><a href="#0">Shopping tools</a></li>
+			<li><a href="#0">Contact Us</a></li>
+		</ul>
+	</nav> <!-- .cd-primary-nav -->
+</header> <!-- .cd-auto-hide-header -->
+
+<section class="cd-hero">
+	<div class="cd-hero-content">
+		<!-- your content here -->
+	</div>
+</section> <!-- .cd-hero -->
+
+<nav class="cd-secondary-nav">
+	<ul>
+		<li><a class="active" href="#0">Intro</a></li>
+		<li><a href="#0">Features</a></li>
+		<li><a href="#0">Photos</a></li>
+		<li><a href="#0">Videos</a></li>
+		<li><a href="#0">Specs</a></li>
+		<li><a href="#0">Support</a></li>
+		<li><a href="#0">Compare</a></li>
+		<li><a href="#0">Buy</a></li>
+	</ul>
+</nav> <!-- .cd-secondary-nav -->
+
 
 <div class="main-container <?php print $container_class; ?>">
 

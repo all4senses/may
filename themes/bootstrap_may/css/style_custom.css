@@ -17,6 +17,8 @@ html {
 body {
   font-size: 16px;
   font-size: 16px;
+  font-size: 16px;
+  font-size: 16px;
   font-size: 1.6rem;
   font-family: "Hind", sans-serif;
   color: #25283D;
@@ -85,6 +87,8 @@ a {
   display: table;
   height: 100%;
   padding: 0 1em;
+  font-size: 12px;
+  font-size: 12px;
   font-size: 12px;
   font-size: 12px;
   font-size: 1.2rem;
@@ -177,6 +181,8 @@ a {
   line-height: 50px;
   padding-left: 5%;
   color: #25283D;
+  font-size: 18px;
+  font-size: 18px;
   font-size: 18px;
   font-size: 18px;
   font-size: 1.8rem;
@@ -387,6 +393,7 @@ Intro Section
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  /* margin-top: 260px; */
 }
 /* line 39, ../assets/sass/sticky-header-partials/_mixins.scss */
 .container::after {
@@ -440,7 +447,6 @@ Intro Section
 .bar::before {
   content: "bar on small";
 }
-
 @media only screen and (min-width: 1024px) {/* line 44, ../assets/sass/sticky-header.scss */
   .cd-auto-hide-header {
     height: 80px;
@@ -532,13 +538,11 @@ Intro Section
     margin-top: 80px;
   }
 }
-
 @media only screen and (min-width: 768px) {/* line 442, ../assets/sass/sticky-header.scss */
   .cd-hero {
     height: 400px;
   }
 }
-
 @media (min-width: 768px) {/* line 24, ../assets/sass/style_custom.scss */
   .container {
     width: 100%;
@@ -550,13 +554,11 @@ Intro Section
     content: "bar on medium";
   }
 }
-
 @media (min-width: 992px) {/* line 24, ../assets/sass/style_custom.scss */
   .container {
     width: 100%;
   }
 }
-
 @media (min-width: 1200px) {/* line 24, ../assets/sass/style_custom.scss */
   .container {
     width: 100%;
