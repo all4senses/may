@@ -145,26 +145,7 @@
 </section> <!-- .cd-hero -->
 
 <nav class="cd-secondary-nav">
-  <a href="#cd-sec-navigation" class="nav-trigger">
-    <span>
-      <em aria-hidden="true"></em>
-      Menu
-    </span>
-  </a> <!-- .nav-trigger -->  
-	<ul id="cd-sec-navigation">
-		<li><a class="active" href="#0">Intro</a></li>
-		<li><a href="#0">Features</a></li>
-		<li><a href="#0">Photos</a></li>
-		<li><a href="#0">Videos</a></li>
-		<li><a href="#0">Specs</a></li>
-		<li><a href="#0">Support</a></li>
-		<li><a href="#0">Compare</a></li>
-		<li><a href="#0">Buy</a></li>
-	</ul>
-</nav> <!-- .cd-secondary-nav -->
-
-
-
+  
 <div class="navbar navbar-default yamm">
           <div class="navbar-header">
             <button type="button" data-toggle="collapse" data-target="#navbar-collapse-2" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand">Yamm Megamenu</a>
@@ -307,6 +288,10 @@
             </ul>
           </div>
         </div>
+</nav> <!-- .cd-secondary-nav -->
+
+
+
 
 <div class="main-container <?php print $container_class; ?>">
 

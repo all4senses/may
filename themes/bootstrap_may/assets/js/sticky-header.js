@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
 	var mainHeader = $('.cd-auto-hide-header'),
 		secondaryNavigation = $('.cd-secondary-nav'),
-		//This applies only if secondary nav is below intro section
+		//this applies only if secondary nav is below intro section
 		belowNavHeroContent = $('.sub-nav-hero'),
 		headerHeight = mainHeader.height();
 	
@@ -16,12 +16,6 @@ jQuery(document).ready(function($){
 		// open primary navigation on mobile
 		event.preventDefault();
 		mainHeader.toggleClass('nav-open');
-	});
-        // a4s
-        secondaryNavigation.on('click', '.nav-trigger', function(event){
-		// open primary navigation on mobile
-		event.preventDefault();
-		secondaryNavigation.toggleClass('nav-open');
 	});
 
 	$(window).on('scroll', function(){

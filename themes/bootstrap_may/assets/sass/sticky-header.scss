@@ -65,7 +65,6 @@ a {
 }
 
 .cd-auto-hide-header .logo, 
-.cd-secondary-nav .nav-trigger,
 .cd-auto-hide-header .nav-trigger {
 	position: absolute;
 	@include center(y);
@@ -79,7 +78,6 @@ a {
 	}
 }
 
-.cd-secondary-nav .nav-trigger,
 .cd-auto-hide-header .nav-trigger {
 	/* vertically align its content */
 	display: table;
@@ -136,8 +134,6 @@ a {
 	}
 }
 
-// a4s
-.cd-secondary-nav.nav-open .nav-trigger
 .cd-auto-hide-header.nav-open .nav-trigger {
 	em {
 		/* transform menu icon into a 'X' icon */
@@ -225,9 +221,6 @@ a {
 	}
 }
 
-// a4s
-.nav-open.cd-secondary-nav ul, 
-.cd-secondary-nav ul:target,
 .nav-open .cd-primary-nav ul, 
 .cd-primary-nav ul:target {
 	/* 
@@ -338,74 +331,6 @@ a {
 			}
 		}
 	}
-        
-        
-        
-        
-        // hiding sec-menu on mobile
-	> ul {
-		position: absolute;
-		z-index: 2;
-		top: $header-height-small;
-		left: 0;
-		width: 100%;
-		background-color: $color-3;
-		display: none;
-		box-shadow: 0 14px 20px rgba(#000, .2);
-
-		a {
-			/* target primary-nav links */
-			display: block;
-			height: 50px;
-			line-height: 50px;
-			padding-left: 5%;
-			color: $color-1;
-			font-size: 1.8rem;
-			border-top: 1px solid shade($color-3, 5%);
-
-			&:hover, &.active {
-				color: $color-2;
-			}
-		}
-	}
-        /*
-	@include MQ(L) {
-		// vertically align its content 
-		display: table;
-
-		> ul {
-			//* vertically align inside parent element *
-			display: table-cell;
-			vertical-align: middle;
-			//* reset mobile style *
-			position: relative;
-			width: auto;
-			top: 0;
-			padding: 0;
-			@include clearfix;
-			background-color: transparent;
-			box-shadow: none;
-
-			li {
-				display: inline-block;
-				float: left;
-				margin-right: 1.5em;
-
-				&:last-of-type {
-					margin-right: 0;
-				}
-			}
-
-			a {
-				//* reset mobile style *
-				height: auto;
-				line-height: normal;
-				padding: 0;
-				border: none;
-			}
-		}
-	}
-        */
 }
 
 /* -------------------------------- 
