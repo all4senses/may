@@ -153,59 +153,53 @@
           <div id="navbar-collapse-2" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <!-- Click flyout Subnenus  -->
-              <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Submenus<b class="caret"></b></a>
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li class="dropdown-submenu">
-                        <a tabindex="-1" href="#">Home</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Second level</a></li>
-                            <li><a href="#">Second level</a></li>
-                            <li><a href="#">Second level</a></li>
-                        </ul>
+                  <li><a href="#">Dropdown Link 1</a></li>
+                  <li><a href="#">Dropdown Link 2</a></li>
+                  <li><a href="#">Dropdown Link 3</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 4</a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Dropdown Submenu Link 4.1</a></li>
+                        <li><a href="#">Dropdown Submenu Link 4.2</a></li>
+                        <li><a href="#">Dropdown Submenu Link 4.3</a></li>
+                        <li><a href="#">Dropdown Submenu Link 4.4</a></li>
+                      </ul>
                     </li>
-                    <li class="menu-item dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Clearing Floats</a>
-                        <ul class="dropdown-menu">
-                          <li class="menu-item "><a href="#">Page with comments</a></li>
-                          <li class="menu-item "><a href="#">Page with comments disabled</a></li>
-                          <li class="menu-item dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More</a>
-                            <ul class="dropdown-menu"><li><a href="#">3rd level link more options</a></li><li><a href="#">3rd level link</a></li></ul>
-                          </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a tabindex="-1" href="#">Footer</a>
-                        <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#">Second level</a></li>
-                            <li class="dropdown-submenu">
-                                <a href="#">Even More..</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">3rd level</a></li>
-                                    <li><a href="#">3rd level</a></li>
-                                </ul>
+                  <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 5</a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Dropdown Submenu Link 5.1</a></li>
+                        <li><a href="#">Dropdown Submenu Link 5.2</a></li>
+                        <li><a href="#">Dropdown Submenu Link 5.3</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4</a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Dropdown Submenu Link 5.4.1</a></li>
+                            <li><a href="#">Dropdown Submenu Link 5.4.2</a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4.3</a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Dropdown Submenu Link 5.4.3.1</a></li>
+                                <li><a href="#">Dropdown Submenu Link 5.4.3.2</a></li>
+                                <li><a href="#">Dropdown Submenu Link 5.4.3.3</a></li>
+                                <li><a href="#">Dropdown Submenu Link 5.4.3.4</a></li>
+                              </ul>
                             </li>
-                            <li><a href="#">Second level</a></li>
-                            <li><a href="#">Second level</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a tabindex="-1" href="#">Not Assigned</a>
-                        <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#">Second level</a></li>
-                            <li class="dropdown-submenu">
-                                <a href="#">Even More..</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">3rd level</a></li>
-                                    <li><a href="#">3rd level</a></li>
-                                </ul>
+                            <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4.4</a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Dropdown Submenu Link 5.4.4.1</a></li>
+                                <li><a href="#">Dropdown Submenu Link 5.4.4.2</a></li>
+                                <li><a href="#">Dropdown Submenu Link 5.4.4.3</a></li>
+                                <li><a href="#">Dropdown Submenu Link 5.4.4.4</a></li>
+                              </ul>
                             </li>
-                            <li><a href="#">Second level</a></li>
-                            <li><a href="#">Second level</a></li>
-                        </ul>
+                          </ul>
+                        </li>
+                      </ul>
                     </li>
                 </ul>
-              </li>  
-                
-                
+              </li>
               <!-- Media Example -->
               <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Media<b class="caret"></b></a>
                 <ul class="dropdown-menu">
