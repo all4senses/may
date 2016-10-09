@@ -17,6 +17,12 @@ jQuery(document).ready(function($){
 		event.preventDefault();
 		mainHeader.toggleClass('nav-open');
 	});
+        // a4s
+        secondaryNavigation.on('click', '.nav-trigger', function(event){
+		// open primary navigation on mobile
+		event.preventDefault();
+		secondaryNavigation.toggleClass('nav-open');
+	});
 
 	$(window).on('scroll', function(){
 		if( !scrolling ) {

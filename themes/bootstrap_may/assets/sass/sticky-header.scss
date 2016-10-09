@@ -136,6 +136,8 @@ a {
 	}
 }
 
+// a4s
+.cd-secondary-nav.nav-open .nav-trigger
 .cd-auto-hide-header.nav-open .nav-trigger {
 	em {
 		/* transform menu icon into a 'X' icon */
@@ -223,6 +225,9 @@ a {
 	}
 }
 
+// a4s
+.nav-open .cd-secondary-nav ul, 
+.cd-secondary-nav ul:target,
 .nav-open .cd-primary-nav ul, 
 .cd-primary-nav ul:target {
 	/* 

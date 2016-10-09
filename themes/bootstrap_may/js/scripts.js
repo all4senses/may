@@ -1111,6 +1111,10 @@ function sss() {
     e.on("click", ".nav-trigger", function(a) {
         // open primary navigation on mobile
         a.preventDefault(), e.toggleClass("nav-open");
+    }), // a4s
+    f.on("click", ".nav-trigger", function(a) {
+        // open primary navigation on mobile
+        a.preventDefault(), f.toggleClass("nav-open");
     }), a(window).on("scroll", function() {
         i || (i = !0, window.requestAnimationFrame ? requestAnimationFrame(b) : setTimeout(b, 250));
     }), a(window).on("resize", function() {
