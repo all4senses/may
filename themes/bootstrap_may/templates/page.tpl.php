@@ -145,7 +145,13 @@
 </section> <!-- .cd-hero -->
 
 <nav class="cd-secondary-nav">
-	<ul>
+  <a href="#cd-sec-navigation" class="nav-trigger">
+    <span>
+      <em aria-hidden="true"></em>
+      Menu
+    </span>
+  </a> <!-- .nav-trigger -->  
+	<ul id="cd-sec-navigation">
 		<li><a class="active" href="#0">Intro</a></li>
 		<li><a href="#0">Features</a></li>
 		<li><a href="#0">Photos</a></li>
