@@ -252,6 +252,7 @@ a {
 	will-change: transform;
 	transition: transform .5s;
 
+        /*
 	&::after {
 		/* gradient on the right - to indicate it's possible to scroll */
 		content: '';
@@ -266,6 +267,7 @@ a {
 		pointer-events: none;
 		transition: opacity .2s;
 	}
+        */
 
 	&.nav-end::after {
 		opacity: 0;
