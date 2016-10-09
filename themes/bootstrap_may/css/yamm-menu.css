@@ -1,0 +1,28 @@
+/*!
+ * Yamm!3 - Yet another megamenu for Bootstrap 3
+ * http://geedmo.github.com/yamm3
+ *
+ * @geedmo - Licensed under the MIT license
+ */
+/* line 15, ../assets/sass/yamm-menu.scss */
+.yamm .nav, .yamm .collapse, .yamm .dropup, .yamm .dropdown {
+  position: static;
+}
+/* line 20, ../assets/sass/yamm-menu.scss */
+.yamm .container {
+  position: relative;
+}
+/* line 25, ../assets/sass/yamm-menu.scss */
+.yamm .dropdown-menu {
+  left: auto;
+}
+/* line 30, ../assets/sass/yamm-menu.scss */
+.yamm .yamm-content {
+  padding: 20px 30px;
+}
+/* line 35, ../assets/sass/yamm-menu.scss */
+.yamm .dropdown.yamm-fw .dropdown-menu {
+  left: 0;
+  right: 0;
+}
+/*# sourceMappingURL=yamm-menu.css.map */
