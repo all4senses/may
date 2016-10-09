@@ -155,7 +155,11 @@
               <!-- Media Example -->
               <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Media<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li>
+                    
+                  <li>
+                    <div class="yamm-content">
+                      <ul class="media-list">
+                          <li>
                       <ul class="dropdown-menu">
                             <li class="dropdown-submenu">
                                 <a tabindex="-1" href="#">Home</a>
@@ -206,9 +210,6 @@
                             </li>
                         </ul>
                     </li>
-                  <li>
-                    <div class="yamm-content">
-                      <ul class="media-list">
                         <li class="media"><a href="#" class="pull-right"><img src="demo/img/64x64.gif" alt="64x64" class="media-object"></a>
                           <div class="media-body">
                             <h4 class="media-heading">Media heading</h4>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante.
