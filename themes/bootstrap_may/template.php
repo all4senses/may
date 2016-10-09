@@ -12,7 +12,7 @@ function bootstrap_may_preprocess_page(&$variables) {
   //dpm($variables);
   
   $variables['navbar_classes_array'][] = 'cd-auto-hide-header';
-  dpm($variables['container_class'], '$variables[container_class]');
+  //dpm($variables['container_class'], '$variables[container_class]');
   
   $variables['container_class'] .= ' cd-main-content sub-nav-hero';
   
@@ -49,7 +49,7 @@ function bootstrap_may_preprocess_node($variables) {
         $custom_pages_css_added = TRUE;
         $project_custom_css = path_to_theme() . '/css/projects.css';
         if (file_exists($project_custom_css)) {
-            dpm('added ' . $project_custom_css);
+            //dpm('added ' . $project_custom_css);
             drupal_add_css($project_custom_css, array('weight' => 99, 'group' => 200));
         }
     }
