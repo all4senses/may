@@ -252,9 +252,10 @@ a {
 	will-change: transform;
 	transition: transform .5s;
 
-        /*
+        
 	&::after {
-		/* gradient on the right - to indicate it's possible to scroll */
+		//* gradient on the right - to indicate it's possible to scroll *
+                /*
 		content: '';
 		position: absolute;
 		z-index: 1;
@@ -266,8 +267,9 @@ a {
 		background: linear-gradient(to left, $color-1, rgba($color-1, 0));
 		pointer-events: none;
 		transition: opacity .2s;
+                */
 	}
-        */
+        
 
 	&.nav-end::after {
 		opacity: 0;
