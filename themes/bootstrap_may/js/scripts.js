@@ -1084,7 +1084,19 @@ function sss() {
             }
         });
     });
-}(jQuery), jQuery(document).ready(function(a) {
+}(jQuery), $("ul.dropdown-menu [data-toggle=dropdown]").on("click", function(a) {
+    // Avoid following the href location when clicking
+    a.preventDefault(), // Avoid having the menu to close when clicking
+    a.stopPropagation(), // If a menu is already open we close it
+    //$('ul.dropdown-menu [data-toggle=dropdown]').parent().removeClass('open');
+    // opening the one you clicked on
+    $(this).parent().addClass("open");
+    var b = $(this).parent().find("ul"), c = b.offset();
+    if (c.left + b.width() + 30 > $(window).width()) var d = -b.width(); else var d = $(this).parent().width();
+    b.css({
+        left: d
+    });
+}), jQuery(document).ready(function(a) {
     function b() {
         var b = a(window).scrollTop();
         g.length > 0 ? d(b) : c(b), j = b, i = !1;
