@@ -16,6 +16,7 @@ html {
 /* line 23, ../assets/sass/sticky-header.scss */
 body {
   font-size: 16px;
+  font-size: 16px;
   font-size: 1.6rem;
   font-family: "Hind", sans-serif;
   color: #25283D;
@@ -84,6 +85,7 @@ a {
   display: table;
   height: 100%;
   padding: 0 1em;
+  font-size: 12px;
   font-size: 12px;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -175,6 +177,7 @@ a {
   line-height: 50px;
   padding-left: 5%;
   color: #25283D;
+  font-size: 18px;
   font-size: 18px;
   font-size: 1.8rem;
   border-top: 1px solid #f2f2f2;
@@ -409,12 +412,68 @@ Intro Section
 }
 
 /* Drop Down FLyout Menu */
-/* line 42, ../assets/sass/yamm-menu.scss */
+/*
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+.dropdown-submenu.pull-left {
+    float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+*/
+/*
+.dropdown-submenu{position:relative;}
+.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+//*.dropdown-submenu:hover>.dropdown-menu{display:block;}*
+.dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
+.dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
+.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+*/
+/* line 107, ../assets/sass/yamm-menu.scss */
+.marginBottom-0 {
+  margin-bottom: 0;
+}
+
+/* line 109, ../assets/sass/yamm-menu.scss */
 .dropdown-submenu {
   position: relative;
 }
 
-/* line 45, ../assets/sass/yamm-menu.scss */
+/* line 110, ../assets/sass/yamm-menu.scss */
 .dropdown-submenu > .dropdown-menu {
   top: 0;
   left: 100%;
@@ -423,12 +482,7 @@ Intro Section
   border-radius: 0 6px 6px 6px;
 }
 
-/* line 54, ../assets/sass/yamm-menu.scss */
-.dropdown-submenu:hover > .dropdown-menu {
-  display: block;
-}
-
-/* line 57, ../assets/sass/yamm-menu.scss */
+/* line 111, ../assets/sass/yamm-menu.scss */
 .dropdown-submenu > a:after {
   display: block;
   content: " ";
@@ -438,36 +492,28 @@ Intro Section
   border-color: transparent;
   border-style: solid;
   border-width: 5px 0 5px 5px;
-  border-left-color: #ccc;
+  border-left-color: #cccccc;
   margin-top: 5px;
   margin-right: -10px;
 }
 
-/* line 70, ../assets/sass/yamm-menu.scss */
+/* line 112, ../assets/sass/yamm-menu.scss */
 .dropdown-submenu:hover > a:after {
-  border-left-color: #fff;
+  border-left-color: #555;
 }
 
-/* line 73, ../assets/sass/yamm-menu.scss */
+/* line 113, ../assets/sass/yamm-menu.scss */
 .dropdown-submenu.pull-left {
   float: none;
 }
 
-/* line 76, ../assets/sass/yamm-menu.scss */
+/* line 113, ../assets/sass/yamm-menu.scss */
 .dropdown-submenu.pull-left > .dropdown-menu {
   left: -100%;
   margin-left: 10px;
   border-radius: 6px 0 6px 6px;
 }
 
-/*
-.dropdown-submenu{position:relative;}
-.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
-//*.dropdown-submenu:hover>.dropdown-menu{display:block;}*
-.dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
-.dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
-.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
-*/
 /* line 8, ../assets/sass/style_custom.scss */
 .test {
   color: red;
@@ -648,5 +694,4 @@ Intro Section
     width: 100%;
   }
 }
-
 /*# sourceMappingURL=style_custom.css.map */
