@@ -1106,7 +1106,7 @@ function sss() {
         e.addClass("is-hidden"), f.addClass("fixed slide-up"), g.addClass("secondary-nav-fixed")) : a > b && (//once the secondary nav is fixed, do not hide primary nav if you haven't scrolled more than scrollOffset 
         e.removeClass("is-hidden"), f.addClass("fixed").removeClass("slide-up"), g.addClass("secondary-nav-fixed"));
     }
-    var e = a(".cd-auto-hide-header"), f = a(".cd-secondary-nav"), //this applies only if secondary nav is below intro section
+    var e = a(".cd-auto-hide-header"), f = a(".cd-secondary-nav"), //This applies only if secondary nav is below intro section
     g = a(".sub-nav-hero"), h = e.height(), i = !1, j = 0, k = 10, l = 150;
     e.on("click", ".nav-trigger", function(a) {
         // open primary navigation on mobile

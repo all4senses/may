@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
 	var mainHeader = $('.cd-auto-hide-header'),
 		secondaryNavigation = $('.cd-secondary-nav'),
-		//this applies only if secondary nav is below intro section
+		//This applies only if secondary nav is below intro section
 		belowNavHeroContent = $('.sub-nav-hero'),
 		headerHeight = mainHeader.height();
 	

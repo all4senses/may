@@ -199,7 +199,7 @@ a {
 }
 
 /* line 229, ../assets/sass/sticky-header.scss */
-.nav-open .cd-secondary-nav ul,
+.nav-open.cd-secondary-nav ul,
 .cd-secondary-nav ul:target,
 .nav-open .cd-primary-nav ul,
 .cd-primary-nav ul:target {
@@ -559,7 +559,7 @@ Intro Section
     padding: 0;
     border: none;
   }/* line 229, ../assets/sass/sticky-header.scss */
-  .nav-open .cd-secondary-nav ul,
+  .nav-open.cd-secondary-nav ul,
   .cd-secondary-nav ul:target,
   .nav-open .cd-primary-nav ul,
   .cd-primary-nav ul:target {
