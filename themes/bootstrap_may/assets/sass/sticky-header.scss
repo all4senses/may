@@ -271,12 +271,13 @@ a {
 		opacity: 0;
 	}
 
+        /*
 	ul, li, a {
 		height: 100%;
 	}
 
 	ul {
-		/* enables a flex context for all its direct children */
+		//* enables a flex context for all its direct children *
 		display: flex;
 		padding: 0 5%;
 		@include clearfix;
@@ -287,7 +288,7 @@ a {
 	li {
 		display: inline-block;
 		float: left;
-		/* do not shrink - elements float on the right of the element */
+		//* do not shrink - elements float on the right of the element *
 		flex-shrink: 0;
 
 		&:last-of-type {
@@ -312,13 +313,13 @@ a {
 		overflow: visible;
 
 		ul {
-			/* reset mobile style */
+			//* reset mobile style *
 			display: block;
 			text-align: center;
 		}
 
 		li {
-			/* reset mobile style */
+			//* reset mobile style *
 			float: none;
 			flex-shrink: 1;
 		}
@@ -331,6 +332,7 @@ a {
 			}
 		}
 	}
+        */
 }
 
 /* -------------------------------- 

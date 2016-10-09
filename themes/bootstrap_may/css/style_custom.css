@@ -15,6 +15,7 @@ html {
 
 /* line 23, ../assets/sass/sticky-header.scss */
 body {
+  font-size: 16px;
   font-size: 1.6rem;
   font-family: "Hind", sans-serif;
   color: #25283D;
@@ -58,12 +59,6 @@ a {
 .cd-auto-hide-header.is-hidden {
   transform: translateY(-100%);
 }
-@media only screen and (min-width: 1024px) {
-  /* line 44, ../assets/sass/sticky-header.scss */
-  .cd-auto-hide-header {
-    height: 80px;
-  }
-}
 
 /* line 67, ../assets/sass/sticky-header.scss */
 .cd-auto-hide-header .logo,
@@ -89,6 +84,7 @@ a {
   display: table;
   height: 100%;
   padding: 0 1em;
+  font-size: 12px;
   font-size: 1.2rem;
   text-transform: uppercase;
   color: #25283D;
@@ -110,7 +106,8 @@ a {
   height: 2px;
   width: 22px;
   background-color: #25283D;
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 /* line 109, ../assets/sass/sticky-header.scss */
 .cd-auto-hide-header .nav-trigger em {
@@ -134,12 +131,6 @@ a {
 .cd-auto-hide-header .nav-trigger em::after {
   /* this is the menu icon bottom line */
   transform: translateY(6px);
-}
-@media only screen and (min-width: 1024px) {
-  /* line 81, ../assets/sass/sticky-header.scss */
-  .cd-auto-hide-header .nav-trigger {
-    display: none;
-  }
 }
 
 /* line 138, ../assets/sass/sticky-header.scss */
@@ -184,56 +175,13 @@ a {
   line-height: 50px;
   padding-left: 5%;
   color: #25283D;
+  font-size: 18px;
   font-size: 1.8rem;
   border-top: 1px solid #f2f2f2;
 }
 /* line 180, ../assets/sass/sticky-header.scss */
 .cd-primary-nav > ul a:hover, .cd-primary-nav > ul a.active {
   color: #8F3985;
-}
-@media only screen and (min-width: 1024px) {
-  /* line 154, ../assets/sass/sticky-header.scss */
-  .cd-primary-nav {
-    /* vertically align its content */
-    display: table;
-  }
-  /* line 190, ../assets/sass/sticky-header.scss */
-  .cd-primary-nav > ul {
-    /* vertically align inside parent element */
-    display: table-cell;
-    vertical-align: middle;
-    /* reset mobile style */
-    position: relative;
-    width: auto;
-    top: 0;
-    padding: 0;
-    background-color: transparent;
-    box-shadow: none;
-  }
-  /* line 39, ../assets/sass/sticky-header-partials/_mixins.scss */
-  .cd-primary-nav > ul::after {
-    clear: both;
-    content: "";
-    display: block;
-  }
-  /* line 203, ../assets/sass/sticky-header.scss */
-  .cd-primary-nav > ul li {
-    display: inline-block;
-    float: left;
-    margin-right: 1.5em;
-  }
-  /* line 208, ../assets/sass/sticky-header.scss */
-  .cd-primary-nav > ul li:last-of-type {
-    margin-right: 0;
-  }
-  /* line 213, ../assets/sass/sticky-header.scss */
-  .cd-primary-nav > ul a {
-    /* reset mobile style */
-    height: auto;
-    line-height: normal;
-    padding: 0;
-    border: none;
-  }
 }
 
 /* line 224, ../assets/sass/sticky-header.scss */
@@ -244,13 +192,6 @@ a {
   	:target is used to show navigation on no-js devices
   */
   display: block;
-}
-@media only screen and (min-width: 1024px) {
-  /* line 224, ../assets/sass/sticky-header.scss */
-  .nav-open .cd-primary-nav ul,
-  .cd-primary-nav ul:target {
-    display: table-cell;
-  }
 }
 
 /* -------------------------------- 
@@ -270,6 +211,68 @@ a {
   transform: translateZ(0);
   will-change: transform;
   transition: transform .5s;
+        /*
+	ul, li, a {
+		height: 100%;
+	}
+
+	ul {
+		//* enables a flex context for all its direct children *
+		display: flex;
+		padding: 0 5%;
+		@include clearfix;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	li {
+		display: inline-block;
+		float: left;
+		//* do not shrink - elements float on the right of the element *
+		flex-shrink: 0;
+
+		&:last-of-type {
+			padding-right: 20px;
+		}
+	}
+
+	a {
+		display: block;
+		color: $color-3;
+		opacity: .6;
+		line-height: $secondary-nav-height-small;
+		padding: 0 1em;
+
+		&:hover, &.active {
+			opacity: 1;
+		}
+	}
+
+	@include MQ(L) {
+		height: $secondary-nav-height;
+		overflow: visible;
+
+		ul {
+			//* reset mobile style *
+			display: block;
+			text-align: center;
+		}
+
+		li {
+			//* reset mobile style *
+			float: none;
+			flex-shrink: 1;
+		}
+
+		a {
+			line-height: $secondary-nav-height;
+
+			&.active {
+				box-shadow: inset 0 -3px $color-2;
+			}
+		}
+	}
+        */
 }
 /* line 255, ../assets/sass/sticky-header.scss */
 .cd-secondary-nav::after {
@@ -290,100 +293,20 @@ a {
 .cd-secondary-nav.nav-end::after {
   opacity: 0;
 }
-/* line 274, ../assets/sass/sticky-header.scss */
-.cd-secondary-nav ul, .cd-secondary-nav li, .cd-secondary-nav a {
-  height: 100%;
-}
-/* line 278, ../assets/sass/sticky-header.scss */
-.cd-secondary-nav ul {
-  /* enables a flex context for all its direct children */
-  display: flex;
-  padding: 0 5%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-/* line 39, ../assets/sass/sticky-header-partials/_mixins.scss */
-.cd-secondary-nav ul::after {
-  clear: both;
-  content: "";
-  display: block;
-}
-/* line 287, ../assets/sass/sticky-header.scss */
-.cd-secondary-nav li {
-  display: inline-block;
-  float: left;
-  /* do not shrink - elements float on the right of the element */
-  flex-shrink: 0;
-}
-/* line 293, ../assets/sass/sticky-header.scss */
-.cd-secondary-nav li:last-of-type {
-  padding-right: 20px;
-}
-/* line 298, ../assets/sass/sticky-header.scss */
-.cd-secondary-nav a {
-  display: block;
-  color: #ffffff;
-  opacity: .6;
-  line-height: 50px;
-  padding: 0 1em;
-}
-/* line 305, ../assets/sass/sticky-header.scss */
-.cd-secondary-nav a:hover, .cd-secondary-nav a.active {
-  opacity: 1;
-}
-@media only screen and (min-width: 1024px) {
-  /* line 243, ../assets/sass/sticky-header.scss */
-  .cd-secondary-nav {
-    height: 70px;
-    overflow: visible;
-  }
-  /* line 314, ../assets/sass/sticky-header.scss */
-  .cd-secondary-nav ul {
-    /* reset mobile style */
-    display: block;
-    text-align: center;
-  }
-  /* line 320, ../assets/sass/sticky-header.scss */
-  .cd-secondary-nav li {
-    /* reset mobile style */
-    float: none;
-    flex-shrink: 1;
-  }
-  /* line 326, ../assets/sass/sticky-header.scss */
-  .cd-secondary-nav a {
-    line-height: 70px;
-  }
-  /* line 329, ../assets/sass/sticky-header.scss */
-  .cd-secondary-nav a.active {
-    box-shadow: inset 0 -3px #8F3985;
-  }
-}
 
 /* -------------------------------- 
 
 3. Auto-Hiding Navigation - with Sub Nav + Hero Image
 
 -------------------------------- */
-/* line 343, ../assets/sass/sticky-header.scss */
+/* line 345, ../assets/sass/sticky-header.scss */
 .cd-secondary-nav.fixed {
   position: fixed;
   top: 60px;
 }
-/* line 348, ../assets/sass/sticky-header.scss */
+/* line 350, ../assets/sass/sticky-header.scss */
 .cd-secondary-nav.slide-up {
   transform: translateY(-60px);
-}
-@media only screen and (min-width: 1024px) {
-  /* line 354, ../assets/sass/sticky-header.scss */
-  .cd-secondary-nav.fixed {
-    top: 80px;
-    /* fixes a bug where nav and subnab move with a slight delay */
-    box-shadow: 0 -6px 0 #25283D;
-  }
-  /* line 360, ../assets/sass/sticky-header.scss */
-  .cd-secondary-nav.slide-up {
-    transform: translateY(-80px);
-  }
 }
 
 /* -------------------------------- 
@@ -391,26 +314,26 @@ a {
 Main content
 
 -------------------------------- */
-/* line 373, ../assets/sass/sticky-header.scss */
+/* line 375, ../assets/sass/sticky-header.scss */
 .cd-main-content {
   padding: 60px 5% 2em;
   overflow: hidden;
 }
-/* line 377, ../assets/sass/sticky-header.scss */
+/* line 379, ../assets/sass/sticky-header.scss */
 .cd-main-content.sub-nav {
   /* to be used if there is sub nav */
   padding-top: 110px;
 }
-/* line 382, ../assets/sass/sticky-header.scss */
+/* line 384, ../assets/sass/sticky-header.scss */
 .cd-main-content.sub-nav-hero {
   /* to be used if there is hero image + subnav */
   padding-top: 0;
 }
-/* line 386, ../assets/sass/sticky-header.scss */
+/* line 388, ../assets/sass/sticky-header.scss */
 .cd-main-content.sub-nav-hero.secondary-nav-fixed {
   margin-top: 50px;
 }
-/* line 391, ../assets/sass/sticky-header.scss */
+/* line 393, ../assets/sass/sticky-header.scss */
 .cd-main-content p {
   max-width: 1024px;
   line-height: 1.6;
@@ -418,30 +341,12 @@ Main content
   font-family: "David Libre", serif;
   color: #a5a8a9;
 }
-@media only screen and (min-width: 1024px) {
-  /* line 373, ../assets/sass/sticky-header.scss */
-  .cd-main-content {
-    padding-top: 80px;
-  }
-  /* line 402, ../assets/sass/sticky-header.scss */
-  .cd-main-content.sub-nav {
-    padding-top: 150px;
-  }
-  /* line 406, ../assets/sass/sticky-header.scss */
-  .cd-main-content.sub-nav-hero.secondary-nav-fixed {
-    margin-top: 70px;
-  }
-  /* line 410, ../assets/sass/sticky-header.scss */
-  .cd-main-content p {
-    font-size: 2.4rem;
-  }
-}
 
 /*
 	adjust the positioning of in-page links
 	http://nicolasgallagher.com/jump-links-and-viewport-positioning/
 */
-/* line 422, ../assets/sass/sticky-header.scss */
+/* line 424, ../assets/sass/sticky-header.scss */
 .cd-main-content.sub-nav :target::before,
 .cd-main-content.sub-nav-hero :target::before {
   display: block;
@@ -450,21 +355,13 @@ Main content
   height: 50px;
   visibility: hidden;
 }
-@media only screen and (min-width: 1024px) {
-  /* line 422, ../assets/sass/sticky-header.scss */
-  .cd-main-content.sub-nav :target::before,
-  .cd-main-content.sub-nav-hero :target::before {
-    margin-top: -70px;
-    height: 70px;
-  }
-}
 
 /* -------------------------------- 
 
 Intro Section
 
 -------------------------------- */
-/* line 442, ../assets/sass/sticky-header.scss */
+/* line 444, ../assets/sass/sticky-header.scss */
 .cd-hero {
   /* vertically align its content */
   display: table;
@@ -474,25 +371,12 @@ Intro Section
   background: url(../img/cd-hero-background.jpg) no-repeat center center;
   background-size: cover;
 }
-/* line 451, ../assets/sass/sticky-header.scss */
+/* line 453, ../assets/sass/sticky-header.scss */
 .cd-hero .cd-hero-content {
   /* vertically align inside parent element */
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-}
-@media only screen and (min-width: 768px) {
-  /* line 442, ../assets/sass/sticky-header.scss */
-  .cd-hero {
-    height: 400px;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  /* line 442, ../assets/sass/sticky-header.scss */
-  .cd-hero {
-    height: 600px;
-    margin-top: 80px;
-  }
 }
 
 /* line 6, ../assets/sass/style_custom.scss */
@@ -507,8 +391,10 @@ Intro Section
 .test.test_sub2 {
   float: right;
   color: violet;
+  display: -ms-flexbox;
   display: flex;
-  flex: 0;
+  -ms-flex: 0;
+      flex: 0;
 }
 
 /* line 24, ../assets/sass/style_custom.scss */
@@ -523,24 +409,6 @@ Intro Section
   clear: both;
   content: "";
   display: block;
-}
-@media (min-width: 768px) {
-  /* line 24, ../assets/sass/style_custom.scss */
-  .container {
-    width: 100%;
-  }
-}
-@media (min-width: 992px) {
-  /* line 24, ../assets/sass/style_custom.scss */
-  .container {
-    width: 100%;
-  }
-}
-@media (min-width: 1200px) {
-  /* line 24, ../assets/sass/style_custom.scss */
-  .container {
-    width: 100%;
-  }
 }
 
 /* line 39, ../assets/sass/style_custom.scss */
@@ -584,22 +452,111 @@ Intro Section
 .foo::before {
   content: "foo on small";
 }
-
-@media (min-width: 768px) {
-  /* line 82, ../assets/sass/style_custom.scss */
-  .foo::before {
-    content: "foo on medium";
-  }
-}
 /* line 87, ../assets/sass/style_custom.scss */
 .bar::before {
   content: "bar on small";
 }
 
-@media (min-width: 768px) {
-  /* line 92, ../assets/sass/style_custom.scss */
+@media only screen and (min-width: 1024px) {/* line 44, ../assets/sass/sticky-header.scss */
+  .cd-auto-hide-header {
+    height: 80px;
+  }/* line 81, ../assets/sass/sticky-header.scss */
+  .cd-auto-hide-header .nav-trigger {
+    display: none;
+  }/* line 154, ../assets/sass/sticky-header.scss */
+  .cd-primary-nav {/* vertically align its content */
+    display: table;
+  }/* line 190, ../assets/sass/sticky-header.scss */
+  .cd-primary-nav > ul {/* vertically align inside parent element */
+    display: table-cell;
+    vertical-align: middle;/* reset mobile style */
+    position: relative;
+    width: auto;
+    top: 0;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }/* line 39, ../assets/sass/sticky-header-partials/_mixins.scss */
+  .cd-primary-nav > ul::after {
+    clear: both;
+    content: "";
+    display: block;
+  }/* line 203, ../assets/sass/sticky-header.scss */
+  .cd-primary-nav > ul li {
+    display: inline-block;
+    float: left;
+    margin-right: 1.5em;
+  }/* line 208, ../assets/sass/sticky-header.scss */
+  .cd-primary-nav > ul li:last-of-type {
+    margin-right: 0;
+  }/* line 213, ../assets/sass/sticky-header.scss */
+  .cd-primary-nav > ul a {/* reset mobile style */
+    height: auto;
+    line-height: normal;
+    padding: 0;
+    border: none;
+  }/* line 224, ../assets/sass/sticky-header.scss */
+  .nav-open .cd-primary-nav ul,
+  .cd-primary-nav ul:target {
+    display: table-cell;
+  }/* line 356, ../assets/sass/sticky-header.scss */
+  .cd-secondary-nav.fixed {
+    top: 80px;/* fixes a bug where nav and subnab move with a slight delay */
+    box-shadow: 0 -6px 0 #25283D;
+  }/* line 362, ../assets/sass/sticky-header.scss */
+  .cd-secondary-nav.slide-up {
+    transform: translateY(-80px);
+  }/* line 375, ../assets/sass/sticky-header.scss */
+  .cd-main-content {
+    padding-top: 80px;
+  }/* line 404, ../assets/sass/sticky-header.scss */
+  .cd-main-content.sub-nav {
+    padding-top: 150px;
+  }/* line 408, ../assets/sass/sticky-header.scss */
+  .cd-main-content.sub-nav-hero.secondary-nav-fixed {
+    margin-top: 70px;
+  }/* line 412, ../assets/sass/sticky-header.scss */
+  .cd-main-content p {
+    font-size: 2.4rem;
+  }/* line 424, ../assets/sass/sticky-header.scss */
+  .cd-main-content.sub-nav :target::before,
+  .cd-main-content.sub-nav-hero :target::before {
+    margin-top: -70px;
+    height: 70px;
+  }/* line 444, ../assets/sass/sticky-header.scss */
+  .cd-hero {
+    height: 600px;
+    margin-top: 80px;
+  }
+}
+
+@media only screen and (min-width: 768px) {/* line 444, ../assets/sass/sticky-header.scss */
+  .cd-hero {
+    height: 400px;
+  }
+}
+
+@media (min-width: 768px) {/* line 24, ../assets/sass/style_custom.scss */
+  .container {
+    width: 100%;
+  }/* line 82, ../assets/sass/style_custom.scss */
+  .foo::before {
+    content: "foo on medium";
+  }/* line 92, ../assets/sass/style_custom.scss */
   .bar::before {
     content: "bar on medium";
+  }
+}
+
+@media (min-width: 992px) {/* line 24, ../assets/sass/style_custom.scss */
+  .container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {/* line 24, ../assets/sass/style_custom.scss */
+  .container {
+    width: 100%;
   }
 }
 
