@@ -16,7 +16,6 @@ html {
 /* line 23, ../assets/sass/sticky-header.scss */
 body {
   font-size: 16px;
-  font-size: 16px;
   font-size: 1.6rem;
   font-family: "Hind", sans-serif;
   color: #25283D;
@@ -85,7 +84,6 @@ a {
   display: table;
   height: 100%;
   padding: 0 1em;
-  font-size: 12px;
   font-size: 12px;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -177,7 +175,6 @@ a {
   line-height: 50px;
   padding-left: 5%;
   color: #25283D;
-  font-size: 18px;
   font-size: 18px;
   font-size: 1.8rem;
   border-top: 1px solid #f2f2f2;
@@ -367,12 +364,12 @@ Intro Section
 -------------------------------- */
 /* line 448, ../assets/sass/sticky-header.scss */
 .cd-hero {
-  /* vertically align its content */
+  /* Vertically align its content */
   display: table;
   width: 100%;
   margin-top: 60px;
-  height: 300px;
-  background: url(../img/cd-hero-background.jpg) no-repeat center center;
+  height: 500px;
+  background: url(http://a4s-local.m-a-y.ru/f/mercury_11.jpg) no-repeat center 80%;
   background-size: cover;
 }
 /* line 457, ../assets/sass/sticky-header.scss */
@@ -694,4 +691,5 @@ Intro Section
     width: 100%;
   }
 }
+
 /*# sourceMappingURL=style_custom.css.map */

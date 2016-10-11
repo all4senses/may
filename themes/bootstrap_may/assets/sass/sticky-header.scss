@@ -446,12 +446,12 @@ Intro Section
 -------------------------------- */
 
 .cd-hero {
-	/* vertically align its content */
+	/* Vertically align its content */
 	display: table;
 	width: 100%;
 	margin-top: $header-height-small;
-	height: 300px;
-	background: url(../img/cd-hero-background.jpg) no-repeat center center;
+	height: 500px;
+	background: url(http://a4s-local.m-a-y.ru/f/mercury_11.jpg) no-repeat center 80%;
 	background-size: cover;
 
 	.cd-hero-content {
