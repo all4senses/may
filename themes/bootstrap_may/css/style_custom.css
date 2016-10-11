@@ -368,7 +368,7 @@ Intro Section
   display: table;
   width: 100%;
   margin-top: 60px;
-  height: 500px;
+  height: 400px;
   background: url(http://a4s-local.m-a-y.ru/f/mercury_11.jpg) no-repeat center 80%;
   background-size: cover;
 }
@@ -664,7 +664,7 @@ Intro Section
 
 @media only screen and (min-width: 768px) {/* line 448, ../assets/sass/sticky-header.scss */
   .cd-hero {
-    height: 400px;
+    height: 500px;
   }
 }
 
